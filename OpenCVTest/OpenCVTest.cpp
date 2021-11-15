@@ -7,7 +7,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
     // Read the image file
-    Mat image = imread("Trennwand.png");
+    Mat image = imread("auto.png");
     // Check for failure
     if (image.empty())
     {
