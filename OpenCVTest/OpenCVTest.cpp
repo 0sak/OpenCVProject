@@ -3,10 +3,12 @@
 #include<string>
 #include <opencv2/imgproc/imgproc.hpp>
 
+int down_height = 800;
+int down_width = 1000;
 
 int main(int argc, char** argv)
 {
-    for (int i = 1; i < 4; i++) {
+    for (int i = 1; i < 6; i++) {
         cv::Mat imageGrey;
         cv::Mat image;
         cv::Mat imageBlurred;
@@ -16,6 +18,7 @@ int main(int argc, char** argv)
         cv::Mat sobelResult;
         cv::Mat erodeResult; 
         cv::Mat dilateResult;
+        cv::Mat resizedDown;
 
         int ddepth = CV_32F;
 
@@ -33,7 +36,8 @@ int main(int argc, char** argv)
             std::cin.get();
         }
 
-        cv::cvtColor(image, imageGrey, cv::COLOR_BGR2GRAY);
+        cv::resize(image, resizedDown, cv::Size(down_width, down_height), cv::INTER_LINEAR);
+        cv::cvtColor(resizedDown, imageGrey, cv::COLOR_BGR2GRAY);
         cv::GaussianBlur(imageGrey, imageBlurred, cv::Size(3, 3), 0);
         cv::threshold(imageBlurred, imageThresh, 127, 255, cv::THRESH_BINARY);
         cv::Sobel(imageThresh, sobel_x, ddepth, 1, 0, 3, cv::BORDER_DEFAULT);
