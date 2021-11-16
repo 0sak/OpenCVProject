@@ -152,6 +152,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="OpenCVTest.cpp" />
+    <ClCompile Include="ProcessImage.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ProcessImage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
