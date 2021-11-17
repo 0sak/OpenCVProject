@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="OpenCVTest.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="ProcessImage.cpp">
+    <ClCompile Include="ProcessImages.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ProcessImage.h">
+    <ClInclude Include="ProcessImages.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
