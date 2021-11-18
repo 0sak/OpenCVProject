@@ -47,9 +47,41 @@ void ProcessImages::processAll() {
 
 void ProcessImages::getContours() {
     cv::findContours(imageThresh, contours, hierarchy, cv::RETR_TREE, cv::CHAIN_APPROX_NONE);
-    
+
     cv::Mat image_copy = image.clone();
-    cv::drawContours(image_copy, contours, -1, cv::Scalar(0, 255, 0), 2);
+
+    for (int i = 0; i < contours.size(); i++) {
+        double perimeter = cv::arcLength(contours.at(i), true);
+        std::vector<cv::Point> approx;
+        cv::approxPolyDP(contours.at(i), approx, 0.04 * perimeter, true);
+        if (approx.size() == 4) {
+            //std::cout << "Found :)" << std::endl;
+            cv::Rect2f resultRect = cv::boundingRect(approx);
+
+            float aspectratio = resultRect.width / resultRect.height;
+            if (aspectratio < 1.0f){
+                aspectratio = 1 / aspectratio;
+            }
+
+            float aspect = 4.7272;
+
+            float min = 20 * aspect * 15;
+            float max = 200 * aspect * 200;
+
+            float rmin = 3;
+            float rmax = 4.9;
+
+            if ((aspectratio < rmin || aspectratio > rmax)  || (resultRect.area() < min || resultRect.area() > max)) {
+                continue;
+            }
+
+
+            cv::rectangle(image_copy, resultRect, cv::Scalar(0, 255, 0), 2);
+            //cv::drawContours(image_copy, contours.at(i), -1, cv::Scalar(0, 255, 0), 2);
+        }
+    }
+
     cv::imshow("None appoxiation", image_copy);
     cv::waitKey(0);
+    
 }
