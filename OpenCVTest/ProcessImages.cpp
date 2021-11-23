@@ -1,5 +1,11 @@
 #include "ProcessImages.h"
 
+
+/*
+* Nimmt als Input das eingelsene Bild, auf dem die Nummernschilder erkannt werden sollen.
+* Funktion führt Preprocessing durch, bestehend aus Opening, Grayscaling, Blurring, Thresholding.
+*/
+
 void ProcessImages::processImage(cv::Mat image) {
 
     cv::erode(image, erodeResult, cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3)));
@@ -11,16 +17,19 @@ void ProcessImages::processImage(cv::Mat image) {
 
     cv::GaussianBlur(imageGrey, imageBlurred, cv::Size(3, 3), 0);
 
-    cv::threshold(imageBlurred, imageThresh, 127, 255, cv::THRESH_BINARY);
+    cv::threshold(imageBlurred, imageThresh, 155, 255, cv::THRESH_BINARY);
 
     //cv::Sobel(imageThresh, sobel_x, ddepth, 1, 0, 3, cv::BORDER_DEFAULT);
     //cv::Sobel(imageThresh, sobel_y, ddepth, 0, 1, 3, cv::BORDER_DEFAULT);
     //cv::magnitude(sobel_x, sobel_y, sobelResult);
 
-    //cv::hconcat(imageGrey, sobelResult, imageConcat);
+    //cv::hconcat(image, imageThresh, imageConcat);
 
 }
-
+ /*
+ * Funktion die in der Main aufgerufen wird, um das Vorverarbeiten und das Filtern der Konturen einzuleiten, liest auch Bild nach Bild ein.
+ * Quasi unser GameLoop :d
+ */
 void ProcessImages::processAll() {
     for (int i = 1; i < NUMBER_OF_IMAGES + 1; i++) {
 
@@ -37,14 +46,21 @@ void ProcessImages::processAll() {
 
         processImage(image);
 
-        cv::imshow(imageToRead, imageThresh);
+        //cv::imshow(imageToRead, imageThresh);
         getContours();
 
-        cv::waitKey(0);
+        //cv::waitKey(0);
     }
     cv::destroyAllWindows();
 }
 
+/*
+* Nimmt sich das Bild mit dem Threshold Filter und erkennt darauf die Konturen, der Umfang der Kontur wird erkannt, die Kontur wird Approximiert,
+* es wird also entschieden aus wie vielen Vertices (Punkten) diese Kontur besteht, ein Rechteck/Quadrat besteht beispielsweise aus 4.
+* Wenn die Kontur tatsächlich aus 4 Punkten besteht wird das Rechteck in gespeichert in resultRect, dann werden Seitenverhätlnis und Fläche 
+* geprüft. Wenn die Fläche nicht zu klein oder zu groß ist und das Seitenverhältnis stimmt wird das gespeicherte Rechteck gezeichnet,
+* ansonsten wird übersprungen und die nächste Kontur wird analysiert.
+*/
 void ProcessImages::getContours() {
     cv::findContours(imageThresh, contours, hierarchy, cv::RETR_TREE, cv::CHAIN_APPROX_NONE);
 
@@ -80,8 +96,8 @@ void ProcessImages::getContours() {
             //cv::drawContours(image_copy, contours.at(i), -1, cv::Scalar(0, 255, 0), 2);
         }
     }
-
-    cv::imshow("None appoxiation", image_copy);
+    cv::hconcat(imageBlurred, imageThresh, imageConcat);
+    cv::imshow("None appoxiation", imageConcat);
     cv::waitKey(0);
     
 }

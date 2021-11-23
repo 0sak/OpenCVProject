@@ -5,7 +5,7 @@
 #include<opencv2/opencv.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-const int NUMBER_OF_IMAGES = 3;
+const int NUMBER_OF_IMAGES = 5;
 
 class ProcessImages {
 public:
@@ -14,6 +14,7 @@ public:
     int down_height = 800;
     int down_width = 1000;
 
+    //Wenn Filter angewendet werden, werden die Ergebnisse in diese Matrizen gespeichert
     cv::Mat image, 
         imageGrey,
         imageBlurred, 
