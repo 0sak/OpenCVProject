@@ -1,0 +1,421 @@
+.TH "ProcessImages" 3 "Wed Jan 19 2022" "Version v1.0" "CV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ProcessImages
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ProcessImages\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinitLabels\fP ()"
+.br
+.RI "reads in dataset_labeling\&.txt and sets total amount of license plates and characters that can be recognized\&. "
+.ti -1c
+.RI "void \fBpreprocessImage\fP (cv::Mat \fBimage\fP)"
+.br
+.RI "Function to apply multiple filters to the original picture, so that it is ready for extracting all of its contours\&. The results are saved in the matrixes of this class\&. (Note that there are some that are not being used, we tried out several methods to preprocess our pictures) "
+.ti -1c
+.RI "void \fBexecute\fP ()"
+.br
+.RI "Function to start the license plate recognition, it loops over all existing pictures from the dataset and calls necessary functions of this class\&. Also adds height and width to labels\&. "
+.ti -1c
+.RI "void \fBprintFilterConditions\fP (int i)"
+.br
+.RI "prints filter conditions for the current picture that is analyzed e\&.g Min Area Outer Contour (Rectangle)\&. "
+.ti -1c
+.RI "void \fBfilterImageData\fP ()"
+.br
+.RI "Set width, height of a picture and calculate relative min and max Area for outer contours in relation with image width and height\&. "
+.ti -1c
+.RI "void \fBfilterContours\fP (bool brighter)"
+.br
+.RI "First we start by extracting all of the contours of a picture, secondly the perimeter of a contour is calculated and the contour is approxymated (for instance a rectangle can be drown with 4 vertices)\&. After that we check if the contour in fact contains only 4 points, indicating that it is a rectangle\&. We filter the extracted rectangle by area and apect ratio\&. The next step is to see how many white pixels exist in the contour, since a license plate will consist of a lot of white pixels and some black pixels indicating the letters\&. If the amount of white pixels is high enough we again filter for all countours that exist in our rectangle\&. In this step we cant to see if we cann figure out the letters on our license plate\&. If the contour has a specific area we let it pass and count it\&. Since a license plate will have about 15 letters on it we check if we found 4-12 contours that fit our area check\&. If so we sucessfully found a licenseplate on the picture\&. "
+.ti -1c
+.RI "void \fBsetFilterConditionsInnerContours\fP (cv::Mat &subImgCopy)"
+.br
+.RI "Calculate relative min and max area for inner Contour\&. "
+.ti -1c
+.RI "void \fBdisplayResults\fP (cv::Mat &image_copy)"
+.br
+.RI "Display the picture with recognized license plates and the corresponding threshold image\&. "
+.ti -1c
+.RI "void \fBcountInnerContours\fP (unsigned int &contourCounter, int i, cv::Mat &subImgCopy)"
+.br
+.RI "When outer the outer contour survives all of our check, count all contours inside the rectangle with a specific area\&. "
+.ti -1c
+.RI "void \fBprintCandidateData\fP (int i, cv::Rect2f &resultRect, double whitePixelsInRectangle, float proportionAreaWhitepixels)"
+.br
+.RI "print Area, Number of white pixels and ratio of white and black pixels in rectangle "
+.ti -1c
+.RI "void \fBisRectangle\fP (cv::Rect2f &resultRect, int &retflag)"
+.br
+.RI "Check aspect ratio and area of cadidate\&. Ignore if not in these bounderies\&. "
+.ti -1c
+.RI "bool \fBisImageBright\fP (cv::Mat \fBimage\fP)"
+.br
+.RI "Change from BGR to HSV and check value across all pixels\&. Decide from value if image is bright or not\&. Also save brightness in labels\&. "
+.ti -1c
+.RI "void \fBmakeBrighter\fP (double alpha, int beta)"
+.br
+.RI "Make image brighter with alpha and beta values\&. "
+.ti -1c
+.RI "void \fBgammaCorrection\fP (const cv::Mat &img, const double gamma_)"
+.br
+.RI "Make image brighter with gamma value\&. "
+.ti -1c
+.RI "void \fBgetDesktopResolution\fP ()"
+.br
+.RI "store desktop resolution "
+.ti -1c
+.RI "void \fBprocess\fP ()"
+.br
+.ti -1c
+.RI "float \fBdistanceBetweenTwoPoints\fP (float x1, float y1, float x2, float y2)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBimageToRead\fP"
+.br
+.ti -1c
+.RI "int \fBddepth\fP = CV_8U"
+.br
+.ti -1c
+.RI "int \fBdesktopWidth\fP"
+.br
+.ti -1c
+.RI "int \fBdesktopHeigth\fP"
+.br
+.ti -1c
+.RI "\fBMetric\fP \fBmetric\fP"
+.br
+.ti -1c
+.RI "int \fBindex\fP = 0"
+.br
+.ti -1c
+.RI "float \fBminAreaOuter\fP"
+.br
+.ti -1c
+.RI "float \fBmaxAreaOuter\fP"
+.br
+.ti -1c
+.RI "float \fBminAreaInner\fP"
+.br
+.ti -1c
+.RI "float \fBmaxAreaInner\fP"
+.br
+.ti -1c
+.RI "bool \fBDEBUG_FLAG_SHOW_RESULT\fP = false"
+.br
+.ti -1c
+.RI "cv::Mat \fBimage\fP"
+.br
+.ti -1c
+.RI "cv::Mat \fBimageGrey\fP"
+.br
+.ti -1c
+.RI "cv::Mat \fBimageBlurred\fP"
+.br
+.ti -1c
+.RI "cv::Mat \fBimageThresh\fP"
+.br
+.ti -1c
+.RI "cv::Mat \fBimageThreshResized\fP"
+.br
+.ti -1c
+.RI "cv::Mat \fBsobelX\fP"
+.br
+.ti -1c
+.RI "cv::Mat \fBsobelY\fP"
+.br
+.ti -1c
+.RI "cv::Mat \fBsobelResult\fP"
+.br
+.ti -1c
+.RI "cv::Mat \fBerodeResult\fP"
+.br
+.ti -1c
+.RI "cv::Mat \fBdilateResult\fP"
+.br
+.ti -1c
+.RI "cv::Mat \fBimageConcat\fP"
+.br
+.ti -1c
+.RI "cv::Mat \fBresizedDown\fP"
+.br
+.ti -1c
+.RI "cv::Mat \fBres\fP"
+.br
+.ti -1c
+.RI "cv::Mat \fBnewImage\fP"
+.br
+.ti -1c
+.RI "std::vector< std::vector< cv::Point > > \fBcontours\fP"
+.br
+.ti -1c
+.RI "std::vector< std::vector< cv::Point > > \fBcontoursSecond\fP"
+.br
+.ti -1c
+.RI "std::vector< cv::Vec4i > \fBhierarchy\fP"
+.br
+.ti -1c
+.RI "std::vector< cv::Vec4i > \fBhierarchySecond\fP"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "void ProcessImages::countInnerContours (unsigned int & contourCounter, int i, cv::Mat & subImgCopy)"
+
+.PP
+When outer the outer contour survives all of our check, count all contours inside the rectangle with a specific area\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcontourCounter\fP 
+.br
+\fIi\fP 
+.br
+\fIsubImgCopy\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void ProcessImages::displayResults (cv::Mat & image_copy)"
+
+.PP
+Display the picture with recognized license plates and the corresponding threshold image\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIimage_copy\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "float ProcessImages::distanceBetweenTwoPoints (float x1, float y1, float x2, float y2)"
+
+.SS "void ProcessImages::execute ()"
+
+.PP
+Function to start the license plate recognition, it loops over all existing pictures from the dataset and calls necessary functions of this class\&. Also adds height and width to labels\&. 
+.SS "void ProcessImages::filterContours (bool brighter)"
+
+.PP
+First we start by extracting all of the contours of a picture, secondly the perimeter of a contour is calculated and the contour is approxymated (for instance a rectangle can be drown with 4 vertices)\&. After that we check if the contour in fact contains only 4 points, indicating that it is a rectangle\&. We filter the extracted rectangle by area and apect ratio\&. The next step is to see how many white pixels exist in the contour, since a license plate will consist of a lot of white pixels and some black pixels indicating the letters\&. If the amount of white pixels is high enough we again filter for all countours that exist in our rectangle\&. In this step we cant to see if we cann figure out the letters on our license plate\&. If the contour has a specific area we let it pass and count it\&. Since a license plate will have about 15 letters on it we check if we found 4-12 contours that fit our area check\&. If so we sucessfully found a licenseplate on the picture\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIbrighter\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void ProcessImages::filterImageData ()"
+
+.PP
+Set width, height of a picture and calculate relative min and max Area for outer contours in relation with image width and height\&. 
+.SS "void ProcessImages::gammaCorrection (const cv::Mat & img, const double gamma_)"
+
+.PP
+Make image brighter with gamma value\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIimg\fP 
+.br
+\fIgamma_\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void ProcessImages::getDesktopResolution ()"
+
+.PP
+store desktop resolution 
+.SS "void ProcessImages::initLabels ()"
+
+.PP
+reads in dataset_labeling\&.txt and sets total amount of license plates and characters that can be recognized\&. 
+.SS "bool ProcessImages::isImageBright (cv::Mat image)"
+
+.PP
+Change from BGR to HSV and check value across all pixels\&. Decide from value if image is bright or not\&. Also save brightness in labels\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIimage\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "void ProcessImages::isRectangle (cv::Rect2f & resultRect, int & retflag)"
+
+.PP
+Check aspect ratio and area of cadidate\&. Ignore if not in these bounderies\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIresultRect\fP 
+.br
+\fIretflag\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void ProcessImages::makeBrighter (double alpha, int beta)"
+
+.PP
+Make image brighter with alpha and beta values\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIalpha\fP 
+.br
+\fIbeta\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void ProcessImages::preprocessImage (cv::Mat image)"
+
+.PP
+Function to apply multiple filters to the original picture, so that it is ready for extracting all of its contours\&. The results are saved in the matrixes of this class\&. (Note that there are some that are not being used, we tried out several methods to preprocess our pictures) 
+.PP
+\fBParameters\fP
+.RS 4
+\fIimage\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void ProcessImages::printCandidateData (int i, cv::Rect2f & resultRect, double whitePixelsInRectangle, float proportionAreaWhitepixels)"
+
+.PP
+print Area, Number of white pixels and ratio of white and black pixels in rectangle 
+.PP
+\fBParameters\fP
+.RS 4
+\fIi\fP 
+.br
+\fIresultRect\fP 
+.br
+\fIwhitePixelsInRectangle\fP 
+.br
+\fIproportionAreaWhitepixels\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void ProcessImages::printFilterConditions (int i)"
+
+.PP
+prints filter conditions for the current picture that is analyzed e\&.g Min Area Outer Contour (Rectangle)\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIi\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void ProcessImages::process ()"
+
+.SS "void ProcessImages::setFilterConditionsInnerContours (cv::Mat & subImgCopy)"
+
+.PP
+Calculate relative min and max area for inner Contour\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsubImgCopy\fP 
+.br
+ 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<std::vector<cv::Point> > ProcessImages::contours"
+
+.SS "std::vector<std::vector<cv::Point> > ProcessImages::contoursSecond"
+
+.SS "int ProcessImages::ddepth = CV_8U"
+
+.SS "bool ProcessImages::DEBUG_FLAG_SHOW_RESULT = false"
+
+.SS "int ProcessImages::desktopHeigth"
+
+.SS "int ProcessImages::desktopWidth"
+
+.SS "cv::Mat ProcessImages::dilateResult"
+
+.SS "cv::Mat ProcessImages::erodeResult"
+
+.SS "std::vector<cv::Vec4i> ProcessImages::hierarchy"
+
+.SS "std::vector<cv::Vec4i> ProcessImages::hierarchySecond"
+
+.SS "cv::Mat ProcessImages::image"
+
+.SS "cv::Mat ProcessImages::imageBlurred"
+
+.SS "cv::Mat ProcessImages::imageConcat"
+
+.SS "cv::Mat ProcessImages::imageGrey"
+
+.SS "cv::Mat ProcessImages::imageThresh"
+
+.SS "cv::Mat ProcessImages::imageThreshResized"
+
+.SS "std::string ProcessImages::imageToRead"
+
+.SS "int ProcessImages::index = 0"
+
+.SS "float ProcessImages::maxAreaInner"
+
+.SS "float ProcessImages::maxAreaOuter"
+
+.SS "\fBMetric\fP ProcessImages::metric"
+
+.SS "float ProcessImages::minAreaInner"
+
+.SS "float ProcessImages::minAreaOuter"
+
+.SS "cv::Mat ProcessImages::newImage"
+
+.SS "cv::Mat ProcessImages::res"
+
+.SS "cv::Mat ProcessImages::resizedDown"
+
+.SS "cv::Mat ProcessImages::sobelResult"
+
+.SS "cv::Mat ProcessImages::sobelX"
+
+.SS "cv::Mat ProcessImages::sobelY"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CV from the source code\&.

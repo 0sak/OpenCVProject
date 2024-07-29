@@ -1,0 +1,627 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classfort_1_1property__owner" xml:lang="en-US">
+<title>fort::property_owner&lt; table &gt; Class Template Reference</title>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary></indexterm>
+<para>
+<computeroutput>#include &lt;fort.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for fort::property_owner&lt; table &gt;:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classfort_1_1property__owner.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classfort_1_1property__owner_1ac8b428ead2bd53ad38ca035eaec93d21">property_owner</link> (std::size_t row_idx, std::size_t coll_idx, <link linkend="_classfort_1_1table">table</link> *tbl, bool def=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1a271ffa111ba27a68715044826298b42b">set_cell_min_width</link> (unsigned value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1aa0c34eb1dde00dc3b172ede4699e0cdc">set_cell_text_align</link> (<link linkend="_namespacefort_1a895f73752fc847c22853fd363a575b04">fort::text_align</link> value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1a1b6a5415016a2a93c25795ed2b99ec44">set_cell_top_padding</link> (unsigned value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1aab88ac28d70ea5d630aa55d7c97defd5">set_cell_bottom_padding</link> (unsigned value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1a8ae9305903c8467e8c43065bd6ebbde4">set_cell_left_padding</link> (unsigned value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1a4bb870a7101fad9df8e6d3b78afccd86">set_cell_right_padding</link> (unsigned value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1a7a36fdadc9095cb969488ca03e28de6d">set_cell_row_type</link> (<link linkend="_namespacefort_1a28370d69d653e7ae3cb80c61cf2469aa">fort::row_type</link> value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1ab04fde5f089d89a16c10c4c6fe9ee41c">set_cell_empty_str_height</link> (unsigned value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1a84c20f3c799287d706c9d8e052fff6ec">set_cell_content_fg_color</link> (<link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbba">fort::color</link> value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1a8780bb5cf0e2918e3d6db3439414f0b6">set_cell_bg_color</link> (<link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbba">fort::color</link> value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1a5d83c216797e222d79e47c500bc98571">set_cell_content_bg_color</link> (<link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbba">fort::color</link> value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1ad762b2bec6d78559b1393e003054e894">set_cell_text_style</link> (<link linkend="_namespacefort_1aca558b21bbb52c9c28de9811bec32061">fort::text_style</link> value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1acec5096b143be35e12284601f27eceb9">set_cell_content_text_style</link> (<link linkend="_namespacefort_1aca558b21bbb52c9c28de9811bec32061">fort::text_style</link> value)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1ab922c31dddc0acd7940de715e83fc53c">set_property</link> (uint32_t property, int value)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para>std::size_t <link linkend="_classfort_1_1property__owner_1a1a008cd03d21db838be6b1718d462f71">ps_row_idx_</link></para>
+</listitem>
+            <listitem><para>std::size_t <link linkend="_classfort_1_1property__owner_1ab3d52a7587080b99afecd6d362ecbdc9">ps_coll_idx_</link></para>
+</listitem>
+            <listitem><para><link linkend="_classfort_1_1table">table</link> * <link linkend="_classfort_1_1property__owner_1a8b0bba2c8cf48c8b727d4c849f90be2b">ps_table_</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1property__owner_1ac9a6f69065cc50d9fb1f31160e9ba31b">set_default_properties_</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;typename <link linkend="_classfort_1_1table">table</link>&gt;
+class fort::property_owner&lt; table &gt;</title></simplesect>
+
+<para>Property owner.</para>
+
+<para><link linkend="_classfort_1_1property__owner">property_owner</link> is a base class for all objects (table, row, column, cell) for which user can specify properties. </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classfort_1_1property__owner_1ac8b428ead2bd53ad38ca035eaec93d21"/><section>
+    <title>property_owner()</title>
+<indexterm><primary>property_owner</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>property_owner</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::property_owner (std::size_t row_idx, std::size_t coll_idx, <link linkend="_classfort_1_1table">table</link> * tbl, bool def = <computeroutput>false</computeroutput>
+)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classfort_1_1property__owner_1a8780bb5cf0e2918e3d6db3439414f0b6"/><section>
+    <title>set_cell_bg_color()</title>
+<indexterm><primary>set_cell_bg_color</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_cell_bg_color</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_cell_bg_color (<link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbba">fort::color</link> value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set cell background color for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Color. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1property__owner_1aab88ac28d70ea5d630aa55d7c97defd5"/><section>
+    <title>set_cell_bottom_padding()</title>
+<indexterm><primary>set_cell_bottom_padding</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_cell_bottom_padding</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_cell_bottom_padding (unsigned value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set bottom padding for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Value of the bottom padding. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1property__owner_1a5d83c216797e222d79e47c500bc98571"/><section>
+    <title>set_cell_content_bg_color()</title>
+<indexterm><primary>set_cell_content_bg_color</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_cell_content_bg_color</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_cell_content_bg_color (<link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbba">fort::color</link> value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set content background color for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Color. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1property__owner_1a84c20f3c799287d706c9d8e052fff6ec"/><section>
+    <title>set_cell_content_fg_color()</title>
+<indexterm><primary>set_cell_content_fg_color</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_cell_content_fg_color</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_cell_content_fg_color (<link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbba">fort::color</link> value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set content foreground color for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Color. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1property__owner_1acec5096b143be35e12284601f27eceb9"/><section>
+    <title>set_cell_content_text_style()</title>
+<indexterm><primary>set_cell_content_text_style</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_cell_content_text_style</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_cell_content_text_style (<link linkend="_namespacefort_1aca558b21bbb52c9c28de9811bec32061">fort::text_style</link> value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set content text style for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Text style. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1property__owner_1ab04fde5f089d89a16c10c4c6fe9ee41c"/><section>
+    <title>set_cell_empty_str_height()</title>
+<indexterm><primary>set_cell_empty_str_height</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_cell_empty_str_height</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_cell_empty_str_height (unsigned value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set empty string height for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Value of the empty string height. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1property__owner_1a8ae9305903c8467e8c43065bd6ebbde4"/><section>
+    <title>set_cell_left_padding()</title>
+<indexterm><primary>set_cell_left_padding</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_cell_left_padding</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_cell_left_padding (unsigned value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set left padding for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Value of the left padding. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1property__owner_1a271ffa111ba27a68715044826298b42b"/><section>
+    <title>set_cell_min_width()</title>
+<indexterm><primary>set_cell_min_width</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_cell_min_width</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_cell_min_width (unsigned value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set min width for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Value of the min width. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1property__owner_1a4bb870a7101fad9df8e6d3b78afccd86"/><section>
+    <title>set_cell_right_padding()</title>
+<indexterm><primary>set_cell_right_padding</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_cell_right_padding</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_cell_right_padding (unsigned value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set right padding for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Value of the left padding. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1property__owner_1a7a36fdadc9095cb969488ca03e28de6d"/><section>
+    <title>set_cell_row_type()</title>
+<indexterm><primary>set_cell_row_type</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_cell_row_type</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_cell_row_type (<link linkend="_namespacefort_1a28370d69d653e7ae3cb80c61cf2469aa">fort::row_type</link> value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set row type for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Value of the row type. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1property__owner_1aa0c34eb1dde00dc3b172ede4699e0cdc"/><section>
+    <title>set_cell_text_align()</title>
+<indexterm><primary>set_cell_text_align</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_cell_text_align</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_cell_text_align (<link linkend="_namespacefort_1a895f73752fc847c22853fd363a575b04">fort::text_align</link> value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set text alignment for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Value of the text alignment. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1property__owner_1ad762b2bec6d78559b1393e003054e894"/><section>
+    <title>set_cell_text_style()</title>
+<indexterm><primary>set_cell_text_style</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_cell_text_style</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_cell_text_style (<link linkend="_namespacefort_1aca558b21bbb52c9c28de9811bec32061">fort::text_style</link> value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set cell text style for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Text style. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1property__owner_1a1b6a5415016a2a93c25795ed2b99ec44"/><section>
+    <title>set_cell_top_padding()</title>
+<indexterm><primary>set_cell_top_padding</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_cell_top_padding</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_cell_top_padding (unsigned value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set top padding for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Value of the top padding. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1property__owner_1ab922c31dddc0acd7940de715e83fc53c"/><section>
+    <title>set_property()</title>
+<indexterm><primary>set_property</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_property</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_property (uint32_t property, int value)<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classfort_1_1property__owner_1ab3d52a7587080b99afecd6d362ecbdc9"/><section>
+    <title>ps_coll_idx_</title>
+<indexterm><primary>ps_coll_idx_</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>ps_coll_idx_</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>std::size_t <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::ps_coll_idx_<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1property__owner_1a1a008cd03d21db838be6b1718d462f71"/><section>
+    <title>ps_row_idx_</title>
+<indexterm><primary>ps_row_idx_</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>ps_row_idx_</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>std::size_t <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::ps_row_idx_<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1property__owner_1a8b0bba2c8cf48c8b727d4c849f90be2b"/><section>
+    <title>ps_table_</title>
+<indexterm><primary>ps_table_</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>ps_table_</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table">table</link>* <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::ps_table_<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1property__owner_1ac9a6f69065cc50d9fb1f31160e9ba31b"/><section>
+    <title>set_default_properties_</title>
+<indexterm><primary>set_default_properties_</primary><secondary>fort::property_owner&lt; table &gt;</secondary></indexterm>
+<indexterm><primary>fort::property_owner&lt; table &gt;</primary><secondary>set_default_properties_</secondary></indexterm>
+<computeroutput>template&lt;typename <link linkend="_classfort_1_1table">table</link> &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1property__owner">fort::property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;::set_default_properties_<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8hpp">fort.hpp</link></section>
+</section>

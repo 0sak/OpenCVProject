@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structf__table__properties" xml:lang="en-US">
+<title>f_table_properties Struct Reference</title>
+<indexterm><primary>f_table_properties</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structfort__border__style">fort_border_style</link> <link linkend="_structf__table__properties_1a9d667551446a50392834427685c347a1">border_style</link></para>
+</listitem>
+            <listitem><para><link linkend="_fort_8c_1a44489cbfc2d77483bf104e71a9adc104">f_cell_prop_container_t</link> * <link linkend="_structf__table__properties_1a7614b3f17b68dd7c67eb74e68b1e4ce4">cell_properties</link></para>
+</listitem>
+            <listitem><para><link linkend="_fort_8c_1a171a2ab1349903dadd4fde07a45a6ee3">fort_entire_table_properties_t</link> <link linkend="_structf__table__properties_1af153be0d44b1049a17a3db34152223c9">entire_table_properties</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structf__table__properties_1a9d667551446a50392834427685c347a1"/><section>
+    <title>border_style</title>
+<indexterm><primary>border_style</primary><secondary>f_table_properties</secondary></indexterm>
+<indexterm><primary>f_table_properties</primary><secondary>border_style</secondary></indexterm>
+<para><computeroutput>struct <link linkend="_structfort__border__style">fort_border_style</link> f_table_properties::border_style</computeroutput></para></section>
+<anchor xml:id="_structf__table__properties_1a7614b3f17b68dd7c67eb74e68b1e4ce4"/><section>
+    <title>cell_properties</title>
+<indexterm><primary>cell_properties</primary><secondary>f_table_properties</secondary></indexterm>
+<indexterm><primary>f_table_properties</primary><secondary>cell_properties</secondary></indexterm>
+<para><computeroutput><link linkend="_fort_8c_1a44489cbfc2d77483bf104e71a9adc104">f_cell_prop_container_t</link>* f_table_properties::cell_properties</computeroutput></para></section>
+<anchor xml:id="_structf__table__properties_1af153be0d44b1049a17a3db34152223c9"/><section>
+    <title>entire_table_properties</title>
+<indexterm><primary>entire_table_properties</primary><secondary>f_table_properties</secondary></indexterm>
+<indexterm><primary>f_table_properties</primary><secondary>entire_table_properties</secondary></indexterm>
+<para><computeroutput><link linkend="_fort_8c_1a171a2ab1349903dadd4fde07a45a6ee3">fort_entire_table_properties_t</link> f_table_properties::entire_table_properties</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8c">fort.c</link></section>
+</section>

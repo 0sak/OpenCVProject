@@ -1,0 +1,1327 @@
+.TH "C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/fort.h" 3 "Wed Jan 19 2022" "Version v1.0" "CV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/fort.h \- Main header file describing libfort API\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stddef\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <limits\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBft_border_chars\fP"
+.br
+.ti -1c
+.RI "struct \fBft_border_style\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBLIBFORT_MAJOR_VERSION\fP   0"
+.br
+.ti -1c
+.RI "#define \fBLIBFORT_MINOR_VERSION\fP   5"
+.br
+.ti -1c
+.RI "#define \fBLIBFORT_REVISION\fP   0"
+.br
+.ti -1c
+.RI "#define \fBLIBFORT_VERSION_STR\fP   '0\&.5\&.0'"
+.br
+.ti -1c
+.RI "#define \fBFT_HAVE_WCHAR\fP"
+.br
+.ti -1c
+.RI "#define \fBFT_HAVE_UTF8\fP"
+.br
+.ti -1c
+.RI "#define \fBFT_SUCCESS\fP   0"
+.br
+.ti -1c
+.RI "#define \fBFT_MEMORY_ERROR\fP   \-1"
+.br
+.ti -1c
+.RI "#define \fBFT_EINVAL\fP   \-2"
+.br
+.ti -1c
+.RI "#define \fBFT_INTERN_ERROR\fP   \-3"
+.br
+.ti -1c
+.RI "#define \fBFT_GEN_ERROR\fP   \-4"
+.br
+.ti -1c
+.RI "#define \fBFT_IS_SUCCESS\fP(arg)   ((arg) >= 0)"
+.br
+.ti -1c
+.RI "#define \fBFT_IS_ERROR\fP(arg)   ((arg) < 0)"
+.br
+.ti -1c
+.RI "#define \fBFT_PRINTF_ATTRIBUTE_FORMAT\fP(string_index,  first_to_check)"
+.br
+.ti -1c
+.RI "#define \fBft_write\fP(table, \&.\&.\&.)       (0 ? FT_CHECK_IF_ARGS_ARE_STRINGS(__VA_ARGS__) : \fBft_nwrite\fP(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))"
+.br
+.ti -1c
+.RI "#define \fBft_write_ln\fP(table, \&.\&.\&.)       (0 ? FT_CHECK_IF_ARGS_ARE_STRINGS(__VA_ARGS__) : \fBft_nwrite_ln\fP(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))"
+.br
+.ti -1c
+.RI "#define \fBFT_MAX_ROW_INDEX\fP   (UINT_MAX \- 2)"
+.br
+.ti -1c
+.RI "#define \fBFT_MAX_COL_INDEX\fP   (UINT_MAX \- 2)"
+.br
+.ti -1c
+.RI "#define \fBft_wwrite\fP(table, \&.\&.\&.)       (0 ? CHECK_IF_ARGS_ARE_WSTRINGS(__VA_ARGS__) : \fBft_nwwrite\fP(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))"
+.br
+.ti -1c
+.RI "#define \fBft_wwrite_ln\fP(table, \&.\&.\&.)       (0 ? CHECK_IF_ARGS_ARE_WSTRINGS(__VA_ARGS__) : \fBft_nwwrite_ln\fP(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))"
+.br
+.ti -1c
+.RI "#define \fBft_u8write\fP(table, \&.\&.\&.)       (\fBft_u8nwrite\fP(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))"
+.br
+.ti -1c
+.RI "#define \fBft_u8write_ln\fP(table, \&.\&.\&.)       (\fBft_u8nwrite_ln\fP(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))"
+.br
+.in -1c
+.PP
+.RI "\fBSpecial macros to define cell position (row and column)\&.\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBFT_ANY_COLUMN\fP   (UINT_MAX)"
+.br
+.ti -1c
+.RI "#define \fBFT_CUR_COLUMN\fP   (UINT_MAX \- 1)"
+.br
+.ti -1c
+.RI "#define \fBFT_ANY_ROW\fP   (UINT_MAX)"
+.br
+.ti -1c
+.RI "#define \fBFT_CUR_ROW\fP   (UINT_MAX \- 1)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fBCell properties identifiers\&.\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBFT_CPROP_MIN_WIDTH\fP   (0x01U << 0)"
+.br
+.ti -1c
+.RI "#define \fBFT_CPROP_TEXT_ALIGN\fP   (0x01U << 1)"
+.br
+.ti -1c
+.RI "#define \fBFT_CPROP_TOP_PADDING\fP   (0x01U << 2)"
+.br
+.ti -1c
+.RI "#define \fBFT_CPROP_BOTTOM_PADDING\fP   (0x01U << 3)"
+.br
+.ti -1c
+.RI "#define \fBFT_CPROP_LEFT_PADDING\fP   (0x01U << 4)"
+.br
+.ti -1c
+.RI "#define \fBFT_CPROP_RIGHT_PADDING\fP   (0x01U << 5)"
+.br
+.ti -1c
+.RI "#define \fBFT_CPROP_EMPTY_STR_HEIGHT\fP   (0x01U << 6)"
+.br
+.ti -1c
+.RI "#define \fBFT_CPROP_ROW_TYPE\fP   (0x01U << 7)"
+.br
+.ti -1c
+.RI "#define \fBFT_CPROP_CONT_FG_COLOR\fP   (0x01U << 8)"
+.br
+.ti -1c
+.RI "#define \fBFT_CPROP_CELL_BG_COLOR\fP   (0x01U << 9)"
+.br
+.ti -1c
+.RI "#define \fBFT_CPROP_CONT_BG_COLOR\fP   (0x01U << 10)"
+.br
+.ti -1c
+.RI "#define \fBFT_CPROP_CELL_TEXT_STYLE\fP   (0x01U << 11)"
+.br
+.ti -1c
+.RI "#define \fBFT_CPROP_CONT_TEXT_STYLE\fP   (0x01U << 12)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fBTable properties identifiers\&.\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBFT_TPROP_LEFT_MARGIN\fP   (0x01U << 0)"
+.br
+.ti -1c
+.RI "#define \fBFT_TPROP_TOP_MARGIN\fP   (0x01U << 1)"
+.br
+.ti -1c
+.RI "#define \fBFT_TPROP_RIGHT_MARGIN\fP   (0x01U << 2)"
+.br
+.ti -1c
+.RI "#define \fBFT_TPROP_BOTTOM_MARGIN\fP   (0x01U << 3)"
+.br
+.ti -1c
+.RI "#define \fBFT_TPROP_ADDING_STRATEGY\fP   (0x01U << 4)"
+.br
+.in -1c
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBft_table\fP \fBft_table_t\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBft_color\fP { \fBFT_COLOR_DEFAULT\fP = 0, \fBFT_COLOR_BLACK\fP = 1, \fBFT_COLOR_RED\fP = 2, \fBFT_COLOR_GREEN\fP = 3, \fBFT_COLOR_YELLOW\fP = 4, \fBFT_COLOR_BLUE\fP = 5, \fBFT_COLOR_MAGENTA\fP = 6, \fBFT_COLOR_CYAN\fP = 7, \fBFT_COLOR_LIGHT_GRAY\fP = 8, \fBFT_COLOR_DARK_GRAY\fP = 9, \fBFT_COLOR_LIGHT_RED\fP = 10, \fBFT_COLOR_LIGHT_GREEN\fP = 11, \fBFT_COLOR_LIGHT_YELLOW\fP = 12, \fBFT_COLOR_LIGHT_BLUE\fP = 13, \fBFT_COLOR_LIGHT_MAGENTA\fP = 14, \fBFT_COLOR_LIGHT_CYAN\fP = 15, \fBFT_COLOR_LIGHT_WHYTE\fP = 16 }"
+.br
+.ti -1c
+.RI "enum \fBft_text_style\fP { \fBFT_TSTYLE_DEFAULT\fP = (1U << 0), \fBFT_TSTYLE_BOLD\fP = (1U << 1), \fBFT_TSTYLE_DIM\fP = (1U << 2), \fBFT_TSTYLE_ITALIC\fP = (1U << 3), \fBFT_TSTYLE_UNDERLINED\fP = (1U << 4), \fBFT_TSTYLE_BLINK\fP = (1U << 5), \fBFT_TSTYLE_INVERTED\fP = (1U << 6), \fBFT_TSTYLE_HIDDEN\fP = (1U << 7) }"
+.br
+.ti -1c
+.RI "enum \fBft_text_alignment\fP { \fBFT_ALIGNED_LEFT\fP = 0, \fBFT_ALIGNED_CENTER\fP, \fBFT_ALIGNED_RIGHT\fP }"
+.br
+.ti -1c
+.RI "enum \fBft_row_type\fP { \fBFT_ROW_COMMON\fP = 0, \fBFT_ROW_HEADER\fP }"
+.br
+.ti -1c
+.RI "enum \fBft_adding_strategy\fP { \fBFT_STRATEGY_REPLACE\fP = 0, \fBFT_STRATEGY_INSERT\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBft_table_t\fP * \fBft_create_table\fP (void)"
+.br
+.ti -1c
+.RI "void \fBft_destroy_table\fP (\fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "\fBft_table_t\fP * \fBft_copy_table\fP (\fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "int \fBft_ln\fP (\fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "size_t \fBft_cur_row\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "size_t \fBft_cur_col\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "void \fBft_set_cur_cell\fP (\fBft_table_t\fP *table, size_t row, size_t col)"
+.br
+.ti -1c
+.RI "int \fBft_is_empty\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "size_t \fBft_row_count\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "size_t \fBft_col_count\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "int \fBft_erase_range\fP (\fBft_table_t\fP *table, size_t top_left_row, size_t top_left_col, size_t bottom_right_row, size_t bottom_right_col)"
+.br
+.ti -1c
+.RI "void \fBft_set_default_printf_field_separator\fP (char separator)"
+.br
+.ti -1c
+.RI "int \fBft_nwrite\fP (\fBft_table_t\fP *table, size_t count, const char *cell_content,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_nwrite_ln\fP (\fBft_table_t\fP *table, size_t count, const char *cell_content,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_row_write\fP (\fBft_table_t\fP *table, size_t cols, const char *row_cells[])"
+.br
+.ti -1c
+.RI "int \fBft_row_write_ln\fP (\fBft_table_t\fP *table, size_t cols, const char *row_cells[])"
+.br
+.ti -1c
+.RI "int \fBft_table_write\fP (\fBft_table_t\fP *table, size_t rows, size_t cols, const char *table_cells[])"
+.br
+.ti -1c
+.RI "int \fBft_table_write_ln\fP (\fBft_table_t\fP *table, size_t rows, size_t cols, const char *table_cells[])"
+.br
+.ti -1c
+.RI "int \fBft_add_separator\fP (\fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "const char * \fBft_to_string\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "int \fBft_set_default_border_style\fP (const struct \fBft_border_style\fP *style)"
+.br
+.ti -1c
+.RI "int \fBft_set_border_style\fP (\fBft_table_t\fP *table, const struct \fBft_border_style\fP *style)"
+.br
+.ti -1c
+.RI "int \fBft_set_default_cell_prop\fP (uint32_t property, int value)"
+.br
+.ti -1c
+.RI "int \fBft_set_cell_prop\fP (\fBft_table_t\fP *table, size_t row, size_t col, uint32_t property, int value)"
+.br
+.ti -1c
+.RI "int \fBft_set_default_tbl_prop\fP (uint32_t property, int value)"
+.br
+.ti -1c
+.RI "int \fBft_set_tbl_prop\fP (\fBft_table_t\fP *table, uint32_t property, int value)"
+.br
+.ti -1c
+.RI "int \fBft_set_cell_span\fP (\fBft_table_t\fP *table, size_t row, size_t col, size_t hor_span)"
+.br
+.ti -1c
+.RI "void \fBft_set_memory_funcs\fP (void *(*f_malloc)(size_t size), void(*f_free)(void *ptr))"
+.br
+.ti -1c
+.RI "const char * \fBft_strerror\fP (int error_code)"
+.br
+.ti -1c
+.RI "int \fBft_wprintf\fP (\fBft_table_t\fP *table, const wchar_t *fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_wprintf_ln\fP (\fBft_table_t\fP *table, const wchar_t *fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_nwwrite\fP (\fBft_table_t\fP *table, size_t n, const wchar_t *cell_content,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_nwwrite_ln\fP (\fBft_table_t\fP *table, size_t n, const wchar_t *cell_content,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_row_wwrite\fP (\fBft_table_t\fP *table, size_t cols, const wchar_t *row_cells[])"
+.br
+.ti -1c
+.RI "int \fBft_row_wwrite_ln\fP (\fBft_table_t\fP *table, size_t cols, const wchar_t *row_cells[])"
+.br
+.ti -1c
+.RI "int \fBft_table_wwrite\fP (\fBft_table_t\fP *table, size_t rows, size_t cols, const wchar_t *table_cells[])"
+.br
+.ti -1c
+.RI "int \fBft_table_wwrite_ln\fP (\fBft_table_t\fP *table, size_t rows, size_t cols, const wchar_t *table_cells[])"
+.br
+.ti -1c
+.RI "const wchar_t * \fBft_to_wstring\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "int \fBft_u8nwrite\fP (\fBft_table_t\fP *table, size_t n, const void *cell_content,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_u8nwrite_ln\fP (\fBft_table_t\fP *table, size_t n, const void *cell_content,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_u8printf\fP (\fBft_table_t\fP *table, const char *fmt,\&.\&.\&.) \fBFT_PRINTF_ATTRIBUTE_FORMAT\fP(2"
+.br
+.ti -1c
+.RI "int int \fBft_u8printf_ln\fP (\fBft_table_t\fP *table, const char *fmt,\&.\&.\&.) \fBFT_PRINTF_ATTRIBUTE_FORMAT\fP(2"
+.br
+.ti -1c
+.RI "int int const void * \fBft_to_u8string\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "void \fBft_set_u8strwid_func\fP (int(*u8strwid)(const void *beg, const void *end, size_t *width))"
+.br
+.in -1c
+.SS "Variables"
+
+.PP
+.RI "\fBBuilt-in table border styles\&.\fP"
+.br
+
+.PP
+\fBNote\fP
+.RS 4
+Built-in border styles (FT_BASIC_STYLE, FT_BASIC2_STYLE \&.\&.\&.) can be used as arguments for \fBft_set_border_style\fP and \fBft_set_default_border_style\fP, but their fields shouldn't be accessed directly because implementation doesn't guarantee that these objects are properly initialized\&. 
+.RE
+.PP
+
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_BASIC_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_BASIC2_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_SIMPLE_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_PLAIN_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_DOT_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_EMPTY_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_EMPTY2_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_SOLID_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_SOLID_ROUND_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_NICE_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_DOUBLE_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_DOUBLE2_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_BOLD_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_BOLD2_STYLE\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_FRAME_STYLE\fP"
+.br
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+Main header file describing libfort API\&. 
+
+This file contains declarations of all libfort functions and macro definitions\&. 
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define FT_ANY_COLUMN   (UINT_MAX)"
+Any column (can be used to refer to all cells in a row) 
+.SS "#define FT_ANY_ROW   (UINT_MAX)"
+Any row (can be used to refer to all cells in a column) 
+.SS "#define FT_CPROP_BOTTOM_PADDING   (0x01U << 3)"
+Bottom padding for cell content 
+.SS "#define FT_CPROP_CELL_BG_COLOR   (0x01U << 9)"
+Cell background color 
+.SS "#define FT_CPROP_CELL_TEXT_STYLE   (0x01U << 11)"
+Cell text style 
+.SS "#define FT_CPROP_CONT_BG_COLOR   (0x01U << 10)"
+Cell content background color 
+.SS "#define FT_CPROP_CONT_FG_COLOR   (0x01U << 8)"
+Cell content foreground text color 
+.SS "#define FT_CPROP_CONT_TEXT_STYLE   (0x01U << 12)"
+Cell content text style 
+.SS "#define FT_CPROP_EMPTY_STR_HEIGHT   (0x01U << 6)"
+Height of empty cell 
+.SS "#define FT_CPROP_LEFT_PADDING   (0x01U << 4)"
+Left padding for cell content 
+.SS "#define FT_CPROP_MIN_WIDTH   (0x01U << 0)"
+Minimum width 
+.SS "#define FT_CPROP_RIGHT_PADDING   (0x01U << 5)"
+Right padding for cell content 
+.SS "#define FT_CPROP_ROW_TYPE   (0x01U << 7)"
+Row type 
+.SS "#define FT_CPROP_TEXT_ALIGN   (0x01U << 1)"
+Text alignment 
+.SS "#define FT_CPROP_TOP_PADDING   (0x01U << 2)"
+Top padding for cell content 
+.SS "#define FT_CUR_COLUMN   (UINT_MAX \- 1)"
+Current column 
+.SS "#define FT_CUR_ROW   (UINT_MAX \- 1)"
+Current row 
+.SS "#define FT_EINVAL   \-2"
+Invalid argument\&. 
+.SS "#define FT_GEN_ERROR   \-4"
+General error\&.
+.PP
+Different errors that do not belong to the group of errors mentioned above\&. 
+.SS "#define FT_HAVE_UTF8"
+
+.SS "#define FT_HAVE_WCHAR"
+libfort configuration macros (to disable wchar_t/UTF-8 support this macros should be defined) #define FT_CONGIG_DISABLE_WCHAR #define FT_CONGIG_DISABLE_UTF8 
+.SS "#define FT_INTERN_ERROR   \-3"
+Libfort internal logic error\&.
+.PP
+Usually such errors mean that something is wrong in libfort internal logic and in most of cases cause of these errors is a library bug\&. 
+.SS "#define FT_IS_ERROR(arg)   ((arg) < 0)"
+
+.SS "#define FT_IS_SUCCESS(arg)   ((arg) >= 0)"
+
+.SS "#define FT_MAX_COL_INDEX   (UINT_MAX \- 2)"
+
+.SS "#define FT_MAX_ROW_INDEX   (UINT_MAX \- 2)"
+
+.SS "#define FT_MEMORY_ERROR   \-1"
+Memory allocation failed\&. 
+.SS "#define FT_PRINTF_ATTRIBUTE_FORMAT(string_index, first_to_check)"
+
+.SS "#define FT_SUCCESS   0"
+Operation successfully ended\&. 
+.SS "#define FT_TPROP_ADDING_STRATEGY   (0x01U << 4)"
+
+.SS "#define FT_TPROP_BOTTOM_MARGIN   (0x01U << 3)"
+
+.SS "#define FT_TPROP_LEFT_MARGIN   (0x01U << 0)"
+
+.SS "#define FT_TPROP_RIGHT_MARGIN   (0x01U << 2)"
+
+.SS "#define FT_TPROP_TOP_MARGIN   (0x01U << 1)"
+
+.SS "#define ft_u8write(table,  \&.\&.\&.)       (\fBft_u8nwrite\fP(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))"
+
+.SS "#define ft_u8write_ln(table,  \&.\&.\&.)       (\fBft_u8nwrite_ln\fP(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))"
+
+.SS "#define ft_write(table,  \&.\&.\&.)       (0 ? FT_CHECK_IF_ARGS_ARE_STRINGS(__VA_ARGS__) : \fBft_nwrite\fP(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))"
+Write strings to the table\&.
+.PP
+Write specified strings to the same number of consecutive cells in the current row\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fI\&.\&.\&.\fP Strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "#define ft_write_ln(table,  \&.\&.\&.)       (0 ? FT_CHECK_IF_ARGS_ARE_STRINGS(__VA_ARGS__) : \fBft_nwrite_ln\fP(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))"
+Write strings to the table and go to the next line\&.
+.PP
+Write specified strings to the same number of consecutive cells in the current row and move current position to the first cell of the next line(row)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fI\&.\&.\&.\fP Strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "#define ft_wwrite(table,  \&.\&.\&.)       (0 ? CHECK_IF_ARGS_ARE_WSTRINGS(__VA_ARGS__) : \fBft_nwwrite\fP(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))"
+
+.SS "#define ft_wwrite_ln(table,  \&.\&.\&.)       (0 ? CHECK_IF_ARGS_ARE_WSTRINGS(__VA_ARGS__) : \fBft_nwwrite_ln\fP(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))"
+
+.SS "#define LIBFORT_MAJOR_VERSION   0"
+
+.SS "#define LIBFORT_MINOR_VERSION   5"
+
+.SS "#define LIBFORT_REVISION   0"
+
+.SS "#define LIBFORT_VERSION_STR   '0\&.5\&.0'"
+
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBft_table\fP \fBft_table_t\fP"
+The main structure of libfort containing information about formatted table\&.
+.PP
+ft_table_t objects should be created by a call to ft_create_table and destroyed with ft_destroy_table\&. 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBft_adding_strategy\fP"
+Adding strategy\&.
+.PP
+Determines what happens with old content if current cell is not empty after adding data to it\&. Default strategy is FT_STRATEGY_REPLACE\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFT_STRATEGY_REPLACE \fP\fP
+Replace old content\&. 
+.TP
+\fB\fIFT_STRATEGY_INSERT \fP\fP
+Insert new conten\&. Old content is shifted\&. 
+.SS "enum \fBft_color\fP"
+Colors\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFT_COLOR_DEFAULT \fP\fP
+Default color 
+.TP
+\fB\fIFT_COLOR_BLACK \fP\fP
+Black color 
+.TP
+\fB\fIFT_COLOR_RED \fP\fP
+Red color 
+.TP
+\fB\fIFT_COLOR_GREEN \fP\fP
+Green color 
+.TP
+\fB\fIFT_COLOR_YELLOW \fP\fP
+Yellow color 
+.TP
+\fB\fIFT_COLOR_BLUE \fP\fP
+Blue color 
+.TP
+\fB\fIFT_COLOR_MAGENTA \fP\fP
+Magenta color 
+.TP
+\fB\fIFT_COLOR_CYAN \fP\fP
+Cyan color 
+.TP
+\fB\fIFT_COLOR_LIGHT_GRAY \fP\fP
+Light gray color 
+.TP
+\fB\fIFT_COLOR_DARK_GRAY \fP\fP
+Dark gray color 
+.TP
+\fB\fIFT_COLOR_LIGHT_RED \fP\fP
+Light red color 
+.TP
+\fB\fIFT_COLOR_LIGHT_GREEN \fP\fP
+Light green color 
+.TP
+\fB\fIFT_COLOR_LIGHT_YELLOW \fP\fP
+Light yellow color 
+.TP
+\fB\fIFT_COLOR_LIGHT_BLUE \fP\fP
+Light blue color 
+.TP
+\fB\fIFT_COLOR_LIGHT_MAGENTA \fP\fP
+Light magenta color 
+.TP
+\fB\fIFT_COLOR_LIGHT_CYAN \fP\fP
+Light cyan color 
+.TP
+\fB\fIFT_COLOR_LIGHT_WHYTE \fP\fP
+Light whyte color 
+.SS "enum \fBft_row_type\fP"
+Type of table row\&. Determines appearance of row\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFT_ROW_COMMON \fP\fP
+Common row 
+.TP
+\fB\fIFT_ROW_HEADER \fP\fP
+Header row 
+.SS "enum \fBft_text_alignment\fP"
+Alignment of cell content\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFT_ALIGNED_LEFT \fP\fP
+Align left 
+.TP
+\fB\fIFT_ALIGNED_CENTER \fP\fP
+Align center 
+.TP
+\fB\fIFT_ALIGNED_RIGHT \fP\fP
+Align right 
+.SS "enum \fBft_text_style\fP"
+Text styles\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFT_TSTYLE_DEFAULT \fP\fP
+Default style 
+.TP
+\fB\fIFT_TSTYLE_BOLD \fP\fP
+Bold 
+.TP
+\fB\fIFT_TSTYLE_DIM \fP\fP
+Dim 
+.TP
+\fB\fIFT_TSTYLE_ITALIC \fP\fP
+Italic 
+.TP
+\fB\fIFT_TSTYLE_UNDERLINED \fP\fP
+Underlined 
+.TP
+\fB\fIFT_TSTYLE_BLINK \fP\fP
+Blink 
+.TP
+\fB\fIFT_TSTYLE_INVERTED \fP\fP
+Reverse (invert the foreground and background colors) 
+.TP
+\fB\fIFT_TSTYLE_HIDDEN \fP\fP
+Hidden (useful for passwords) 
+.br
+ 
+.SH "Function Documentation"
+.PP 
+.SS "int ft_add_separator (\fBft_table_t\fP * table)"
+Add separator after the current row\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; separator was added\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "size_t ft_col_count (const \fBft_table_t\fP * table)"
+Get number of columns in the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Number of columns in the table\&. 
+.RE
+.PP
+
+.SS "\fBft_table_t\fP * ft_copy_table (\fBft_table_t\fP * table)"
+Copy formatted table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table previousley created with ft_create_table\&. If table is a null pointer, the function returns null\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The pointer to the new allocated ft_table_t, on success\&. NULL on error\&. 
+.RE
+.PP
+
+.SS "\fBft_table_t\fP * ft_create_table (void)"
+Create formatted table\&.
+.PP
+\fBReturns\fP
+.RS 4
+The pointer to the new allocated ft_table_t, on success\&. NULL on error\&. 
+.RE
+.PP
+
+.SS "size_t ft_cur_col (const \fBft_table_t\fP * table)"
+Get column number of the current cell\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Column number of the current cell\&. 
+.RE
+.PP
+
+.SS "size_t ft_cur_row (const \fBft_table_t\fP * table)"
+Get row number of the current cell\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Row number of the current cell\&. 
+.RE
+.PP
+
+.SS "void ft_destroy_table (\fBft_table_t\fP * table)"
+Destroy formatted table\&.
+.PP
+Destroy formatted table and free all resources allocated during table creation and work with it\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table previousley created with ft_create_table\&. If table is a null pointer, the function does nothing\&. 
+.RE
+.PP
+
+.SS "int ft_erase_range (\fBft_table_t\fP * table, size_t top_left_row, size_t top_left_col, size_t bottom_right_row, size_t bottom_right_col)"
+Erase range of cells\&.
+.PP
+Range of cells is determined by 2 points (top-left and bottom-right) (both ends are included)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fItop_left_row\fP Row number of the top left cell in the range\&. 
+.br
+\fItop_left_col\fP Column number of the top left cell in the range\&. 
+.br
+\fIbottom_right_row\fP Row number of the bottom right cell in the range\&. 
+.br
+\fIbottom_right_col\fP Column number of the bottom right cell in the range\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0 - Operation was successfully implemented
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_is_empty (const \fBft_table_t\fP * table)"
+Check if table is empty\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to the table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+1 - table is empty 0 - some data has been inserted 
+.RE
+.PP
+
+.SS "int ft_ln (\fBft_table_t\fP * table)"
+Move current position to the first cell of the next line(row)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error\&. 
+.PP
+.RE
+.PP
+\fBNote\fP
+.RS 4
+This function can fail only in case FT_STRATEGY_INSERT adding strategy was set for the table\&. 
+.RE
+.PP
+
+.SS "int ft_nwrite (\fBft_table_t\fP * table, size_t count, const char * cell_content,  \&.\&.\&.)"
+Write specified number of strings to the table\&.
+.PP
+Write specified number of strings to the same number of consecutive cells in the current row\&.
+.PP
+\fBNote\fP
+.RS 4
+In most cases it is more preferable to use MACRO \fBft_write\fP instead of \fBft_nwrite\fP, which is more safe (\fBft_write\fP automatically counts the number of string arguments and at compile check that all passed arguments are strings)\&.
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIcount\fP Number of strings to write\&. 
+.br
+\fIcell_content\fP First string to write\&. 
+.br
+\fI\&.\&.\&.\fP Other strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_nwrite_ln (\fBft_table_t\fP * table, size_t count, const char * cell_content,  \&.\&.\&.)"
+Write specified number of strings to the table and go to the next line\&.
+.PP
+Write specified number of strings to the same number of consecutive cells in the current row and move current position to the first cell of the next line(row)\&.
+.PP
+\fBNote\fP
+.RS 4
+In most cases it is more preferable to use MACRO \fBft_write\fP instead of \fBft_nwrite\fP, which is more safe (\fBft_write\fP automatically counts the number of string arguments and at compile check that all passed arguments are strings)\&.
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIcount\fP Number of strings to write\&. 
+.br
+\fIcell_content\fP First string to write\&. 
+.br
+\fI\&.\&.\&.\fP Other strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_nwwrite (\fBft_table_t\fP * table, size_t n, const wchar_t * cell_content,  \&.\&.\&.)"
+
+.SS "int ft_nwwrite_ln (\fBft_table_t\fP * table, size_t n, const wchar_t * cell_content,  \&.\&.\&.)"
+
+.SS "size_t ft_row_count (const \fBft_table_t\fP * table)"
+Get number of rows in the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Number of rows in the table\&. 
+.RE
+.PP
+
+.SS "int ft_row_write (\fBft_table_t\fP * table, size_t cols, const char * row_cells[])"
+Write strings from the array to the table\&.
+.PP
+Write specified number of strings from the array to the same number of consecutive cells in the current row\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIcols\fP Number of elements in row_cells\&. 
+.br
+\fIrow_cells\fP Array of strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_row_write_ln (\fBft_table_t\fP * table, size_t cols, const char * row_cells[])"
+Write strings from the array to the table and go to the next line\&.
+.PP
+Write specified number of strings from the array to the same number of consecutive cells in the current row and move current position to the first cell of the next line(row)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIcols\fP Number of elements in row_cells\&. 
+.br
+\fIrow_cells\fP Array of strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_row_wwrite (\fBft_table_t\fP * table, size_t cols, const wchar_t * row_cells[])"
+
+.SS "int ft_row_wwrite_ln (\fBft_table_t\fP * table, size_t cols, const wchar_t * row_cells[])"
+
+.SS "int ft_set_border_style (\fBft_table_t\fP * table, const struct \fBft_border_style\fP * style)"
+Set border style for the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP A pointer to the ft_table_t structure\&. 
+.br
+\fIstyle\fP Pointer to border style\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; table border style was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_set_cell_prop (\fBft_table_t\fP * table, size_t row, size_t col, uint32_t property, int value)"
+Set property for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP A pointer to the ft_table_t structure\&. 
+.br
+\fIrow\fP Cell row\&. 
+.br
+\fIcol\fP Cell column\&. 
+.br
+\fIproperty\fP Cell property identifier\&. 
+.br
+\fIvalue\fP Cell property value\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; cell property was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_set_cell_span (\fBft_table_t\fP * table, size_t row, size_t col, size_t hor_span)"
+Set column span for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP A pointer to the ft_table_t structure\&. 
+.br
+\fIrow\fP Cell row\&. 
+.br
+\fIcol\fP Cell column\&. 
+.br
+\fIhor_span\fP Column span\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; cell span was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "void ft_set_cur_cell (\fBft_table_t\fP * table, size_t row, size_t col)"
+Set current cell position\&.
+.PP
+Current cell - cell that will be edited with all modifiing functions (ft_printf, ft_write \&.\&.\&.)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIrow\fP New row number for the current cell\&. 
+.br
+\fIcol\fP New row number for the current cell\&. 
+.RE
+.PP
+
+.SS "int ft_set_default_border_style (const struct \fBft_border_style\fP * style)"
+Set default border style for all new formatted tables\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIstyle\fP Pointer to border style\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; default border style was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_set_default_cell_prop (uint32_t property, int value)"
+Set default cell property for all new formatted tables\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIproperty\fP Cell property identifier\&. 
+.br
+\fIvalue\fP Cell property value\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; default cell property was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "void ft_set_default_printf_field_separator (char separator)"
+Set field separator for \fC\fBft_printf\fP\fP, \fC\fBft_printf_ln\fP\fP (default separator is '|')\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIseparator\fP New separator\&. 
+.RE
+.PP
+
+.SS "int ft_set_default_tbl_prop (uint32_t property, int value)"
+Set default table property\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIproperty\fP Table property identifier\&. 
+.br
+\fIvalue\fP Table property value\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; default table property was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "void ft_set_memory_funcs (void *(*)(size_t size) f_malloc, void(*)(void *ptr) f_free)"
+Set functions for memory allocation and deallocation to be used instead of standard ones\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIf_malloc\fP Pointer to a function for memory allocation that should be used instead of malloc\&. 
+.br
+\fIf_free\fP Pointer to a function for memory deallocation that should be used instead of free\&. 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+To return memory allocation/deallocation functions to their standard values set f_malloc and f_free to NULL\&. 
+.RE
+.PP
+
+.SS "int ft_set_tbl_prop (\fBft_table_t\fP * table, uint32_t property, int value)"
+Set table property\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP A pointer to the ft_table_t structure\&. 
+.br
+\fIproperty\fP Table property identifier\&. 
+.br
+\fIvalue\fP Table property value\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; default table property was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "void ft_set_u8strwid_func (int(*)(const void *beg, const void *end, size_t *width) u8strwid)"
+Set custom function to compute visible width of UTF-8 string\&.
+.PP
+libfort internally has a very simple logic to compute visible width of UTF-8 strings\&. It considers that each codepoint will occupy one position on the terminal in case of monowidth font (some east asians wide and fullwidth characters (see http://www.unicode.org/reports/tr11/tr11-33.html) will occupy 2 positions)\&. This logic is very simple and covers wide range of cases\&. But obviously there a lot of cases when it is not sufficient\&. In such cases user should use some external libraries and provide an appropriate function to libfort\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIu8strwid\fP User provided function to evaluate width of UTF-8 string ( beg - start of UTF-8 string, end - end of UTF-8 string (not included), width - pointer to the result)\&. If function succeed it should return 0, otherwise some non- zero value\&. If function returns nonzero value libfort fallbacks to default internal algorithm\&. 
+.RE
+.PP
+
+.SS "const char * ft_strerror (int error_code)"
+Return string describing the \fCerror_code\fP\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIerror_code\fP Error code returned by the library\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+String describing the error\&. 
+.RE
+.PP
+
+.SS "int ft_table_write (\fBft_table_t\fP * table, size_t rows, size_t cols, const char * table_cells[])"
+Write strings from the 2D array to the table\&.
+.PP
+Write specified number of strings from the 2D array to the formatted table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIrows\fP Number of rows in the 2D array\&. 
+.br
+\fIcols\fP Number of columns in the 2D array\&. 
+.br
+\fItable_cells\fP 2D array of strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_table_write_ln (\fBft_table_t\fP * table, size_t rows, size_t cols, const char * table_cells[])"
+Write strings from the 2D array to the table and go to the next line\&.
+.PP
+Write specified number of strings from the 2D array to the formatted table and move current position to the first cell of the next line(row)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIrows\fP Number of rows in the 2D array\&. 
+.br
+\fIcols\fP Number of columns in the 2D array\&. 
+.br
+\fItable_cells\fP 2D array of strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_table_wwrite (\fBft_table_t\fP * table, size_t rows, size_t cols, const wchar_t * table_cells[])"
+
+.SS "int ft_table_wwrite_ln (\fBft_table_t\fP * table, size_t rows, size_t cols, const wchar_t * table_cells[])"
+
+.SS "const char * ft_to_string (const \fBft_table_t\fP * table)"
+Convert table to string representation\&.
+.PP
+ft_table_t has ownership of the returned pointer\&. So there is no need to free it\&. To take ownership user should explicitly copy the returned string with strdup or similar functions\&.
+.PP
+Returned pointer may be later invalidated by:
+.IP "\(bu" 2
+Calling ft_destroy_table;
+.IP "\(bu" 2
+Other invocations of ft_to_string\&.
+.PP
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+The pointer to the string representation of formatted table, on success\&.
+.IP "\(bu" 2
+NULL on error\&. 
+.PP
+.RE
+.PP
+
+.SS "int int const void * ft_to_u8string (const \fBft_table_t\fP * table)"
+
+.SS "const wchar_t * ft_to_wstring (const \fBft_table_t\fP * table)"
+
+.SS "int ft_u8nwrite (\fBft_table_t\fP * table, size_t n, const void * cell_content,  \&.\&.\&.)"
+
+.SS "int ft_u8nwrite_ln (\fBft_table_t\fP * table, size_t n, const void * cell_content,  \&.\&.\&.)"
+
+.SS "int ft_u8printf (\fBft_table_t\fP * table, const char * fmt,  \&.\&.\&.)"
+
+.SS "int int ft_u8printf_ln (\fBft_table_t\fP * table, const char * fmt,  \&.\&.\&.)"
+
+.SS "int ft_wprintf (\fBft_table_t\fP * table, const wchar_t * fmt,  \&.\&.\&.)"
+
+.SS "int ft_wprintf_ln (\fBft_table_t\fP * table, const wchar_t * fmt,  \&.\&.\&.)"
+
+.SH "Variable Documentation"
+.PP 
+.SS "const struct \fBft_border_style\fP* const FT_BASIC2_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_BASIC_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_BOLD2_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_BOLD_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_DOT_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_DOUBLE2_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_DOUBLE_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_EMPTY2_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_EMPTY_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_FRAME_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_NICE_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_PLAIN_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_SIMPLE_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_SOLID_ROUND_STYLE\fC [extern]\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_SOLID_STYLE\fC [extern]\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CV from the source code\&.

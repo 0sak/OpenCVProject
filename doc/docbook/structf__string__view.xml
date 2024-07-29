@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structf__string__view" xml:lang="en-US">
+<title>f_string_view Struct Reference</title>
+<indexterm><primary>f_string_view</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>union {</para>
+        <itemizedlist>
+            <listitem><para>   const char * <link linkend="_structf__string__view_1a692c3cca88fc03a4d42953da333f4b72">cstr</link></para>
+</listitem>
+            <listitem><para>   const wchar_t * <link linkend="_structf__string__view_1aece02cf33aa1ecc2033d5142bed4b26a">wstr</link></para>
+</listitem>
+            <listitem><para>   const void * <link linkend="_structf__string__view_1a1d474a8e5edc2404d6cb8a49199fa0b8">u8str</link></para>
+</listitem>
+            <listitem><para>   const void * <link linkend="_structf__string__view_1a78abfa28f4a45303ccde43c06429f046">data</link></para>
+</listitem>
+        </itemizedlist>
+</listitem>
+            <listitem><para>} <link linkend="_structf__string__view_1a67187b880cf898ea33bff512a4e12611">u</link></para>
+</listitem>
+            <listitem><para>enum <link linkend="_fort_8c_1aac6eaac439cc49e9382b6c239aa310aa">f_string_type</link> <link linkend="_structf__string__view_1aca9e8d44cd3f5c191abd187c5703f7da">type</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structf__string__view_1a692c3cca88fc03a4d42953da333f4b72"/><section>
+    <title>cstr</title>
+<indexterm><primary>cstr</primary><secondary>f_string_view</secondary></indexterm>
+<indexterm><primary>f_string_view</primary><secondary>cstr</secondary></indexterm>
+<para><computeroutput>const char* f_string_view::cstr</computeroutput></para></section>
+<anchor xml:id="_structf__string__view_1a78abfa28f4a45303ccde43c06429f046"/><section>
+    <title>data</title>
+<indexterm><primary>data</primary><secondary>f_string_view</secondary></indexterm>
+<indexterm><primary>f_string_view</primary><secondary>data</secondary></indexterm>
+<para><computeroutput>const void* f_string_view::data</computeroutput></para></section>
+<anchor xml:id="_structf__string__view_1aca9e8d44cd3f5c191abd187c5703f7da"/><section>
+    <title>type</title>
+<indexterm><primary>type</primary><secondary>f_string_view</secondary></indexterm>
+<indexterm><primary>f_string_view</primary><secondary>type</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8c_1aac6eaac439cc49e9382b6c239aa310aa">f_string_type</link> f_string_view::type</computeroutput></para></section>
+<anchor xml:id="_structf__string__view_1a67187b880cf898ea33bff512a4e12611"/><section>
+    <title></title>
+<indexterm><primary>u</primary><secondary>f_string_view</secondary></indexterm>
+<indexterm><primary>f_string_view</primary><secondary>u</secondary></indexterm>
+<para><computeroutput>union  { ... }  f_string_view::u</computeroutput></para></section>
+<anchor xml:id="_structf__string__view_1a1d474a8e5edc2404d6cb8a49199fa0b8"/><section>
+    <title>u8str</title>
+<indexterm><primary>u8str</primary><secondary>f_string_view</secondary></indexterm>
+<indexterm><primary>f_string_view</primary><secondary>u8str</secondary></indexterm>
+<para><computeroutput>const void* f_string_view::u8str</computeroutput></para></section>
+<anchor xml:id="_structf__string__view_1aece02cf33aa1ecc2033d5142bed4b26a"/><section>
+    <title>wstr</title>
+<indexterm><primary>wstr</primary><secondary>f_string_view</secondary></indexterm>
+<indexterm><primary>f_string_view</primary><secondary>wstr</secondary></indexterm>
+<para><computeroutput>const wchar_t* f_string_view::wstr</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8c">fort.c</link></section>
+</section>

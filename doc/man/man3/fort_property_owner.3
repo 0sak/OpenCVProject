@@ -1,0 +1,345 @@
+.TH "fort::property_owner< table >" 3 "Wed Jan 19 2022" "Version v1.0" "CV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+fort::property_owner< table >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fort\&.hpp>\fP
+.PP
+Inherited by \fBfort::table< TT >::cell_range\fP, \fBfort::table< TT >::default_properties\fP, \fBfort::table< TT >::table_cell\fP, \fBfort::table< TT >::table_column\fP, and \fBfort::table< TT >::table_row\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBproperty_owner\fP (std::size_t row_idx, std::size_t coll_idx, \fBtable\fP *tbl, bool def=false)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_min_width\fP (unsigned value)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_text_align\fP (\fBfort::text_align\fP value)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_top_padding\fP (unsigned value)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_bottom_padding\fP (unsigned value)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_left_padding\fP (unsigned value)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_right_padding\fP (unsigned value)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_row_type\fP (\fBfort::row_type\fP value)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_empty_str_height\fP (unsigned value)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_content_fg_color\fP (\fBfort::color\fP value)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_bg_color\fP (\fBfort::color\fP value)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_content_bg_color\fP (\fBfort::color\fP value)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_text_style\fP (\fBfort::text_style\fP value)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_content_text_style\fP (\fBfort::text_style\fP value)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBset_property\fP (uint32_t property, int value)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::size_t \fBps_row_idx_\fP"
+.br
+.ti -1c
+.RI "std::size_t \fBps_coll_idx_\fP"
+.br
+.ti -1c
+.RI "\fBtable\fP * \fBps_table_\fP"
+.br
+.ti -1c
+.RI "bool \fBset_default_properties_\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename \fBtable\fP>
+.br
+class fort::property_owner< table >"Property owner\&.
+.PP
+\fBproperty_owner\fP is a base class for all objects (table, row, column, cell) for which user can specify properties\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename \fBtable\fP > \fBfort::property_owner\fP< \fBtable\fP >::property_owner (std::size_t row_idx, std::size_t coll_idx, \fBtable\fP * tbl, bool def = \fCfalse\fP)\fC [inline]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_cell_bg_color (\fBfort::color\fP value)\fC [inline]\fP"
+Set cell background color for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Color\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_cell_bottom_padding (unsigned value)\fC [inline]\fP"
+Set bottom padding for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value of the bottom padding\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_cell_content_bg_color (\fBfort::color\fP value)\fC [inline]\fP"
+Set content background color for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Color\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_cell_content_fg_color (\fBfort::color\fP value)\fC [inline]\fP"
+Set content foreground color for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Color\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_cell_content_text_style (\fBfort::text_style\fP value)\fC [inline]\fP"
+Set content text style for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Text style\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_cell_empty_str_height (unsigned value)\fC [inline]\fP"
+Set empty string height for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value of the empty string height\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_cell_left_padding (unsigned value)\fC [inline]\fP"
+Set left padding for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value of the left padding\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_cell_min_width (unsigned value)\fC [inline]\fP"
+Set min width for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value of the min width\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell property was changed\&.
+.IP "\(bu" 2
+false: In case of error 
+.PP
+.RE
+.PP
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_cell_right_padding (unsigned value)\fC [inline]\fP"
+Set right padding for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value of the left padding\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_cell_row_type (\fBfort::row_type\fP value)\fC [inline]\fP"
+Set row type for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value of the row type\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_cell_text_align (\fBfort::text_align\fP value)\fC [inline]\fP"
+Set text alignment for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value of the text alignment\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell property was changed\&.
+.IP "\(bu" 2
+false: In case of error 
+.PP
+.RE
+.PP
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_cell_text_style (\fBfort::text_style\fP value)\fC [inline]\fP"
+Set cell text style for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Text style\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_cell_top_padding (unsigned value)\fC [inline]\fP"
+Set top padding for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value of the top padding\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_property (uint32_t property, int value)\fC [inline]\fP, \fC [protected]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename \fBtable\fP > std::size_t \fBfort::property_owner\fP< \fBtable\fP >::ps_coll_idx_\fC [protected]\fP"
+
+.SS "template<typename \fBtable\fP > std::size_t \fBfort::property_owner\fP< \fBtable\fP >::ps_row_idx_\fC [protected]\fP"
+
+.SS "template<typename \fBtable\fP > \fBtable\fP* \fBfort::property_owner\fP< \fBtable\fP >::ps_table_\fC [protected]\fP"
+
+.SS "template<typename \fBtable\fP > bool \fBfort::property_owner\fP< \fBtable\fP >::set_default_properties_\fC [protected]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CV from the source code\&.

@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classfort_1_1table_1_1cell__range" xml:lang="en-US">
+<title>fort::table&lt; TT &gt;::cell_range Class Reference</title>
+<indexterm><primary>fort::table&lt; TT &gt;::cell_range</primary></indexterm>
+<para>
+<computeroutput>#include &lt;fort.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for fort::table&lt; TT &gt;::cell_range:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classfort_1_1table_1_1cell__range.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classfort_1_1table_1_1cell__range_1a3df994956c04b3f0e7bfc8cec38d938d">cell_range</link> (size_t top_left_row, size_t top_left_col, size_t bottom_right_row, size_t bottom_right_col, <link linkend="_classfort_1_1table">table</link> &amp;tbl)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classfort_1_1table_1_1cell__range_1aeca1a5aebde6f2a48c9b14e090bb1c0b">erase</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt;
+class fort::table&lt; TT &gt;::cell_range</title></simplesect>
+
+<para>Range of cells.</para>
+
+<para><note><title>Note</title>
+
+<para>: at the moment function of propery owener will work only on the top left cell. </para>
+</note>
+<para><link linkend="_todo_1_todo000001">Todo</link> 
+<para>: Implement their work on the whole range. </para>
+</para></para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classfort_1_1table_1_1cell__range_1a3df994956c04b3f0e7bfc8cec38d938d"/><section>
+    <title>cell_range()</title>
+<indexterm><primary>cell_range</primary><secondary>fort::table&lt; TT &gt;::cell_range</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;::cell_range</primary><secondary>cell_range</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::cell_range::cell_range (size_t top_left_row, size_t top_left_col, size_t bottom_right_row, size_t bottom_right_col, <link linkend="_classfort_1_1table">table</link> &amp; tbl)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classfort_1_1table_1_1cell__range_1aeca1a5aebde6f2a48c9b14e090bb1c0b"/><section>
+    <title>erase()</title>
+<indexterm><primary>erase</primary><secondary>fort::table&lt; TT &gt;::cell_range</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;::cell_range</primary><secondary>erase</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>void <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::cell_range::erase ( )<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8hpp">fort.hpp</link></section>
+</section>

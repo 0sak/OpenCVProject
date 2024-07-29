@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespacefort_1_1detail" xml:lang="en-US">
+<title>fort::detail Namespace Reference</title>
+<indexterm><primary>fort::detail</primary></indexterm>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>template&lt;typename T &gt; </para><para>constexpr bool <link linkend="_namespacefort_1_1detail_1a8f7ed1ee7dc3bc57992582aeb4a97d32">is_stream_manipulator_impl</link> () noexcept</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespacefort_1_1detail_1a8f7ed1ee7dc3bc57992582aeb4a97d32"/><section>
+    <title>is_stream_manipulator_impl()</title>
+<indexterm><primary>is_stream_manipulator_impl</primary><secondary>fort::detail</secondary></indexterm>
+<indexterm><primary>fort::detail</primary><secondary>is_stream_manipulator_impl</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>constexpr bool fort::detail::is_stream_manipulator_impl ( )<computeroutput>[constexpr]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para></section>
+</section>
+</section>

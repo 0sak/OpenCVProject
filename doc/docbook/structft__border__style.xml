@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structft__border__style" xml:lang="en-US">
+<title>ft_border_style Struct Reference</title>
+<indexterm><primary>ft_border_style</primary></indexterm>
+<para>
+<computeroutput>#include &lt;fort.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structft__border__chars">ft_border_chars</link> <link linkend="_structft__border__style_1a26e04085ff0f546572318321ae38a751">border_chs</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structft__border__chars">ft_border_chars</link> <link linkend="_structft__border__style_1a2a05c8f0239e1de6bf517ad366509fd7">header_border_chs</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_structft__border__style_1a32a15b8c310c22fc8fb93e2739630411">hor_separator_char</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Structure describing border style. </para>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structft__border__style_1a26e04085ff0f546572318321ae38a751"/><section>
+    <title>border_chs</title>
+<indexterm><primary>border_chs</primary><secondary>ft_border_style</secondary></indexterm>
+<indexterm><primary>ft_border_style</primary><secondary>border_chs</secondary></indexterm>
+<para><computeroutput>struct <link linkend="_structft__border__chars">ft_border_chars</link> ft_border_style::border_chs</computeroutput></para></section>
+<anchor xml:id="_structft__border__style_1a2a05c8f0239e1de6bf517ad366509fd7"/><section>
+    <title>header_border_chs</title>
+<indexterm><primary>header_border_chs</primary><secondary>ft_border_style</secondary></indexterm>
+<indexterm><primary>ft_border_style</primary><secondary>header_border_chs</secondary></indexterm>
+<para><computeroutput>struct <link linkend="_structft__border__chars">ft_border_chars</link> ft_border_style::header_border_chs</computeroutput></para></section>
+<anchor xml:id="_structft__border__style_1a32a15b8c310c22fc8fb93e2739630411"/><section>
+    <title>hor_separator_char</title>
+<indexterm><primary>hor_separator_char</primary><secondary>ft_border_style</secondary></indexterm>
+<indexterm><primary>ft_border_style</primary><secondary>hor_separator_char</secondary></indexterm>
+<para><computeroutput>const char* ft_border_style::hor_separator_char</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8h">fort.h</link></section>
+</section>

@@ -1,0 +1,226 @@
+.TH "fort" 3 "Wed Jan 19 2022" "Version v1.0" "CV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+fort
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBdetail\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBproperty_owner\fP"
+.br
+.ti -1c
+.RI "class \fBtable\fP"
+.br
+.ti -1c
+.RI "class \fBtable_manipulator\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "using \fBchar_table\fP = \fBtable\fP< \fBtable_type::character\fP >"
+.br
+.ti -1c
+.RI "using \fButf8_table\fP = \fBtable\fP< \fBtable_type::utf8\fP >"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBtext_align\fP { \fBleft\fP = FT_ALIGNED_LEFT, \fBcenter\fP = FT_ALIGNED_CENTER, \fBright\fP = FT_ALIGNED_RIGHT }"
+.br
+.ti -1c
+.RI "enum class \fBrow_type\fP { \fBcommon\fP = FT_ROW_COMMON, \fBheader\fP = FT_ROW_HEADER }"
+.br
+.ti -1c
+.RI "enum class \fBadd_strategy\fP { \fBreplace\fP = FT_STRATEGY_REPLACE, \fBinsert\fP = FT_STRATEGY_INSERT }"
+.br
+.ti -1c
+.RI "enum class \fBcolor\fP { \fBdefault_color\fP = FT_COLOR_DEFAULT, \fBblack\fP = FT_COLOR_BLACK, \fBred\fP = FT_COLOR_RED, \fBgreen\fP = FT_COLOR_GREEN, \fByellow\fP = FT_COLOR_YELLOW, \fBblue\fP = FT_COLOR_BLUE, \fBmagenta\fP = FT_COLOR_MAGENTA, \fBcyan\fP = FT_COLOR_CYAN, \fBlight_gray\fP = FT_COLOR_LIGHT_GRAY, \fBdark_gray\fP = FT_COLOR_DARK_GRAY, \fBlight_red\fP = FT_COLOR_LIGHT_RED, \fBlight_green\fP = FT_COLOR_LIGHT_GREEN, \fBlight_yellow\fP = FT_COLOR_LIGHT_YELLOW, \fBlight_blue\fP = FT_COLOR_LIGHT_BLUE, \fBlight_magenta\fP = FT_COLOR_LIGHT_MAGENTA, \fBlight_cyan\fP = FT_COLOR_LIGHT_CYAN, \fBlight_whyte\fP = FT_COLOR_LIGHT_WHYTE }"
+.br
+.ti -1c
+.RI "enum class \fBtext_style\fP { \fBdefault_style\fP = FT_TSTYLE_DEFAULT, \fBbold\fP = FT_TSTYLE_BOLD, \fBdim\fP = FT_TSTYLE_DIM, \fBitalic\fP = FT_TSTYLE_ITALIC, \fBunderlined\fP = FT_TSTYLE_UNDERLINED, \fBblink\fP = FT_TSTYLE_BLINK, \fBinverted\fP = FT_TSTYLE_INVERTED, \fBhidden\fP = FT_TSTYLE_HIDDEN }"
+.br
+.ti -1c
+.RI "enum class \fBtable_type\fP { \fBcharacter\fP, \fButf8\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T > constexpr bool \fBis_stream_manipulator\fP () noexcept"
+.br
+.ti -1c
+.RI "bool \fBset_default_border_style\fP (struct \fBft_border_style\fP *style)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const \fBtable_manipulator\fP \fBheader\fP (0)"
+.br
+.ti -1c
+.RI "const \fBtable_manipulator\fP \fBendr\fP (1)"
+.br
+.ti -1c
+.RI "const \fBtable_manipulator\fP \fBseparator\fP (2)"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "using \fBfort::char_table\fP = typedef \fBtable\fP<\fBtable_type::character\fP>"
+Formatted table containing common char content\&.
+.PP
+Content of the table is treated as a string where each byte represesents a character\&. Should work for ascii characters\&. In case of usage of different international symbols it is recommended to use \fC\fButf8_table\fP\fP\&. 
+.SS "using \fBfort::utf8_table\fP = typedef \fBtable\fP<\fBtable_type::utf8\fP>"
+Formatted table containing utf-8 content\&. 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum class \fBfort::add_strategy\fP\fC [strong]\fP"
+Adding strategy\&.
+.PP
+Determines what happens with old content if current cell is not empty after adding data to it\&. Default strategy is 'replace'\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIreplace \fP\fP
+.TP
+\fB\fIinsert \fP\fP
+.SS "enum class \fBfort::color\fP\fC [strong]\fP"
+Colors\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIdefault_color \fP\fP
+.TP
+\fB\fIblack \fP\fP
+.TP
+\fB\fIred \fP\fP
+.TP
+\fB\fIgreen \fP\fP
+.TP
+\fB\fIyellow \fP\fP
+.TP
+\fB\fIblue \fP\fP
+.TP
+\fB\fImagenta \fP\fP
+.TP
+\fB\fIcyan \fP\fP
+.TP
+\fB\fIlight_gray \fP\fP
+.TP
+\fB\fIdark_gray \fP\fP
+.TP
+\fB\fIlight_red \fP\fP
+.TP
+\fB\fIlight_green \fP\fP
+.TP
+\fB\fIlight_yellow \fP\fP
+.TP
+\fB\fIlight_blue \fP\fP
+.TP
+\fB\fIlight_magenta \fP\fP
+.TP
+\fB\fIlight_cyan \fP\fP
+.TP
+\fB\fIlight_whyte \fP\fP
+.SS "enum class \fBfort::row_type\fP\fC [strong]\fP"
+Type of table row\&. Determines appearance of row\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIcommon \fP\fP
+.TP
+\fB\fIheader \fP\fP
+.SS "enum class \fBfort::table_type\fP\fC [strong]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIcharacter \fP\fP
+.TP
+\fB\fIutf8 \fP\fP
+.SS "enum class \fBfort::text_align\fP\fC [strong]\fP"
+Alignment of cell content\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIleft \fP\fP
+.TP
+\fB\fIcenter \fP\fP
+.TP
+\fB\fIright \fP\fP
+.SS "enum class \fBfort::text_style\fP\fC [strong]\fP"
+Text styles\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIdefault_style \fP\fP
+.TP
+\fB\fIbold \fP\fP
+.TP
+\fB\fIdim \fP\fP
+.TP
+\fB\fIitalic \fP\fP
+.TP
+\fB\fIunderlined \fP\fP
+.TP
+\fB\fIblink \fP\fP
+.TP
+\fB\fIinverted \fP\fP
+.TP
+\fB\fIhidden \fP\fP
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T > constexpr bool fort::is_stream_manipulator ()\fC [constexpr]\fP, \fC [noexcept]\fP"
+Utility function that is used internally by the library to check if argument passed to operator<< is a manipulator\&. In case default behaviour is not enough write custom specialization of this function\&. 
+.SS "bool fort::set_default_border_style (struct \fBft_border_style\fP * style)\fC [inline]\fP"
+Set default border style for all new formatted tables\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIstyle\fP Pointer to border style\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+True: Success; table border style was changed\&.
+.IP "\(bu" 2
+False: Error 
+.PP
+.RE
+.PP
+
+.SH "Variable Documentation"
+.PP 
+.SS "const \fBtable_manipulator\fP fort::endr(1) (1)"
+Table manipulator to move current cell to the first cell of the next row\&. 
+.SS "const \fBtable_manipulator\fP fort::header(0) (0)"
+Table manipulator to set current row as a header\&. 
+.SS "const \fBtable_manipulator\fP fort::separator(2) (2)"
+Table manipulator to add separator to the table\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CV from the source code\&.

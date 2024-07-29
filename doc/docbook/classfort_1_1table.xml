@@ -1,0 +1,1119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classfort_1_1table" xml:lang="en-US">
+<title>fort::table&lt; TT &gt; Class Template Reference</title>
+<indexterm><primary>fort::table&lt; TT &gt;</primary></indexterm>
+<para>
+<computeroutput>#include &lt;fort.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for fort::table&lt; TT &gt;:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classfort_1_1table.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1cell__range">cell_range</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1default__properties">default_properties</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1table__cell">table_cell</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1table__column">table_column</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1table__row">table_row</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classfort_1_1table_1af2a0e281e31bcbb3dfd0a14fd73a8fe6">table</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classfort_1_1table_1a0f60e38ac553c852d8e20583a3e6e866">~table</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_classfort_1_1table_1a5c8713c19b01542bcdce75835d714b3f">table</link> (const <link linkend="_classfort_1_1table">table</link> &amp;tbl)</para>
+</listitem>
+            <listitem><para><link linkend="_classfort_1_1table_1aefbb2a5c2057b5139791962e242f1566">table</link> (<link linkend="_classfort_1_1table">table</link> &amp;&amp;tbl)</para>
+</listitem>
+            <listitem><para><link linkend="_classfort_1_1table">table</link> &amp; <link linkend="_classfort_1_1table_1a639848e904ab94e5acbd0df49225ca41">operator=</link> (const <link linkend="_classfort_1_1table">table</link> &amp;tbl)</para>
+</listitem>
+            <listitem><para><link linkend="_classfort_1_1table">table</link> &amp; <link linkend="_classfort_1_1table_1a8ff094374f3f443a0306d09b50897e38">operator=</link> (<link linkend="_classfort_1_1table">table</link> &amp;&amp;tbl)</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classfort_1_1table_1a069a11134b61aebd9f798b445c281696">to_string</link> () const</para>
+</listitem>
+            <listitem><para>const char * <link linkend="_classfort_1_1table_1a7b194a2c7a08929cc802a723245a3239">c_str</link> () const</para>
+</listitem>
+            <listitem><para>template&lt;typename T &gt; </para><para><link linkend="_classfort_1_1table">table</link> &amp; <link linkend="_classfort_1_1table_1a5fa1b2a0af4dd1e7a7d04070dcbb89c1">operator&lt;&lt;</link> (const T &amp;arg)</para>
+</listitem>
+            <listitem><para><link linkend="_classfort_1_1table">table</link> &amp; <link linkend="_classfort_1_1table_1aec7b4ad1ececf231a59d8c866a1c4976">operator&lt;&lt;</link> (const <link linkend="_classfort_1_1table__manipulator">table_manipulator</link> &amp;arg)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1table_1ab6b0b3f3a39b255d5dd95ce14f9d472b">write</link> (const char *str)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1table_1a23ac58f177ed0717e77d96ca5acec52f">write_ln</link> (const char *str)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1table_1aa5bef06063a598ac7985bd7df715803c">write</link> (const std::string &amp;str)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1table_1a921c35a1c1aa723c1a96500bdbf04d62">write_ln</link> (const std::string &amp;str)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 &gt; </para><para>bool <link linkend="_classfort_1_1table_1ad2dc2246f44855fd778646a405ff8a69">write</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 , typename T_2 &gt; </para><para>bool <link linkend="_classfort_1_1table_1a7067e94257b88a30cf54bf1c14034b2c">write</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1, const T_2 &amp;arg_2)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 &gt; </para><para>bool <link linkend="_classfort_1_1table_1a5818f33a183db28a45eade06fbec2ee3">write</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1, const T_2 &amp;arg_2, const T_3 &amp;arg_3)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 &gt; </para><para>bool <link linkend="_classfort_1_1table_1a7b2d27ceca94b7b7204ea0559098be5f">write</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1, const T_2 &amp;arg_2, const T_3 &amp;arg_3, const T_4 &amp;arg_4)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 &gt; </para><para>bool <link linkend="_classfort_1_1table_1ae5072030609664813fc07080405dcb91">write</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1, const T_2 &amp;arg_2, const T_3 &amp;arg_3, const T_4 &amp;arg_4, const T_5 &amp;arg_5)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 &gt; </para><para>bool <link linkend="_classfort_1_1table_1a85e2de34b45c30ca49148ca0e07aefee">write</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1, const T_2 &amp;arg_2, const T_3 &amp;arg_3, const T_4 &amp;arg_4, const T_5 &amp;arg_5, const T_6 &amp;arg_6)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 , typename T_7 &gt; </para><para>bool <link linkend="_classfort_1_1table_1ad0feccbba8738c5e9a87f643d3cf8d7b">write</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1, const T_2 &amp;arg_2, const T_3 &amp;arg_3, const T_4 &amp;arg_4, const T_5 &amp;arg_5, const T_6 &amp;arg_6, const T_7 &amp;arg_7)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 &gt; </para><para>bool <link linkend="_classfort_1_1table_1a63f18bf8abf9cfdacd4953e2146a5fd2">write_ln</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 , typename T_2 &gt; </para><para>bool <link linkend="_classfort_1_1table_1a38002cf12f835e893edf3262bf00f322">write_ln</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1, const T_2 &amp;arg_2)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 &gt; </para><para>bool <link linkend="_classfort_1_1table_1a81e4d98a2f2151b0bcd0e7fe0f6aea34">write_ln</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1, const T_2 &amp;arg_2, const T_3 &amp;arg_3)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 &gt; </para><para>bool <link linkend="_classfort_1_1table_1a63ff04dc77d667a51ab64efbf040df9b">write_ln</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1, const T_2 &amp;arg_2, const T_3 &amp;arg_3, const T_4 &amp;arg_4)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 &gt; </para><para>bool <link linkend="_classfort_1_1table_1a19fdbc0703507c9f35826b2382852bcb">write_ln</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1, const T_2 &amp;arg_2, const T_3 &amp;arg_3, const T_4 &amp;arg_4, const T_5 &amp;arg_5)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 &gt; </para><para>bool <link linkend="_classfort_1_1table_1a4b7be9381f7e1034847d9a485fa36f51">write_ln</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1, const T_2 &amp;arg_2, const T_3 &amp;arg_3, const T_4 &amp;arg_4, const T_5 &amp;arg_5, const T_6 &amp;arg_6)</para>
+</listitem>
+            <listitem><para>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 , typename T_7 &gt; </para><para>bool <link linkend="_classfort_1_1table_1afbacbbc3bfd9883157c86e794c4f85af">write_ln</link> (const T_0 &amp;arg_0, const T_1 &amp;arg_1, const T_2 &amp;arg_2, const T_3 &amp;arg_3, const T_4 &amp;arg_4, const T_5 &amp;arg_5, const T_6 &amp;arg_6, const T_7 &amp;arg_7)</para>
+</listitem>
+            <listitem><para>template&lt;typename InputIt &gt; </para><para>bool <link linkend="_classfort_1_1table_1ad26028ecd1d540008f248b782f35898b">range_write</link> (InputIt first, InputIt last)</para>
+</listitem>
+            <listitem><para>template&lt;typename InputIt &gt; </para><para>bool <link linkend="_classfort_1_1table_1ac798525be3e650e456343301010b0799">range_write_ln</link> (InputIt first, InputIt last)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1table_1a040c119d6b7965602cdec6bf06e9d197">set_border_style</link> (const struct <link linkend="_structft__border__style">ft_border_style</link> *style)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classfort_1_1table_1afe4030b7e70ea73ca60d1ed6626b80ec">set_cur_cell</link> (size_t row_i, size_t col_i)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1table_1a571357e6d86c3021a04f071aaab13e9a">set_left_margin</link> (unsigned value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1table_1aa5eaa7e5cc6178cd33fbd71b886def6f">set_top_margin</link> (unsigned value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1table_1ae6ed7466401235113daa84079c7d9040">set_right_margin</link> (unsigned value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1table_1a0d3651e9e4d47fd3594cc1a8638f5f1d">set_bottom_margin</link> (unsigned value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1table_1a097c227305b6497609363f6744ae9f0b">set_adding_strategy</link> (<link linkend="_namespacefort_1a90d7e4b53ec42f4eddd9e63eb02abca4">fort::add_strategy</link> value)</para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1table__row">table_row</link> <link linkend="_classfort_1_1table_1af541aa39b1815308558bd8412b62794f">operator[]</link> (std::size_t row_idx)</para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1table__cell">table_cell</link> <link linkend="_classfort_1_1table_1aed19cddfec34812a4bcbcbc1f919c5f7">cell</link> (std::size_t row_idx, std::size_t col_idx)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_classfort_1_1table_1a2ab00305a1e754e87efed759cafce945">cur_col</link> () const noexcept</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_classfort_1_1table_1ac74ecd92b580d2f350ade38aa7cdd8bc">cur_row</link> () const noexcept</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1table_1a47558c6b2bc4d7ac0990f6e43938f075">is_empty</link> () const noexcept</para>
+</listitem>
+            <listitem><para>std::size_t <link linkend="_classfort_1_1table_1aa507b478c722bd977c4c346f1cd0381e">row_count</link> () const noexcept</para>
+</listitem>
+            <listitem><para>std::size_t <link linkend="_classfort_1_1table_1a6a3a14a7a359dde608c81cb3beb6cece">col_count</link> () const noexcept</para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1table__cell">table_cell</link> <link linkend="_classfort_1_1table_1a94c1bc6489c67eb4724e92f3b9ee21b0">cur_cell</link> ()</para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1table__row">table_row</link> <link linkend="_classfort_1_1table_1a3d99b789d9d175768890a60ae32c404f">row</link> (std::size_t row_idx)</para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1table__column">table_column</link> <link linkend="_classfort_1_1table_1af2b6a6bb01c4769e504f053ee0edb20e">column</link> (std::size_t col_idx)</para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1cell__range">cell_range</link> <link linkend="_classfort_1_1table_1ad18fcdc28a35e28766c53d76747fc2fd">range</link> (std::size_t top_left_row, std::size_t top_left_col, std::size_t bottom_right_row, std::size_t bottom_right_col)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static class <link linkend="_classfort_1_1table_1_1default__properties">default_properties</link> <link linkend="_classfort_1_1table_1a1424d05a0271d78d441c61f85c1a349f">default_props</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Friends    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classfort_1_1table_1a50364843cb6211715b7ebebbb5f37c77">property_owner&lt; table &gt;</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt;
+class fort::table&lt; TT &gt;</title></simplesect>
+
+<para>Formatted table.</para>
+
+<para>Table template class is a C++ wrapper around struct <computeroutput><link linkend="_structft__table">ft_table</link></computeroutput>. Template parameter is <computeroutput><link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link></computeroutput>. Useful instantiations of table template class are <computeroutput><link linkend="_namespacefort_1a41a05e3a6bb3e0e7d89dd06005e0bb5d">char_table</link></computeroutput> and <computeroutput><link linkend="_namespacefort_1a508f5a472ab557708969fc946380cfc4">utf8_table</link></computeroutput>. </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classfort_1_1table_1af2a0e281e31bcbb3dfd0a14fd73a8fe6"/><section>
+    <title>table()<computeroutput>[1/3]</computeroutput></title>
+<indexterm><primary>table</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>table</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::table ( )<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Default constructor. </para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a0f60e38ac553c852d8e20583a3e6e866"/><section>
+    <title>~table()</title>
+<indexterm><primary>~table</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>~table</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::~<link linkend="_classfort_1_1table">table</link> ( )<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Destructor. </para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a5c8713c19b01542bcdce75835d714b3f"/><section>
+    <title>table()<computeroutput>[2/3]</computeroutput></title>
+<indexterm><primary>table</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>table</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::table (const <link linkend="_classfort_1_1table">table</link>&lt; TT &gt; &amp; tbl)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Copy contstructor. </para>
+</section>
+<anchor xml:id="_classfort_1_1table_1aefbb2a5c2057b5139791962e242f1566"/><section>
+    <title>table()<computeroutput>[3/3]</computeroutput></title>
+<indexterm><primary>table</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>table</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::table (<link linkend="_classfort_1_1table">table</link>&lt; TT &gt; &amp;&amp; tbl)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Move contstructor. </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classfort_1_1table_1a7b194a2c7a08929cc802a723245a3239"/><section>
+    <title>c_str()</title>
+<indexterm><primary>c_str</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>c_str</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>const char * <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::c_str ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Convert table to string representation.</para>
+
+<para>Table object has ownership of the returned pointer. So there is no need to free it. To take ownership user should explicitly copy the returned string with strdup or similar functions.</para>
+
+<para>Returned pointer may be later invalidated by:<itemizedlist>
+<listitem>
+<para>Calling destroying the table;</para>
+</listitem><listitem>
+<para>Other invocations of c_str or to_string.</para>
+</listitem></itemizedlist>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>The pointer to the string representation of formatted table, on success.</para>
+</listitem><listitem>
+<para>NULL on error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1aed19cddfec34812a4bcbcbc1f919c5f7"/><section>
+    <title>cell()</title>
+<indexterm><primary>cell</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>cell</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>class <link linkend="_classfort_1_1table_1_1table__cell">table_cell</link> <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::cell (std::size_t row_idx, std::size_t col_idx)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Get cell.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>row_idx</entry><entry>
+<para>Row index. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>col_idx</entry><entry>
+<para>Column index. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><link linkend="_classfort_1_1table_1_1table__cell">table_cell</link> object. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a6a3a14a7a359dde608c81cb3beb6cece"/><section>
+    <title>col_count()</title>
+<indexterm><primary>col_count</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>col_count</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>std::size_t <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::col_count ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para>
+<para>Get number of columns in the table.</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Number of columns in the table. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1af2b6a6bb01c4769e504f053ee0edb20e"/><section>
+    <title>column()</title>
+<indexterm><primary>column</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>column</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>class <link linkend="_classfort_1_1table_1_1table__column">table_column</link> <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::column (std::size_t col_idx)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Get column.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>col_idx</entry><entry>
+<para>Column index. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><link linkend="_classfort_1_1table_1_1table__column">table_column</link> object. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a94c1bc6489c67eb4724e92f3b9ee21b0"/><section>
+    <title>cur_cell()</title>
+<indexterm><primary>cur_cell</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>cur_cell</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>class <link linkend="_classfort_1_1table_1_1table__cell">table_cell</link> <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::cur_cell ( )<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Get current cell.</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Current cell. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a2ab00305a1e754e87efed759cafce945"/><section>
+    <title>cur_col()</title>
+<indexterm><primary>cur_col</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>cur_col</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>size_t <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::cur_col ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para>
+<para>Get column number of the current cell.</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Column number of the current cell. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1ac74ecd92b580d2f350ade38aa7cdd8bc"/><section>
+    <title>cur_row()</title>
+<indexterm><primary>cur_row</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>cur_row</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>size_t <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::cur_row ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para>
+<para>Get row number of the current cell.</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Row number of the current cell. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a1424d05a0271d78d441c61f85c1a349f"/><section>
+    <title>default_props()</title>
+<indexterm><primary>default_props</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>default_props</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>static class <link linkend="_classfort_1_1table_1_1default__properties">default_properties</link> <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::default_props ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1a47558c6b2bc4d7ac0990f6e43938f075"/><section>
+    <title>is_empty()</title>
+<indexterm><primary>is_empty</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>is_empty</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::is_empty ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para>
+<para>Check if table is empty.</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>true - table is empty false - some data has been inserted </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a5fa1b2a0af4dd1e7a7d04070dcbb89c1"/><section>
+    <title>operator&lt;&lt;()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>operator&lt;&lt;</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>operator&lt;&lt;</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table">table</link> &amp; <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::operator&lt;&lt; (const T &amp; arg)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Write provided object to the table.</para>
+
+<para>To convert object to the string representation conversion for std::ostream is used.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>arg</entry><entry>
+<para>Obect that would be inserted in the current cell. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>Reference to the current table. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1aec7b4ad1ececf231a59d8c866a1c4976"/><section>
+    <title>operator&lt;&lt;()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>operator&lt;&lt;</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>operator&lt;&lt;</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table">table</link> &amp; <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::operator&lt;&lt; (const <link linkend="_classfort_1_1table__manipulator">table_manipulator</link> &amp; arg)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1a639848e904ab94e5acbd0df49225ca41"/><section>
+    <title>operator=()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>operator=</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table">table</link> &amp; <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::operator= (const <link linkend="_classfort_1_1table">table</link>&lt; TT &gt; &amp; tbl)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Copy assignment operator. </para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a8ff094374f3f443a0306d09b50897e38"/><section>
+    <title>operator=()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>operator=</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table">table</link> &amp; <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::operator= (<link linkend="_classfort_1_1table">table</link>&lt; TT &gt; &amp;&amp; tbl)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Move assignment operator. </para>
+</section>
+<anchor xml:id="_classfort_1_1table_1af541aa39b1815308558bd8412b62794f"/><section>
+    <title>operator[]()</title>
+<indexterm><primary>operator[]</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>operator[]</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>class <link linkend="_classfort_1_1table_1_1table__row">table_row</link> <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::operator[] (std::size_t row_idx)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1ad18fcdc28a35e28766c53d76747fc2fd"/><section>
+    <title>range()</title>
+<indexterm><primary>range</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>range</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>class <link linkend="_classfort_1_1table_1_1cell__range">cell_range</link> <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::range (std::size_t top_left_row, std::size_t top_left_col, std::size_t bottom_right_row, std::size_t bottom_right_col)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Get range of cells.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>col_idx</entry><entry>
+<para>Column index. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><link linkend="_classfort_1_1table_1_1table__column">table_column</link> object. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1ad26028ecd1d540008f248b782f35898b"/><section>
+    <title>range_write()</title>
+<indexterm><primary>range_write</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>range_write</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename InputIt &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::range_write (InputIt first, InputIt last)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Write elements from range to the table.</para>
+
+<para>Write objects from range to consecutive cells in the current row.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>first, last</entry><entry>
+<para>Range of elements. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1ac798525be3e650e456343301010b0799"/><section>
+    <title>range_write_ln()</title>
+<indexterm><primary>range_write_ln</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>range_write_ln</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename InputIt &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::range_write_ln (InputIt first, InputIt last)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Write elements from range to the table and go to the next line.</para>
+
+<para>Write objects from range to consecutive cells in the current row and move current position to the first cell of the next line(row).</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>first, last</entry><entry>
+<para>Range of elements. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a3d99b789d9d175768890a60ae32c404f"/><section>
+    <title>row()</title>
+<indexterm><primary>row</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>row</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>class <link linkend="_classfort_1_1table_1_1table__row">table_row</link> <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::row (std::size_t row_idx)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Get row.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>row_idx</entry><entry>
+<para>Row index. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><link linkend="_classfort_1_1table_1_1table__row">table_row</link> object. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1aa507b478c722bd977c4c346f1cd0381e"/><section>
+    <title>row_count()</title>
+<indexterm><primary>row_count</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>row_count</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>std::size_t <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::row_count ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para>
+<para>Get number of rows in the table.</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Number of rows in the table. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a097c227305b6497609363f6744ae9f0b"/><section>
+    <title>set_adding_strategy()</title>
+<indexterm><primary>set_adding_strategy</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>set_adding_strategy</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::set_adding_strategy (<link linkend="_namespacefort_1a90d7e4b53ec42f4eddd9e63eb02abca4">fort::add_strategy</link> value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set table adding strategy.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Adding strategy. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; table property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a040c119d6b7965602cdec6bf06e9d197"/><section>
+    <title>set_border_style()</title>
+<indexterm><primary>set_border_style</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>set_border_style</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::set_border_style (const struct <link linkend="_structft__border__style">ft_border_style</link> * style)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set border style for the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>style</entry><entry>
+<para>Pointer to border style. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>True: Success; table border style was changed.</para>
+</listitem><listitem>
+<para>False: Error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a0d3651e9e4d47fd3594cc1a8638f5f1d"/><section>
+    <title>set_bottom_margin()</title>
+<indexterm><primary>set_bottom_margin</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>set_bottom_margin</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::set_bottom_margin (unsigned value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set table bottom margin.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Bottom margin. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; table property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1afe4030b7e70ea73ca60d1ed6626b80ec"/><section>
+    <title>set_cur_cell()</title>
+<indexterm><primary>set_cur_cell</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>set_cur_cell</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>void <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::set_cur_cell (size_t row_i, size_t col_i)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set current cell position.</para>
+
+<para>Current cell - cell that will be edited with all modifiing functions.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>row_i</entry><entry>
+<para>New row number for the current cell. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>col_i</entry><entry>
+<para>New row number for the current cell. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a571357e6d86c3021a04f071aaab13e9a"/><section>
+    <title>set_left_margin()</title>
+<indexterm><primary>set_left_margin</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>set_left_margin</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::set_left_margin (unsigned value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set table left margin.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Left margin. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; table property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1ae6ed7466401235113daa84079c7d9040"/><section>
+    <title>set_right_margin()</title>
+<indexterm><primary>set_right_margin</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>set_right_margin</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::set_right_margin (unsigned value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set table right margin.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Right margin. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; table property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1aa5eaa7e5cc6178cd33fbd71b886def6f"/><section>
+    <title>set_top_margin()</title>
+<indexterm><primary>set_top_margin</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>set_top_margin</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::set_top_margin (unsigned value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set table top margin.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>Top margin. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; table property was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a069a11134b61aebd9f798b445c281696"/><section>
+    <title>to_string()</title>
+<indexterm><primary>to_string</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>to_string</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>std::string <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::to_string ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Convert table to string representation.</para>
+
+<para><formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>String representation of formatted table, on success.</para>
+</listitem><listitem>
+<para>In case of error std::runtime_error is thrown. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1ab6b0b3f3a39b255d5dd95ce14f9d472b"/><section>
+    <title>write()<computeroutput>[1/9]</computeroutput></title>
+<indexterm><primary>write</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write (const char * str)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Write string to the the table.</para>
+
+<para>Write specified string to the current cell.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>str</entry><entry>
+<para>String to write. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1aa5bef06063a598ac7985bd7df715803c"/><section>
+    <title>write()<computeroutput>[2/9]</computeroutput></title>
+<indexterm><primary>write</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write (const std::string &amp; str)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Write string to the the table.</para>
+
+<para>Write specified string to the current cell.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>str</entry><entry>
+<para>String to write. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1ad2dc2246f44855fd778646a405ff8a69"/><section>
+    <title>write()<computeroutput>[3/9]</computeroutput></title>
+<indexterm><primary>write</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write (const T_0 &amp; arg_0, const T_1 &amp; arg_1)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1a7067e94257b88a30cf54bf1c14034b2c"/><section>
+    <title>write()<computeroutput>[4/9]</computeroutput></title>
+<indexterm><primary>write</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 , typename T_2 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write (const T_0 &amp; arg_0, const T_1 &amp; arg_1, const T_2 &amp; arg_2)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1a5818f33a183db28a45eade06fbec2ee3"/><section>
+    <title>write()<computeroutput>[5/9]</computeroutput></title>
+<indexterm><primary>write</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write (const T_0 &amp; arg_0, const T_1 &amp; arg_1, const T_2 &amp; arg_2, const T_3 &amp; arg_3)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1a7b2d27ceca94b7b7204ea0559098be5f"/><section>
+    <title>write()<computeroutput>[6/9]</computeroutput></title>
+<indexterm><primary>write</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write (const T_0 &amp; arg_0, const T_1 &amp; arg_1, const T_2 &amp; arg_2, const T_3 &amp; arg_3, const T_4 &amp; arg_4)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1ae5072030609664813fc07080405dcb91"/><section>
+    <title>write()<computeroutput>[7/9]</computeroutput></title>
+<indexterm><primary>write</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write (const T_0 &amp; arg_0, const T_1 &amp; arg_1, const T_2 &amp; arg_2, const T_3 &amp; arg_3, const T_4 &amp; arg_4, const T_5 &amp; arg_5)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1a85e2de34b45c30ca49148ca0e07aefee"/><section>
+    <title>write()<computeroutput>[8/9]</computeroutput></title>
+<indexterm><primary>write</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write (const T_0 &amp; arg_0, const T_1 &amp; arg_1, const T_2 &amp; arg_2, const T_3 &amp; arg_3, const T_4 &amp; arg_4, const T_5 &amp; arg_5, const T_6 &amp; arg_6)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1ad0feccbba8738c5e9a87f643d3cf8d7b"/><section>
+    <title>write()<computeroutput>[9/9]</computeroutput></title>
+<indexterm><primary>write</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 , typename T_7 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write (const T_0 &amp; arg_0, const T_1 &amp; arg_1, const T_2 &amp; arg_2, const T_3 &amp; arg_3, const T_4 &amp; arg_4, const T_5 &amp; arg_5, const T_6 &amp; arg_6, const T_7 &amp; arg_7)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1a23ac58f177ed0717e77d96ca5acec52f"/><section>
+    <title>write_ln()<computeroutput>[1/9]</computeroutput></title>
+<indexterm><primary>write_ln</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write_ln</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write_ln (const char * str)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Write string to the the table and go to the next line.</para>
+
+<para>Write specified string to the current cell and move current position to the first cell of the next line(row).</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>str</entry><entry>
+<para>String to write. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a921c35a1c1aa723c1a96500bdbf04d62"/><section>
+    <title>write_ln()<computeroutput>[2/9]</computeroutput></title>
+<indexterm><primary>write_ln</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write_ln</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write_ln (const std::string &amp; str)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Write string to the the table and go to the next line.</para>
+
+<para>Write specified string to the current cell and move current position to the first cell of the next line(row).</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>str</entry><entry>
+<para>String to write. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classfort_1_1table_1a63f18bf8abf9cfdacd4953e2146a5fd2"/><section>
+    <title>write_ln()<computeroutput>[3/9]</computeroutput></title>
+<indexterm><primary>write_ln</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write_ln</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write_ln (const T_0 &amp; arg_0, const T_1 &amp; arg_1)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1a38002cf12f835e893edf3262bf00f322"/><section>
+    <title>write_ln()<computeroutput>[4/9]</computeroutput></title>
+<indexterm><primary>write_ln</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write_ln</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 , typename T_2 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write_ln (const T_0 &amp; arg_0, const T_1 &amp; arg_1, const T_2 &amp; arg_2)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1a81e4d98a2f2151b0bcd0e7fe0f6aea34"/><section>
+    <title>write_ln()<computeroutput>[5/9]</computeroutput></title>
+<indexterm><primary>write_ln</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write_ln</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write_ln (const T_0 &amp; arg_0, const T_1 &amp; arg_1, const T_2 &amp; arg_2, const T_3 &amp; arg_3)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1a63ff04dc77d667a51ab64efbf040df9b"/><section>
+    <title>write_ln()<computeroutput>[6/9]</computeroutput></title>
+<indexterm><primary>write_ln</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write_ln</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write_ln (const T_0 &amp; arg_0, const T_1 &amp; arg_1, const T_2 &amp; arg_2, const T_3 &amp; arg_3, const T_4 &amp; arg_4)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1a19fdbc0703507c9f35826b2382852bcb"/><section>
+    <title>write_ln()<computeroutput>[7/9]</computeroutput></title>
+<indexterm><primary>write_ln</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write_ln</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write_ln (const T_0 &amp; arg_0, const T_1 &amp; arg_1, const T_2 &amp; arg_2, const T_3 &amp; arg_3, const T_4 &amp; arg_4, const T_5 &amp; arg_5)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1a4b7be9381f7e1034847d9a485fa36f51"/><section>
+    <title>write_ln()<computeroutput>[8/9]</computeroutput></title>
+<indexterm><primary>write_ln</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write_ln</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write_ln (const T_0 &amp; arg_0, const T_1 &amp; arg_1, const T_2 &amp; arg_2, const T_3 &amp; arg_3, const T_4 &amp; arg_4, const T_5 &amp; arg_5, const T_6 &amp; arg_6)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1afbacbbc3bfd9883157c86e794c4f85af"/><section>
+    <title>write_ln()<computeroutput>[9/9]</computeroutput></title>
+<indexterm><primary>write_ln</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>write_ln</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><computeroutput>template&lt;typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 , typename T_7 &gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::write_ln (const T_0 &amp; arg_0, const T_1 &amp; arg_1, const T_2 &amp; arg_2, const T_3 &amp; arg_3, const T_4 &amp; arg_4, const T_5 &amp; arg_5, const T_6 &amp; arg_6, const T_7 &amp; arg_7)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Friends And Related Function Documentation</title>
+<anchor xml:id="_classfort_1_1table_1a50364843cb6211715b7ebebbb5f37c77"/><section>
+    <title>property_owner&lt; table &gt;</title>
+<indexterm><primary>property_owner&lt; table &gt;</primary><secondary>fort::table&lt; TT &gt;</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;</primary><secondary>property_owner&lt; table &gt;</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>friend class <link linkend="_classfort_1_1property__owner">property_owner</link>&lt; <link linkend="_classfort_1_1table">table</link> &gt;<computeroutput>[friend]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8hpp">fort.hpp</link></section>
+</section>

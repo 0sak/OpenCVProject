@@ -1,0 +1,126 @@
+.TH "Metric" 3 "Wed Jan 19 2022" "Version v1.0" "CV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Metric
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Metric\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBreadLabels\fP ()"
+.br
+.RI "Read dataset_labeling\&.txt into vector of labels\&. "
+.ti -1c
+.RI "void \fBprintLabels\fP ()"
+.br
+.RI "print read in labels vector "
+.ti -1c
+.RI "void \fBprintMetricOnePicture\fP (int index)"
+.br
+.RI "Print metric information for one picture that is analyzed\&. "
+.ti -1c
+.RI "void \fBprintRecognizedOutOfAll\fP ()"
+.br
+.RI "print \fBMetric\fP information for all pictures analyzed\&. "
+.ti -1c
+.RI "void \fBsetTotalAmountLicensePlatesOnPictures\fP ()"
+.br
+.RI "Iterates over labels vector and counts all license plates of all pictures\&. "
+.ti -1c
+.RI "void \fBsetTotalAmountOfCharactersOnPictures\fP ()"
+.br
+.RI "Iterates over all labels and counts all possible characters on license plates\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBnumberOfLicensePlatesOnAllPictures\fP = 0"
+.br
+.ti -1c
+.RI "int \fBrecognizedLicensePlates\fP = 0"
+.br
+.ti -1c
+.RI "int \fBrecognizedPerPicture\fP = 0"
+.br
+.ti -1c
+.RI "int \fBtotalAmountOfCharacters\fP = 0"
+.br
+.ti -1c
+.RI "int \fBrecognizedCharacters\fP = 0"
+.br
+.ti -1c
+.RI "int \fBfalsePositiveCounterPerPicture\fP = 0"
+.br
+.ti -1c
+.RI "std::vector< \fBlabel\fP > \fBlabels\fP"
+.br
+.ti -1c
+.RI "std::vector< std::vector< int > > \fBrecognizedCharactersPerLicenseplate\fP"
+.br
+.ti -1c
+.RI "fort::char_table \fBtable\fP"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "void Metric::printLabels ()"
+
+.PP
+print read in labels vector 
+.SS "void Metric::printMetricOnePicture (int index)"
+
+.PP
+Print metric information for one picture that is analyzed\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP 
+.RE
+.PP
+
+.SS "void Metric::printRecognizedOutOfAll ()"
+
+.PP
+print \fBMetric\fP information for all pictures analyzed\&. 
+.SS "void Metric::readLabels ()"
+
+.PP
+Read dataset_labeling\&.txt into vector of labels\&. 
+.SS "void Metric::setTotalAmountLicensePlatesOnPictures ()"
+
+.PP
+Iterates over labels vector and counts all license plates of all pictures\&. 
+.SS "void Metric::setTotalAmountOfCharactersOnPictures ()"
+
+.PP
+Iterates over all labels and counts all possible characters on license plates\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "int Metric::falsePositiveCounterPerPicture = 0"
+
+.SS "std::vector<\fBlabel\fP> Metric::labels"
+
+.SS "int Metric::numberOfLicensePlatesOnAllPictures = 0"
+
+.SS "int Metric::recognizedCharacters = 0"
+
+.SS "std::vector<std::vector<int> > Metric::recognizedCharactersPerLicenseplate"
+
+.SS "int Metric::recognizedLicensePlates = 0"
+
+.SS "int Metric::recognizedPerPicture = 0"
+
+.SS "fort::char_table Metric::table"
+
+.SS "int Metric::totalAmountOfCharacters = 0"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CV from the source code\&.

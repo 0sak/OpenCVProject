@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__process_images_8h_source" xml:lang="en-US">
+<title>ProcessImages.h</title>
+<indexterm><primary>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/ProcessImages.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&lt;string&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&lt;opencv2/opencv.hpp&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;opencv2/imgproc/imgproc.hpp&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;opencv2/core/utils/logger.hpp&gt;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&quot;wtypes.h&quot;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__metric_8h">Metric.h</link>&quot;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;cmath&gt;</emphasis>
+10 
+11 <emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__process_images_8h_1afa81a4660c644f4ce2b0c7733eef732b">DARKNESS_THRESHOLD</link>&#32;=&#32;100;
+12 <emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="__process_images_8h_1a1163ca36eb40f249213c49727463113d">WHITE_PIXEL_TRESHOLD_LOW</link>&#32;=&#32;0.4700;
+13 <emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="__process_images_8h_1a763c3f6631c1a4e60f82d2ac2df4b919">WHITE_PIXEL_THRESHOLD_HIGH</link>&#32;=&#32;0.800;
+14 <emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="__process_images_8h_1a01450cbbaae3443502778090295ca5c6">ASPECT_RATIO_MIN</link>&#32;=&#32;1.9f;
+15 <emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="__process_images_8h_1aa5ff743b5289eb39a2abdf3c35a39156">ASPECT_RATIO_MAX</link>&#32;=&#32;15.0f;
+16 
+17 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_process_images">ProcessImages</link>&#32;{
+18 <emphasis role="keyword">public</emphasis>:
+19 &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_process_images_1a53f909863405fc93ae087a39b4f0590b">imageToRead</link>;
+20 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_process_images_1a7b13dc138ee8def909f17644e783210b">ddepth</link>&#32;=&#32;CV_8U;
+21 
+22 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_process_images_1a67192960af7101dcae55377d9003d4a4">desktopWidth</link>;
+23 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_process_images_1afde554204c2750ee8be6f69a1602f842">desktopHeigth</link>;
+24 &#32;&#32;&#32;&#32;<link linkend="_class_metric">Metric</link>&#32;<link linkend="_class_process_images_1a7d1e46fa343dcd6bff1a1b4f5a149286">metric</link>;
+25 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_process_images_1aed9d26d4cb9d26b28f6fee377752cde8">index</link>&#32;=&#32;0;
+26 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_process_images_1ac2aa25a58cbd561906d5cda2e7db60c1">minAreaOuter</link>,&#32;<link linkend="_class_process_images_1a7b71fd3876f345535a14a3e270fe6eab">maxAreaOuter</link>,&#32;<link linkend="_class_process_images_1a91eafa3f5c629b3febfe2d78ef3a2ea7">minAreaInner</link>,&#32;<link linkend="_class_process_images_1a98b2dbad293a125e7b8649567015b1b4">maxAreaInner</link>;
+27 
+28 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_process_images_1a4878f55cb659654839179ce8fdf17a77">DEBUG_FLAG_SHOW_RESULT</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+29 
+30 &#32;&#32;&#32;&#32;cv::Mat&#32;<link linkend="_class_process_images_1a071600f3a5a99c2f0b9ce3cf92c93fa0">image</link>,
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_process_images_1a680ace36d4e9ce32554559880432db6c">imageGrey</link>,
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_process_images_1a4d24f628ab8f1738660e84c1b5213ebb">imageBlurred</link>,
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_process_images_1add16033a84609c1981797c90f8480d63">imageThresh</link>,
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_process_images_1a64f1f3a0fcc601fb8c3dae108c11f612">imageThreshResized</link>,
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_process_images_1a997f657a63ad978725fcc4f59cb4b4a0">sobelX</link>,
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_process_images_1a61f8c9a3b0de5a10c2e58ea6558a0c7c">sobelY</link>,
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_process_images_1a03532397b05bf6c0fcdcbb372311a612">sobelResult</link>,
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_process_images_1a96ab7ba2813c40c9010522fb800d8cd7">erodeResult</link>,
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_process_images_1a6e09ae9bf1f3f85da922491126a7714f">dilateResult</link>,
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_process_images_1ae078cda05bc2522ebf981496798e25ff">imageConcat</link>,
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_process_images_1a552358349fd359163c990a19162fa6cc">resizedDown</link>,
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_process_images_1a66de31bf5e9a9a7af7c99d08ec76908d">res</link>,
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_process_images_1ad41da6d9998d6fc25e0645d066ac3dc3">newImage</link>;
+44 
+45 &#32;&#32;&#32;&#32;std::vector&lt;std::vector&lt;cv::Point&gt;&gt;&#32;<link linkend="_class_process_images_1a32bcd8a93f690e6cbd1ece0b2c8ffcbb">contours</link>,&#32;<link linkend="_class_process_images_1a8a733185159495f387c267b2a41fc465">contoursSecond</link>;
+46 &#32;&#32;&#32;&#32;std::vector&lt;cv::Vec4i&gt;&#32;<link linkend="_class_process_images_1a0b6db8b68f4834d9e0ba59a5f0149dc1">hierarchy</link>,&#32;<link linkend="_class_process_images_1a7469114898aec0381d6b738a25414f71">hierarchySecond</link>;
+47 
+49 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1a89c6af346f21df2d0d48ead7c56c16b2">initLabels</link>();
+50 
+54 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1aff8a4649ca46f947a49161aa52373782">preprocessImage</link>(cv::Mat&#32;<link linkend="_class_process_images_1a071600f3a5a99c2f0b9ce3cf92c93fa0">image</link>);
+55 
+58 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1a4f9b3f1a321677c1879429946147c79e">execute</link>();
+59 
+62 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1a588c17067cf1a42b0d7bd1bffc474f12">printFilterConditions</link>(<emphasis role="keywordtype">int</emphasis>&#32;i);
+63 
+65 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1a24c2ff9e6bd7b941dea608a9cd0e896c">filterImageData</link>();
+66 
+75 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1abe35e22c3933e6821148fcc20c881bdb">filterContours</link>(<emphasis role="keywordtype">bool</emphasis>&#32;brighter);
+76 
+79 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1a642d7475da5a05f7e381a92750c7dc91">setFilterConditionsInnerContours</link>(cv::Mat&amp;&#32;subImgCopy);
+80 
+83 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1af5b29d4c119c6b878d827770ec728f84">displayResults</link>(cv::Mat&amp;&#32;image_copy);
+84 
+89 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1a2e3b110dca74c6425756a44cf85d27c5">countInnerContours</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;contourCounter,&#32;<emphasis role="keywordtype">int</emphasis>&#32;i,&#32;cv::Mat&amp;&#32;subImgCopy);
+90 
+96 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1aa6c3df82e2b18cc077b68a85380c573f">printCandidateData</link>(<emphasis role="keywordtype">int</emphasis>&#32;i,&#32;cv::Rect2f&amp;&#32;resultRect,&#32;<emphasis role="keywordtype">double</emphasis>&#32;whitePixelsInRectangle,&#32;<emphasis role="keywordtype">float</emphasis>&#32;proportionAreaWhitepixels);
+97 
+101 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1ac01f497ee9e3c4a839139b9ac0db3333">isRectangle</link>(cv::Rect2f&amp;&#32;resultRect,&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;retflag);
+102 
+106 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_process_images_1aa457ce91f8c5be8defcce852b47b30cb">isImageBright</link>(cv::Mat&#32;<link linkend="_class_process_images_1a071600f3a5a99c2f0b9ce3cf92c93fa0">image</link>);
+107 
+111 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1a55d2ff847d9bb53e625a442d819e73dc">makeBrighter</link>(<emphasis role="keywordtype">double</emphasis>&#32;alpha,&#32;<emphasis role="keywordtype">int</emphasis>&#32;beta);
+112 
+116 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1a9e0793b87aa559b6b11bbfa256eb8624">gammaCorrection</link>(<emphasis role="keyword">const</emphasis>&#32;cv::Mat&amp;&#32;img,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&#32;gamma_);
+117 
+119 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1afa1cb9a04d9fe538fd39b88cc8cc3599">getDesktopResolution</link>();
+120 
+121 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_process_images_1a49750467e0a30769c7830e0f28fbf7a1">process</link>();
+122 
+123 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_process_images_1a0211375c0ccabbe17276dd2beb84cead">distanceBetweenTwoPoints</link>(<emphasis role="keywordtype">float</emphasis>&#32;x1,&#32;<emphasis role="keywordtype">float</emphasis>&#32;y1,&#32;<emphasis role="keywordtype">float</emphasis>&#32;x2&#32;,&#32;<emphasis role="keywordtype">float</emphasis>&#32;y2);
+124 };
+</programlisting></section>

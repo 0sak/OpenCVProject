@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structf__row" xml:lang="en-US">
+<title>f_row Struct Reference</title>
+<indexterm><primary>f_row</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_fort_8c_1a78e8dbb8ad34fe4db079d7e394af36d0">f_vector_t</link> * <link linkend="_structf__row_1ae8e6b5b54b7a0d18c8bb92d2dea7017a">cells</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structf__row_1ae8e6b5b54b7a0d18c8bb92d2dea7017a"/><section>
+    <title>cells</title>
+<indexterm><primary>cells</primary><secondary>f_row</secondary></indexterm>
+<indexterm><primary>f_row</primary><secondary>cells</secondary></indexterm>
+<para><computeroutput><link linkend="_fort_8c_1a78e8dbb8ad34fe4db079d7e394af36d0">f_vector_t</link>* f_row::cells</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8c">fort.c</link></section>
+</section>

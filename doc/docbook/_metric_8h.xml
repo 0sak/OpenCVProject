@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__metric_8h" xml:lang="en-US">
+<title>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/Metric.h File Reference</title>
+<indexterm><primary>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/Metric.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;regex&gt;
+#include &quot;fort.hpp&quot;
+</programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structcoords">coords</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structlabel">label</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_metric">Metric</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef struct <link linkend="_structcoords">coords</link> <link linkend="__metric_8h_1a4df78a1ba07a72bdc2b8449901e450e6">Coords</link></para>
+</listitem>
+            <listitem><para>typedef struct <link linkend="_structlabel">label</link> <link linkend="__metric_8h_1a77678f2220e677c1e628f427c19f737d">Label</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>const int <link linkend="__metric_8h_1abdd02efbfa8fcace42ce961719cc3f90">NUMBER_OF_IMAGES</link> = 71</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="__metric_8h_1a4df78a1ba07a72bdc2b8449901e450e6"/><section>
+    <title>Coords</title>
+<indexterm><primary>Coords</primary><secondary>Metric.h</secondary></indexterm>
+<indexterm><primary>Metric.h</primary><secondary>Coords</secondary></indexterm>
+<para><computeroutput>typedef struct <link linkend="_structcoords">coords</link> <link linkend="__metric_8h_1a4df78a1ba07a72bdc2b8449901e450e6">Coords</link></computeroutput></para></section>
+<anchor xml:id="__metric_8h_1a77678f2220e677c1e628f427c19f737d"/><section>
+    <title>Label</title>
+<indexterm><primary>Label</primary><secondary>Metric.h</secondary></indexterm>
+<indexterm><primary>Metric.h</primary><secondary>Label</secondary></indexterm>
+<para><computeroutput>typedef struct <link linkend="_structlabel">label</link> <link linkend="__metric_8h_1a77678f2220e677c1e628f427c19f737d">Label</link></computeroutput></para></section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="__metric_8h_1abdd02efbfa8fcace42ce961719cc3f90"/><section>
+    <title>NUMBER_OF_IMAGES</title>
+<indexterm><primary>NUMBER_OF_IMAGES</primary><secondary>Metric.h</secondary></indexterm>
+<indexterm><primary>Metric.h</primary><secondary>NUMBER_OF_IMAGES</secondary></indexterm>
+<para><computeroutput>const int NUMBER_OF_IMAGES = 71</computeroutput></para></section>
+</section>
+</section>

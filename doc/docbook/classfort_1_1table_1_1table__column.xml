@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classfort_1_1table_1_1table__column" xml:lang="en-US">
+<title>fort::table&lt; TT &gt;::table_column Class Reference</title>
+<indexterm><primary>fort::table&lt; TT &gt;::table_column</primary></indexterm>
+<para>
+<computeroutput>#include &lt;fort.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for fort::table&lt; TT &gt;::table_column:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classfort_1_1table_1_1table__column.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classfort_1_1table_1_1table__column_1a8afca7aeb28eed51e2b7963c08c11a11">table_column</link> (std::size_t col_idx, <link linkend="_classfort_1_1table">table</link> &amp;tbl)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classfort_1_1table_1_1table__column_1a3e917816d1f897da7258f7e752150fac">erase</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt;
+class fort::table&lt; TT &gt;::table_column</title></simplesect>
+
+<para>Table column. </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classfort_1_1table_1_1table__column_1a8afca7aeb28eed51e2b7963c08c11a11"/><section>
+    <title>table_column()</title>
+<indexterm><primary>table_column</primary><secondary>fort::table&lt; TT &gt;::table_column</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;::table_column</primary><secondary>table_column</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::table_column::table_column (std::size_t col_idx, <link linkend="_classfort_1_1table">table</link> &amp; tbl)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classfort_1_1table_1_1table__column_1a3e917816d1f897da7258f7e752150fac"/><section>
+    <title>erase()</title>
+<indexterm><primary>erase</primary><secondary>fort::table&lt; TT &gt;::table_column</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;::table_column</primary><secondary>erase</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>void <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::table_column::erase ( )<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8hpp">fort.hpp</link></section>
+</section>

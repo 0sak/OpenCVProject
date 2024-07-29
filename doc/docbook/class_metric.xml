@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_metric" xml:lang="en-US">
+<title>Metric Class Reference</title>
+<indexterm><primary>Metric</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Metric.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_metric_1a25105e3d0d9c5393304a54703649a382">readLabels</link> ()</para>
+
+<para>Read dataset_labeling.txt into vector of labels. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_metric_1afcf4638a1f2ed683c2c90334113fcf1b">printLabels</link> ()</para>
+
+<para>print read in labels vector </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_metric_1a71a0ed523e5e710de323552919a7e31e">printMetricOnePicture</link> (int index)</para>
+
+<para>Print metric information for one picture that is analyzed. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_metric_1a8fbc8a9692bbf0d1959b2b48001b3cdb">printRecognizedOutOfAll</link> ()</para>
+
+<para>print <link linkend="_class_metric">Metric</link> information for all pictures analyzed. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_metric_1a5e2dd04675ede3e8012b24c13be19dad">setTotalAmountLicensePlatesOnPictures</link> ()</para>
+
+<para>Iterates over labels vector and counts all license plates of all pictures. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_metric_1a3c9d6fc8405ab7e2308be6c83f0d5ab1">setTotalAmountOfCharactersOnPictures</link> ()</para>
+
+<para>Iterates over all labels and counts all possible characters on license plates. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_class_metric_1a7dee83f65410db4497f34ea3fbd8ee54">numberOfLicensePlatesOnAllPictures</link> = 0</para>
+</listitem>
+            <listitem><para>int <link linkend="_class_metric_1aed03482186cfa3c7ba5bb0a23eac6a85">recognizedLicensePlates</link> = 0</para>
+</listitem>
+            <listitem><para>int <link linkend="_class_metric_1aba60833c76b4294b7b8c68cb5ce48342">recognizedPerPicture</link> = 0</para>
+</listitem>
+            <listitem><para>int <link linkend="_class_metric_1a91924a8d9749d2e66288659b7ecd6e96">totalAmountOfCharacters</link> = 0</para>
+</listitem>
+            <listitem><para>int <link linkend="_class_metric_1ad279b4c3c1a19eae5dce0c0324f0481d">recognizedCharacters</link> = 0</para>
+</listitem>
+            <listitem><para>int <link linkend="_class_metric_1aba3a792300d73181ed9031bcc9b25fa4">falsePositiveCounterPerPicture</link> = 0</para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="_structlabel">label</link> &gt; <link linkend="_class_metric_1a098eb1b1e1b73ae5abb0e1727bdb7602">labels</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; std::vector&lt; int &gt; &gt; <link linkend="_class_metric_1a8e4e9a210c76a767511c9ca4187b50d6">recognizedCharactersPerLicenseplate</link></para>
+</listitem>
+            <listitem><para>fort::char_table <link linkend="_class_metric_1a1e740c42f098999d7faea7327f7d52c0">table</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_metric_1afcf4638a1f2ed683c2c90334113fcf1b"/><section>
+    <title>printLabels()</title>
+<indexterm><primary>printLabels</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>printLabels</secondary></indexterm>
+<para><computeroutput>void Metric::printLabels ( )</computeroutput></para><para>
+
+<para>print read in labels vector </para>
+</para>
+</section>
+<anchor xml:id="_class_metric_1a71a0ed523e5e710de323552919a7e31e"/><section>
+    <title>printMetricOnePicture()</title>
+<indexterm><primary>printMetricOnePicture</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>printMetricOnePicture</secondary></indexterm>
+<para><computeroutput>void Metric::printMetricOnePicture (int index)</computeroutput></para><para>
+
+<para>Print metric information for one picture that is analyzed. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>index</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_metric_1a8fbc8a9692bbf0d1959b2b48001b3cdb"/><section>
+    <title>printRecognizedOutOfAll()</title>
+<indexterm><primary>printRecognizedOutOfAll</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>printRecognizedOutOfAll</secondary></indexterm>
+<para><computeroutput>void Metric::printRecognizedOutOfAll ( )</computeroutput></para><para>
+
+<para>print <link linkend="_class_metric">Metric</link> information for all pictures analyzed. </para>
+</para>
+</section>
+<anchor xml:id="_class_metric_1a25105e3d0d9c5393304a54703649a382"/><section>
+    <title>readLabels()</title>
+<indexterm><primary>readLabels</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>readLabels</secondary></indexterm>
+<para><computeroutput>void Metric::readLabels ( )</computeroutput></para><para>
+
+<para>Read dataset_labeling.txt into vector of labels. </para>
+</para>
+</section>
+<anchor xml:id="_class_metric_1a5e2dd04675ede3e8012b24c13be19dad"/><section>
+    <title>setTotalAmountLicensePlatesOnPictures()</title>
+<indexterm><primary>setTotalAmountLicensePlatesOnPictures</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>setTotalAmountLicensePlatesOnPictures</secondary></indexterm>
+<para><computeroutput>void Metric::setTotalAmountLicensePlatesOnPictures ( )</computeroutput></para><para>
+
+<para>Iterates over labels vector and counts all license plates of all pictures. </para>
+</para>
+</section>
+<anchor xml:id="_class_metric_1a3c9d6fc8405ab7e2308be6c83f0d5ab1"/><section>
+    <title>setTotalAmountOfCharactersOnPictures()</title>
+<indexterm><primary>setTotalAmountOfCharactersOnPictures</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>setTotalAmountOfCharactersOnPictures</secondary></indexterm>
+<para><computeroutput>void Metric::setTotalAmountOfCharactersOnPictures ( )</computeroutput></para><para>
+
+<para>Iterates over all labels and counts all possible characters on license plates. </para>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_metric_1aba3a792300d73181ed9031bcc9b25fa4"/><section>
+    <title>falsePositiveCounterPerPicture</title>
+<indexterm><primary>falsePositiveCounterPerPicture</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>falsePositiveCounterPerPicture</secondary></indexterm>
+<para><computeroutput>int Metric::falsePositiveCounterPerPicture = 0</computeroutput></para></section>
+<anchor xml:id="_class_metric_1a098eb1b1e1b73ae5abb0e1727bdb7602"/><section>
+    <title>labels</title>
+<indexterm><primary>labels</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>labels</secondary></indexterm>
+<para><computeroutput>std::vector&lt;<link linkend="_structlabel">label</link>&gt; Metric::labels</computeroutput></para></section>
+<anchor xml:id="_class_metric_1a7dee83f65410db4497f34ea3fbd8ee54"/><section>
+    <title>numberOfLicensePlatesOnAllPictures</title>
+<indexterm><primary>numberOfLicensePlatesOnAllPictures</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>numberOfLicensePlatesOnAllPictures</secondary></indexterm>
+<para><computeroutput>int Metric::numberOfLicensePlatesOnAllPictures = 0</computeroutput></para></section>
+<anchor xml:id="_class_metric_1ad279b4c3c1a19eae5dce0c0324f0481d"/><section>
+    <title>recognizedCharacters</title>
+<indexterm><primary>recognizedCharacters</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>recognizedCharacters</secondary></indexterm>
+<para><computeroutput>int Metric::recognizedCharacters = 0</computeroutput></para></section>
+<anchor xml:id="_class_metric_1a8e4e9a210c76a767511c9ca4187b50d6"/><section>
+    <title>recognizedCharactersPerLicenseplate</title>
+<indexterm><primary>recognizedCharactersPerLicenseplate</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>recognizedCharactersPerLicenseplate</secondary></indexterm>
+<para><computeroutput>std::vector&lt;std::vector&lt;int&gt; &gt; Metric::recognizedCharactersPerLicenseplate</computeroutput></para></section>
+<anchor xml:id="_class_metric_1aed03482186cfa3c7ba5bb0a23eac6a85"/><section>
+    <title>recognizedLicensePlates</title>
+<indexterm><primary>recognizedLicensePlates</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>recognizedLicensePlates</secondary></indexterm>
+<para><computeroutput>int Metric::recognizedLicensePlates = 0</computeroutput></para></section>
+<anchor xml:id="_class_metric_1aba60833c76b4294b7b8c68cb5ce48342"/><section>
+    <title>recognizedPerPicture</title>
+<indexterm><primary>recognizedPerPicture</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>recognizedPerPicture</secondary></indexterm>
+<para><computeroutput>int Metric::recognizedPerPicture = 0</computeroutput></para></section>
+<anchor xml:id="_class_metric_1a1e740c42f098999d7faea7327f7d52c0"/><section>
+    <title>table</title>
+<indexterm><primary>table</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>table</secondary></indexterm>
+<para><computeroutput>fort::char_table Metric::table</computeroutput></para></section>
+<anchor xml:id="_class_metric_1a91924a8d9749d2e66288659b7ecd6e96"/><section>
+    <title>totalAmountOfCharacters</title>
+<indexterm><primary>totalAmountOfCharacters</primary><secondary>Metric</secondary></indexterm>
+<indexterm><primary>Metric</primary><secondary>totalAmountOfCharacters</secondary></indexterm>
+<para><computeroutput>int Metric::totalAmountOfCharacters = 0</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="__metric_8h">Metric.h</link>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="__metric_8cpp">Metric.cpp</link></section>
+</section>

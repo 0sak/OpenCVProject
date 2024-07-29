@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structf__conv__context" xml:lang="en-US">
+<title>f_conv_context Struct Reference</title>
+<indexterm><primary>f_conv_context</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>union {</para>
+        <itemizedlist>
+            <listitem><para>   char * <link linkend="_structf__conv__context_1ae5656b0c36f56db1acecc884dbc6c826">buf</link></para>
+</listitem>
+            <listitem><para>   wchar_t * <link linkend="_structf__conv__context_1adc8d025dd45d8729c0204d4faedad47c">wbuf</link></para>
+</listitem>
+            <listitem><para>   const void * <link linkend="_structf__conv__context_1ae28a186b3e2c29132a581bce04d49f6b">u8str</link></para>
+</listitem>
+        </itemizedlist>
+</listitem>
+            <listitem><para>} <link linkend="_structf__conv__context_1aa393eb87aa30824e77e3fda6103e6dd7">u</link></para>
+</listitem>
+            <listitem><para>size_t <link linkend="_structf__conv__context_1a462ec68fefba0521caf1bc86ef2fd2e1">raw_avail</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structf__context">f_context</link> * <link linkend="_structf__conv__context_1aad35ca52108f3bc4543ed7d947fa3225">cntx</link></para>
+</listitem>
+            <listitem><para>enum <link linkend="_fort_8c_1aac6eaac439cc49e9382b6c239aa310aa">f_string_type</link> <link linkend="_structf__conv__context_1a0d5792c1f4ca87f0c67dda682c60193b">b_type</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structf__conv__context_1a0d5792c1f4ca87f0c67dda682c60193b"/><section>
+    <title>b_type</title>
+<indexterm><primary>b_type</primary><secondary>f_conv_context</secondary></indexterm>
+<indexterm><primary>f_conv_context</primary><secondary>b_type</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8c_1aac6eaac439cc49e9382b6c239aa310aa">f_string_type</link> f_conv_context::b_type</computeroutput></para></section>
+<anchor xml:id="_structf__conv__context_1ae5656b0c36f56db1acecc884dbc6c826"/><section>
+    <title>buf</title>
+<indexterm><primary>buf</primary><secondary>f_conv_context</secondary></indexterm>
+<indexterm><primary>f_conv_context</primary><secondary>buf</secondary></indexterm>
+<para><computeroutput>char* f_conv_context::buf</computeroutput></para></section>
+<anchor xml:id="_structf__conv__context_1aad35ca52108f3bc4543ed7d947fa3225"/><section>
+    <title>cntx</title>
+<indexterm><primary>cntx</primary><secondary>f_conv_context</secondary></indexterm>
+<indexterm><primary>f_conv_context</primary><secondary>cntx</secondary></indexterm>
+<para><computeroutput>struct <link linkend="_structf__context">f_context</link>* f_conv_context::cntx</computeroutput></para></section>
+<anchor xml:id="_structf__conv__context_1a462ec68fefba0521caf1bc86ef2fd2e1"/><section>
+    <title>raw_avail</title>
+<indexterm><primary>raw_avail</primary><secondary>f_conv_context</secondary></indexterm>
+<indexterm><primary>f_conv_context</primary><secondary>raw_avail</secondary></indexterm>
+<para><computeroutput>size_t f_conv_context::raw_avail</computeroutput></para></section>
+<anchor xml:id="_structf__conv__context_1aa393eb87aa30824e77e3fda6103e6dd7"/><section>
+    <title></title>
+<indexterm><primary>u</primary><secondary>f_conv_context</secondary></indexterm>
+<indexterm><primary>f_conv_context</primary><secondary>u</secondary></indexterm>
+<para><computeroutput>union  { ... }  f_conv_context::u</computeroutput></para></section>
+<anchor xml:id="_structf__conv__context_1ae28a186b3e2c29132a581bce04d49f6b"/><section>
+    <title>u8str</title>
+<indexterm><primary>u8str</primary><secondary>f_conv_context</secondary></indexterm>
+<indexterm><primary>f_conv_context</primary><secondary>u8str</secondary></indexterm>
+<para><computeroutput>const void* f_conv_context::u8str</computeroutput></para></section>
+<anchor xml:id="_structf__conv__context_1adc8d025dd45d8729c0204d4faedad47c"/><section>
+    <title>wbuf</title>
+<indexterm><primary>wbuf</primary><secondary>f_conv_context</secondary></indexterm>
+<indexterm><primary>f_conv_context</primary><secondary>wbuf</secondary></indexterm>
+<para><computeroutput>wchar_t* f_conv_context::wbuf</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8c">fort.c</link></section>
+</section>

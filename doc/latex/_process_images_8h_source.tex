@@ -1,0 +1,74 @@
+\hypertarget{_process_images_8h_source}{}\doxysection{Process\+Images.\+h}
+\label{_process_images_8h_source}\index{C:/workspace/Computer Vision/OpenCVTest/ProcessImages.h@{C:/workspace/Computer Vision/OpenCVTest/ProcessImages.h}}
+\mbox{\hyperlink{_process_images_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include<iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include<string>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include<opencv2/opencv.hpp>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <opencv2/imgproc/imgproc.hpp>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}wtypes.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_metric_8h}{Metric.h}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{_process_images_8h_abdd02efbfa8fcace42ce961719cc3f90}{NUMBER\_OF\_IMAGES}} = 37;}
+\DoxyCodeLine{11 \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{_process_images_8h_afa81a4660c644f4ce2b0c7733eef732b}{DARKNESS\_THRESHOLD}} = 100;}
+\DoxyCodeLine{12 \textcolor{keyword}{const} \textcolor{keywordtype}{float} \mbox{\hyperlink{_process_images_8h_a222f56ad35c1d2d868a2134d8fe51fc5}{WHITE\_PIXEL\_TRESHOLD}} = 0.4700;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_process_images}{ProcessImages}} \{}
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     std::string \mbox{\hyperlink{class_process_images_a53f909863405fc93ae087a39b4f0590b}{imageToRead}};}
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_process_images_a7b13dc138ee8def909f17644e783210b}{ddepth}} = CV\_8U;}
+\DoxyCodeLine{18     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_process_images_a8f99452a82acb742ee91adf0bece6cff}{downHeight}} = 800;}
+\DoxyCodeLine{19     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_process_images_ac2dad1b7fe1f247c5f473f978afdead3}{downWidth}} = 1000;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_process_images_a67192960af7101dcae55377d9003d4a4}{desktopWidth}};}
+\DoxyCodeLine{22     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_process_images_afde554204c2750ee8be6f69a1602f842}{desktopHeigth}};}
+\DoxyCodeLine{23     \mbox{\hyperlink{class_metric}{Metric}} \mbox{\hyperlink{class_process_images_a7d1e46fa343dcd6bff1a1b4f5a149286}{metric}};}
+\DoxyCodeLine{24     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_process_images_a81c4a43b01785d88db8d8b62f39b7db0}{recognizedLicensePlates}} = 0;}
+\DoxyCodeLine{25     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_process_images_aed9d26d4cb9d26b28f6fee377752cde8}{index}} = 0;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     cv::Mat \mbox{\hyperlink{class_process_images_a071600f3a5a99c2f0b9ce3cf92c93fa0}{image}},}
+\DoxyCodeLine{28         \mbox{\hyperlink{class_process_images_a680ace36d4e9ce32554559880432db6c}{imageGrey}},}
+\DoxyCodeLine{29         \mbox{\hyperlink{class_process_images_a4d24f628ab8f1738660e84c1b5213ebb}{imageBlurred}},}
+\DoxyCodeLine{30         \mbox{\hyperlink{class_process_images_add16033a84609c1981797c90f8480d63}{imageThresh}},}
+\DoxyCodeLine{31         \mbox{\hyperlink{class_process_images_a64f1f3a0fcc601fb8c3dae108c11f612}{imageThreshResized}},}
+\DoxyCodeLine{32         \mbox{\hyperlink{class_process_images_a997f657a63ad978725fcc4f59cb4b4a0}{sobelX}},}
+\DoxyCodeLine{33         \mbox{\hyperlink{class_process_images_a61f8c9a3b0de5a10c2e58ea6558a0c7c}{sobelY}},}
+\DoxyCodeLine{34         \mbox{\hyperlink{class_process_images_a03532397b05bf6c0fcdcbb372311a612}{sobelResult}},}
+\DoxyCodeLine{35         \mbox{\hyperlink{class_process_images_a96ab7ba2813c40c9010522fb800d8cd7}{erodeResult}},}
+\DoxyCodeLine{36         \mbox{\hyperlink{class_process_images_a6e09ae9bf1f3f85da922491126a7714f}{dilateResult}},}
+\DoxyCodeLine{37         \mbox{\hyperlink{class_process_images_ae078cda05bc2522ebf981496798e25ff}{imageConcat}},}
+\DoxyCodeLine{38         \mbox{\hyperlink{class_process_images_a552358349fd359163c990a19162fa6cc}{resizedDown}},}
+\DoxyCodeLine{39         \mbox{\hyperlink{class_process_images_a66de31bf5e9a9a7af7c99d08ec76908d}{res}},}
+\DoxyCodeLine{40         \mbox{\hyperlink{class_process_images_ad41da6d9998d6fc25e0645d066ac3dc3}{newImage}};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     std::vector<std::vector<cv::Point>> \mbox{\hyperlink{class_process_images_a32bcd8a93f690e6cbd1ece0b2c8ffcbb}{contours}}, \mbox{\hyperlink{class_process_images_a8a733185159495f387c267b2a41fc465}{contoursSecond}};}
+\DoxyCodeLine{43     std::vector<cv::Vec4i> \mbox{\hyperlink{class_process_images_a0b6db8b68f4834d9e0ba59a5f0149dc1}{hierarchy}}, \mbox{\hyperlink{class_process_images_a7469114898aec0381d6b738a25414f71}{hierarchySecond}};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_images_a89c6af346f21df2d0d48ead7c56c16b2}{initLabels}}();}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{50     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_images_aff8a4649ca46f947a49161aa52373782}{preprocessImage}}(cv::Mat \mbox{\hyperlink{class_process_images_a071600f3a5a99c2f0b9ce3cf92c93fa0}{image}});}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_images_ae63306723484c1f4792e8e36178bfa3a}{processAll}}();}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{64     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_images_abe35e22c3933e6821148fcc20c881bdb}{filterContours}}(\textcolor{keywordtype}{bool} brighter);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{68     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_images_af5b29d4c119c6b878d827770ec728f84}{displayResults}}(cv::Mat\& image\_copy);}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_images_a2e3b110dca74c6425756a44cf85d27c5}{countInnerContours}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& contourCounter, \textcolor{keywordtype}{int} i, cv::Mat\& subImgCopy);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{81     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_images_aa6c3df82e2b18cc077b68a85380c573f}{printCandidateData}}(\textcolor{keywordtype}{int} i, cv::Rect2f\& resultRect, \textcolor{keywordtype}{double} whitePixelsInRectangle, \textcolor{keywordtype}{float} proportionAreaWhitepixels);}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{86     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_images_ac01f497ee9e3c4a839139b9ac0db3333}{isRectangle}}(cv::Rect2f\& resultRect, \textcolor{keywordtype}{int}\& retflag);}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{91     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_process_images_aa457ce91f8c5be8defcce852b47b30cb}{isImageBright}}(cv::Mat \mbox{\hyperlink{class_process_images_a071600f3a5a99c2f0b9ce3cf92c93fa0}{image}});}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{96     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_images_a55d2ff847d9bb53e625a442d819e73dc}{makeBrighter}}(\textcolor{keywordtype}{double} alpha, \textcolor{keywordtype}{int} beta);}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{101     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_images_a9e0793b87aa559b6b11bbfa256eb8624}{gammaCorrection}}(\textcolor{keyword}{const} cv::Mat\& img, \textcolor{keyword}{const} \textcolor{keywordtype}{double} gamma\_);}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{104     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_images_afa1cb9a04d9fe538fd39b88cc8cc3599}{getDesktopResolution}}();}
+\DoxyCodeLine{105 \};}
+
+\end{DoxyCode}

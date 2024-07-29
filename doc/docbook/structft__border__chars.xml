@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structft__border__chars" xml:lang="en-US">
+<title>ft_border_chars Struct Reference</title>
+<indexterm><primary>ft_border_chars</primary></indexterm>
+<para>
+<computeroutput>#include &lt;fort.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>const char * <link linkend="_structft__border__chars_1a9f7387898911a068b05ba35c8fcdbc4c">top_border_ch</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_structft__border__chars_1a12d0176ee01e79da53a900bd532cab77">separator_ch</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_structft__border__chars_1a34679517e199cd4a8a23f95a473f3c68">bottom_border_ch</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_structft__border__chars_1ad9359ff95b64fe8941eba9c0b33bedcb">side_border_ch</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_structft__border__chars_1a75ca506f5abb4be80c9071e0597d710c">out_intersect_ch</link></para>
+</listitem>
+            <listitem><para>const char * <link linkend="_structft__border__chars_1ab6c7ec8feb16b52d7e39e185a060caf6">in_intersect_ch</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Structure describing border appearance. </para>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structft__border__chars_1a34679517e199cd4a8a23f95a473f3c68"/><section>
+    <title>bottom_border_ch</title>
+<indexterm><primary>bottom_border_ch</primary><secondary>ft_border_chars</secondary></indexterm>
+<indexterm><primary>ft_border_chars</primary><secondary>bottom_border_ch</secondary></indexterm>
+<para><computeroutput>const char* ft_border_chars::bottom_border_ch</computeroutput></para></section>
+<anchor xml:id="_structft__border__chars_1ab6c7ec8feb16b52d7e39e185a060caf6"/><section>
+    <title>in_intersect_ch</title>
+<indexterm><primary>in_intersect_ch</primary><secondary>ft_border_chars</secondary></indexterm>
+<indexterm><primary>ft_border_chars</primary><secondary>in_intersect_ch</secondary></indexterm>
+<para><computeroutput>const char* ft_border_chars::in_intersect_ch</computeroutput></para></section>
+<anchor xml:id="_structft__border__chars_1a75ca506f5abb4be80c9071e0597d710c"/><section>
+    <title>out_intersect_ch</title>
+<indexterm><primary>out_intersect_ch</primary><secondary>ft_border_chars</secondary></indexterm>
+<indexterm><primary>ft_border_chars</primary><secondary>out_intersect_ch</secondary></indexterm>
+<para><computeroutput>const char* ft_border_chars::out_intersect_ch</computeroutput></para></section>
+<anchor xml:id="_structft__border__chars_1a12d0176ee01e79da53a900bd532cab77"/><section>
+    <title>separator_ch</title>
+<indexterm><primary>separator_ch</primary><secondary>ft_border_chars</secondary></indexterm>
+<indexterm><primary>ft_border_chars</primary><secondary>separator_ch</secondary></indexterm>
+<para><computeroutput>const char* ft_border_chars::separator_ch</computeroutput></para></section>
+<anchor xml:id="_structft__border__chars_1ad9359ff95b64fe8941eba9c0b33bedcb"/><section>
+    <title>side_border_ch</title>
+<indexterm><primary>side_border_ch</primary><secondary>ft_border_chars</secondary></indexterm>
+<indexterm><primary>ft_border_chars</primary><secondary>side_border_ch</secondary></indexterm>
+<para><computeroutput>const char* ft_border_chars::side_border_ch</computeroutput></para></section>
+<anchor xml:id="_structft__border__chars_1a9f7387898911a068b05ba35c8fcdbc4c"/><section>
+    <title>top_border_ch</title>
+<indexterm><primary>top_border_ch</primary><secondary>ft_border_chars</secondary></indexterm>
+<indexterm><primary>ft_border_chars</primary><secondary>top_border_ch</secondary></indexterm>
+<para><computeroutput>const char* ft_border_chars::top_border_ch</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8h">fort.h</link></section>
+</section>

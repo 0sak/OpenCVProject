@@ -1,0 +1,2338 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_fort_8h" xml:lang="en-US">
+<title>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/fort.h File Reference</title>
+<indexterm><primary>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/fort.h</primary></indexterm>
+<para>
+
+<para>Main header file describing libfort API. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &lt;stddef.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdint.h&gt;
+#include &lt;limits.h&gt;
+</programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structft__border__chars">ft_border_chars</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structft__border__style">ft_border_style</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_fort_8h_1a8d395d7b047bc27bc45d67e93ccd1189">LIBFORT_MAJOR_VERSION</link>   0</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a42bb08f12767dcf3fbd7fd8d9e3bebdf">LIBFORT_MINOR_VERSION</link>   5</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1ae3928dc9499219d0cdec977cf1a904f5">LIBFORT_REVISION</link>   0</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a8ca57317c0ba39449097a784cc00a818">LIBFORT_VERSION_STR</link>   &quot;0.5.0&quot;</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a53e276ed7d1d967b914271c065f649d2">FT_HAVE_WCHAR</link></para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a6af004300336e4c63a1fdf59698896d1">FT_HAVE_UTF8</link></para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a07f0c8ab6e4b3cff5d02dfd41dc4ffe0">FT_SUCCESS</link>   0</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a1d63717d26b0623b922dd4c7e3ad56e8">FT_MEMORY_ERROR</link>   -1</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1ad0ec3314d73a84b1edb194b9c72a8c21">FT_EINVAL</link>   -2</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a4b7146d6fb5f5349b4f8028601e4e2ff">FT_INTERN_ERROR</link>   -3</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a292e7b1093ae354cd2f2e122d0eff729">FT_GEN_ERROR</link>   -4</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a5c6f8ddf4b77763f2a8ab042db36f482">FT_IS_SUCCESS</link>(arg)   ((arg) &gt;= 0)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1acca4660b494725c897b9fd09ec0be057">FT_IS_ERROR</link>(arg)   ((arg) &lt; 0)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a2c09d90642d39a222d6e4f723e2a93bd">FT_PRINTF_ATTRIBUTE_FORMAT</link>(string_index,  first_to_check)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1aeb1059360e481caef1d2dcced5d5b646">ft_write</link>(table, ...)       (0 ? FT_CHECK_IF_ARGS_ARE_STRINGS(__VA_ARGS__) : <link linkend="_fort_8h_1a69052e887e05d6dc3a0891550127619b">ft_nwrite</link>(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a4ebdb2eea82c8b8c3b80f0c7b7bf1536">ft_write_ln</link>(table, ...)       (0 ? FT_CHECK_IF_ARGS_ARE_STRINGS(__VA_ARGS__) : <link linkend="_fort_8h_1a09342b73950f97c0e73bbed2df40b48a">ft_nwrite_ln</link>(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a6176acd755883465f939d260da253005">FT_MAX_ROW_INDEX</link>   (UINT_MAX - 2)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1ac34ce9c2708abc0d5fd49d36f1b99387">FT_MAX_COL_INDEX</link>   (UINT_MAX - 2)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a316500e47bdb4bccfd2335bc9c3533cc">ft_wwrite</link>(table, ...)       (0 ? CHECK_IF_ARGS_ARE_WSTRINGS(__VA_ARGS__) : <link linkend="_fort_8h_1aac28f7840d0a323ca3c4df1e6f43bdf6">ft_nwwrite</link>(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1aaab4b64b828550757215acb4f44b8ae3">ft_wwrite_ln</link>(table, ...)       (0 ? CHECK_IF_ARGS_ARE_WSTRINGS(__VA_ARGS__) : <link linkend="_fort_8h_1a313b73c39aa6127200cd7b7fee92d8f0">ft_nwwrite_ln</link>(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a890cf057608c39d3bba387388ed07040">ft_u8write</link>(table, ...)       (<link linkend="_fort_8h_1a61aec826074239282309ce1369563f64">ft_u8nwrite</link>(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1af5c83d4e33e0a8804d59310cafd97350">ft_u8write_ln</link>(table, ...)       (<link linkend="_fort_8h_1a4c378ecb73c881a0793930c76a64ff41">ft_u8nwrite_ln</link>(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect><title>Special macros to define cell position (row and column).</title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_fort_8h_1ad5b6b32262309f37874d11369f47c7a5">FT_ANY_COLUMN</link>   (UINT_MAX)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a460dec76b33f388a239206692141f6dd">FT_CUR_COLUMN</link>   (UINT_MAX - 1)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a18fe66b5bbb33d73be7ba06518c1f40d">FT_ANY_ROW</link>   (UINT_MAX)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a7b2a188460e60fa72f0182fc3d03c5e6">FT_CUR_ROW</link>   (UINT_MAX - 1)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect><title>Cell properties identifiers.</title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_fort_8h_1aaa59596ed65b02b3c698e9aaf8d16bbd">FT_CPROP_MIN_WIDTH</link>   (0x01U &lt;&lt; 0)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1ae5586130d3dd258d477e370923d0889e">FT_CPROP_TEXT_ALIGN</link>   (0x01U &lt;&lt; 1)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a2a5fd97edb51283e0baddcf896555e9d">FT_CPROP_TOP_PADDING</link>   (0x01U &lt;&lt; 2)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a47c8f3a9d83e32ac8f3ab5997dc5b542">FT_CPROP_BOTTOM_PADDING</link>   (0x01U &lt;&lt; 3)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a536d5cbb92b59dbc2e28891fa5bcd114">FT_CPROP_LEFT_PADDING</link>   (0x01U &lt;&lt; 4)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a11cdcb1be7737d1f65f2b6bc4b8b7e86">FT_CPROP_RIGHT_PADDING</link>   (0x01U &lt;&lt; 5)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1aadf8488e2ae0a4e7c2e4ecbc715d2b18">FT_CPROP_EMPTY_STR_HEIGHT</link>   (0x01U &lt;&lt; 6)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1abd5e4b5a6cb494024967f9d22a50c708">FT_CPROP_ROW_TYPE</link>   (0x01U &lt;&lt; 7)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1ad078aa3c64959b51e29ddbc52dc42edc">FT_CPROP_CONT_FG_COLOR</link>   (0x01U &lt;&lt; 8)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a8eec90e0b1b004749b85052422c48671">FT_CPROP_CELL_BG_COLOR</link>   (0x01U &lt;&lt; 9)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a979f10a47f0977e563ebf79d2144a8b1">FT_CPROP_CONT_BG_COLOR</link>   (0x01U &lt;&lt; 10)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a82551a6b4f9bdc48c57fec86faa05052">FT_CPROP_CELL_TEXT_STYLE</link>   (0x01U &lt;&lt; 11)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1aef6afa765c79403917d52a565db47b65">FT_CPROP_CONT_TEXT_STYLE</link>   (0x01U &lt;&lt; 12)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect><title>Table properties identifiers.</title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_fort_8h_1a6556cdb107bc9e5ef97c0e80c8c4492d">FT_TPROP_LEFT_MARGIN</link>   (0x01U &lt;&lt; 0)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a72f9e4b2eb759e81b4bd15798b4af42a">FT_TPROP_TOP_MARGIN</link>   (0x01U &lt;&lt; 1)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a19471b7f5a81ddac7980d4a615b9c020">FT_TPROP_RIGHT_MARGIN</link>   (0x01U &lt;&lt; 2)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1ac12c48db088c87088e471656a72de7ad">FT_TPROP_BOTTOM_MARGIN</link>   (0x01U &lt;&lt; 3)</para>
+</listitem>
+            <listitem><para>#define <link linkend="_fort_8h_1a1de2ce152f17fb058c7d397e97a9837d">FT_TPROP_ADDING_STRATEGY</link>   (0x01U &lt;&lt; 4)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef struct <link linkend="_structft__table">ft_table</link> <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63f">ft_color</link> { 
+<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63face2e85ce681b17d9334eb832a1558445">FT_COLOR_DEFAULT</link> = 0
+, <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa6e1eb39443ae233746378aa84548f553">FT_COLOR_BLACK</link> = 1
+, <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63faf31632500abf110557632f09e267472d">FT_COLOR_RED</link> = 2
+, <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fac27875bf7bc9bb9fec8e7beb79a308a0">FT_COLOR_GREEN</link> = 3
+, 
+<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fae1942de73f0c49658b208f9c42a136a8">FT_COLOR_YELLOW</link> = 4
+, <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa646c06e02caa66410e13dc212242ef16">FT_COLOR_BLUE</link> = 5
+, <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa0f97227c2b13f6c2d88ca06761563a68">FT_COLOR_MAGENTA</link> = 6
+, <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa2e3e4b314fc75407fa5b38cee9fd5a5c">FT_COLOR_CYAN</link> = 7
+, 
+<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa10c39c7d62795e90c3188f0b6a476f10">FT_COLOR_LIGHT_GRAY</link> = 8
+, <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa4f7814c857a35ace99e77c721bdea819">FT_COLOR_DARK_GRAY</link> = 9
+, <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63faee5e46a4b6fbeb64b6eddca826bdc7ae">FT_COLOR_LIGHT_RED</link> = 10
+, <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa37dd75f161f83ea176f74a70a19e763f">FT_COLOR_LIGHT_GREEN</link> = 11
+, 
+<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa84816257c9a5f38a20d0e2ea848a5489">FT_COLOR_LIGHT_YELLOW</link> = 12
+, <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63facebf9e4fe6e259bc0892bd1183c73800">FT_COLOR_LIGHT_BLUE</link> = 13
+, <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fac181922016e12de1a32116b2f1eb5a1f">FT_COLOR_LIGHT_MAGENTA</link> = 14
+, <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa3b5bdee67bbfca060a31ae3d700cb5c4">FT_COLOR_LIGHT_CYAN</link> = 15
+, 
+<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63faebf36fa4c0f9ae7e8aaa651988686e42">FT_COLOR_LIGHT_WHYTE</link> = 16
+ }</para>
+</listitem>
+            <listitem><para>enum <link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0b">ft_text_style</link> { 
+<link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0bad81d0dad8f26df01c149638ccbb6b3e2">FT_TSTYLE_DEFAULT</link> = (1U &lt;&lt; 0)
+, <link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba04256f30849c7cd2b4822e5030fa07fb">FT_TSTYLE_BOLD</link> = (1U &lt;&lt; 1)
+, <link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0baf9c6c97ae4ea6c404ae2e57b8dfab101">FT_TSTYLE_DIM</link> = (1U &lt;&lt; 2)
+, <link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba29c6547c7ae5a297a4547de1b15a3133">FT_TSTYLE_ITALIC</link> = (1U &lt;&lt; 3)
+, 
+<link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba41f3dc969345e99fda4ef48130184745">FT_TSTYLE_UNDERLINED</link> = (1U &lt;&lt; 4)
+, <link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba36c9e2fd7b64982a8f7229fe965440d4">FT_TSTYLE_BLINK</link> = (1U &lt;&lt; 5)
+, <link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba3a4c44c718da5e229c01ab7d6eb05366">FT_TSTYLE_INVERTED</link> = (1U &lt;&lt; 6)
+, <link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba016fa7d5df89fd09ba7ed6daa7021b16">FT_TSTYLE_HIDDEN</link> = (1U &lt;&lt; 7)
+ }</para>
+</listitem>
+            <listitem><para>enum <link linkend="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32c">ft_text_alignment</link> { <link linkend="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32ca62837cbc7c859d5d38d608f51806e66d">FT_ALIGNED_LEFT</link> = 0
+, <link linkend="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32cac43d09334b02f1300989a8789455183e">FT_ALIGNED_CENTER</link>
+, <link linkend="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32ca31bdf997c2db055fe5669e9e174277cc">FT_ALIGNED_RIGHT</link>
+ }</para>
+</listitem>
+            <listitem><para>enum <link linkend="_fort_8h_1a06d9536a2e476d68f5055820535d3b34">ft_row_type</link> { <link linkend="_fort_8h_1a06d9536a2e476d68f5055820535d3b34ae50a530e078dd8425784ca02e66d2433">FT_ROW_COMMON</link> = 0
+, <link linkend="_fort_8h_1a06d9536a2e476d68f5055820535d3b34a2a0a31078eac88202029c3e9bdaa614a">FT_ROW_HEADER</link>
+ }</para>
+</listitem>
+            <listitem><para>enum <link linkend="_fort_8h_1aeed2958a1823084ca6e71883b075baa5">ft_adding_strategy</link> { <link linkend="_fort_8h_1aeed2958a1823084ca6e71883b075baa5aa620d123a0ac00710153d28a6ab65842">FT_STRATEGY_REPLACE</link> = 0
+, <link linkend="_fort_8h_1aeed2958a1823084ca6e71883b075baa5acc1102bce0611e414231a7e41357300f">FT_STRATEGY_INSERT</link>
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * <link linkend="_fort_8h_1a39066bbe359e408ad6d1bb360aa0cf55">ft_create_table</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_fort_8h_1ad8cb9ed46da7455f8b6baed42a4a1d31">ft_destroy_table</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table)</para>
+</listitem>
+            <listitem><para><link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * <link linkend="_fort_8h_1a3dc4461b763ca66b2e2699a61ee99df8">ft_copy_table</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a35af71857b08488797170d7b2a15054a">ft_ln</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_fort_8h_1a71a30e02111b90af7babd37d13f3e4ee">ft_cur_row</link> (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_fort_8h_1a4f3f1b331ee3637e3c8345ecb1b4ebd6">ft_cur_col</link> (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table)</para>
+</listitem>
+            <listitem><para>void <link linkend="_fort_8h_1a6dffc742cbce46e492cd3298de467b16">ft_set_cur_cell</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t row, size_t col)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a6791222986d387c26d905691c30e095b">ft_is_empty</link> (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_fort_8h_1aa7e5d0d485d6c519198a5fe9eb706eba">ft_row_count</link> (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_fort_8h_1acb57251e9e5499b7b983509be936c1d8">ft_col_count</link> (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a53eb304387cf4e99f0198f780bc75dc8">ft_erase_range</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t top_left_row, size_t top_left_col, size_t bottom_right_row, size_t bottom_right_col)</para>
+</listitem>
+            <listitem><para>void <link linkend="_fort_8h_1a08dbade99a0cfc34c549f7ee29a60fe4">ft_set_default_printf_field_separator</link> (char separator)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a69052e887e05d6dc3a0891550127619b">ft_nwrite</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t count, const char *cell_content,...)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a09342b73950f97c0e73bbed2df40b48a">ft_nwrite_ln</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t count, const char *cell_content,...)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a52e0e57e1ead19ce324f76a2eba877fc">ft_row_write</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t cols, const char *row_cells[])</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a6df5c45d231c9dc0cb1af875164bafb9">ft_row_write_ln</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t cols, const char *row_cells[])</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1ac026a41e784483319aa4c7c89a9dfe06">ft_table_write</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t rows, size_t cols, const char *table_cells[])</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1ad9219b581d29cb079847b0bfd6911271">ft_table_write_ln</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t rows, size_t cols, const char *table_cells[])</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a22fc0b6196d1a9a398785e23673eeeb0">ft_add_separator</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table)</para>
+</listitem>
+            <listitem><para>const char * <link linkend="_fort_8h_1aa80a0ba53be3e32a69b9b98478821354">ft_to_string</link> (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1addb2484d7bc2a271be60cf743ae8eaeb">ft_set_default_border_style</link> (const struct <link linkend="_structft__border__style">ft_border_style</link> *style)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1aaa966b7da0ee2e2d2a93dc6a5e1ef81b">ft_set_border_style</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, const struct <link linkend="_structft__border__style">ft_border_style</link> *style)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a894497fac87518023122266da59f8da1">ft_set_default_cell_prop</link> (uint32_t property, int value)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a10dc95b3d810a0ab2bf6c90b7b8c66a4">ft_set_cell_prop</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t row, size_t col, uint32_t property, int value)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a0ebdf7b17d363037f4b0d48ce1438a6c">ft_set_default_tbl_prop</link> (uint32_t property, int value)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1ac7ff4899d39f21d4cf8948c73bbb1595">ft_set_tbl_prop</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, uint32_t property, int value)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1ae958a4787cc8fee9abb452bbced096f8">ft_set_cell_span</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t row, size_t col, size_t hor_span)</para>
+</listitem>
+            <listitem><para>void <link linkend="_fort_8h_1a3477def0e7247bbccacb0c93530aaee7">ft_set_memory_funcs</link> (void *(*f_malloc)(size_t size), void(*f_free)(void *ptr))</para>
+</listitem>
+            <listitem><para>const char * <link linkend="_fort_8h_1ab2d62733c846a3d64dfa5a7c45d1c91b">ft_strerror</link> (int error_code)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a93dacf69774a8a84fecee3035ad7650e">ft_wprintf</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, const wchar_t *fmt,...)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a756d50513a7dbf57d2e7144802dd23f4">ft_wprintf_ln</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, const wchar_t *fmt,...)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1aac28f7840d0a323ca3c4df1e6f43bdf6">ft_nwwrite</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t n, const wchar_t *cell_content,...)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a313b73c39aa6127200cd7b7fee92d8f0">ft_nwwrite_ln</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t n, const wchar_t *cell_content,...)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a2bfe751bbf2c100eda336c30f73fe199">ft_row_wwrite</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t cols, const wchar_t *row_cells[])</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a50c12bee8800d14fc70e6cccb10aee1c">ft_row_wwrite_ln</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t cols, const wchar_t *row_cells[])</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1adb37fd79298ef7f28d9304f3aa135f08">ft_table_wwrite</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t rows, size_t cols, const wchar_t *table_cells[])</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1ac2c4cd5246efb7d713cc0ccd5dad49cf">ft_table_wwrite_ln</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t rows, size_t cols, const wchar_t *table_cells[])</para>
+</listitem>
+            <listitem><para>const wchar_t * <link linkend="_fort_8h_1a03479aafea9aefc5275a02df827cb780">ft_to_wstring</link> (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a61aec826074239282309ce1369563f64">ft_u8nwrite</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t n, const void *cell_content,...)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1a4c378ecb73c881a0793930c76a64ff41">ft_u8nwrite_ln</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, size_t n, const void *cell_content,...)</para>
+</listitem>
+            <listitem><para>int <link linkend="_fort_8h_1ac3f58cfaced19b8571c84aea0827d09b">ft_u8printf</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, const char *fmt,...) <link linkend="_fort_8h_1a2c09d90642d39a222d6e4f723e2a93bd">FT_PRINTF_ATTRIBUTE_FORMAT</link>(2</para>
+</listitem>
+            <listitem><para>int int <link linkend="_fort_8h_1a63da69eff3300456b04ec99118f76abc">ft_u8printf_ln</link> (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table, const char *fmt,...) <link linkend="_fort_8h_1a2c09d90642d39a222d6e4f723e2a93bd">FT_PRINTF_ATTRIBUTE_FORMAT</link>(2</para>
+</listitem>
+            <listitem><para>int int const void * <link linkend="_fort_8h_1a1612cd9b9990ad7f45732831ce4e4577">ft_to_u8string</link> (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> *table)</para>
+</listitem>
+            <listitem><para>void <link linkend="_fort_8h_1ac19c7bf75bde46f17a954159b27724f4">ft_set_u8strwid_func</link> (int(*u8strwid)(const void *beg, const void *end, size_t *width))</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+<simplesect><title>Built-in table border styles.</title>
+
+<para><note><title>Note</title>
+
+<para>Built-in border styles (FT_BASIC_STYLE, FT_BASIC2_STYLE ...) can be used as arguments for <link linkend="_fort_8h_1aaa966b7da0ee2e2d2a93dc6a5e1ef81b">ft_set_border_style</link> and <link linkend="_fort_8h_1addb2484d7bc2a271be60cf743ae8eaeb">ft_set_default_border_style</link>, but their fields shouldn&apos;t be accessed directly because implementation doesn&apos;t guarantee that these objects are properly initialized. </para>
+</note>
+</para>
+        <itemizedlist>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1a4566853be8c0cdf91ba9c3f50eb426d4">FT_BASIC_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1ab3ed5c4f1c4f7ca26b52b668fd4717f9">FT_BASIC2_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1a7581c1fec7b7c2b88f93e3445c62424d">FT_SIMPLE_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1add469a34d262e6368adaa636d1cf76b7">FT_PLAIN_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1a148f3f2c872531fdeca8e4ace60eb258">FT_DOT_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1aa8916e07fa9a8d1f24c1e1d1e6b68838">FT_EMPTY_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1a357302cc732e53c1c7049842fc0fc3c7">FT_EMPTY2_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1ae4723d497ac2e6980b43ac7732e21f2d">FT_SOLID_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1aedcc877521b55c87758949920ef0ee96">FT_SOLID_ROUND_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1a91de4cab0e239a201fa2a7dc961b2fdc">FT_NICE_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1ad0e15260ea4a4c66f0bfa2c82b889107">FT_DOUBLE_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1a23314491db1204b8654f8cd610692260">FT_DOUBLE2_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1af392ad3ae759382d95921e1efb652744">FT_BOLD_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1a7b82fd38c92a289fc641d3666684bcd4">FT_BOLD2_STYLE</link></para>
+</listitem>
+            <listitem><para>const struct <link linkend="_structft__border__style">ft_border_style</link> *const <link linkend="_fort_8h_1aef91486de193b4dfe511a992f9b02bb9">FT_FRAME_STYLE</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Main header file describing libfort API. </para>
+
+<para>This file contains declarations of all libfort functions and macro definitions. </para>
+</section>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_fort_8h_1ad5b6b32262309f37874d11369f47c7a5"/><section>
+    <title>FT_ANY_COLUMN</title>
+<indexterm><primary>FT_ANY_COLUMN</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_ANY_COLUMN</secondary></indexterm>
+<para><computeroutput>#define FT_ANY_COLUMN   (UINT_MAX)</computeroutput></para>
+<para>Any column (can be used to refer to all cells in a row) </para>
+</section>
+<anchor xml:id="_fort_8h_1a18fe66b5bbb33d73be7ba06518c1f40d"/><section>
+    <title>FT_ANY_ROW</title>
+<indexterm><primary>FT_ANY_ROW</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_ANY_ROW</secondary></indexterm>
+<para><computeroutput>#define FT_ANY_ROW   (UINT_MAX)</computeroutput></para>
+<para>Any row (can be used to refer to all cells in a column) </para>
+</section>
+<anchor xml:id="_fort_8h_1a47c8f3a9d83e32ac8f3ab5997dc5b542"/><section>
+    <title>FT_CPROP_BOTTOM_PADDING</title>
+<indexterm><primary>FT_CPROP_BOTTOM_PADDING</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CPROP_BOTTOM_PADDING</secondary></indexterm>
+<para><computeroutput>#define FT_CPROP_BOTTOM_PADDING   (0x01U &lt;&lt; 3)</computeroutput></para>
+<para>Bottom padding for cell content </para>
+</section>
+<anchor xml:id="_fort_8h_1a8eec90e0b1b004749b85052422c48671"/><section>
+    <title>FT_CPROP_CELL_BG_COLOR</title>
+<indexterm><primary>FT_CPROP_CELL_BG_COLOR</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CPROP_CELL_BG_COLOR</secondary></indexterm>
+<para><computeroutput>#define FT_CPROP_CELL_BG_COLOR   (0x01U &lt;&lt; 9)</computeroutput></para>
+<para>Cell background color </para>
+</section>
+<anchor xml:id="_fort_8h_1a82551a6b4f9bdc48c57fec86faa05052"/><section>
+    <title>FT_CPROP_CELL_TEXT_STYLE</title>
+<indexterm><primary>FT_CPROP_CELL_TEXT_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CPROP_CELL_TEXT_STYLE</secondary></indexterm>
+<para><computeroutput>#define FT_CPROP_CELL_TEXT_STYLE   (0x01U &lt;&lt; 11)</computeroutput></para>
+<para>Cell text style </para>
+</section>
+<anchor xml:id="_fort_8h_1a979f10a47f0977e563ebf79d2144a8b1"/><section>
+    <title>FT_CPROP_CONT_BG_COLOR</title>
+<indexterm><primary>FT_CPROP_CONT_BG_COLOR</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CPROP_CONT_BG_COLOR</secondary></indexterm>
+<para><computeroutput>#define FT_CPROP_CONT_BG_COLOR   (0x01U &lt;&lt; 10)</computeroutput></para>
+<para>Cell content background color </para>
+</section>
+<anchor xml:id="_fort_8h_1ad078aa3c64959b51e29ddbc52dc42edc"/><section>
+    <title>FT_CPROP_CONT_FG_COLOR</title>
+<indexterm><primary>FT_CPROP_CONT_FG_COLOR</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CPROP_CONT_FG_COLOR</secondary></indexterm>
+<para><computeroutput>#define FT_CPROP_CONT_FG_COLOR   (0x01U &lt;&lt; 8)</computeroutput></para>
+<para>Cell content foreground text color </para>
+</section>
+<anchor xml:id="_fort_8h_1aef6afa765c79403917d52a565db47b65"/><section>
+    <title>FT_CPROP_CONT_TEXT_STYLE</title>
+<indexterm><primary>FT_CPROP_CONT_TEXT_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CPROP_CONT_TEXT_STYLE</secondary></indexterm>
+<para><computeroutput>#define FT_CPROP_CONT_TEXT_STYLE   (0x01U &lt;&lt; 12)</computeroutput></para>
+<para>Cell content text style </para>
+</section>
+<anchor xml:id="_fort_8h_1aadf8488e2ae0a4e7c2e4ecbc715d2b18"/><section>
+    <title>FT_CPROP_EMPTY_STR_HEIGHT</title>
+<indexterm><primary>FT_CPROP_EMPTY_STR_HEIGHT</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CPROP_EMPTY_STR_HEIGHT</secondary></indexterm>
+<para><computeroutput>#define FT_CPROP_EMPTY_STR_HEIGHT   (0x01U &lt;&lt; 6)</computeroutput></para>
+<para>Height of empty cell </para>
+</section>
+<anchor xml:id="_fort_8h_1a536d5cbb92b59dbc2e28891fa5bcd114"/><section>
+    <title>FT_CPROP_LEFT_PADDING</title>
+<indexterm><primary>FT_CPROP_LEFT_PADDING</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CPROP_LEFT_PADDING</secondary></indexterm>
+<para><computeroutput>#define FT_CPROP_LEFT_PADDING   (0x01U &lt;&lt; 4)</computeroutput></para>
+<para>Left padding for cell content </para>
+</section>
+<anchor xml:id="_fort_8h_1aaa59596ed65b02b3c698e9aaf8d16bbd"/><section>
+    <title>FT_CPROP_MIN_WIDTH</title>
+<indexterm><primary>FT_CPROP_MIN_WIDTH</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CPROP_MIN_WIDTH</secondary></indexterm>
+<para><computeroutput>#define FT_CPROP_MIN_WIDTH   (0x01U &lt;&lt; 0)</computeroutput></para>
+<para>Minimum width </para>
+</section>
+<anchor xml:id="_fort_8h_1a11cdcb1be7737d1f65f2b6bc4b8b7e86"/><section>
+    <title>FT_CPROP_RIGHT_PADDING</title>
+<indexterm><primary>FT_CPROP_RIGHT_PADDING</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CPROP_RIGHT_PADDING</secondary></indexterm>
+<para><computeroutput>#define FT_CPROP_RIGHT_PADDING   (0x01U &lt;&lt; 5)</computeroutput></para>
+<para>Right padding for cell content </para>
+</section>
+<anchor xml:id="_fort_8h_1abd5e4b5a6cb494024967f9d22a50c708"/><section>
+    <title>FT_CPROP_ROW_TYPE</title>
+<indexterm><primary>FT_CPROP_ROW_TYPE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CPROP_ROW_TYPE</secondary></indexterm>
+<para><computeroutput>#define FT_CPROP_ROW_TYPE   (0x01U &lt;&lt; 7)</computeroutput></para>
+<para>Row type </para>
+</section>
+<anchor xml:id="_fort_8h_1ae5586130d3dd258d477e370923d0889e"/><section>
+    <title>FT_CPROP_TEXT_ALIGN</title>
+<indexterm><primary>FT_CPROP_TEXT_ALIGN</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CPROP_TEXT_ALIGN</secondary></indexterm>
+<para><computeroutput>#define FT_CPROP_TEXT_ALIGN   (0x01U &lt;&lt; 1)</computeroutput></para>
+<para>Text alignment </para>
+</section>
+<anchor xml:id="_fort_8h_1a2a5fd97edb51283e0baddcf896555e9d"/><section>
+    <title>FT_CPROP_TOP_PADDING</title>
+<indexterm><primary>FT_CPROP_TOP_PADDING</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CPROP_TOP_PADDING</secondary></indexterm>
+<para><computeroutput>#define FT_CPROP_TOP_PADDING   (0x01U &lt;&lt; 2)</computeroutput></para>
+<para>Top padding for cell content </para>
+</section>
+<anchor xml:id="_fort_8h_1a460dec76b33f388a239206692141f6dd"/><section>
+    <title>FT_CUR_COLUMN</title>
+<indexterm><primary>FT_CUR_COLUMN</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CUR_COLUMN</secondary></indexterm>
+<para><computeroutput>#define FT_CUR_COLUMN   (UINT_MAX - 1)</computeroutput></para>
+<para>Current column </para>
+</section>
+<anchor xml:id="_fort_8h_1a7b2a188460e60fa72f0182fc3d03c5e6"/><section>
+    <title>FT_CUR_ROW</title>
+<indexterm><primary>FT_CUR_ROW</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_CUR_ROW</secondary></indexterm>
+<para><computeroutput>#define FT_CUR_ROW   (UINT_MAX - 1)</computeroutput></para>
+<para>Current row </para>
+</section>
+<anchor xml:id="_fort_8h_1ad0ec3314d73a84b1edb194b9c72a8c21"/><section>
+    <title>FT_EINVAL</title>
+<indexterm><primary>FT_EINVAL</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_EINVAL</secondary></indexterm>
+<para><computeroutput>#define FT_EINVAL   -2</computeroutput></para>
+<para>Invalid argument. </para>
+</section>
+<anchor xml:id="_fort_8h_1a292e7b1093ae354cd2f2e122d0eff729"/><section>
+    <title>FT_GEN_ERROR</title>
+<indexterm><primary>FT_GEN_ERROR</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_GEN_ERROR</secondary></indexterm>
+<para><computeroutput>#define FT_GEN_ERROR   -4</computeroutput></para>
+<para>General error.</para>
+
+<para>Different errors that do not belong to the group of errors mentioned above. </para>
+</section>
+<anchor xml:id="_fort_8h_1a6af004300336e4c63a1fdf59698896d1"/><section>
+    <title>FT_HAVE_UTF8</title>
+<indexterm><primary>FT_HAVE_UTF8</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_HAVE_UTF8</secondary></indexterm>
+<para><computeroutput>#define FT_HAVE_UTF8</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a53e276ed7d1d967b914271c065f649d2"/><section>
+    <title>FT_HAVE_WCHAR</title>
+<indexterm><primary>FT_HAVE_WCHAR</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_HAVE_WCHAR</secondary></indexterm>
+<para><computeroutput>#define FT_HAVE_WCHAR</computeroutput></para>
+<para>libfort configuration macros (to disable wchar_t/UTF-8 support this macros should be defined) #define FT_CONGIG_DISABLE_WCHAR #define FT_CONGIG_DISABLE_UTF8 </para>
+</section>
+<anchor xml:id="_fort_8h_1a4b7146d6fb5f5349b4f8028601e4e2ff"/><section>
+    <title>FT_INTERN_ERROR</title>
+<indexterm><primary>FT_INTERN_ERROR</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_INTERN_ERROR</secondary></indexterm>
+<para><computeroutput>#define FT_INTERN_ERROR   -3</computeroutput></para>
+<para>Libfort internal logic error.</para>
+
+<para>Usually such errors mean that something is wrong in libfort internal logic and in most of cases cause of these errors is a library bug. </para>
+</section>
+<anchor xml:id="_fort_8h_1acca4660b494725c897b9fd09ec0be057"/><section>
+    <title>FT_IS_ERROR</title>
+<indexterm><primary>FT_IS_ERROR</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_IS_ERROR</secondary></indexterm>
+<para><computeroutput>#define FT_IS_ERROR( arg)   ((arg) &lt; 0)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a5c6f8ddf4b77763f2a8ab042db36f482"/><section>
+    <title>FT_IS_SUCCESS</title>
+<indexterm><primary>FT_IS_SUCCESS</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_IS_SUCCESS</secondary></indexterm>
+<para><computeroutput>#define FT_IS_SUCCESS( arg)   ((arg) &gt;= 0)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1ac34ce9c2708abc0d5fd49d36f1b99387"/><section>
+    <title>FT_MAX_COL_INDEX</title>
+<indexterm><primary>FT_MAX_COL_INDEX</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_MAX_COL_INDEX</secondary></indexterm>
+<para><computeroutput>#define FT_MAX_COL_INDEX   (UINT_MAX - 2)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a6176acd755883465f939d260da253005"/><section>
+    <title>FT_MAX_ROW_INDEX</title>
+<indexterm><primary>FT_MAX_ROW_INDEX</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_MAX_ROW_INDEX</secondary></indexterm>
+<para><computeroutput>#define FT_MAX_ROW_INDEX   (UINT_MAX - 2)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a1d63717d26b0623b922dd4c7e3ad56e8"/><section>
+    <title>FT_MEMORY_ERROR</title>
+<indexterm><primary>FT_MEMORY_ERROR</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_MEMORY_ERROR</secondary></indexterm>
+<para><computeroutput>#define FT_MEMORY_ERROR   -1</computeroutput></para>
+<para>Memory allocation failed. </para>
+</section>
+<anchor xml:id="_fort_8h_1a2c09d90642d39a222d6e4f723e2a93bd"/><section>
+    <title>FT_PRINTF_ATTRIBUTE_FORMAT</title>
+<indexterm><primary>FT_PRINTF_ATTRIBUTE_FORMAT</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_PRINTF_ATTRIBUTE_FORMAT</secondary></indexterm>
+<para><computeroutput>#define FT_PRINTF_ATTRIBUTE_FORMAT( string_index,  first_to_check)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a07f0c8ab6e4b3cff5d02dfd41dc4ffe0"/><section>
+    <title>FT_SUCCESS</title>
+<indexterm><primary>FT_SUCCESS</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_SUCCESS</secondary></indexterm>
+<para><computeroutput>#define FT_SUCCESS   0</computeroutput></para>
+<para>Operation successfully ended. </para>
+</section>
+<anchor xml:id="_fort_8h_1a1de2ce152f17fb058c7d397e97a9837d"/><section>
+    <title>FT_TPROP_ADDING_STRATEGY</title>
+<indexterm><primary>FT_TPROP_ADDING_STRATEGY</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_TPROP_ADDING_STRATEGY</secondary></indexterm>
+<para><computeroutput>#define FT_TPROP_ADDING_STRATEGY   (0x01U &lt;&lt; 4)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1ac12c48db088c87088e471656a72de7ad"/><section>
+    <title>FT_TPROP_BOTTOM_MARGIN</title>
+<indexterm><primary>FT_TPROP_BOTTOM_MARGIN</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_TPROP_BOTTOM_MARGIN</secondary></indexterm>
+<para><computeroutput>#define FT_TPROP_BOTTOM_MARGIN   (0x01U &lt;&lt; 3)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a6556cdb107bc9e5ef97c0e80c8c4492d"/><section>
+    <title>FT_TPROP_LEFT_MARGIN</title>
+<indexterm><primary>FT_TPROP_LEFT_MARGIN</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_TPROP_LEFT_MARGIN</secondary></indexterm>
+<para><computeroutput>#define FT_TPROP_LEFT_MARGIN   (0x01U &lt;&lt; 0)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a19471b7f5a81ddac7980d4a615b9c020"/><section>
+    <title>FT_TPROP_RIGHT_MARGIN</title>
+<indexterm><primary>FT_TPROP_RIGHT_MARGIN</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_TPROP_RIGHT_MARGIN</secondary></indexterm>
+<para><computeroutput>#define FT_TPROP_RIGHT_MARGIN   (0x01U &lt;&lt; 2)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a72f9e4b2eb759e81b4bd15798b4af42a"/><section>
+    <title>FT_TPROP_TOP_MARGIN</title>
+<indexterm><primary>FT_TPROP_TOP_MARGIN</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_TPROP_TOP_MARGIN</secondary></indexterm>
+<para><computeroutput>#define FT_TPROP_TOP_MARGIN   (0x01U &lt;&lt; 1)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a890cf057608c39d3bba387388ed07040"/><section>
+    <title>ft_u8write</title>
+<indexterm><primary>ft_u8write</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_u8write</secondary></indexterm>
+<para><computeroutput>#define ft_u8write( table,  ...)       (<link linkend="_fort_8h_1a61aec826074239282309ce1369563f64">ft_u8nwrite</link>(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1af5c83d4e33e0a8804d59310cafd97350"/><section>
+    <title>ft_u8write_ln</title>
+<indexterm><primary>ft_u8write_ln</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_u8write_ln</secondary></indexterm>
+<para><computeroutput>#define ft_u8write_ln( table,  ...)       (<link linkend="_fort_8h_1a4c378ecb73c881a0793930c76a64ff41">ft_u8nwrite_ln</link>(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1aeb1059360e481caef1d2dcced5d5b646"/><section>
+    <title>ft_write</title>
+<indexterm><primary>ft_write</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_write</secondary></indexterm>
+<para><computeroutput>#define ft_write( table,  ...)       (0 ? FT_CHECK_IF_ARGS_ARE_STRINGS(__VA_ARGS__) : <link linkend="_fort_8h_1a69052e887e05d6dc3a0891550127619b">ft_nwrite</link>(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))</computeroutput></para>
+<para>Write strings to the table.</para>
+
+<para>Write specified strings to the same number of consecutive cells in the current row.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>...</entry><entry>
+<para>Strings to write. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a4ebdb2eea82c8b8c3b80f0c7b7bf1536"/><section>
+    <title>ft_write_ln</title>
+<indexterm><primary>ft_write_ln</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_write_ln</secondary></indexterm>
+<para><computeroutput>#define ft_write_ln( table,  ...)       (0 ? FT_CHECK_IF_ARGS_ARE_STRINGS(__VA_ARGS__) : <link linkend="_fort_8h_1a09342b73950f97c0e73bbed2df40b48a">ft_nwrite_ln</link>(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))</computeroutput></para>
+<para>Write strings to the table and go to the next line.</para>
+
+<para>Write specified strings to the same number of consecutive cells in the current row and move current position to the first cell of the next line(row).</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>...</entry><entry>
+<para>Strings to write. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a316500e47bdb4bccfd2335bc9c3533cc"/><section>
+    <title>ft_wwrite</title>
+<indexterm><primary>ft_wwrite</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_wwrite</secondary></indexterm>
+<para><computeroutput>#define ft_wwrite( table,  ...)       (0 ? CHECK_IF_ARGS_ARE_WSTRINGS(__VA_ARGS__) : <link linkend="_fort_8h_1aac28f7840d0a323ca3c4df1e6f43bdf6">ft_nwwrite</link>(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1aaab4b64b828550757215acb4f44b8ae3"/><section>
+    <title>ft_wwrite_ln</title>
+<indexterm><primary>ft_wwrite_ln</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_wwrite_ln</secondary></indexterm>
+<para><computeroutput>#define ft_wwrite_ln( table,  ...)       (0 ? CHECK_IF_ARGS_ARE_WSTRINGS(__VA_ARGS__) : <link linkend="_fort_8h_1a313b73c39aa6127200cd7b7fee92d8f0">ft_nwwrite_ln</link>(table, FT_PP_NARG_(__VA_ARGS__), __VA_ARGS__))</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a8d395d7b047bc27bc45d67e93ccd1189"/><section>
+    <title>LIBFORT_MAJOR_VERSION</title>
+<indexterm><primary>LIBFORT_MAJOR_VERSION</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>LIBFORT_MAJOR_VERSION</secondary></indexterm>
+<para><computeroutput>#define LIBFORT_MAJOR_VERSION   0</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a42bb08f12767dcf3fbd7fd8d9e3bebdf"/><section>
+    <title>LIBFORT_MINOR_VERSION</title>
+<indexterm><primary>LIBFORT_MINOR_VERSION</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>LIBFORT_MINOR_VERSION</secondary></indexterm>
+<para><computeroutput>#define LIBFORT_MINOR_VERSION   5</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1ae3928dc9499219d0cdec977cf1a904f5"/><section>
+    <title>LIBFORT_REVISION</title>
+<indexterm><primary>LIBFORT_REVISION</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>LIBFORT_REVISION</secondary></indexterm>
+<para><computeroutput>#define LIBFORT_REVISION   0</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a8ca57317c0ba39449097a784cc00a818"/><section>
+    <title>LIBFORT_VERSION_STR</title>
+<indexterm><primary>LIBFORT_VERSION_STR</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>LIBFORT_VERSION_STR</secondary></indexterm>
+<para><computeroutput>#define LIBFORT_VERSION_STR   &quot;0.5.0&quot;</computeroutput></para></section>
+</section>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187"/><section>
+    <title>ft_table_t</title>
+<indexterm><primary>ft_table_t</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_table_t</secondary></indexterm>
+<para><computeroutput>typedef struct <link linkend="_structft__table">ft_table</link> <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link></computeroutput></para>
+<para>The main structure of libfort containing information about formatted table.</para>
+
+<para>ft_table_t objects should be created by a call to ft_create_table and destroyed with ft_destroy_table. </para>
+</section>
+</section>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_fort_8h_1aeed2958a1823084ca6e71883b075baa5"/><section>
+    <title>ft_adding_strategy</title>
+<indexterm><primary>ft_adding_strategy</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_adding_strategy</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8h_1aeed2958a1823084ca6e71883b075baa5">ft_adding_strategy</link></computeroutput></para>
+<para>Adding strategy.</para>
+
+<para>Determines what happens with old content if current cell is not empty after adding data to it. Default strategy is FT_STRATEGY_REPLACE. </para>
+<informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>FT_STRATEGY_REPLACE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_STRATEGY_REPLACE</secondary></indexterm>
+<anchor xml:id="_fort_8h_1aeed2958a1823084ca6e71883b075baa5aa620d123a0ac00710153d28a6ab65842"/>FT_STRATEGY_REPLACE</entry><entry>
+<para>Replace old content. </para>
+</entry></row><row><entry><indexterm><primary>FT_STRATEGY_INSERT</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_STRATEGY_INSERT</secondary></indexterm>
+<anchor xml:id="_fort_8h_1aeed2958a1823084ca6e71883b075baa5acc1102bce0611e414231a7e41357300f"/>FT_STRATEGY_INSERT</entry><entry>
+<para>Insert new conten. Old content is shifted. </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63f"/><section>
+    <title>ft_color</title>
+<indexterm><primary>ft_color</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_color</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63f">ft_color</link></computeroutput></para>
+<para>Colors. </para>
+<informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>FT_COLOR_DEFAULT</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_DEFAULT</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63face2e85ce681b17d9334eb832a1558445"/>FT_COLOR_DEFAULT</entry><entry>
+<para>Default color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_BLACK</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_BLACK</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa6e1eb39443ae233746378aa84548f553"/>FT_COLOR_BLACK</entry><entry>
+<para>Black color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_RED</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_RED</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63faf31632500abf110557632f09e267472d"/>FT_COLOR_RED</entry><entry>
+<para>Red color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_GREEN</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_GREEN</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fac27875bf7bc9bb9fec8e7beb79a308a0"/>FT_COLOR_GREEN</entry><entry>
+<para>Green color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_YELLOW</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_YELLOW</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fae1942de73f0c49658b208f9c42a136a8"/>FT_COLOR_YELLOW</entry><entry>
+<para>Yellow color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_BLUE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_BLUE</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa646c06e02caa66410e13dc212242ef16"/>FT_COLOR_BLUE</entry><entry>
+<para>Blue color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_MAGENTA</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_MAGENTA</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa0f97227c2b13f6c2d88ca06761563a68"/>FT_COLOR_MAGENTA</entry><entry>
+<para>Magenta color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_CYAN</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_CYAN</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa2e3e4b314fc75407fa5b38cee9fd5a5c"/>FT_COLOR_CYAN</entry><entry>
+<para>Cyan color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_LIGHT_GRAY</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_LIGHT_GRAY</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa10c39c7d62795e90c3188f0b6a476f10"/>FT_COLOR_LIGHT_GRAY</entry><entry>
+<para>Light gray color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_DARK_GRAY</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_DARK_GRAY</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa4f7814c857a35ace99e77c721bdea819"/>FT_COLOR_DARK_GRAY</entry><entry>
+<para>Dark gray color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_LIGHT_RED</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_LIGHT_RED</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63faee5e46a4b6fbeb64b6eddca826bdc7ae"/>FT_COLOR_LIGHT_RED</entry><entry>
+<para>Light red color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_LIGHT_GREEN</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_LIGHT_GREEN</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa37dd75f161f83ea176f74a70a19e763f"/>FT_COLOR_LIGHT_GREEN</entry><entry>
+<para>Light green color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_LIGHT_YELLOW</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_LIGHT_YELLOW</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa84816257c9a5f38a20d0e2ea848a5489"/>FT_COLOR_LIGHT_YELLOW</entry><entry>
+<para>Light yellow color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_LIGHT_BLUE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_LIGHT_BLUE</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63facebf9e4fe6e259bc0892bd1183c73800"/>FT_COLOR_LIGHT_BLUE</entry><entry>
+<para>Light blue color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_LIGHT_MAGENTA</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_LIGHT_MAGENTA</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fac181922016e12de1a32116b2f1eb5a1f"/>FT_COLOR_LIGHT_MAGENTA</entry><entry>
+<para>Light magenta color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_LIGHT_CYAN</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_LIGHT_CYAN</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa3b5bdee67bbfca060a31ae3d700cb5c4"/>FT_COLOR_LIGHT_CYAN</entry><entry>
+<para>Light cyan color </para>
+</entry></row><row><entry><indexterm><primary>FT_COLOR_LIGHT_WHYTE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_COLOR_LIGHT_WHYTE</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63faebf36fa4c0f9ae7e8aaa651988686e42"/>FT_COLOR_LIGHT_WHYTE</entry><entry>
+<para>Light whyte color </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="_fort_8h_1a06d9536a2e476d68f5055820535d3b34"/><section>
+    <title>ft_row_type</title>
+<indexterm><primary>ft_row_type</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_row_type</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8h_1a06d9536a2e476d68f5055820535d3b34">ft_row_type</link></computeroutput></para>
+<para>Type of table row. Determines appearance of row. </para>
+<informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>FT_ROW_COMMON</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_ROW_COMMON</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a06d9536a2e476d68f5055820535d3b34ae50a530e078dd8425784ca02e66d2433"/>FT_ROW_COMMON</entry><entry>
+<para>Common row </para>
+</entry></row><row><entry><indexterm><primary>FT_ROW_HEADER</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_ROW_HEADER</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a06d9536a2e476d68f5055820535d3b34a2a0a31078eac88202029c3e9bdaa614a"/>FT_ROW_HEADER</entry><entry>
+<para>Header row </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32c"/><section>
+    <title>ft_text_alignment</title>
+<indexterm><primary>ft_text_alignment</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_text_alignment</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32c">ft_text_alignment</link></computeroutput></para>
+<para>Alignment of cell content. </para>
+<informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>FT_ALIGNED_LEFT</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_ALIGNED_LEFT</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32ca62837cbc7c859d5d38d608f51806e66d"/>FT_ALIGNED_LEFT</entry><entry>
+<para>Align left </para>
+</entry></row><row><entry><indexterm><primary>FT_ALIGNED_CENTER</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_ALIGNED_CENTER</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32cac43d09334b02f1300989a8789455183e"/>FT_ALIGNED_CENTER</entry><entry>
+<para>Align center </para>
+</entry></row><row><entry><indexterm><primary>FT_ALIGNED_RIGHT</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_ALIGNED_RIGHT</secondary></indexterm>
+<anchor xml:id="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32ca31bdf997c2db055fe5669e9e174277cc"/>FT_ALIGNED_RIGHT</entry><entry>
+<para>Align right </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0b"/><section>
+    <title>ft_text_style</title>
+<indexterm><primary>ft_text_style</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_text_style</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0b">ft_text_style</link></computeroutput></para>
+<para>Text styles. </para>
+<informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>FT_TSTYLE_DEFAULT</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_TSTYLE_DEFAULT</secondary></indexterm>
+<anchor xml:id="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0bad81d0dad8f26df01c149638ccbb6b3e2"/>FT_TSTYLE_DEFAULT</entry><entry>
+<para>Default style </para>
+</entry></row><row><entry><indexterm><primary>FT_TSTYLE_BOLD</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_TSTYLE_BOLD</secondary></indexterm>
+<anchor xml:id="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba04256f30849c7cd2b4822e5030fa07fb"/>FT_TSTYLE_BOLD</entry><entry>
+<para>Bold </para>
+</entry></row><row><entry><indexterm><primary>FT_TSTYLE_DIM</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_TSTYLE_DIM</secondary></indexterm>
+<anchor xml:id="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0baf9c6c97ae4ea6c404ae2e57b8dfab101"/>FT_TSTYLE_DIM</entry><entry>
+<para>Dim </para>
+</entry></row><row><entry><indexterm><primary>FT_TSTYLE_ITALIC</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_TSTYLE_ITALIC</secondary></indexterm>
+<anchor xml:id="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba29c6547c7ae5a297a4547de1b15a3133"/>FT_TSTYLE_ITALIC</entry><entry>
+<para>Italic </para>
+</entry></row><row><entry><indexterm><primary>FT_TSTYLE_UNDERLINED</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_TSTYLE_UNDERLINED</secondary></indexterm>
+<anchor xml:id="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba41f3dc969345e99fda4ef48130184745"/>FT_TSTYLE_UNDERLINED</entry><entry>
+<para>Underlined </para>
+</entry></row><row><entry><indexterm><primary>FT_TSTYLE_BLINK</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_TSTYLE_BLINK</secondary></indexterm>
+<anchor xml:id="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba36c9e2fd7b64982a8f7229fe965440d4"/>FT_TSTYLE_BLINK</entry><entry>
+<para>Blink </para>
+</entry></row><row><entry><indexterm><primary>FT_TSTYLE_INVERTED</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_TSTYLE_INVERTED</secondary></indexterm>
+<anchor xml:id="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba3a4c44c718da5e229c01ab7d6eb05366"/>FT_TSTYLE_INVERTED</entry><entry>
+<para>Reverse (invert the foreground and background colors) </para>
+</entry></row><row><entry><indexterm><primary>FT_TSTYLE_HIDDEN</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_TSTYLE_HIDDEN</secondary></indexterm>
+<anchor xml:id="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba016fa7d5df89fd09ba7ed6daa7021b16"/>FT_TSTYLE_HIDDEN</entry><entry>
+<para>Hidden (useful for passwords) 
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_fort_8h_1a22fc0b6196d1a9a398785e23673eeeb0"/><section>
+    <title>ft_add_separator()</title>
+<indexterm><primary>ft_add_separator</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_add_separator</secondary></indexterm>
+<para><computeroutput>int ft_add_separator (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table)</computeroutput></para>
+<para>Add separator after the current row.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Formatted table. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; separator was added.</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1acb57251e9e5499b7b983509be936c1d8"/><section>
+    <title>ft_col_count()</title>
+<indexterm><primary>ft_col_count</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_col_count</secondary></indexterm>
+<para><computeroutput>size_t ft_col_count (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table)</computeroutput></para>
+<para>Get number of columns in the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Number of columns in the table. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a3dc4461b763ca66b2e2699a61ee99df8"/><section>
+    <title>ft_copy_table()</title>
+<indexterm><primary>ft_copy_table</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_copy_table</secondary></indexterm>
+<para><computeroutput><link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * ft_copy_table (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table)</computeroutput></para>
+<para>Copy formatted table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table previousley created with ft_create_table. If table is a null pointer, the function returns null. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>The pointer to the new allocated ft_table_t, on success. NULL on error. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a39066bbe359e408ad6d1bb360aa0cf55"/><section>
+    <title>ft_create_table()</title>
+<indexterm><primary>ft_create_table</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_create_table</secondary></indexterm>
+<para><computeroutput><link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * ft_create_table (void )</computeroutput></para>
+<para>Create formatted table.</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>The pointer to the new allocated ft_table_t, on success. NULL on error. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a4f3f1b331ee3637e3c8345ecb1b4ebd6"/><section>
+    <title>ft_cur_col()</title>
+<indexterm><primary>ft_cur_col</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_cur_col</secondary></indexterm>
+<para><computeroutput>size_t ft_cur_col (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table)</computeroutput></para>
+<para>Get column number of the current cell.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Column number of the current cell. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a71a30e02111b90af7babd37d13f3e4ee"/><section>
+    <title>ft_cur_row()</title>
+<indexterm><primary>ft_cur_row</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_cur_row</secondary></indexterm>
+<para><computeroutput>size_t ft_cur_row (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table)</computeroutput></para>
+<para>Get row number of the current cell.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Row number of the current cell. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1ad8cb9ed46da7455f8b6baed42a4a1d31"/><section>
+    <title>ft_destroy_table()</title>
+<indexterm><primary>ft_destroy_table</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_destroy_table</secondary></indexterm>
+<para><computeroutput>void ft_destroy_table (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table)</computeroutput></para>
+<para>Destroy formatted table.</para>
+
+<para>Destroy formatted table and free all resources allocated during table creation and work with it.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table previousley created with ft_create_table. If table is a null pointer, the function does nothing. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_fort_8h_1a53eb304387cf4e99f0198f780bc75dc8"/><section>
+    <title>ft_erase_range()</title>
+<indexterm><primary>ft_erase_range</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_erase_range</secondary></indexterm>
+<para><computeroutput>int ft_erase_range (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t top_left_row, size_t top_left_col, size_t bottom_right_row, size_t bottom_right_col)</computeroutput></para>
+<para>Erase range of cells.</para>
+
+<para>Range of cells is determined by 2 points (top-left and bottom-right) (both ends are included).</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>top_left_row</entry><entry>
+<para>Row number of the top left cell in the range. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>top_left_col</entry><entry>
+<para>Column number of the top left cell in the range. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>bottom_right_row</entry><entry>
+<para>Row number of the bottom right cell in the range. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>bottom_right_col</entry><entry>
+<para>Column number of the bottom right cell in the range. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0 - Operation was successfully implemented</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a6791222986d387c26d905691c30e095b"/><section>
+    <title>ft_is_empty()</title>
+<indexterm><primary>ft_is_empty</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_is_empty</secondary></indexterm>
+<para><computeroutput>int ft_is_empty (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table)</computeroutput></para>
+<para>Check if table is empty.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to the table. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>1 - table is empty 0 - some data has been inserted </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a35af71857b08488797170d7b2a15054a"/><section>
+    <title>ft_ln()</title>
+<indexterm><primary>ft_ln</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_ln</secondary></indexterm>
+<para><computeroutput>int ft_ln (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table)</computeroutput></para>
+<para>Move current position to the first cell of the next line(row).</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+<note><title>Note</title>
+
+<para>This function can fail only in case FT_STRATEGY_INSERT adding strategy was set for the table. </para>
+</note>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a69052e887e05d6dc3a0891550127619b"/><section>
+    <title>ft_nwrite()</title>
+<indexterm><primary>ft_nwrite</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_nwrite</secondary></indexterm>
+<para><computeroutput>int ft_nwrite (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t count, const char * cell_content,  ...)</computeroutput></para>
+<para>Write specified number of strings to the table.</para>
+
+<para>Write specified number of strings to the same number of consecutive cells in the current row.</para>
+
+<para><note><title>Note</title>
+
+<para>In most cases it is more preferable to use MACRO <link linkend="_fort_8h_1aeb1059360e481caef1d2dcced5d5b646">ft_write</link> instead of <link linkend="_fort_8h_1a69052e887e05d6dc3a0891550127619b">ft_nwrite</link>, which is more safe (<link linkend="_fort_8h_1aeb1059360e481caef1d2dcced5d5b646">ft_write</link> automatically counts the number of string arguments and at compile check that all passed arguments are strings).</para>
+</note>
+
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>count</entry><entry>
+<para>Number of strings to write. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>cell_content</entry><entry>
+<para>First string to write. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>...</entry><entry>
+<para>Other strings to write. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a09342b73950f97c0e73bbed2df40b48a"/><section>
+    <title>ft_nwrite_ln()</title>
+<indexterm><primary>ft_nwrite_ln</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_nwrite_ln</secondary></indexterm>
+<para><computeroutput>int ft_nwrite_ln (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t count, const char * cell_content,  ...)</computeroutput></para>
+<para>Write specified number of strings to the table and go to the next line.</para>
+
+<para>Write specified number of strings to the same number of consecutive cells in the current row and move current position to the first cell of the next line(row).</para>
+
+<para><note><title>Note</title>
+
+<para>In most cases it is more preferable to use MACRO <link linkend="_fort_8h_1aeb1059360e481caef1d2dcced5d5b646">ft_write</link> instead of <link linkend="_fort_8h_1a69052e887e05d6dc3a0891550127619b">ft_nwrite</link>, which is more safe (<link linkend="_fort_8h_1aeb1059360e481caef1d2dcced5d5b646">ft_write</link> automatically counts the number of string arguments and at compile check that all passed arguments are strings).</para>
+</note>
+
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>count</entry><entry>
+<para>Number of strings to write. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>cell_content</entry><entry>
+<para>First string to write. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>...</entry><entry>
+<para>Other strings to write. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1aac28f7840d0a323ca3c4df1e6f43bdf6"/><section>
+    <title>ft_nwwrite()</title>
+<indexterm><primary>ft_nwwrite</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_nwwrite</secondary></indexterm>
+<para><computeroutput>int ft_nwwrite (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t n, const wchar_t * cell_content,  ...)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a313b73c39aa6127200cd7b7fee92d8f0"/><section>
+    <title>ft_nwwrite_ln()</title>
+<indexterm><primary>ft_nwwrite_ln</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_nwwrite_ln</secondary></indexterm>
+<para><computeroutput>int ft_nwwrite_ln (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t n, const wchar_t * cell_content,  ...)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1aa7e5d0d485d6c519198a5fe9eb706eba"/><section>
+    <title>ft_row_count()</title>
+<indexterm><primary>ft_row_count</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_row_count</secondary></indexterm>
+<para><computeroutput>size_t ft_row_count (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table)</computeroutput></para>
+<para>Get number of rows in the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Number of rows in the table. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a52e0e57e1ead19ce324f76a2eba877fc"/><section>
+    <title>ft_row_write()</title>
+<indexterm><primary>ft_row_write</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_row_write</secondary></indexterm>
+<para><computeroutput>int ft_row_write (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t cols, const char * row_cells[])</computeroutput></para>
+<para>Write strings from the array to the table.</para>
+
+<para>Write specified number of strings from the array to the same number of consecutive cells in the current row.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>cols</entry><entry>
+<para>Number of elements in row_cells. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>row_cells</entry><entry>
+<para>Array of strings to write. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a6df5c45d231c9dc0cb1af875164bafb9"/><section>
+    <title>ft_row_write_ln()</title>
+<indexterm><primary>ft_row_write_ln</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_row_write_ln</secondary></indexterm>
+<para><computeroutput>int ft_row_write_ln (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t cols, const char * row_cells[])</computeroutput></para>
+<para>Write strings from the array to the table and go to the next line.</para>
+
+<para>Write specified number of strings from the array to the same number of consecutive cells in the current row and move current position to the first cell of the next line(row).</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>cols</entry><entry>
+<para>Number of elements in row_cells. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>row_cells</entry><entry>
+<para>Array of strings to write. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a2bfe751bbf2c100eda336c30f73fe199"/><section>
+    <title>ft_row_wwrite()</title>
+<indexterm><primary>ft_row_wwrite</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_row_wwrite</secondary></indexterm>
+<para><computeroutput>int ft_row_wwrite (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t cols, const wchar_t * row_cells[])</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a50c12bee8800d14fc70e6cccb10aee1c"/><section>
+    <title>ft_row_wwrite_ln()</title>
+<indexterm><primary>ft_row_wwrite_ln</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_row_wwrite_ln</secondary></indexterm>
+<para><computeroutput>int ft_row_wwrite_ln (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t cols, const wchar_t * row_cells[])</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1aaa966b7da0ee2e2d2a93dc6a5e1ef81b"/><section>
+    <title>ft_set_border_style()</title>
+<indexterm><primary>ft_set_border_style</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_set_border_style</secondary></indexterm>
+<para><computeroutput>int ft_set_border_style (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, const struct <link linkend="_structft__border__style">ft_border_style</link> * style)</computeroutput></para>
+<para>Set border style for the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>A pointer to the ft_table_t structure. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>style</entry><entry>
+<para>Pointer to border style. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; table border style was changed.</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a10dc95b3d810a0ab2bf6c90b7b8c66a4"/><section>
+    <title>ft_set_cell_prop()</title>
+<indexterm><primary>ft_set_cell_prop</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_set_cell_prop</secondary></indexterm>
+<para><computeroutput>int ft_set_cell_prop (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t row, size_t col, uint32_t property, int value)</computeroutput></para>
+<para>Set property for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>A pointer to the ft_table_t structure. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>row</entry><entry>
+<para>Cell row. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>col</entry><entry>
+<para>Cell column. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>property</entry><entry>
+<para>Cell property identifier. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>Cell property value. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; cell property was changed.</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1ae958a4787cc8fee9abb452bbced096f8"/><section>
+    <title>ft_set_cell_span()</title>
+<indexterm><primary>ft_set_cell_span</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_set_cell_span</secondary></indexterm>
+<para><computeroutput>int ft_set_cell_span (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t row, size_t col, size_t hor_span)</computeroutput></para>
+<para>Set column span for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>A pointer to the ft_table_t structure. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>row</entry><entry>
+<para>Cell row. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>col</entry><entry>
+<para>Cell column. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>hor_span</entry><entry>
+<para>Column span. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; cell span was changed.</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a6dffc742cbce46e492cd3298de467b16"/><section>
+    <title>ft_set_cur_cell()</title>
+<indexterm><primary>ft_set_cur_cell</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_set_cur_cell</secondary></indexterm>
+<para><computeroutput>void ft_set_cur_cell (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t row, size_t col)</computeroutput></para>
+<para>Set current cell position.</para>
+
+<para>Current cell - cell that will be edited with all modifiing functions (ft_printf, ft_write ...).</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>row</entry><entry>
+<para>New row number for the current cell. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>col</entry><entry>
+<para>New row number for the current cell. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_fort_8h_1addb2484d7bc2a271be60cf743ae8eaeb"/><section>
+    <title>ft_set_default_border_style()</title>
+<indexterm><primary>ft_set_default_border_style</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_set_default_border_style</secondary></indexterm>
+<para><computeroutput>int ft_set_default_border_style (const struct <link linkend="_structft__border__style">ft_border_style</link> * style)</computeroutput></para>
+<para>Set default border style for all new formatted tables.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>style</entry><entry>
+<para>Pointer to border style. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; default border style was changed.</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a894497fac87518023122266da59f8da1"/><section>
+    <title>ft_set_default_cell_prop()</title>
+<indexterm><primary>ft_set_default_cell_prop</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_set_default_cell_prop</secondary></indexterm>
+<para><computeroutput>int ft_set_default_cell_prop (uint32_t property, int value)</computeroutput></para>
+<para>Set default cell property for all new formatted tables.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>property</entry><entry>
+<para>Cell property identifier. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>Cell property value. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; default cell property was changed.</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a08dbade99a0cfc34c549f7ee29a60fe4"/><section>
+    <title>ft_set_default_printf_field_separator()</title>
+<indexterm><primary>ft_set_default_printf_field_separator</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_set_default_printf_field_separator</secondary></indexterm>
+<para><computeroutput>void ft_set_default_printf_field_separator (char separator)</computeroutput></para>
+<para>Set field separator for <computeroutput><link linkend="_">ft_printf</link></computeroutput>, <computeroutput><link linkend="_">ft_printf_ln</link></computeroutput> (default separator is &apos;|&apos;).</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>separator</entry><entry>
+<para>New separator. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_fort_8h_1a0ebdf7b17d363037f4b0d48ce1438a6c"/><section>
+    <title>ft_set_default_tbl_prop()</title>
+<indexterm><primary>ft_set_default_tbl_prop</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_set_default_tbl_prop</secondary></indexterm>
+<para><computeroutput>int ft_set_default_tbl_prop (uint32_t property, int value)</computeroutput></para>
+<para>Set default table property.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>property</entry><entry>
+<para>Table property identifier. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>Table property value. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; default table property was changed.</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a3477def0e7247bbccacb0c93530aaee7"/><section>
+    <title>ft_set_memory_funcs()</title>
+<indexterm><primary>ft_set_memory_funcs</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_set_memory_funcs</secondary></indexterm>
+<para><computeroutput>void ft_set_memory_funcs (void *(*)(size_t size) f_malloc, void(*)(void *ptr) f_free)</computeroutput></para>
+<para>Set functions for memory allocation and deallocation to be used instead of standard ones.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>f_malloc</entry><entry>
+<para>Pointer to a function for memory allocation that should be used instead of malloc. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>f_free</entry><entry>
+<para>Pointer to a function for memory deallocation that should be used instead of free. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <note><title>Note</title>
+
+<para>To return memory allocation/deallocation functions to their standard values set f_malloc and f_free to NULL. </para>
+</note>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1ac7ff4899d39f21d4cf8948c73bbb1595"/><section>
+    <title>ft_set_tbl_prop()</title>
+<indexterm><primary>ft_set_tbl_prop</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_set_tbl_prop</secondary></indexterm>
+<para><computeroutput>int ft_set_tbl_prop (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, uint32_t property, int value)</computeroutput></para>
+<para>Set table property.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>A pointer to the ft_table_t structure. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>property</entry><entry>
+<para>Table property identifier. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>Table property value. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; default table property was changed.</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1ac19c7bf75bde46f17a954159b27724f4"/><section>
+    <title>ft_set_u8strwid_func()</title>
+<indexterm><primary>ft_set_u8strwid_func</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_set_u8strwid_func</secondary></indexterm>
+<para><computeroutput>void ft_set_u8strwid_func (int(*)(const void *beg, const void *end, size_t *width) u8strwid)</computeroutput></para>
+<para>Set custom function to compute visible width of UTF-8 string.</para>
+
+<para>libfort internally has a very simple logic to compute visible width of UTF-8 strings. It considers that each codepoint will occupy one position on the terminal in case of monowidth font (some east asians wide and fullwidth characters (see <link xlink:href="http://www.unicode.org/reports/tr11/tr11-33.html">http://www.unicode.org/reports/tr11/tr11-33.html</link>) will occupy 2 positions). This logic is very simple and covers wide range of cases. But obviously there a lot of cases when it is not sufficient. In such cases user should use some external libraries and provide an appropriate function to libfort.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>u8strwid</entry><entry>
+<para>User provided function to evaluate width of UTF-8 string ( beg - start of UTF-8 string, end - end of UTF-8 string (not included), width - pointer to the result). If function succeed it should return 0, otherwise some non- zero value. If function returns nonzero value libfort fallbacks to default internal algorithm. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_fort_8h_1ab2d62733c846a3d64dfa5a7c45d1c91b"/><section>
+    <title>ft_strerror()</title>
+<indexterm><primary>ft_strerror</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_strerror</secondary></indexterm>
+<para><computeroutput>const char * ft_strerror (int error_code)</computeroutput></para>
+<para>Return string describing the <computeroutput>error_code</computeroutput>.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>error_code</entry><entry>
+<para>Error code returned by the library. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>String describing the error. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1ac026a41e784483319aa4c7c89a9dfe06"/><section>
+    <title>ft_table_write()</title>
+<indexterm><primary>ft_table_write</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_table_write</secondary></indexterm>
+<para><computeroutput>int ft_table_write (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t rows, size_t cols, const char * table_cells[])</computeroutput></para>
+<para>Write strings from the 2D array to the table.</para>
+
+<para>Write specified number of strings from the 2D array to the formatted table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>rows</entry><entry>
+<para>Number of rows in the 2D array. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>cols</entry><entry>
+<para>Number of columns in the 2D array. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>table_cells</entry><entry>
+<para>2D array of strings to write. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1ad9219b581d29cb079847b0bfd6911271"/><section>
+    <title>ft_table_write_ln()</title>
+<indexterm><primary>ft_table_write_ln</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_table_write_ln</secondary></indexterm>
+<para><computeroutput>int ft_table_write_ln (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t rows, size_t cols, const char * table_cells[])</computeroutput></para>
+<para>Write strings from the 2D array to the table and go to the next line.</para>
+
+<para>Write specified number of strings from the 2D array to the formatted table and move current position to the first cell of the next line(row).</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Pointer to formatted table. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>rows</entry><entry>
+<para>Number of rows in the 2D array. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>cols</entry><entry>
+<para>Number of columns in the 2D array. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>table_cells</entry><entry>
+<para>2D array of strings to write. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>0: Success; data were written</para>
+</listitem><listitem>
+<para>(&lt;0): In case of error </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1adb37fd79298ef7f28d9304f3aa135f08"/><section>
+    <title>ft_table_wwrite()</title>
+<indexterm><primary>ft_table_wwrite</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_table_wwrite</secondary></indexterm>
+<para><computeroutput>int ft_table_wwrite (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t rows, size_t cols, const wchar_t * table_cells[])</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1ac2c4cd5246efb7d713cc0ccd5dad49cf"/><section>
+    <title>ft_table_wwrite_ln()</title>
+<indexterm><primary>ft_table_wwrite_ln</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_table_wwrite_ln</secondary></indexterm>
+<para><computeroutput>int ft_table_wwrite_ln (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t rows, size_t cols, const wchar_t * table_cells[])</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1aa80a0ba53be3e32a69b9b98478821354"/><section>
+    <title>ft_to_string()</title>
+<indexterm><primary>ft_to_string</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_to_string</secondary></indexterm>
+<para><computeroutput>const char * ft_to_string (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table)</computeroutput></para>
+<para>Convert table to string representation.</para>
+
+<para>ft_table_t has ownership of the returned pointer. So there is no need to free it. To take ownership user should explicitly copy the returned string with strdup or similar functions.</para>
+
+<para>Returned pointer may be later invalidated by:<itemizedlist>
+<listitem>
+<para>Calling ft_destroy_table;</para>
+</listitem><listitem>
+<para>Other invocations of ft_to_string.</para>
+</listitem></itemizedlist>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>table</entry><entry>
+<para>Formatted table. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>The pointer to the string representation of formatted table, on success.</para>
+</listitem><listitem>
+<para>NULL on error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_fort_8h_1a1612cd9b9990ad7f45732831ce4e4577"/><section>
+    <title>ft_to_u8string()</title>
+<indexterm><primary>ft_to_u8string</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_to_u8string</secondary></indexterm>
+<para><computeroutput>int int const void * ft_to_u8string (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a03479aafea9aefc5275a02df827cb780"/><section>
+    <title>ft_to_wstring()</title>
+<indexterm><primary>ft_to_wstring</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_to_wstring</secondary></indexterm>
+<para><computeroutput>const wchar_t * ft_to_wstring (const <link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a61aec826074239282309ce1369563f64"/><section>
+    <title>ft_u8nwrite()</title>
+<indexterm><primary>ft_u8nwrite</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_u8nwrite</secondary></indexterm>
+<para><computeroutput>int ft_u8nwrite (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t n, const void * cell_content,  ...)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a4c378ecb73c881a0793930c76a64ff41"/><section>
+    <title>ft_u8nwrite_ln()</title>
+<indexterm><primary>ft_u8nwrite_ln</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_u8nwrite_ln</secondary></indexterm>
+<para><computeroutput>int ft_u8nwrite_ln (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, size_t n, const void * cell_content,  ...)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1ac3f58cfaced19b8571c84aea0827d09b"/><section>
+    <title>ft_u8printf()</title>
+<indexterm><primary>ft_u8printf</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_u8printf</secondary></indexterm>
+<para><computeroutput>int ft_u8printf (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, const char * fmt,  ...)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a63da69eff3300456b04ec99118f76abc"/><section>
+    <title>ft_u8printf_ln()</title>
+<indexterm><primary>ft_u8printf_ln</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_u8printf_ln</secondary></indexterm>
+<para><computeroutput>int int ft_u8printf_ln (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, const char * fmt,  ...)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a93dacf69774a8a84fecee3035ad7650e"/><section>
+    <title>ft_wprintf()</title>
+<indexterm><primary>ft_wprintf</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_wprintf</secondary></indexterm>
+<para><computeroutput>int ft_wprintf (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, const wchar_t * fmt,  ...)</computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a756d50513a7dbf57d2e7144802dd23f4"/><section>
+    <title>ft_wprintf_ln()</title>
+<indexterm><primary>ft_wprintf_ln</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>ft_wprintf_ln</secondary></indexterm>
+<para><computeroutput>int ft_wprintf_ln (<link linkend="_fort_8h_1a6307d2840e0e96880c4d0f04b12a2187">ft_table_t</link> * table, const wchar_t * fmt,  ...)</computeroutput></para></section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_fort_8h_1ab3ed5c4f1c4f7ca26b52b668fd4717f9"/><section>
+    <title>FT_BASIC2_STYLE</title>
+<indexterm><primary>FT_BASIC2_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_BASIC2_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_BASIC2_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a4566853be8c0cdf91ba9c3f50eb426d4"/><section>
+    <title>FT_BASIC_STYLE</title>
+<indexterm><primary>FT_BASIC_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_BASIC_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_BASIC_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a7b82fd38c92a289fc641d3666684bcd4"/><section>
+    <title>FT_BOLD2_STYLE</title>
+<indexterm><primary>FT_BOLD2_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_BOLD2_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_BOLD2_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1af392ad3ae759382d95921e1efb652744"/><section>
+    <title>FT_BOLD_STYLE</title>
+<indexterm><primary>FT_BOLD_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_BOLD_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_BOLD_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a148f3f2c872531fdeca8e4ace60eb258"/><section>
+    <title>FT_DOT_STYLE</title>
+<indexterm><primary>FT_DOT_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_DOT_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_DOT_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a23314491db1204b8654f8cd610692260"/><section>
+    <title>FT_DOUBLE2_STYLE</title>
+<indexterm><primary>FT_DOUBLE2_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_DOUBLE2_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_DOUBLE2_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1ad0e15260ea4a4c66f0bfa2c82b889107"/><section>
+    <title>FT_DOUBLE_STYLE</title>
+<indexterm><primary>FT_DOUBLE_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_DOUBLE_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_DOUBLE_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a357302cc732e53c1c7049842fc0fc3c7"/><section>
+    <title>FT_EMPTY2_STYLE</title>
+<indexterm><primary>FT_EMPTY2_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_EMPTY2_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_EMPTY2_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1aa8916e07fa9a8d1f24c1e1d1e6b68838"/><section>
+    <title>FT_EMPTY_STYLE</title>
+<indexterm><primary>FT_EMPTY_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_EMPTY_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_EMPTY_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1aef91486de193b4dfe511a992f9b02bb9"/><section>
+    <title>FT_FRAME_STYLE</title>
+<indexterm><primary>FT_FRAME_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_FRAME_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_FRAME_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a91de4cab0e239a201fa2a7dc961b2fdc"/><section>
+    <title>FT_NICE_STYLE</title>
+<indexterm><primary>FT_NICE_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_NICE_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_NICE_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1add469a34d262e6368adaa636d1cf76b7"/><section>
+    <title>FT_PLAIN_STYLE</title>
+<indexterm><primary>FT_PLAIN_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_PLAIN_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_PLAIN_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1a7581c1fec7b7c2b88f93e3445c62424d"/><section>
+    <title>FT_SIMPLE_STYLE</title>
+<indexterm><primary>FT_SIMPLE_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_SIMPLE_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_SIMPLE_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1aedcc877521b55c87758949920ef0ee96"/><section>
+    <title>FT_SOLID_ROUND_STYLE</title>
+<indexterm><primary>FT_SOLID_ROUND_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_SOLID_ROUND_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_SOLID_ROUND_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_fort_8h_1ae4723d497ac2e6980b43ac7732e21f2d"/><section>
+    <title>FT_SOLID_STYLE</title>
+<indexterm><primary>FT_SOLID_STYLE</primary><secondary>fort.h</secondary></indexterm>
+<indexterm><primary>fort.h</primary><secondary>FT_SOLID_STYLE</secondary></indexterm>
+<para><computeroutput>const struct <link linkend="_structft__border__style">ft_border_style</link>* const FT_SOLID_STYLE<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+</section>
+</section>

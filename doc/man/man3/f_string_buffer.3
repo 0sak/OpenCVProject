@@ -1,0 +1,56 @@
+.TH "f_string_buffer" 3 "Wed Jan 19 2022" "Version v1.0" "CV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+f_string_buffer
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   char * \fBcstr\fP"
+.br
+.ti -1c
+.RI "   wchar_t * \fBwstr\fP"
+.br
+.ti -1c
+.RI "   void * \fBu8str\fP"
+.br
+.ti -1c
+.RI "   void * \fBdata\fP"
+.br
+.ti -1c
+.RI "} \fBstr\fP"
+.br
+.ti -1c
+.RI "size_t \fBdata_sz\fP"
+.br
+.ti -1c
+.RI "enum \fBf_string_type\fP \fBtype\fP"
+.br
+.in -1c
+.SH "Member Data Documentation"
+.PP 
+.SS "char* f_string_buffer::cstr"
+
+.SS "void* f_string_buffer::data"
+
+.SS "size_t f_string_buffer::data_sz"
+
+.SS "union  { \&.\&.\&. }  f_string_buffer::str"
+
+.SS "enum \fBf_string_type\fP f_string_buffer::type"
+
+.SS "void* f_string_buffer::u8str"
+
+.SS "wchar_t* f_string_buffer::wstr"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CV from the source code\&.

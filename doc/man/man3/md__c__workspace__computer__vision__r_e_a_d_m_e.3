@@ -1,0 +1,64 @@
+.TH "md__c__workspace__computer__vision__r_e_a_d_m_e" 3 "Tue Jan 4 2022" "Version 0.1" "Computer Vision" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__c__workspace__computer__vision__r_e_a_d_m_e \- Counting german license plates and symbols on pictures using OpenCV FH-Bielefeld 
+Project to count german license plates on pictures\&. The data set should contain pictures that vary in quality, weather, light conditions, etc\&.\&.
+.PP
+.IP "1." 4
+Image Preprocessing
+.IP "  \(bu" 4
+Opening
+.IP "  \(bu" 4
+Greyscaling
+.IP "  \(bu" 4
+Bluring
+.IP "  \(bu" 4
+Thresholding
+.PP
+
+.IP "2." 4
+Extract Contrours
+.IP "3." 4
+Iterate over each contour based on aspect ratio, min height and width + remove any unnessecary contours
+.PP
+.PP
+Current Problems:
+.PP
+.IP "\(bu" 2
+Nighttime images
+.IP "\(bu" 2
+Pictures with an angle that is too large\&. The license plate is no longer recognised as a rectangle but a paralelogram\&.
+.IP "\(bu" 2
+License Plates that are to far away
+.PP
+.PP
+Zeitplan:
+.PP
+17\&.12 - 24\&.12
+.PP
+.IP "1." 4
+75 oder 100 Bilder Sammeln
+.IP "2." 4
+Labeln -> Datensatz a\&. ID b\&. Konditionen (Beschreibung) c\&. Helligkeit d\&. Kontrast e\&. Sättigung f\&. Wie viele Nummernschilder g\&. Wie viele Buchstaben
+.IP "3." 4
+Metriken ausgeben
+.IP "4." 4
+Magic Numbers entfernen
+.PP
+.PP
+24\&.12 - 31\&.12
+.PP
+URLAUB
+.PP
+31\&.12 - 07\&.01
+.PP
+Code Dokumentation
+.PP
+07\&.01 - 14\&.01
+.PP
+Vortrag & Video
+.PP
+14\&.01 - 21\&.01
+.PP
+ 

@@ -1,0 +1,2828 @@
+.TH "C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/fort.c" 3 "Wed Jan 19 2022" "Version v1.0" "CV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/fort.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stddef\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <assert\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include 'fort\&.h'\fP
+.br
+\fC#include <wchar\&.h>\fP
+.br
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <limits\&.h>\fP
+.br
+\fC#include <stdarg\&.h>\fP
+.br
+\fC#include <ctype\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBf_string_view\fP"
+.br
+.ti -1c
+.RI "struct \fBf_separator\fP"
+.br
+.ti -1c
+.RI "struct \fBf_context\fP"
+.br
+.ti -1c
+.RI "struct \fBf_conv_context\fP"
+.br
+.ti -1c
+.RI "struct \fBf_string_buffer\fP"
+.br
+.ti -1c
+.RI "struct \fBf_cell_props\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_entire_table_properties\fP"
+.br
+.ti -1c
+.RI "struct \fBf_table_properties\fP"
+.br
+.ti -1c
+.RI "struct \fBft_table\fP"
+.br
+.ti -1c
+.RI "struct \fBf_cell\fP"
+.br
+.ti -1c
+.RI "struct \fBf_row\fP"
+.br
+.ti -1c
+.RI "struct \fBf_vector\fP"
+.br
+.ti -1c
+.RI "struct \fBinterval\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBFT_AMALGAMED_SOURCE\fP   /* Macros to make internal libfort functions static */"
+.br
+.ti -1c
+.RI "#define \fBFORT_IMPL_H\fP"
+.br
+.ti -1c
+.RI "#define \fBFT_INTERNAL\fP   static"
+.br
+.ti -1c
+.RI "#define \fBFORT_DEFAULT_COL_SEPARATOR\fP   '|'"
+.br
+.ti -1c
+.RI "#define \fBFORT_COL_SEPARATOR_LENGTH\fP   1"
+.br
+.ti -1c
+.RI "#define \fBFORT_UNUSED\fP   __attribute__((unused))"
+.br
+.ti -1c
+.RI "#define \fBF_MALLOC\fP   \fBfort_malloc\fP"
+.br
+.ti -1c
+.RI "#define \fBF_FREE\fP   \fBfort_free\fP"
+.br
+.ti -1c
+.RI "#define \fBF_CALLOC\fP   \fBfort_calloc\fP"
+.br
+.ti -1c
+.RI "#define \fBF_REALLOC\fP   \fBfort_realloc\fP"
+.br
+.ti -1c
+.RI "#define \fBF_STRDUP\fP   \fBfort_strdup\fP"
+.br
+.ti -1c
+.RI "#define \fBF_WCSDUP\fP   \fBfort_wcsdup\fP"
+.br
+.ti -1c
+.RI "#define \fBF_UTF8DUP\fP   \fButf8dup\fP"
+.br
+.ti -1c
+.RI "#define \fBF_CREATE\fP(type)   ((type *)\fBF_CALLOC\fP(sizeof(type), 1))"
+.br
+.ti -1c
+.RI "#define \fBMAX\fP(a,  b)   ((a) > (b) ? (a) : (b))"
+.br
+.ti -1c
+.RI "#define \fBMIN\fP(a,  b)   ((a) < (b) ? (a) : (b))"
+.br
+.ti -1c
+.RI "#define \fBFT_NEWLINE\fP   '\\n'"
+.br
+.ti -1c
+.RI "#define \fBFT_SPACE\fP   ' '"
+.br
+.ti -1c
+.RI "#define \fBDEFAULT_STR_BUF_SIZE\fP   1024"
+.br
+.ti -1c
+.RI "#define \fBDEFAULT_VECTOR_CAPACITY\fP   10"
+.br
+.ti -1c
+.RI "#define \fBFT_STR_2_CAT_\fP(arg1,  arg2)       arg1##arg2"
+.br
+.ti -1c
+.RI "#define \fBFT_STR_2_CAT\fP(arg1,  arg2)       \fBFT_STR_2_CAT_\fP(arg1, arg2)"
+.br
+.ti -1c
+.RI "#define \fBUNIQUE_NAME_\fP(prefix)       \fBFT_STR_2_CAT\fP(prefix,__COUNTER__)"
+.br
+.ti -1c
+.RI "#define \fBUNIQUE_NAME\fP(prefix)       \fBUNIQUE_NAME_\fP(prefix)"
+.br
+.ti -1c
+.RI "#define \fBPRINT_DEBUG_INFO\fP"
+.br
+.ti -1c
+.RI "#define \fBFT_CHECK\fP(statement)"
+.br
+.ti -1c
+.RI "#define \fBCHCK_RSLT_ADD_TO_WRITTEN\fP(statement)"
+.br
+.ti -1c
+.RI "#define \fBCHCK_RSLT_ADD_TO_INVISIBLE_WRITTEN\fP(statement)"
+.br
+.ti -1c
+.RI "#define \fBCHECK_NOT_NEGATIVE\fP(x)       do { if ((x) < 0) goto fort_fail; } while (0)"
+.br
+.ti -1c
+.RI "#define \fBVECTOR_H\fP"
+.br
+.ti -1c
+.RI "#define \fBINVALID_VEC_INDEX\fP   ((size_t) \-1)"
+.br
+.ti -1c
+.RI "#define \fBVECTOR_AT\fP(vector,  pos,  data_type)       *(data_type *)\fBvector_at\fP((vector), (pos))"
+.br
+.ti -1c
+.RI "#define \fBVECTOR_AT_C\fP(vector,  pos,  const_data_type)       *(const_data_type *)\fBvector_at_c\fP((vector), (pos))"
+.br
+.ti -1c
+.RI "#define \fBWCWIDTH_H\fP"
+.br
+.ti -1c
+.RI "#define \fBSHEREDOM_UTF8_H_INCLUDED\fP"
+.br
+.ti -1c
+.RI "#define \fButf8_nonnull\fP"
+.br
+.ti -1c
+.RI "#define \fButf8_pure\fP"
+.br
+.ti -1c
+.RI "#define \fButf8_restrict\fP"
+.br
+.ti -1c
+.RI "#define \fButf8_weak\fP   inline"
+.br
+.ti -1c
+.RI "#define \fButf8_null\fP   0"
+.br
+.ti -1c
+.RI "#define \fBSTRING_BUFFER_H\fP"
+.br
+.ti -1c
+.RI "#define \fBPROPERTIES_H\fP"
+.br
+.ti -1c
+.RI "#define \fBPROP_IS_SET\fP(ft_props,  property)   ((ft_props) & (property))"
+.br
+.ti -1c
+.RI "#define \fBPROP_SET\fP(ft_props,  property)   ((ft_props) |=(property))"
+.br
+.ti -1c
+.RI "#define \fBPROP_UNSET\fP(ft_props,  property)   ((ft_props) &= ~((uint32_t)(property)))"
+.br
+.ti -1c
+.RI "#define \fBTEXT_STYLE_TAG_MAX_SIZE\fP   (64 * 2)"
+.br
+.ti -1c
+.RI "#define \fBCELL_H\fP"
+.br
+.ti -1c
+.RI "#define \fBROW_H\fP"
+.br
+.ti -1c
+.RI "#define \fBTABLE_H\fP"
+.br
+.ti -1c
+.RI "#define \fBTOTAL_WRITTEN\fP   (written + invisible_written)"
+.br
+.ti -1c
+.RI "#define \fBRIGHT\fP   (padding_right + extra_right)"
+.br
+.ti -1c
+.RI "#define \fBWRITE_CELL_STYLE_TAG\fP   \fBCHCK_RSLT_ADD_TO_INVISIBLE_WRITTEN\fP(\fBprint_n_strings\fP(cntx, 1, cell_style_tag))"
+.br
+.ti -1c
+.RI "#define \fBWRITE_RESET_CELL_STYLE_TAG\fP   \fBCHCK_RSLT_ADD_TO_INVISIBLE_WRITTEN\fP(\fBprint_n_strings\fP(cntx, 1, reset_cell_style_tag))"
+.br
+.ti -1c
+.RI "#define \fBWRITE_CONTENT_STYLE_TAG\fP   \fBCHCK_RSLT_ADD_TO_INVISIBLE_WRITTEN\fP(\fBprint_n_strings\fP(cntx, 1, content_style_tag))"
+.br
+.ti -1c
+.RI "#define \fBWRITE_RESET_CONTENT_STYLE_TAG\fP   \fBCHCK_RSLT_ADD_TO_INVISIBLE_WRITTEN\fP(\fBprint_n_strings\fP(cntx, 1, reset_content_style_tag))"
+.br
+.ti -1c
+.RI "#define \fBFT_PRINTF\fP   ft_printf_impl"
+.br
+.ti -1c
+.RI "#define \fBFT_PRINTF_LN\fP   ft_printf_ln_impl"
+.br
+.ti -1c
+.RI "#define \fBBUILT_IN_STYLES_SZ\fP   (sizeof(built_in_styles) / sizeof(built_in_styles[0]))"
+.br
+.ti -1c
+.RI "#define \fBBOR_CHARS\fP   properties\->border_style\&.border_chars"
+.br
+.ti -1c
+.RI "#define \fBH_BOR_CHARS\fP   properties\->border_style\&.header_border_chars"
+.br
+.ti -1c
+.RI "#define \fBSEP_CHARS\fP   properties\->border_style\&.separator_chars"
+.br
+.ti -1c
+.RI "#define \fBWCS_SIZE\fP   64"
+.br
+.ti -1c
+.RI "#define \fBFT_RESET_COLOR\fP   '\\033[0m'"
+.br
+.ti -1c
+.RI "#define \fBUNIVERSAL_RESET_TAG\fP   '\\033[0m'"
+.br
+.ti -1c
+.RI "#define \fBBASIC_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBBASIC2_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBSIMPLE_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBPLAIN_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBDOT_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBEMPTY_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBEMPTY2_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBSOLID_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBSOLID_ROUND_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBNICE_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBDOUBLE_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBDOUBLE2_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBBOLD_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBBOLD2_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBFRAME_STYLE\fP"
+.br
+.ti -1c
+.RI "#define \fBSTRCHR\fP   strchr"
+.br
+.ti -1c
+.RI "#define \fBSTRCHR\fP   wcschr"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBf_string_view\fP \fBf_string_view_t\fP"
+.br
+.ti -1c
+.RI "typedef int \fBf_status\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBf_table_properties\fP \fBf_table_properties_t\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBf_vector\fP \fBf_vector_t\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBf_cell\fP \fBf_cell_t\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBf_string_buffer\fP \fBf_string_buffer_t\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBf_row\fP \fBf_row_t\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBf_separator\fP \fBf_separator_t\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBf_context\fP \fBf_context_t\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBf_conv_context\fP \fBf_conv_context_t\fP"
+.br
+.ti -1c
+.RI "typedef int32_t \fButf8_int32_t\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBf_cell_props\fP \fBf_cell_props_t\fP"
+.br
+.ti -1c
+.RI "typedef \fBf_vector_t\fP \fBf_cell_prop_container_t\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBfort_entire_table_properties\fP \fBfort_entire_table_properties_t\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBf_get_policy\fP { \fBCREATE_ON_NULL\fP, \fBDONT_CREATE_ON_NULL\fP }"
+.br
+.ti -1c
+.RI "enum \fBf_bool\fP { \fBF_FALSE\fP = 0, \fBF_TRUE\fP = 1 }"
+.br
+.ti -1c
+.RI "enum \fBf_cell_type\fP { \fBCOMMON_CELL\fP, \fBGROUP_MASTER_CELL\fP, \fBGROUP_SLAVE_CELL\fP }"
+.br
+.ti -1c
+.RI "enum \fBf_geometry_type\fP { \fBVISIBLE_GEOMETRY\fP, \fBINTERN_REPR_GEOMETRY\fP }"
+.br
+.ti -1c
+.RI "enum \fBf_string_type\fP { \fBCHAR_BUF\fP, \fBW_CHAR_BUF\fP, \fBUTF8_BUF\fP }"
+.br
+.ti -1c
+.RI "enum \fBf_hor_separator_pos\fP { \fBTOP_SEPARATOR\fP, \fBINSIDE_SEPARATOR\fP, \fBBOTTOM_SEPARATOR\fP }"
+.br
+.ti -1c
+.RI "enum \fBf_border_item_pos\fP { \fBTL_bip\fP = 0, \fBTT_bip\fP = 1, \fBTV_bip\fP = 2, \fBTR_bip\fP = 3, \fBLL_bip\fP = 4, \fBIV_bip\fP = 5, \fBRR_bip\fP = 6, \fBLH_bip\fP = 7, \fBIH_bip\fP = 8, \fBII_bip\fP = 9, \fBRH_bip\fP = 10, \fBBL_bip\fP = 11, \fBBB_bip\fP = 12, \fBBV_bip\fP = 13, \fBBR_bip\fP = 14, \fBLI_bip\fP = 15, \fBTI_bip\fP = 16, \fBRI_bip\fP = 17, \fBBI_bip\fP = 18, \fBBORDER_ITEM_POS_SIZE\fP }"
+.br
+.ti -1c
+.RI "enum \fBf_separator_item_pos\fP { \fBLH_sip\fP = 0, \fBIH_sip\fP = 1, \fBII_sip\fP = 2, \fBRH_sip\fP = 3, \fBTI_sip\fP = 4, \fBBI_sip\fP = 5, \fBSEPARATOR_ITEM_POS_SIZE\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBset_memory_funcs\fP (void *(*f_malloc)(size_t size), void(*f_free)(void *ptr))"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP char * \fBfort_strdup\fP (const char *str)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBnumber_of_columns_in_format_string\fP (const \fBf_string_view_t\fP *fmt)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBnumber_of_columns_in_format_buffer\fP (const \fBf_string_buffer_t\fP *fmt)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP wchar_t * \fBfort_wcsdup\fP (const wchar_t *str)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBprint_n_strings\fP (\fBf_conv_context_t\fP *cntx, size_t n, const char *str)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBft_nprint\fP (\fBf_conv_context_t\fP *cntx, const char *str, size_t strlen)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBft_nwprint\fP (\fBf_conv_context_t\fP *cntx, const wchar_t *str, size_t strlen)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBft_nu8print\fP (\fBf_conv_context_t\fP *cntx, const void *beg, const void *end)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_vector_t\fP * \fBcreate_vector\fP (size_t item_size, size_t capacity)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBdestroy_vector\fP (\fBf_vector_t\fP *)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBvector_size\fP (const \fBf_vector_t\fP *)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBvector_capacity\fP (const \fBf_vector_t\fP *)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBvector_push\fP (\fBf_vector_t\fP *, const void *item)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBvector_insert\fP (\fBf_vector_t\fP *, const void *item, size_t pos)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_vector_t\fP * \fBvector_split\fP (\fBf_vector_t\fP *, size_t pos)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP const void * \fBvector_at_c\fP (const \fBf_vector_t\fP *vector, size_t index)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void * \fBvector_at\fP (\fBf_vector_t\fP *, size_t index)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBvector_swap\fP (\fBf_vector_t\fP *cur_vec, \fBf_vector_t\fP *mv_vec, size_t pos)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBvector_clear\fP (\fBf_vector_t\fP *)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBvector_erase\fP (\fBf_vector_t\fP *, size_t index)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBmk_wcswidth\fP (const wchar_t *pwcs, size_t n)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP int \fButf8casecmp\fP (const void *src1, const void *src2)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_weak\fP void * \fButf8cat\fP (void *\fButf8_restrict\fP dst, const void *\fButf8_restrict\fP src)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP void * \fButf8chr\fP (const void *src, \fButf8_int32_t\fP chr)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP int \fButf8cmp\fP (const void *src1, const void *src2)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_weak\fP void * \fButf8cpy\fP (void *\fButf8_restrict\fP dst, const void *\fButf8_restrict\fP src)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP size_t \fButf8cspn\fP (const void *src, const void *reject)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_weak\fP void * \fButf8dup\fP (const void *src)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP size_t \fButf8len\fP (const void *str)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP size_t \fButf8width\fP (const void *str)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP int \fButf8cwidth\fP (\fButf8_int32_t\fP c)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP int \fButf8ncasecmp\fP (const void *src1, const void *src2, size_t n)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_weak\fP void * \fButf8ncat\fP (void *\fButf8_restrict\fP dst, const void *\fButf8_restrict\fP src, size_t n)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP int \fButf8ncmp\fP (const void *src1, const void *src2, size_t n)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_weak\fP void * \fButf8ncpy\fP (void *\fButf8_restrict\fP dst, const void *\fButf8_restrict\fP src, size_t n)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_weak\fP void * \fButf8ndup\fP (const void *src, size_t n)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP void * \fButf8pbrk\fP (const void *str, const void *accept)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP void * \fButf8rchr\fP (const void *src, int chr)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP size_t \fButf8size\fP (const void *str)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP size_t \fButf8spn\fP (const void *src, const void *accept)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP void * \fButf8str\fP (const void *haystack, const void *needle)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP void * \fButf8casestr\fP (const void *haystack, const void *needle)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_pure\fP \fButf8_weak\fP void * \fButf8valid\fP (const void *str)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_weak\fP void * \fButf8codepoint\fP (const void *\fButf8_restrict\fP str, \fButf8_int32_t\fP *\fButf8_restrict\fP out_codepoint)"
+.br
+.ti -1c
+.RI "\fButf8_weak\fP size_t \fButf8codepointsize\fP (\fButf8_int32_t\fP chr)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_weak\fP void * \fButf8catcodepoint\fP (void *\fButf8_restrict\fP str, \fButf8_int32_t\fP chr, size_t n)"
+.br
+.ti -1c
+.RI "\fButf8_weak\fP int \fButf8islower\fP (\fButf8_int32_t\fP chr)"
+.br
+.ti -1c
+.RI "\fButf8_weak\fP int \fButf8isupper\fP (\fButf8_int32_t\fP chr)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_weak\fP void \fButf8lwr\fP (void *\fButf8_restrict\fP str)"
+.br
+.ti -1c
+.RI "\fButf8_nonnull\fP \fButf8_weak\fP void \fButf8upr\fP (void *\fButf8_restrict\fP str)"
+.br
+.ti -1c
+.RI "\fButf8_weak\fP \fButf8_int32_t\fP \fButf8lwrcodepoint\fP (\fButf8_int32_t\fP cp)"
+.br
+.ti -1c
+.RI "\fButf8_weak\fP \fButf8_int32_t\fP \fButf8uprcodepoint\fP (\fButf8_int32_t\fP cp)"
+.br
+.ti -1c
+.RI "int \fButf8coll\fP (const void *src1, const void *src2)"
+.br
+.ti -1c
+.RI "void * \fButf8fry\fP (const void *str)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_string_buffer_t\fP * \fBcreate_string_buffer\fP (size_t number_of_chars, enum \fBf_string_type\fP type)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBdestroy_string_buffer\fP (\fBf_string_buffer_t\fP *buffer)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_string_buffer_t\fP * \fBcopy_string_buffer\fP (const \fBf_string_buffer_t\fP *buffer)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBrealloc_string_buffer_without_copy\fP (\fBf_string_buffer_t\fP *buffer)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBfill_buffer_from_string\fP (\fBf_string_buffer_t\fP *buffer, const char *str)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBfill_buffer_from_wstring\fP (\fBf_string_buffer_t\fP *buffer, const wchar_t *str)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBfill_buffer_from_u8string\fP (\fBf_string_buffer_t\fP *buffer, const void *str)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBbuffer_text_visible_width\fP (const \fBf_string_buffer_t\fP *buffer)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBbuffer_text_visible_height\fP (const \fBf_string_buffer_t\fP *buffer)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBstring_buffer_cod_width_capacity\fP (const \fBf_string_buffer_t\fP *buffer)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBstring_buffer_raw_capacity\fP (const \fBf_string_buffer_t\fP *buffer)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBstring_buffer_width_capacity\fP (const \fBf_string_buffer_t\fP *buffer)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void * \fBbuffer_get_data\fP (\fBf_string_buffer_t\fP *buffer)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBbuffer_check_align\fP (\fBf_string_buffer_t\fP *buffer)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBbuffer_printf\fP (\fBf_string_buffer_t\fP *buffer, size_t buffer_row, \fBf_conv_context_t\fP *cntx, size_t cod_width, const char *content_style_tag, const char *reset_content_style_tag)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBbuffer_set_u8strwid_func\fP (int(*u8strwid)(const void *beg, const void *end, size_t *width))"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBget_style_tag_for_cell\fP (const \fBf_table_properties_t\fP *props, size_t row, size_t col, char *style_tag, size_t sz)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBget_reset_style_tag_for_cell\fP (const \fBf_table_properties_t\fP *props, size_t row, size_t col, char *style_tag, size_t sz)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBget_style_tag_for_content\fP (const \fBf_table_properties_t\fP *props, size_t row, size_t col, char *style_tag, size_t sz)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBget_reset_style_tag_for_content\fP (const \fBf_table_properties_t\fP *props, size_t row, size_t col, char *style_tag, size_t sz)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_cell_prop_container_t\fP * \fBcreate_cell_prop_container\fP (void)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBdestroy_cell_prop_container\fP (\fBf_cell_prop_container_t\fP *cont)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP const \fBf_cell_props_t\fP * \fBcget_cell_prop\fP (const \fBf_cell_prop_container_t\fP *cont, size_t row, size_t col)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_cell_props_t\fP * \fBget_cell_prop_and_create_if_not_exists\fP (\fBf_cell_prop_container_t\fP *cont, size_t row, size_t col)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBset_cell_property\fP (\fBf_cell_prop_container_t\fP *cont, size_t row, size_t col, uint32_t property, int value)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBget_cell_property_hierarchically\fP (const \fBf_table_properties_t\fP *properties, size_t row, size_t column, uint32_t property)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBset_default_cell_property\fP (uint32_t property, int value)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBset_entire_table_property\fP (\fBf_table_properties_t\fP *table_properties, uint32_t property, int value)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBset_default_entire_table_property\fP (uint32_t property, int value)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBmax_border_elem_strlen\fP (struct \fBf_table_properties\fP *)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_table_properties_t\fP * \fBcreate_table_properties\fP (void)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBdestroy_table_properties\fP (\fBf_table_properties_t\fP *properties)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_table_properties_t\fP * \fBcopy_table_properties\fP (const \fBf_table_properties_t\fP *property)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_cell_t\fP * \fBcreate_cell\fP (void)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBdestroy_cell\fP (\fBf_cell_t\fP *cell)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_cell_t\fP * \fBcopy_cell\fP (\fBf_cell_t\fP *cell)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBcell_vis_width\fP (const \fBf_cell_t\fP *cell, const \fBf_context_t\fP *context)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBcell_invis_codes_width\fP (const \fBf_cell_t\fP *cell, const \fBf_context_t\fP *context)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBhint_height_cell\fP (const \fBf_cell_t\fP *cell, const \fBf_context_t\fP *context)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBset_cell_type\fP (\fBf_cell_t\fP *cell, enum \fBf_cell_type\fP type)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP enum \fBf_cell_type\fP \fBget_cell_type\fP (const \fBf_cell_t\fP *cell)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBcell_printf\fP (\fBf_cell_t\fP *cell, size_t row, \fBf_conv_context_t\fP *cntx, size_t cod_width)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBfill_cell_from_string\fP (\fBf_cell_t\fP *cell, const char *str)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBfill_cell_from_wstring\fP (\fBf_cell_t\fP *cell, const wchar_t *str)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBfill_cell_from_buffer\fP (\fBf_cell_t\fP *cell, const \fBf_string_buffer_t\fP *buf)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_string_buffer_t\fP * \fBcell_get_string_buffer\fP (\fBf_cell_t\fP *cell)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_row_t\fP * \fBcreate_row\fP (void)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBdestroy_row\fP (\fBf_row_t\fP *row)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_row_t\fP * \fBcopy_row\fP (\fBf_row_t\fP *row)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_row_t\fP * \fBsplit_row\fP (\fBf_row_t\fP *row, size_t pos)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBft_row_erase_range\fP (\fBf_row_t\fP *row, size_t left, size_t right)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_row_t\fP * \fBcreate_row_from_string\fP (const char *str)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_row_t\fP * \fBcreate_row_from_fmt_string\fP (const struct \fBf_string_view\fP *fmt, va_list *va_args)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBcolumns_in_row\fP (const \fBf_row_t\fP *row)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_cell_t\fP * \fBget_cell\fP (\fBf_row_t\fP *row, size_t col)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP const \fBf_cell_t\fP * \fBget_cell_c\fP (const \fBf_row_t\fP *row, size_t col)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_cell_t\fP * \fBget_cell_and_create_if_not_exists\fP (\fBf_row_t\fP *row, size_t col)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_cell_t\fP * \fBcreate_cell_in_position\fP (\fBf_row_t\fP *row, size_t col)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBswap_row\fP (\fBf_row_t\fP *cur_row, \fBf_row_t\fP *ins_row, size_t pos)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBinsert_row\fP (\fBf_row_t\fP *cur_row, \fBf_row_t\fP *ins_row, size_t pos)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBgroup_cell_number\fP (const \fBf_row_t\fP *row, size_t master_cell_col)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBget_row_cell_types\fP (const \fBf_row_t\fP *row, enum \fBf_cell_type\fP *types, size_t types_sz)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBrow_set_cell_span\fP (\fBf_row_t\fP *row, size_t cell_column, size_t hor_span)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBprint_row_separator\fP (\fBf_conv_context_t\fP *cntx, const size_t *col_width_arr, size_t cols, const \fBf_row_t\fP *upper_row, const \fBf_row_t\fP *lower_row, enum \fBf_hor_separator_pos\fP separatorPos, const \fBf_separator_t\fP *sep)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP int \fBsnprintf_row\fP (const \fBf_row_t\fP *row, \fBf_conv_context_t\fP *cntx, size_t *col_width_arr, size_t col_width_arr_sz, size_t row_height)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_row_t\fP * \fBcreate_row_from_wstring\fP (const wchar_t *str)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_separator_t\fP * \fBcreate_separator\fP (int enabled)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBdestroy_separator\fP (\fBf_separator_t\fP *sep)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_separator_t\fP * \fBcopy_separator\fP (\fBf_separator_t\fP *sep)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBget_table_sizes\fP (const \fBft_table_t\fP *table, size_t *rows, size_t *cols)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_row_t\fP * \fBget_row\fP (\fBft_table_t\fP *table, size_t row)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP const \fBf_row_t\fP * \fBget_row_c\fP (const \fBft_table_t\fP *table, size_t row)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_row_t\fP * \fBget_row_and_create_if_not_exists\fP (\fBft_table_t\fP *table, size_t row)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_string_buffer_t\fP * \fBget_cur_str_buffer_and_create_if_not_exists\fP (\fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBtable_rows_and_cols_geometry\fP (const \fBft_table_t\fP *table, size_t **col_width_arr_p, size_t *col_width_arr_sz, size_t **row_height_arr_p, size_t *row_height_arr_sz, enum \fBf_geometry_type\fP geom)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBtable_geometry\fP (const \fBft_table_t\fP *table, size_t *height, size_t *width)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_status\fP \fBtable_internal_codepoints_geometry\fP (const \fBft_table_t\fP *table, size_t *height, size_t *width)"
+.br
+.ti -1c
+.RI "\fBft_table_t\fP * \fBft_create_table\fP (void)"
+.br
+.ti -1c
+.RI "void \fBft_destroy_table\fP (\fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "\fBft_table_t\fP * \fBft_copy_table\fP (\fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "int \fBft_ln\fP (\fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "size_t \fBft_cur_row\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "size_t \fBft_cur_col\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "void \fBft_set_cur_cell\fP (\fBft_table_t\fP *table, size_t row, size_t col)"
+.br
+.ti -1c
+.RI "int \fBft_is_empty\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "size_t \fBft_row_count\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "size_t \fBft_col_count\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "int \fBft_erase_range\fP (\fBft_table_t\fP *table, size_t top_left_row, size_t top_left_col, size_t bottom_right_row, size_t bottom_right_col)"
+.br
+.ti -1c
+.RI "int \fBFT_PRINTF\fP (\fBft_table_t\fP *table, const char *fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBFT_PRINTF_LN\fP (\fBft_table_t\fP *table, const char *fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_wprintf\fP (\fBft_table_t\fP *table, const wchar_t *fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_wprintf_ln\fP (\fBft_table_t\fP *table, const wchar_t *fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "void \fBft_set_default_printf_field_separator\fP (char separator)"
+.br
+.ti -1c
+.RI "int \fBft_nwrite\fP (\fBft_table_t\fP *table, size_t count, const char *cell_content,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_nwrite_ln\fP (\fBft_table_t\fP *table, size_t count, const char *cell_content,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_nwwrite\fP (\fBft_table_t\fP *table, size_t n, const wchar_t *cell_content,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_nwwrite_ln\fP (\fBft_table_t\fP *table, size_t n, const wchar_t *cell_content,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_row_write\fP (\fBft_table_t\fP *table, size_t cols, const char *cells[])"
+.br
+.ti -1c
+.RI "int \fBft_row_write_ln\fP (\fBft_table_t\fP *table, size_t cols, const char *cells[])"
+.br
+.ti -1c
+.RI "int \fBft_row_wwrite\fP (\fBft_table_t\fP *table, size_t cols, const wchar_t *cells[])"
+.br
+.ti -1c
+.RI "int \fBft_row_wwrite_ln\fP (\fBft_table_t\fP *table, size_t cols, const wchar_t *cells[])"
+.br
+.ti -1c
+.RI "int \fBft_table_write\fP (\fBft_table_t\fP *table, size_t rows, size_t cols, const char *table_cells[])"
+.br
+.ti -1c
+.RI "int \fBft_table_write_ln\fP (\fBft_table_t\fP *table, size_t rows, size_t cols, const char *table_cells[])"
+.br
+.ti -1c
+.RI "int \fBft_table_wwrite\fP (\fBft_table_t\fP *table, size_t rows, size_t cols, const wchar_t *table_cells[])"
+.br
+.ti -1c
+.RI "int \fBft_table_wwrite_ln\fP (\fBft_table_t\fP *table, size_t rows, size_t cols, const wchar_t *table_cells[])"
+.br
+.ti -1c
+.RI "const char * \fBft_to_string\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "const wchar_t * \fBft_to_wstring\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "int \fBft_add_separator\fP (\fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "int \fBft_set_default_border_style\fP (const struct \fBft_border_style\fP *style)"
+.br
+.ti -1c
+.RI "int \fBft_set_border_style\fP (\fBft_table_t\fP *table, const struct \fBft_border_style\fP *style)"
+.br
+.ti -1c
+.RI "int \fBft_set_cell_prop\fP (\fBft_table_t\fP *table, size_t row, size_t col, uint32_t property, int value)"
+.br
+.ti -1c
+.RI "int \fBft_set_default_cell_prop\fP (uint32_t property, int value)"
+.br
+.ti -1c
+.RI "int \fBft_set_default_tbl_prop\fP (uint32_t property, int value)"
+.br
+.ti -1c
+.RI "int \fBft_set_tbl_prop\fP (\fBft_table_t\fP *table, uint32_t property, int value)"
+.br
+.ti -1c
+.RI "void \fBft_set_memory_funcs\fP (void *(*f_malloc)(size_t size), void(*f_free)(void *ptr))"
+.br
+.ti -1c
+.RI "const char * \fBft_strerror\fP (int error_code)"
+.br
+.ti -1c
+.RI "int \fBft_set_cell_span\fP (\fBft_table_t\fP *table, size_t row, size_t col, size_t hor_span)"
+.br
+.ti -1c
+.RI "int \fBft_u8nwrite\fP (\fBft_table_t\fP *table, size_t n, const void *cell_content,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_u8nwrite_ln\fP (\fBft_table_t\fP *table, size_t n, const void *cell_content,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_u8printf\fP (\fBft_table_t\fP *table, const char *fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBft_u8printf_ln\fP (\fBft_table_t\fP *table, const char *fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "const void * \fBft_to_u8string\fP (const \fBft_table_t\fP *table)"
+.br
+.ti -1c
+.RI "void \fBft_set_u8strwid_func\fP (int(*u8strwid)(const void *beg, const void *end, size_t *width))"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP \fBf_row_t\fP * \fBcreate_row_from_buffer\fP (const \fBf_string_buffer_t\fP *buffer)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBstrchr_count\fP (const char *str, char ch)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fBwstrchr_count\fP (const wchar_t *str, wchar_t ch)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void * \fBut8next\fP (const void *str)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP size_t \fButf8chr_count\fP (const void *str, \fButf8_int32_t\fP ch)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP const char * \fBstr_n_substring_beg\fP (const char *str, char ch_separator, size_t n)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP const wchar_t * \fBwstr_n_substring_beg\fP (const wchar_t *str, wchar_t ch_separator, size_t n)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP const void * \fButf8_n_substring_beg\fP (const void *str, \fButf8_int32_t\fP ch_separator, size_t n)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBstr_n_substring\fP (const char *str, char ch_separator, size_t n, const char **begin, const char **end)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fBwstr_n_substring\fP (const wchar_t *str, wchar_t ch_separator, size_t n, const wchar_t **begin, const wchar_t **end)"
+.br
+.ti -1c
+.RI "\fBFT_INTERNAL\fP void \fButf8_n_substring\fP (const void *str, \fButf8_int32_t\fP ch_separator, size_t n, const void **begin, const void **end)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "char \fBg_col_separator\fP = \fBFORT_DEFAULT_COL_SEPARATOR\fP"
+.br
+.ti -1c
+.RI "void *(* \fBfort_malloc\fP )(size_t size) = &local_malloc"
+.br
+.ti -1c
+.RI "void(* \fBfort_free\fP )(void *ptr) = &local_free"
+.br
+.ti -1c
+.RI "void *(* \fBfort_calloc\fP )(size_t nmemb, size_t size) = &local_calloc"
+.br
+.ti -1c
+.RI "void *(* \fBfort_realloc\fP )(void *ptr, size_t size) = &local_realloc"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_BASIC_STYLE\fP = \fBBASIC_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_BASIC2_STYLE\fP = \fBBASIC2_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_SIMPLE_STYLE\fP = \fBSIMPLE_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_PLAIN_STYLE\fP = \fBPLAIN_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_DOT_STYLE\fP = \fBDOT_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_EMPTY_STYLE\fP = \fBEMPTY_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_EMPTY2_STYLE\fP = \fBEMPTY2_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_SOLID_STYLE\fP = \fBSOLID_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_SOLID_ROUND_STYLE\fP = \fBSOLID_ROUND_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_NICE_STYLE\fP = \fBNICE_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_DOUBLE_STYLE\fP = \fBDOUBLE_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_DOUBLE2_STYLE\fP = \fBDOUBLE2_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_BOLD_STYLE\fP = \fBBOLD_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_BOLD2_STYLE\fP = \fBBOLD2_STYLE\fP"
+.br
+.ti -1c
+.RI "struct \fBfort_border_style\fP \fBFORT_FRAME_STYLE\fP = \fBFRAME_STYLE\fP"
+.br
+.ti -1c
+.RI "\fBfort_entire_table_properties_t\fP \fBg_entire_table_properties\fP"
+.br
+.ti -1c
+.RI "\fBf_table_properties_t\fP \fBg_table_properties\fP"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_BASIC_STYLE\fP = &built_in_external_styles[0]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_BASIC2_STYLE\fP = &built_in_external_styles[1]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_SIMPLE_STYLE\fP = &built_in_external_styles[2]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_PLAIN_STYLE\fP = &built_in_external_styles[3]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_DOT_STYLE\fP = &built_in_external_styles[4]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_EMPTY_STYLE\fP = &built_in_external_styles[5]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_EMPTY2_STYLE\fP = &built_in_external_styles[6]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_SOLID_STYLE\fP = &built_in_external_styles[7]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_SOLID_ROUND_STYLE\fP = &built_in_external_styles[8]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_NICE_STYLE\fP = &built_in_external_styles[9]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_DOUBLE_STYLE\fP = &built_in_external_styles[10]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_DOUBLE2_STYLE\fP = &built_in_external_styles[11]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_BOLD_STYLE\fP = &built_in_external_styles[12]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_BOLD2_STYLE\fP = &built_in_external_styles[13]"
+.br
+.ti -1c
+.RI "const struct \fBft_border_style\fP *const \fBFT_FRAME_STYLE\fP = &built_in_external_styles[14]"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define BASIC2_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {           \
+    /* border_chars */            \
+    {                             \
+     "+", "-", "+", "+",          \
+     "|", "|", "|",               \
+     "+", "-", "+", "+",          \
+     "+", "-", "+", "+",          \
+     "+", "+", "+", "+",          \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    "+", "-", "+", "+",           \
+    "|", "|", "|",                \
+    "+", "-", "+", "+",           \
+    "+", "-", "+", "+",           \
+    "+", "+", "+", "+",           \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    "+", "-", "+", "+",           \
+    "+", "+",                     \
+    },                            \
+}
+.fi
+.SS "#define BASIC_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {            \
+    /* border_chars */            \
+    {                             \
+     "+", "-", "+", "+",          \
+     "|", "|", "|",               \
+     "\0", "\0", "\0", "\0",      \
+     "+", "-", "+", "+",          \
+     "+", "+", "+", "+",          \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    "+", "-", "+", "+",           \
+    "|", "|", "|",                \
+    "+", "-", "+", "+",           \
+    "+", "-", "+", "+",           \
+    "+", "+", "+", "+",           \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    "+", "-", "+", "+",           \
+    "+", "+",                     \
+    },                            \
+}
+.fi
+.SS "#define BOLD2_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {            \
+    /* border_chars */            \
+    {                             \
+     "┏", "━", "┯", "┓",          \
+     "┃", "│", "┃",               \
+     "┠", "─", "┼", "┨",          \
+     "┗", "━", "┷", "┛",          \
+     "┣", "┬", "┣", "┴",          \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    "┏", "━", "┯", "┓",           \
+    "┃", "│", "┃",                \
+    "┣", "━", "┿", "┫",           \
+    "┗", "━", "┷", "┛",           \
+    "┣", "┯", "┣", "┷",           \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    "┣", "━", "┿", "┫",           \
+    "┯", "┷",                     \
+    },                            \
+}
+.fi
+.SS "#define BOLD_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {             \
+    /* border_chars */            \
+    {                             \
+     "┏", "━", "┳", "┓",          \
+     "┃", "┃", "┃",               \
+     "", "", "", "",              \
+     "┗", "━", "┻", "┛",          \
+     "┣", "┻", "┣", "┳",          \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    "┏", "━", "┳", "┓",           \
+    "┃", "┃", "┃",                \
+    "┣", "━", "╋", "┫",           \
+    "┗", "━", "┻", "┛",           \
+    "┣", "┳", "┣", "┻",           \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    "┣", "━", "╋", "┫",           \
+    "┳", "┻",                     \
+    },                            \
+}
+.fi
+.SS "#define BOR_CHARS   properties\->border_style\&.border_chars"
+
+.SS "#define BUILT_IN_STYLES_SZ   (sizeof(built_in_styles) / sizeof(built_in_styles[0]))"
+
+.SS "#define CELL_H"
+
+.SS "#define CHCK_RSLT_ADD_TO_INVISIBLE_WRITTEN(statement)"
+\fBValue:\fP
+.PP
+.nf
+    do { \
+        tmp = statement; \
+        if (tmp < 0) {\
+            PRINT_DEBUG_INFO \
+            goto clear; \
+        } \
+        invisible_written += (size_t)tmp; \
+    } while(0)
+.fi
+.SS "#define CHCK_RSLT_ADD_TO_WRITTEN(statement)"
+\fBValue:\fP
+.PP
+.nf
+    do { \
+        tmp = statement; \
+        if (tmp < 0) {\
+            PRINT_DEBUG_INFO \
+            goto clear; \
+        } \
+        written += (size_t)tmp; \
+    } while(0)
+.fi
+.SS "#define CHECK_NOT_NEGATIVE(x)       do { if ((x) < 0) goto fort_fail; } while (0)"
+
+.SS "#define DEFAULT_STR_BUF_SIZE   1024"
+
+.SS "#define DEFAULT_VECTOR_CAPACITY   10"
+
+.SS "#define DOT_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {              \
+    /* border_chars */            \
+    {                             \
+     "\&.", "\&.", "\&.", "\&.",          \
+     ":", ":", ":",               \
+     "\0", "\0", "\0", "\0",      \
+     ":", "\&.", ":", ":",          \
+     "+", ":", "+", ":",          \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    "\&.", "\&.", "\&.", "\&.",           \
+    ":", ":", ":",                \
+    ":", "\&.", ":", ":",           \
+    ":", "\&.", ":", ":",           \
+    "+", "\&.", "+", "\&.",           \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    ":", "\&.", ":", ":",           \
+    ":", ":",                     \
+    },                            \
+}
+.fi
+.SS "#define DOUBLE2_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {          \
+    /* border_chars */            \
+    {                             \
+     "╔", "═", "╤", "╗",          \
+     "║", "│", "║",               \
+     "╟", "─", "┼", "╢",          \
+     "╚", "═", "╧", "╝",          \
+     "├", "┬", "┤", "┴",          \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    "╔", "═", "╤", "╗",           \
+    "║", "│", "║",                \
+    "╠", "═", "╪", "╣",           \
+    "╚", "═", "╧", "╝",           \
+    "├", "╤", "┤", "╧",           \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    "╠", "═", "╪", "╣",           \
+    "╤", "╧",                     \
+    },                            \
+}
+.fi
+.SS "#define DOUBLE_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {         \
+    /* border_chars */          \
+    {                           \
+     "╔", "═", "╦", "╗",        \
+     "║", "║", "║",             \
+     "", "", "", "",            \
+     "╚", "═", "╩", "╝",        \
+     "┣", "┻", "┣", "┳",        \
+    },                          \
+    /* header_border_chars */   \
+    {                           \
+    "╔", "═", "╦", "╗",         \
+    "║", "║", "║",              \
+    "╠", "═", "╬", "╣",         \
+    "╚", "═", "╩", "╝",         \
+    "┣", "╦", "┣", "╩",         \
+    },                          \
+    /* separator_chars */       \
+    {                           \
+    "╠", "═", "╬", "╣",         \
+    "╦", "╩",                   \
+    },                          \
+}
+.fi
+.SS "#define EMPTY2_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {            \
+    /* border_chars */            \
+    {                             \
+     " ", " ", " ", " ",          \
+     " ", " ", " ",               \
+     "\0", "\0", "\0", "\0",      \
+     " ", " ", " ", " ",          \
+     " ", " ", " ", " ",          \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    " ", " ", " ", " ",           \
+    " ", " ", " ",                \
+    "\0", "\0", "\0", "\0",       \
+    " ", " ", " ", " ",           \
+    " ", " ", " ", " ",           \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    " ", " ", " ", " ",           \
+    " ", " ",                     \
+    },                            \
+}
+.fi
+.SS "#define EMPTY_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {            \
+    /* border_chars */            \
+    {                             \
+     "\0", "\0", "\0", "\0",      \
+     "\0", "\0", "\0",            \
+     "\0", "\0", "\0", "\0",      \
+     "\0", "\0", "\0", "\0",      \
+     "\0", "\0", "\0", "\0",      \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    "\0", "\0", "\0", "\0",       \
+    "\0", "\0", "\0",             \
+    "\0", "\0", "\0", "\0",       \
+    "\0", "\0", "\0", "\0",       \
+    "\0", "\0", "\0", "\0",       \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    "\0", " ", "\0 ", "\0",       \
+    "\0", "\0",                   \
+    },                            \
+}
+.fi
+.SS "#define F_CALLOC   \fBfort_calloc\fP"
+
+.SS "#define F_CREATE(type)   ((type *)\fBF_CALLOC\fP(sizeof(type), 1))"
+
+.SS "#define F_FREE   \fBfort_free\fP"
+
+.SS "#define F_MALLOC   \fBfort_malloc\fP"
+
+.SS "#define F_REALLOC   \fBfort_realloc\fP"
+
+.SS "#define F_STRDUP   \fBfort_strdup\fP"
+
+.SS "#define F_UTF8DUP   \fButf8dup\fP"
+
+.SS "#define F_WCSDUP   \fBfort_wcsdup\fP"
+
+.SS "#define FORT_COL_SEPARATOR_LENGTH   1"
+
+.SS "#define FORT_DEFAULT_COL_SEPARATOR   '|'"
+
+.SS "#define FORT_IMPL_H"
+
+.SS "#define FORT_UNUSED   __attribute__((unused))"
+
+.SS "#define FRAME_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {             \
+    /* border_chars */            \
+    {                             \
+     "▛", "▀", "▀", "▜",          \
+     "▌", "┃", "▐",               \
+     "", "", "", "",              \
+     "▙", "▄", "▄", "▟",          \
+     "┣", "━", "┣", "━"           \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    "▛", "▀", "▀", "▜",           \
+    "▌", "┃", "▐",                \
+    "▌", "━", "╋", "▐",           \
+    "▙", "▄", "▄", "▟",           \
+    "┣", "━", "┣", "━",           \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    "▌", "━", "╋", "▐",           \
+    "╋", "╋",                     \
+    },                            \
+}
+.fi
+.SS "#define FT_AMALGAMED_SOURCE   /* Macros to make internal libfort functions static */"
+
+.SS "#define FT_CHECK(statement)"
+\fBValue:\fP
+.PP
+.nf
+    do { \
+        tmp = statement; \
+        if (tmp < 0) {\
+            PRINT_DEBUG_INFO \
+            goto clear; \
+        } \
+    } while(0)
+.fi
+.SS "#define FT_INTERNAL   static"
+
+.SS "#define FT_NEWLINE   '\\n'"
+
+.SS "#define FT_PRINTF   ft_printf_impl"
+
+.SS "#define FT_PRINTF_LN   ft_printf_ln_impl"
+
+.SS "#define FT_RESET_COLOR   '\\033[0m'"
+
+.SS "#define FT_SPACE   ' '"
+
+.SS "#define FT_STR_2_CAT(arg1, arg2)       \fBFT_STR_2_CAT_\fP(arg1, arg2)"
+
+.SS "#define FT_STR_2_CAT_(arg1, arg2)       arg1##arg2"
+
+.SS "#define H_BOR_CHARS   properties\->border_style\&.header_border_chars"
+
+.SS "#define INVALID_VEC_INDEX   ((size_t) \-1)"
+
+.SS "#define MAX(a, b)   ((a) > (b) ? (a) : (b))"
+
+.SS "#define MIN(a, b)   ((a) < (b) ? (a) : (b))"
+
+.SS "#define NICE_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {             \
+    /* border_chars */            \
+    {                             \
+     "╔", "═", "╦", "╗",          \
+     "║", "║", "║",               \
+     "", "", "", "",              \
+     "╚", "═", "╩", "╝",          \
+     "┣", "┻", "┣", "┳",          \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    "╔", "═", "╦", "╗",           \
+    "║", "║", "║",                \
+    "╠", "═", "╬", "╣",           \
+    "╚", "═", "╩", "╝",           \
+    "┣", "╦", "┣", "╩",           \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    "╟", "─", "╫", "╢",           \
+    "╥", "╨",                     \
+    },                            \
+}
+.fi
+.SS "#define PLAIN_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {            \
+    /* border_chars */            \
+    {                             \
+    "\0", "\0", "\0", "\0",       \
+    "\0", " ", "\0",              \
+    "\0", "\0", "\0", "\0",       \
+    "\0", "\0", "\0", "\0",       \
+    "\0", "\0", "\0", "\0",       \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    "\0", "-", "-", "\0",         \
+    "\0", " ", "\0",              \
+    "\0", "-", "-", "\0",         \
+    "\0", "-", "-", "\0",         \
+    " ", "-", " ", "-",           \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    "\0", "-", "-", "\0",         \
+    "-", "-",                     \
+    },                            \
+}
+.fi
+.SS "#define PRINT_DEBUG_INFO"
+
+.SS "#define PROP_IS_SET(ft_props, property)   ((ft_props) & (property))"
+
+.SS "#define PROP_SET(ft_props, property)   ((ft_props) |=(property))"
+
+.SS "#define PROP_UNSET(ft_props, property)   ((ft_props) &= ~((uint32_t)(property)))"
+
+.SS "#define PROPERTIES_H"
+
+.SS "#define RIGHT   (padding_right + extra_right)"
+
+.SS "#define ROW_H"
+
+.SS "#define SEP_CHARS   properties\->border_style\&.separator_chars"
+
+.SS "#define SHEREDOM_UTF8_H_INCLUDED"
+
+.SS "#define SIMPLE_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {           \
+    /* border_chars */            \
+    {                             \
+    "\0", "\0", "\0", "\0",       \
+    "\0", " ", "\0",              \
+    "\0", "\0", "\0", "\0",       \
+    "\0", "\0", "\0", "\0",       \
+    "\0", "\0", "\0", "\0",       \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    "\0", "\0", "\0", "\0",       \
+    "\0", " ", "\0",              \
+    "\0", "-", " ", "\0",         \
+    "\0", " ", " ", "\0",         \
+    " ", "-", " ", "-",           \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    "\0", "-", " ", "\0",         \
+    " ", " ",                     \
+    },                            \
+}
+.fi
+.SS "#define SOLID_ROUND_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {      \
+    /* border_chars */            \
+    {                             \
+     "╭", "─", "┬", "╮",          \
+     "│", "│", "│",               \
+     "", "", "", "",              \
+     "╰", "─", "┴", "╯",          \
+     "│", "─", "│", "─",          \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    "╭", "─", "┬", "╮",           \
+    "│", "│", "│",                \
+    "├", "─", "┼", "┤",           \
+    "╰", "─", "┴", "╯",           \
+    "┼", "┬", "┼", "┴",           \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    "├", "─", "┼", "┤",           \
+    "┬", "┴",                     \
+    },                            \
+}
+.fi
+.SS "#define SOLID_STYLE"
+\fBValue:\fP
+.PP
+.nf
+    {            \
+    /* border_chars */            \
+    {                             \
+     "┌", "─", "┬", "┐",          \
+     "│", "│", "│",               \
+     "", "", "", "",              \
+     "└", "─", "┴", "┘",          \
+     "│", "─", "│", "─",          \
+    },                            \
+    /* header_border_chars */     \
+    {                             \
+    "┌", "─", "┬", "┐",           \
+    "│", "│", "│",                \
+    "├", "─", "┼", "┤",           \
+    "└", "─", "┴", "┘",           \
+    "┼", "┬", "┼", "┴",           \
+    },                            \
+    /* separator_chars */         \
+    {                             \
+    "├", "─", "┼", "┤",           \
+    "┬", "┴",                     \
+    },                            \
+}
+.fi
+.SS "#define STRCHR   strchr"
+
+.SS "#define STRCHR   wcschr"
+
+.SS "#define STRING_BUFFER_H"
+
+.SS "#define TABLE_H"
+
+.SS "#define TEXT_STYLE_TAG_MAX_SIZE   (64 * 2)"
+
+.SS "#define TOTAL_WRITTEN   (written + invisible_written)"
+
+.SS "#define UNIQUE_NAME(prefix)       \fBUNIQUE_NAME_\fP(prefix)"
+
+.SS "#define UNIQUE_NAME_(prefix)       \fBFT_STR_2_CAT\fP(prefix,__COUNTER__)"
+
+.SS "#define UNIVERSAL_RESET_TAG   '\\033[0m'"
+
+.SS "#define utf8_nonnull"
+
+.SS "#define utf8_null   0"
+
+.SS "#define utf8_pure"
+
+.SS "#define utf8_restrict"
+
+.SS "#define utf8_weak   inline"
+
+.SS "#define VECTOR_AT(vector, pos, data_type)       *(data_type *)\fBvector_at\fP((vector), (pos))"
+
+.SS "#define VECTOR_AT_C(vector, pos, const_data_type)       *(const_data_type *)\fBvector_at_c\fP((vector), (pos))"
+
+.SS "#define VECTOR_H"
+
+.SS "#define WCS_SIZE   64"
+
+.SS "#define WCWIDTH_H"
+
+.SS "#define WRITE_CELL_STYLE_TAG   \fBCHCK_RSLT_ADD_TO_INVISIBLE_WRITTEN\fP(\fBprint_n_strings\fP(cntx, 1, cell_style_tag))"
+
+.SS "#define WRITE_CONTENT_STYLE_TAG   \fBCHCK_RSLT_ADD_TO_INVISIBLE_WRITTEN\fP(\fBprint_n_strings\fP(cntx, 1, content_style_tag))"
+
+.SS "#define WRITE_RESET_CELL_STYLE_TAG   \fBCHCK_RSLT_ADD_TO_INVISIBLE_WRITTEN\fP(\fBprint_n_strings\fP(cntx, 1, reset_cell_style_tag))"
+
+.SS "#define WRITE_RESET_CONTENT_STYLE_TAG   \fBCHCK_RSLT_ADD_TO_INVISIBLE_WRITTEN\fP(\fBprint_n_strings\fP(cntx, 1, reset_content_style_tag))"
+
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef \fBf_vector_t\fP \fBf_cell_prop_container_t\fP"
+
+.SS "typedef struct \fBf_cell_props\fP \fBf_cell_props_t\fP"
+
+.SS "typedef struct \fBf_cell\fP \fBf_cell_t\fP"
+
+.SS "typedef struct \fBf_context\fP \fBf_context_t\fP"
+
+.SS "typedef struct \fBf_conv_context\fP \fBf_conv_context_t\fP"
+
+.SS "typedef struct \fBf_row\fP \fBf_row_t\fP"
+
+.SS "typedef struct \fBf_separator\fP \fBf_separator_t\fP"
+
+.SS "typedef int \fBf_status\fP"
+
+.SS "typedef struct \fBf_string_buffer\fP \fBf_string_buffer_t\fP"
+
+.SS "typedef struct \fBf_string_view\fP \fBf_string_view_t\fP"
+
+.SS "typedef struct \fBf_table_properties\fP \fBf_table_properties_t\fP"
+
+.SS "typedef struct \fBf_vector\fP \fBf_vector_t\fP"
+
+.SS "typedef struct \fBfort_entire_table_properties\fP \fBfort_entire_table_properties_t\fP"
+
+.SS "typedef int32_t \fButf8_int32_t\fP"
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBf_bool\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIF_FALSE \fP\fP
+.TP
+\fB\fIF_TRUE \fP\fP
+.SS "enum \fBf_border_item_pos\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fITL_bip \fP\fP
+.TP
+\fB\fITT_bip \fP\fP
+.TP
+\fB\fITV_bip \fP\fP
+.TP
+\fB\fITR_bip \fP\fP
+.TP
+\fB\fILL_bip \fP\fP
+.TP
+\fB\fIIV_bip \fP\fP
+.TP
+\fB\fIRR_bip \fP\fP
+.TP
+\fB\fILH_bip \fP\fP
+.TP
+\fB\fIIH_bip \fP\fP
+.TP
+\fB\fIII_bip \fP\fP
+.TP
+\fB\fIRH_bip \fP\fP
+.TP
+\fB\fIBL_bip \fP\fP
+.TP
+\fB\fIBB_bip \fP\fP
+.TP
+\fB\fIBV_bip \fP\fP
+.TP
+\fB\fIBR_bip \fP\fP
+.TP
+\fB\fILI_bip \fP\fP
+.TP
+\fB\fITI_bip \fP\fP
+.TP
+\fB\fIRI_bip \fP\fP
+.TP
+\fB\fIBI_bip \fP\fP
+.TP
+\fB\fIBORDER_ITEM_POS_SIZE \fP\fP
+.SS "enum \fBf_cell_type\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICOMMON_CELL \fP\fP
+.TP
+\fB\fIGROUP_MASTER_CELL \fP\fP
+.TP
+\fB\fIGROUP_SLAVE_CELL \fP\fP
+.SS "enum \fBf_geometry_type\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIVISIBLE_GEOMETRY \fP\fP
+.TP
+\fB\fIINTERN_REPR_GEOMETRY \fP\fP
+.SS "enum \fBf_get_policy\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICREATE_ON_NULL \fP\fP
+.TP
+\fB\fIDONT_CREATE_ON_NULL \fP\fP
+.SS "enum \fBf_hor_separator_pos\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fITOP_SEPARATOR \fP\fP
+.TP
+\fB\fIINSIDE_SEPARATOR \fP\fP
+.TP
+\fB\fIBOTTOM_SEPARATOR \fP\fP
+.SS "enum \fBf_separator_item_pos\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fILH_sip \fP\fP
+.TP
+\fB\fIIH_sip \fP\fP
+.TP
+\fB\fIII_sip \fP\fP
+.TP
+\fB\fIRH_sip \fP\fP
+.TP
+\fB\fITI_sip \fP\fP
+.TP
+\fB\fIBI_sip \fP\fP
+.TP
+\fB\fISEPARATOR_ITEM_POS_SIZE \fP\fP
+.SS "enum \fBf_string_type\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICHAR_BUF \fP\fP
+.TP
+\fB\fIW_CHAR_BUF \fP\fP
+.TP
+\fB\fIUTF8_BUF \fP\fP
+.SH "Function Documentation"
+.PP 
+.SS "\fBFT_INTERNAL\fP int buffer_check_align (\fBf_string_buffer_t\fP * buffer)"
+
+.SS "\fBFT_INTERNAL\fP void * buffer_get_data (\fBf_string_buffer_t\fP * buffer)"
+
+.SS "\fBFT_INTERNAL\fP int buffer_printf (\fBf_string_buffer_t\fP * buffer, size_t buffer_row, \fBf_conv_context_t\fP * cntx, size_t cod_width, const char * content_style_tag, const char * reset_content_style_tag)"
+
+.SS "\fBFT_INTERNAL\fP void buffer_set_u8strwid_func (int(*)(const void *beg, const void *end, size_t *width) u8strwid)"
+
+.SS "\fBFT_INTERNAL\fP size_t buffer_text_visible_height (const \fBf_string_buffer_t\fP * buffer)"
+
+.SS "\fBFT_INTERNAL\fP size_t buffer_text_visible_width (const \fBf_string_buffer_t\fP * buffer)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_string_buffer_t\fP * cell_get_string_buffer (\fBf_cell_t\fP * cell)"
+
+.SS "\fBFT_INTERNAL\fP size_t cell_invis_codes_width (const \fBf_cell_t\fP * cell, const \fBf_context_t\fP * context)"
+
+.SS "\fBFT_INTERNAL\fP int cell_printf (\fBf_cell_t\fP * cell, size_t row, \fBf_conv_context_t\fP * cntx, size_t cod_width)"
+
+.SS "\fBFT_INTERNAL\fP size_t cell_vis_width (const \fBf_cell_t\fP * cell, const \fBf_context_t\fP * context)"
+
+.SS "\fBFT_INTERNAL\fP const \fBf_cell_props_t\fP * cget_cell_prop (const \fBf_cell_prop_container_t\fP * cont, size_t row, size_t col)"
+
+.SS "\fBFT_INTERNAL\fP size_t columns_in_row (const \fBf_row_t\fP * row)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_cell_t\fP * copy_cell (\fBf_cell_t\fP * cell)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_row_t\fP * copy_row (\fBf_row_t\fP * row)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_separator_t\fP * copy_separator (\fBf_separator_t\fP * sep)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_string_buffer_t\fP * copy_string_buffer (const \fBf_string_buffer_t\fP * buffer)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_table_properties_t\fP * copy_table_properties (const \fBf_table_properties_t\fP * property)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_cell_t\fP * create_cell (void)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_cell_t\fP * create_cell_in_position (\fBf_row_t\fP * row, size_t col)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_cell_prop_container_t\fP * create_cell_prop_container (void)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_row_t\fP * create_row (void)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_row_t\fP * create_row_from_buffer (const \fBf_string_buffer_t\fP * buffer)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_row_t\fP * create_row_from_fmt_string (const struct \fBf_string_view\fP * fmt, va_list * va_args)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_row_t\fP * create_row_from_string (const char * str)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_row_t\fP * create_row_from_wstring (const wchar_t * str)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_separator_t\fP * create_separator (int enabled)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_string_buffer_t\fP * create_string_buffer (size_t number_of_chars, enum \fBf_string_type\fP type)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_table_properties_t\fP * create_table_properties (void)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_vector_t\fP * create_vector (size_t item_size, size_t capacity)"
+
+.SS "\fBFT_INTERNAL\fP void destroy_cell (\fBf_cell_t\fP * cell)"
+
+.SS "\fBFT_INTERNAL\fP void destroy_cell_prop_container (\fBf_cell_prop_container_t\fP * cont)"
+
+.SS "\fBFT_INTERNAL\fP void destroy_row (\fBf_row_t\fP * row)"
+
+.SS "\fBFT_INTERNAL\fP void destroy_separator (\fBf_separator_t\fP * sep)"
+
+.SS "\fBFT_INTERNAL\fP void destroy_string_buffer (\fBf_string_buffer_t\fP * buffer)"
+
+.SS "\fBFT_INTERNAL\fP void destroy_table_properties (\fBf_table_properties_t\fP * properties)"
+
+.SS "\fBFT_INTERNAL\fP void destroy_vector (\fBf_vector_t\fP * vector)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP fill_buffer_from_string (\fBf_string_buffer_t\fP * buffer, const char * str)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP fill_buffer_from_u8string (\fBf_string_buffer_t\fP * buffer, const void * str)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP fill_buffer_from_wstring (\fBf_string_buffer_t\fP * buffer, const wchar_t * str)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP fill_cell_from_buffer (\fBf_cell_t\fP * cell, const \fBf_string_buffer_t\fP * buf)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP fill_cell_from_string (\fBf_cell_t\fP * cell, const char * str)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP fill_cell_from_wstring (\fBf_cell_t\fP * cell, const wchar_t * str)"
+
+.SS "\fBFT_INTERNAL\fP char * fort_strdup (const char * str)"
+
+.SS "\fBFT_INTERNAL\fP wchar_t * fort_wcsdup (const wchar_t * str)"
+
+.SS "int ft_add_separator (\fBft_table_t\fP * table)"
+Add separator after the current row\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; separator was added\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "size_t ft_col_count (const \fBft_table_t\fP * table)"
+Get number of columns in the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Number of columns in the table\&. 
+.RE
+.PP
+
+.SS "\fBft_table_t\fP * ft_copy_table (\fBft_table_t\fP * table)"
+Copy formatted table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table previousley created with ft_create_table\&. If table is a null pointer, the function returns null\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The pointer to the new allocated ft_table_t, on success\&. NULL on error\&. 
+.RE
+.PP
+
+.SS "\fBft_table_t\fP * ft_create_table (void)"
+Create formatted table\&.
+.PP
+\fBReturns\fP
+.RS 4
+The pointer to the new allocated ft_table_t, on success\&. NULL on error\&. 
+.RE
+.PP
+
+.SS "size_t ft_cur_col (const \fBft_table_t\fP * table)"
+Get column number of the current cell\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Column number of the current cell\&. 
+.RE
+.PP
+
+.SS "size_t ft_cur_row (const \fBft_table_t\fP * table)"
+Get row number of the current cell\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Row number of the current cell\&. 
+.RE
+.PP
+
+.SS "void ft_destroy_table (\fBft_table_t\fP * table)"
+Destroy formatted table\&.
+.PP
+Destroy formatted table and free all resources allocated during table creation and work with it\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table previousley created with ft_create_table\&. If table is a null pointer, the function does nothing\&. 
+.RE
+.PP
+
+.SS "int ft_erase_range (\fBft_table_t\fP * table, size_t top_left_row, size_t top_left_col, size_t bottom_right_row, size_t bottom_right_col)"
+Erase range of cells\&.
+.PP
+Range of cells is determined by 2 points (top-left and bottom-right) (both ends are included)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fItop_left_row\fP Row number of the top left cell in the range\&. 
+.br
+\fItop_left_col\fP Column number of the top left cell in the range\&. 
+.br
+\fIbottom_right_row\fP Row number of the bottom right cell in the range\&. 
+.br
+\fIbottom_right_col\fP Column number of the bottom right cell in the range\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0 - Operation was successfully implemented
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_is_empty (const \fBft_table_t\fP * table)"
+Check if table is empty\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to the table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+1 - table is empty 0 - some data has been inserted 
+.RE
+.PP
+
+.SS "int ft_ln (\fBft_table_t\fP * table)"
+Move current position to the first cell of the next line(row)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error\&. 
+.PP
+.RE
+.PP
+\fBNote\fP
+.RS 4
+This function can fail only in case FT_STRATEGY_INSERT adding strategy was set for the table\&. 
+.RE
+.PP
+
+.SS "\fBFT_INTERNAL\fP int ft_nprint (\fBf_conv_context_t\fP * cntx, const char * str, size_t strlen)"
+
+.SS "\fBFT_INTERNAL\fP int ft_nu8print (\fBf_conv_context_t\fP * cntx, const void * beg, const void * end)"
+
+.SS "int ft_nwprint (\fBf_conv_context_t\fP * cntx, const wchar_t * str, size_t strlen)"
+
+.SS "int ft_nwrite (\fBft_table_t\fP * table, size_t count, const char * cell_content,  \&.\&.\&.)"
+Write specified number of strings to the table\&.
+.PP
+Write specified number of strings to the same number of consecutive cells in the current row\&.
+.PP
+\fBNote\fP
+.RS 4
+In most cases it is more preferable to use MACRO \fBft_write\fP instead of \fBft_nwrite\fP, which is more safe (\fBft_write\fP automatically counts the number of string arguments and at compile check that all passed arguments are strings)\&.
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIcount\fP Number of strings to write\&. 
+.br
+\fIcell_content\fP First string to write\&. 
+.br
+\fI\&.\&.\&.\fP Other strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_nwrite_ln (\fBft_table_t\fP * table, size_t count, const char * cell_content,  \&.\&.\&.)"
+Write specified number of strings to the table and go to the next line\&.
+.PP
+Write specified number of strings to the same number of consecutive cells in the current row and move current position to the first cell of the next line(row)\&.
+.PP
+\fBNote\fP
+.RS 4
+In most cases it is more preferable to use MACRO \fBft_write\fP instead of \fBft_nwrite\fP, which is more safe (\fBft_write\fP automatically counts the number of string arguments and at compile check that all passed arguments are strings)\&.
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIcount\fP Number of strings to write\&. 
+.br
+\fIcell_content\fP First string to write\&. 
+.br
+\fI\&.\&.\&.\fP Other strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_nwwrite (\fBft_table_t\fP * table, size_t n, const wchar_t * cell_content,  \&.\&.\&.)"
+
+.SS "int ft_nwwrite_ln (\fBft_table_t\fP * table, size_t n, const wchar_t * cell_content,  \&.\&.\&.)"
+
+.SS "int FT_PRINTF (\fBft_table_t\fP * table, const char * fmt,  \&.\&.\&.)"
+
+.SS "int FT_PRINTF_LN (\fBft_table_t\fP * table, const char * fmt,  \&.\&.\&.)"
+
+.SS "size_t ft_row_count (const \fBft_table_t\fP * table)"
+Get number of rows in the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Number of rows in the table\&. 
+.RE
+.PP
+
+.SS "\fBFT_INTERNAL\fP int ft_row_erase_range (\fBf_row_t\fP * row, size_t left, size_t right)"
+
+.SS "int ft_row_write (\fBft_table_t\fP * table, size_t cols, const char * row_cells[])"
+Write strings from the array to the table\&.
+.PP
+Write specified number of strings from the array to the same number of consecutive cells in the current row\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIcols\fP Number of elements in row_cells\&. 
+.br
+\fIrow_cells\fP Array of strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_row_write_ln (\fBft_table_t\fP * table, size_t cols, const char * row_cells[])"
+Write strings from the array to the table and go to the next line\&.
+.PP
+Write specified number of strings from the array to the same number of consecutive cells in the current row and move current position to the first cell of the next line(row)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIcols\fP Number of elements in row_cells\&. 
+.br
+\fIrow_cells\fP Array of strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_row_wwrite (\fBft_table_t\fP * table, size_t cols, const wchar_t * cells[])"
+
+.SS "int ft_row_wwrite_ln (\fBft_table_t\fP * table, size_t cols, const wchar_t * cells[])"
+
+.SS "int ft_set_border_style (\fBft_table_t\fP * table, const struct \fBft_border_style\fP * style)"
+Set border style for the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP A pointer to the ft_table_t structure\&. 
+.br
+\fIstyle\fP Pointer to border style\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; table border style was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_set_cell_prop (\fBft_table_t\fP * table, size_t row, size_t col, uint32_t property, int value)"
+Set property for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP A pointer to the ft_table_t structure\&. 
+.br
+\fIrow\fP Cell row\&. 
+.br
+\fIcol\fP Cell column\&. 
+.br
+\fIproperty\fP Cell property identifier\&. 
+.br
+\fIvalue\fP Cell property value\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; cell property was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_set_cell_span (\fBft_table_t\fP * table, size_t row, size_t col, size_t hor_span)"
+Set column span for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP A pointer to the ft_table_t structure\&. 
+.br
+\fIrow\fP Cell row\&. 
+.br
+\fIcol\fP Cell column\&. 
+.br
+\fIhor_span\fP Column span\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; cell span was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "void ft_set_cur_cell (\fBft_table_t\fP * table, size_t row, size_t col)"
+Set current cell position\&.
+.PP
+Current cell - cell that will be edited with all modifiing functions (ft_printf, ft_write \&.\&.\&.)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIrow\fP New row number for the current cell\&. 
+.br
+\fIcol\fP New row number for the current cell\&. 
+.RE
+.PP
+
+.SS "int ft_set_default_border_style (const struct \fBft_border_style\fP * style)"
+Set default border style for all new formatted tables\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIstyle\fP Pointer to border style\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; default border style was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_set_default_cell_prop (uint32_t property, int value)"
+Set default cell property for all new formatted tables\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIproperty\fP Cell property identifier\&. 
+.br
+\fIvalue\fP Cell property value\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; default cell property was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "void ft_set_default_printf_field_separator (char separator)"
+Set field separator for \fC\fBft_printf\fP\fP, \fC\fBft_printf_ln\fP\fP (default separator is '|')\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIseparator\fP New separator\&. 
+.RE
+.PP
+
+.SS "int ft_set_default_tbl_prop (uint32_t property, int value)"
+Set default table property\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIproperty\fP Table property identifier\&. 
+.br
+\fIvalue\fP Table property value\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; default table property was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "void ft_set_memory_funcs (void *(*)(size_t size) f_malloc, void(*)(void *ptr) f_free)"
+Set functions for memory allocation and deallocation to be used instead of standard ones\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIf_malloc\fP Pointer to a function for memory allocation that should be used instead of malloc\&. 
+.br
+\fIf_free\fP Pointer to a function for memory deallocation that should be used instead of free\&. 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+To return memory allocation/deallocation functions to their standard values set f_malloc and f_free to NULL\&. 
+.RE
+.PP
+
+.SS "int ft_set_tbl_prop (\fBft_table_t\fP * table, uint32_t property, int value)"
+Set table property\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP A pointer to the ft_table_t structure\&. 
+.br
+\fIproperty\fP Table property identifier\&. 
+.br
+\fIvalue\fP Table property value\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; default table property was changed\&.
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "void ft_set_u8strwid_func (int(*)(const void *beg, const void *end, size_t *width) u8strwid)"
+Set custom function to compute visible width of UTF-8 string\&.
+.PP
+libfort internally has a very simple logic to compute visible width of UTF-8 strings\&. It considers that each codepoint will occupy one position on the terminal in case of monowidth font (some east asians wide and fullwidth characters (see http://www.unicode.org/reports/tr11/tr11-33.html) will occupy 2 positions)\&. This logic is very simple and covers wide range of cases\&. But obviously there a lot of cases when it is not sufficient\&. In such cases user should use some external libraries and provide an appropriate function to libfort\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIu8strwid\fP User provided function to evaluate width of UTF-8 string ( beg - start of UTF-8 string, end - end of UTF-8 string (not included), width - pointer to the result)\&. If function succeed it should return 0, otherwise some non- zero value\&. If function returns nonzero value libfort fallbacks to default internal algorithm\&. 
+.RE
+.PP
+
+.SS "const char * ft_strerror (int error_code)"
+Return string describing the \fCerror_code\fP\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIerror_code\fP Error code returned by the library\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+String describing the error\&. 
+.RE
+.PP
+
+.SS "int ft_table_write (\fBft_table_t\fP * table, size_t rows, size_t cols, const char * table_cells[])"
+Write strings from the 2D array to the table\&.
+.PP
+Write specified number of strings from the 2D array to the formatted table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIrows\fP Number of rows in the 2D array\&. 
+.br
+\fIcols\fP Number of columns in the 2D array\&. 
+.br
+\fItable_cells\fP 2D array of strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_table_write_ln (\fBft_table_t\fP * table, size_t rows, size_t cols, const char * table_cells[])"
+Write strings from the 2D array to the table and go to the next line\&.
+.PP
+Write specified number of strings from the 2D array to the formatted table and move current position to the first cell of the next line(row)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Pointer to formatted table\&. 
+.br
+\fIrows\fP Number of rows in the 2D array\&. 
+.br
+\fIcols\fP Number of columns in the 2D array\&. 
+.br
+\fItable_cells\fP 2D array of strings to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "int ft_table_wwrite (\fBft_table_t\fP * table, size_t rows, size_t cols, const wchar_t * table_cells[])"
+
+.SS "int ft_table_wwrite_ln (\fBft_table_t\fP * table, size_t rows, size_t cols, const wchar_t * table_cells[])"
+
+.SS "const char * ft_to_string (const \fBft_table_t\fP * table)"
+Convert table to string representation\&.
+.PP
+ft_table_t has ownership of the returned pointer\&. So there is no need to free it\&. To take ownership user should explicitly copy the returned string with strdup or similar functions\&.
+.PP
+Returned pointer may be later invalidated by:
+.IP "\(bu" 2
+Calling ft_destroy_table;
+.IP "\(bu" 2
+Other invocations of ft_to_string\&.
+.PP
+.PP
+\fBParameters\fP
+.RS 4
+\fItable\fP Formatted table\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+The pointer to the string representation of formatted table, on success\&.
+.IP "\(bu" 2
+NULL on error\&. 
+.PP
+.RE
+.PP
+
+.SS "const void * ft_to_u8string (const \fBft_table_t\fP * table)"
+
+.SS "const wchar_t * ft_to_wstring (const \fBft_table_t\fP * table)"
+
+.SS "int ft_u8nwrite (\fBft_table_t\fP * table, size_t n, const void * cell_content,  \&.\&.\&.)"
+
+.SS "int ft_u8nwrite_ln (\fBft_table_t\fP * table, size_t n, const void * cell_content,  \&.\&.\&.)"
+
+.SS "int ft_u8printf (\fBft_table_t\fP * table, const char * fmt,  \&.\&.\&.)"
+
+.SS "int ft_u8printf_ln (\fBft_table_t\fP * table, const char * fmt,  \&.\&.\&.)"
+
+.SS "int ft_wprintf (\fBft_table_t\fP * table, const wchar_t * fmt,  \&.\&.\&.)"
+
+.SS "int ft_wprintf_ln (\fBft_table_t\fP * table, const wchar_t * fmt,  \&.\&.\&.)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_cell_t\fP * get_cell (\fBf_row_t\fP * row, size_t col)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_cell_t\fP * get_cell_and_create_if_not_exists (\fBf_row_t\fP * row, size_t col)"
+
+.SS "\fBFT_INTERNAL\fP const \fBf_cell_t\fP * get_cell_c (const \fBf_row_t\fP * row, size_t col)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_cell_props_t\fP * get_cell_prop_and_create_if_not_exists (\fBf_cell_prop_container_t\fP * cont, size_t row, size_t col)"
+
+.SS "\fBFT_INTERNAL\fP int get_cell_property_hierarchically (const \fBf_table_properties_t\fP * properties, size_t row, size_t column, uint32_t property)"
+
+.SS "\fBFT_INTERNAL\fP enum \fBf_cell_type\fP get_cell_type (const \fBf_cell_t\fP * cell)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_string_buffer_t\fP * get_cur_str_buffer_and_create_if_not_exists (\fBft_table_t\fP * table)"
+
+.SS "void get_reset_style_tag_for_cell (const \fBf_table_properties_t\fP * props, size_t row, size_t col, char * style_tag, size_t sz)"
+
+.SS "void get_reset_style_tag_for_content (const \fBf_table_properties_t\fP * props, size_t row, size_t col, char * style_tag, size_t sz)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_row_t\fP * get_row (\fBft_table_t\fP * table, size_t row)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_row_t\fP * get_row_and_create_if_not_exists (\fBft_table_t\fP * table, size_t row)"
+
+.SS "\fBFT_INTERNAL\fP const \fBf_row_t\fP * get_row_c (const \fBft_table_t\fP * table, size_t row)"
+
+.SS "\fBFT_INTERNAL\fP int get_row_cell_types (const \fBf_row_t\fP * row, enum \fBf_cell_type\fP * types, size_t types_sz)"
+
+.SS "void get_style_tag_for_cell (const \fBf_table_properties_t\fP * props, size_t row, size_t col, char * style_tag, size_t sz)"
+
+.SS "void get_style_tag_for_content (const \fBf_table_properties_t\fP * props, size_t row, size_t col, char * style_tag, size_t sz)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP get_table_sizes (const \fBft_table_t\fP * table, size_t * rows, size_t * cols)"
+
+.SS "\fBFT_INTERNAL\fP size_t group_cell_number (const \fBf_row_t\fP * row, size_t master_cell_col)"
+
+.SS "\fBFT_INTERNAL\fP size_t hint_height_cell (const \fBf_cell_t\fP * cell, const \fBf_context_t\fP * context)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP insert_row (\fBf_row_t\fP * cur_row, \fBf_row_t\fP * ins_row, size_t pos)"
+
+.SS "\fBFT_INTERNAL\fP size_t max_border_elem_strlen (struct \fBf_table_properties\fP * properties)"
+
+.SS "\fBFT_INTERNAL\fP int mk_wcswidth (const wchar_t * pwcs, size_t n)"
+
+.SS "\fBFT_INTERNAL\fP size_t number_of_columns_in_format_buffer (const \fBf_string_buffer_t\fP * fmt)"
+
+.SS "\fBFT_INTERNAL\fP size_t number_of_columns_in_format_string (const \fBf_string_view_t\fP * fmt)"
+
+.SS "\fBFT_INTERNAL\fP int print_n_strings (\fBf_conv_context_t\fP * cntx, size_t n, const char * str)"
+
+.SS "\fBFT_INTERNAL\fP int print_row_separator (\fBf_conv_context_t\fP * cntx, const size_t * col_width_arr, size_t cols, const \fBf_row_t\fP * upper_row, const \fBf_row_t\fP * lower_row, enum \fBf_hor_separator_pos\fP separatorPos, const \fBf_separator_t\fP * sep)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP realloc_string_buffer_without_copy (\fBf_string_buffer_t\fP * buffer)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP row_set_cell_span (\fBf_row_t\fP * row, size_t cell_column, size_t hor_span)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP set_cell_property (\fBf_cell_prop_container_t\fP * cont, size_t row, size_t col, uint32_t property, int value)"
+
+.SS "\fBFT_INTERNAL\fP void set_cell_type (\fBf_cell_t\fP * cell, enum \fBf_cell_type\fP type)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP set_default_cell_property (uint32_t property, int value)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP set_default_entire_table_property (uint32_t property, int value)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP set_entire_table_property (\fBf_table_properties_t\fP * table_properties, uint32_t property, int value)"
+
+.SS "\fBFT_INTERNAL\fP void set_memory_funcs (void *(*)(size_t size) f_malloc, void(*)(void *ptr) f_free)"
+
+.SS "\fBFT_INTERNAL\fP int snprintf_row (const \fBf_row_t\fP * row, \fBf_conv_context_t\fP * cntx, size_t * col_width_arr, size_t col_width_arr_sz, size_t row_height)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_row_t\fP * split_row (\fBf_row_t\fP * row, size_t pos)"
+
+.SS "\fBFT_INTERNAL\fP void str_n_substring (const char * str, char ch_separator, size_t n, const char ** begin, const char ** end)"
+
+.SS "\fBFT_INTERNAL\fP const char * str_n_substring_beg (const char * str, char ch_separator, size_t n)"
+
+.SS "\fBFT_INTERNAL\fP size_t strchr_count (const char * str, char ch)"
+
+.SS "\fBFT_INTERNAL\fP size_t string_buffer_cod_width_capacity (const \fBf_string_buffer_t\fP * buffer)"
+
+.SS "\fBFT_INTERNAL\fP size_t string_buffer_raw_capacity (const \fBf_string_buffer_t\fP * buffer)"
+
+.SS "\fBFT_INTERNAL\fP size_t string_buffer_width_capacity (const \fBf_string_buffer_t\fP * buffer)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP swap_row (\fBf_row_t\fP * cur_row, \fBf_row_t\fP * ins_row, size_t pos)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP table_geometry (const \fBft_table_t\fP * table, size_t * height, size_t * width)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP table_internal_codepoints_geometry (const \fBft_table_t\fP * table, size_t * height, size_t * width)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP table_rows_and_cols_geometry (const \fBft_table_t\fP * table, size_t ** col_width_arr_p, size_t * col_width_arr_sz, size_t ** row_height_arr_p, size_t * row_height_arr_sz, enum \fBf_geometry_type\fP geom)"
+
+.SS "\fBFT_INTERNAL\fP void * ut8next (const void * str)"
+
+.SS "\fBFT_INTERNAL\fP void utf8_n_substring (const void * str, \fButf8_int32_t\fP ch_separator, size_t n, const void ** begin, const void ** end)"
+
+.SS "\fBFT_INTERNAL\fP const void * utf8_n_substring_beg (const void * str, \fButf8_int32_t\fP ch_separator, size_t n)"
+
+.SS "int utf8casecmp (const void * src1, const void * src2)"
+
+.SS "void * utf8casestr (const void * haystack, const void * needle)"
+
+.SS "void * utf8cat (void *\fButf8_restrict\fP dst, const void *\fButf8_restrict\fP src)"
+
+.SS "void * utf8catcodepoint (void *\fButf8_restrict\fP str, \fButf8_int32_t\fP chr, size_t n)"
+
+.SS "void * utf8chr (const void * src, \fButf8_int32_t\fP chr)"
+
+.SS "\fBFT_INTERNAL\fP size_t utf8chr_count (const void * str, \fButf8_int32_t\fP ch)"
+
+.SS "int utf8cmp (const void * src1, const void * src2)"
+
+.SS "void * utf8codepoint (const void *\fButf8_restrict\fP str, \fButf8_int32_t\fP *\fButf8_restrict\fP out_codepoint)"
+
+.SS "size_t utf8codepointsize (\fButf8_int32_t\fP chr)"
+
+.SS "int utf8coll (const void * src1, const void * src2)"
+
+.SS "void * utf8cpy (void *\fButf8_restrict\fP dst, const void *\fButf8_restrict\fP src)"
+
+.SS "size_t utf8cspn (const void * src, const void * reject)"
+
+.SS "int utf8cwidth (\fButf8_int32_t\fP c)"
+
+.SS "void * utf8dup (const void * src)"
+
+.SS "void * utf8fry (const void * str)"
+
+.SS "int utf8islower (\fButf8_int32_t\fP chr)"
+
+.SS "int utf8isupper (\fButf8_int32_t\fP chr)"
+
+.SS "size_t utf8len (const void * str)"
+
+.SS "void utf8lwr (void *\fButf8_restrict\fP str)"
+
+.SS "\fButf8_int32_t\fP utf8lwrcodepoint (\fButf8_int32_t\fP cp)"
+
+.SS "int utf8ncasecmp (const void * src1, const void * src2, size_t n)"
+
+.SS "void * utf8ncat (void *\fButf8_restrict\fP dst, const void *\fButf8_restrict\fP src, size_t n)"
+
+.SS "int utf8ncmp (const void * src1, const void * src2, size_t n)"
+
+.SS "void * utf8ncpy (void *\fButf8_restrict\fP dst, const void *\fButf8_restrict\fP src, size_t n)"
+
+.SS "void * utf8ndup (const void * src, size_t n)"
+
+.SS "void * utf8pbrk (const void * str, const void * accept)"
+
+.SS "void * utf8rchr (const void * src, int chr)"
+
+.SS "size_t utf8size (const void * str)"
+
+.SS "size_t utf8spn (const void * src, const void * accept)"
+
+.SS "void * utf8str (const void * haystack, const void * needle)"
+
+.SS "void utf8upr (void *\fButf8_restrict\fP str)"
+
+.SS "\fButf8_int32_t\fP utf8uprcodepoint (\fButf8_int32_t\fP cp)"
+
+.SS "void * utf8valid (const void * str)"
+
+.SS "size_t utf8width (const void * str)"
+
+.SS "\fBFT_INTERNAL\fP void * vector_at (\fBf_vector_t\fP * vector, size_t index)"
+
+.SS "\fBFT_INTERNAL\fP const void * vector_at_c (const \fBf_vector_t\fP * vector, size_t index)"
+
+.SS "\fBFT_INTERNAL\fP size_t vector_capacity (const \fBf_vector_t\fP * vector)"
+
+.SS "\fBFT_INTERNAL\fP void vector_clear (\fBf_vector_t\fP * vector)"
+
+.SS "\fBFT_INTERNAL\fP int vector_erase (\fBf_vector_t\fP * vector, size_t index)"
+
+.SS "\fBFT_INTERNAL\fP int vector_insert (\fBf_vector_t\fP * vector, const void * item, size_t pos)"
+
+.SS "\fBFT_INTERNAL\fP int vector_push (\fBf_vector_t\fP * vector, const void * item)"
+
+.SS "\fBFT_INTERNAL\fP size_t vector_size (const \fBf_vector_t\fP * vector)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_vector_t\fP * vector_split (\fBf_vector_t\fP * vector, size_t pos)"
+
+.SS "\fBFT_INTERNAL\fP \fBf_status\fP vector_swap (\fBf_vector_t\fP * cur_vec, \fBf_vector_t\fP * mv_vec, size_t pos)"
+
+.SS "\fBFT_INTERNAL\fP void wstr_n_substring (const wchar_t * str, wchar_t ch_separator, size_t n, const wchar_t ** begin, const wchar_t ** end)"
+
+.SS "\fBFT_INTERNAL\fP const wchar_t * wstr_n_substring_beg (const wchar_t * str, wchar_t ch_separator, size_t n)"
+
+.SS "\fBFT_INTERNAL\fP size_t wstrchr_count (const wchar_t * str, wchar_t ch)"
+
+.SH "Variable Documentation"
+.PP 
+.SS "struct \fBfort_border_style\fP FORT_BASIC2_STYLE = \fBBASIC2_STYLE\fP"
+
+.SS "struct \fBfort_border_style\fP FORT_BASIC_STYLE = \fBBASIC_STYLE\fP"
+
+.SS "struct \fBfort_border_style\fP FORT_BOLD2_STYLE = \fBBOLD2_STYLE\fP"
+
+.SS "struct \fBfort_border_style\fP FORT_BOLD_STYLE = \fBBOLD_STYLE\fP"
+
+.SS "void *(* fort_calloc)(size_t nmemb, size_t size) (size_t nmemb, size_t size) = &local_calloc"
+
+.SS "struct \fBfort_border_style\fP FORT_DOT_STYLE = \fBDOT_STYLE\fP"
+
+.SS "struct \fBfort_border_style\fP FORT_DOUBLE2_STYLE = \fBDOUBLE2_STYLE\fP"
+
+.SS "struct \fBfort_border_style\fP FORT_DOUBLE_STYLE = \fBDOUBLE_STYLE\fP"
+
+.SS "struct \fBfort_border_style\fP FORT_EMPTY2_STYLE = \fBEMPTY2_STYLE\fP"
+
+.SS "struct \fBfort_border_style\fP FORT_EMPTY_STYLE = \fBEMPTY_STYLE\fP"
+
+.SS "struct \fBfort_border_style\fP FORT_FRAME_STYLE = \fBFRAME_STYLE\fP"
+
+.SS "void(* fort_free)(void *ptr) (void * ptr) = &local_free"
+
+.SS "void *(* fort_malloc)(size_t size) (size_t size) = &local_malloc"
+
+.SS "struct \fBfort_border_style\fP FORT_NICE_STYLE = \fBNICE_STYLE\fP"
+
+.SS "struct \fBfort_border_style\fP FORT_PLAIN_STYLE = \fBPLAIN_STYLE\fP"
+
+.SS "void *(* fort_realloc)(void *ptr, size_t size) (void * ptr, size_t size) = &local_realloc"
+
+.SS "struct \fBfort_border_style\fP FORT_SIMPLE_STYLE = \fBSIMPLE_STYLE\fP"
+
+.SS "struct \fBfort_border_style\fP FORT_SOLID_ROUND_STYLE = \fBSOLID_ROUND_STYLE\fP"
+
+.SS "struct \fBfort_border_style\fP FORT_SOLID_STYLE = \fBSOLID_STYLE\fP"
+
+.SS "const struct \fBft_border_style\fP* const FT_BASIC2_STYLE = &built_in_external_styles[1]"
+
+.SS "const struct \fBft_border_style\fP* const FT_BASIC_STYLE = &built_in_external_styles[0]"
+
+.SS "const struct \fBft_border_style\fP* const FT_BOLD2_STYLE = &built_in_external_styles[13]"
+
+.SS "const struct \fBft_border_style\fP* const FT_BOLD_STYLE = &built_in_external_styles[12]"
+
+.SS "const struct \fBft_border_style\fP* const FT_DOT_STYLE = &built_in_external_styles[4]"
+
+.SS "const struct \fBft_border_style\fP* const FT_DOUBLE2_STYLE = &built_in_external_styles[11]"
+
+.SS "const struct \fBft_border_style\fP* const FT_DOUBLE_STYLE = &built_in_external_styles[10]"
+
+.SS "const struct \fBft_border_style\fP* const FT_EMPTY2_STYLE = &built_in_external_styles[6]"
+
+.SS "const struct \fBft_border_style\fP* const FT_EMPTY_STYLE = &built_in_external_styles[5]"
+
+.SS "const struct \fBft_border_style\fP* const FT_FRAME_STYLE = &built_in_external_styles[14]"
+
+.SS "const struct \fBft_border_style\fP* const FT_NICE_STYLE = &built_in_external_styles[9]"
+
+.SS "const struct \fBft_border_style\fP* const FT_PLAIN_STYLE = &built_in_external_styles[3]"
+
+.SS "const struct \fBft_border_style\fP* const FT_SIMPLE_STYLE = &built_in_external_styles[2]"
+
+.SS "const struct \fBft_border_style\fP* const FT_SOLID_ROUND_STYLE = &built_in_external_styles[8]"
+
+.SS "const struct \fBft_border_style\fP* const FT_SOLID_STYLE = &built_in_external_styles[7]"
+
+.SS "char g_col_separator = \fBFORT_DEFAULT_COL_SEPARATOR\fP"
+
+.SS "\fBfort_entire_table_properties_t\fP g_entire_table_properties"
+\fBInitial value:\fP
+.PP
+.nf
+= {
+    0, 
+    0, 
+    0, 
+    0, 
+    FT_STRATEGY_REPLACE, 
+}
+.fi
+.SS "\fBf_table_properties_t\fP g_table_properties"
+\fBInitial value:\fP
+.PP
+.nf
+= {
+    
+    BASIC_STYLE,
+    NULL,     
+    
+    {
+        0, 
+        0, 
+        0, 
+        0,  
+        FT_STRATEGY_REPLACE, 
+    }
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CV from the source code\&.

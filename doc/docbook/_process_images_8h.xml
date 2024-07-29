@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__process_images_8h" xml:lang="en-US">
+<title>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/ProcessImages.h File Reference</title>
+<indexterm><primary>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/ProcessImages.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;string&gt;
+#include &lt;opencv2/opencv.hpp&gt;
+#include &lt;opencv2/imgproc/imgproc.hpp&gt;
+#include &lt;opencv2/core/utils/logger.hpp&gt;
+#include &quot;wtypes.h&quot;
+#include &quot;Metric.h&quot;
+#include &lt;cmath&gt;
+</programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_process_images">ProcessImages</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>const int <link linkend="__process_images_8h_1afa81a4660c644f4ce2b0c7733eef732b">DARKNESS_THRESHOLD</link> = 100</para>
+</listitem>
+            <listitem><para>const float <link linkend="__process_images_8h_1a1163ca36eb40f249213c49727463113d">WHITE_PIXEL_TRESHOLD_LOW</link> = 0.4700</para>
+</listitem>
+            <listitem><para>const float <link linkend="__process_images_8h_1a763c3f6631c1a4e60f82d2ac2df4b919">WHITE_PIXEL_THRESHOLD_HIGH</link> = 0.800</para>
+</listitem>
+            <listitem><para>const float <link linkend="__process_images_8h_1a01450cbbaae3443502778090295ca5c6">ASPECT_RATIO_MIN</link> = 1.9f</para>
+</listitem>
+            <listitem><para>const float <link linkend="__process_images_8h_1aa5ff743b5289eb39a2abdf3c35a39156">ASPECT_RATIO_MAX</link> = 15.0f</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="__process_images_8h_1aa5ff743b5289eb39a2abdf3c35a39156"/><section>
+    <title>ASPECT_RATIO_MAX</title>
+<indexterm><primary>ASPECT_RATIO_MAX</primary><secondary>ProcessImages.h</secondary></indexterm>
+<indexterm><primary>ProcessImages.h</primary><secondary>ASPECT_RATIO_MAX</secondary></indexterm>
+<para><computeroutput>const float ASPECT_RATIO_MAX = 15.0f</computeroutput></para></section>
+<anchor xml:id="__process_images_8h_1a01450cbbaae3443502778090295ca5c6"/><section>
+    <title>ASPECT_RATIO_MIN</title>
+<indexterm><primary>ASPECT_RATIO_MIN</primary><secondary>ProcessImages.h</secondary></indexterm>
+<indexterm><primary>ProcessImages.h</primary><secondary>ASPECT_RATIO_MIN</secondary></indexterm>
+<para><computeroutput>const float ASPECT_RATIO_MIN = 1.9f</computeroutput></para></section>
+<anchor xml:id="__process_images_8h_1afa81a4660c644f4ce2b0c7733eef732b"/><section>
+    <title>DARKNESS_THRESHOLD</title>
+<indexterm><primary>DARKNESS_THRESHOLD</primary><secondary>ProcessImages.h</secondary></indexterm>
+<indexterm><primary>ProcessImages.h</primary><secondary>DARKNESS_THRESHOLD</secondary></indexterm>
+<para><computeroutput>const int DARKNESS_THRESHOLD = 100</computeroutput></para></section>
+<anchor xml:id="__process_images_8h_1a763c3f6631c1a4e60f82d2ac2df4b919"/><section>
+    <title>WHITE_PIXEL_THRESHOLD_HIGH</title>
+<indexterm><primary>WHITE_PIXEL_THRESHOLD_HIGH</primary><secondary>ProcessImages.h</secondary></indexterm>
+<indexterm><primary>ProcessImages.h</primary><secondary>WHITE_PIXEL_THRESHOLD_HIGH</secondary></indexterm>
+<para><computeroutput>const float WHITE_PIXEL_THRESHOLD_HIGH = 0.800</computeroutput></para></section>
+<anchor xml:id="__process_images_8h_1a1163ca36eb40f249213c49727463113d"/><section>
+    <title>WHITE_PIXEL_TRESHOLD_LOW</title>
+<indexterm><primary>WHITE_PIXEL_TRESHOLD_LOW</primary><secondary>ProcessImages.h</secondary></indexterm>
+<indexterm><primary>ProcessImages.h</primary><secondary>WHITE_PIXEL_TRESHOLD_LOW</secondary></indexterm>
+<para><computeroutput>const float WHITE_PIXEL_TRESHOLD_LOW = 0.4700</computeroutput></para></section>
+</section>
+</section>

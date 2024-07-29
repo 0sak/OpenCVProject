@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structf__separator" xml:lang="en-US">
+<title>f_separator Struct Reference</title>
+<indexterm><primary>f_separator</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_structf__separator_1ad77626265105ee026fa5ab4f181cdf02">enabled</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structf__separator_1ad77626265105ee026fa5ab4f181cdf02"/><section>
+    <title>enabled</title>
+<indexterm><primary>enabled</primary><secondary>f_separator</secondary></indexterm>
+<indexterm><primary>f_separator</primary><secondary>enabled</secondary></indexterm>
+<para><computeroutput>int f_separator::enabled</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8c">fort.c</link></section>
+</section>

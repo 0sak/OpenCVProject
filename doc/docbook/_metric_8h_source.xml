@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__metric_8h_source" xml:lang="en-US">
+<title>Metric.h</title>
+<indexterm><primary>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/Metric.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+3 <emphasis role="preprocessor">#include&#32;&lt;fstream&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;regex&gt;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&quot;fort.hpp&quot;</emphasis>
+8 
+9 <emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__metric_8h_1abdd02efbfa8fcace42ce961719cc3f90">NUMBER_OF_IMAGES</link>&#32;=&#32;71;
+10 
+11 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structcoords">coords</link>&#32;{
+12 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_structcoords_1ad22377c9e6ff89a62788486eddb272e2">x</link>;
+13 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_structcoords_1a80b2bbcf9a0f1fa6d127210f076025da">y</link>;
+14 }&#32;<link linkend="__metric_8h_1a4df78a1ba07a72bdc2b8449901e450e6">Coords</link>;
+15 
+16 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structlabel">label</link>&#32;{
+17 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_structlabel_1a6584b52dd0cc9c08691e3bcd76534e1f">id</link>;
+18 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_structlabel_1a4da6c955abe72184a2aebdfaf0a8cfed">width</link>;
+19 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_structlabel_1a741e2eb0164eba2f6a36cb784c5265d4">heigth</link>;
+20 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_structlabel_1af3dc896f2beefbb962dfa9825d8d70c2">brightness</link>;
+21 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_structlabel_1aef0da4ba7b86ca8fce72753607602883">numberplateCount</link>;
+22 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;<link linkend="_structlabel_1aaf91d17cdd407e2484803cf4851f3dca">characterCount</link>;
+23 &#32;&#32;&#32;&#32;std::vector&lt;Coords&gt;&#32;<link linkend="_structlabel_1a49f2fe82dcf04deadae23edf3147670e">coordinates</link>;
+24 }&#32;<link linkend="__metric_8h_1a77678f2220e677c1e628f427c19f737d">Label</link>;
+25 
+26 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_metric">Metric</link>
+27 {
+28 <emphasis role="keyword">public</emphasis>:
+29 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_metric_1a7dee83f65410db4497f34ea3fbd8ee54">numberOfLicensePlatesOnAllPictures</link>&#32;=&#32;0;
+30 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_metric_1aed03482186cfa3c7ba5bb0a23eac6a85">recognizedLicensePlates</link>&#32;=&#32;0,&#32;<link linkend="_class_metric_1aba60833c76b4294b7b8c68cb5ce48342">recognizedPerPicture</link>&#32;=&#32;0,&#32;<link linkend="_class_metric_1a91924a8d9749d2e66288659b7ecd6e96">totalAmountOfCharacters</link>&#32;=&#32;0,&#32;<link linkend="_class_metric_1ad279b4c3c1a19eae5dce0c0324f0481d">recognizedCharacters</link>&#32;=&#32;0,&#32;<link linkend="_class_metric_1aba3a792300d73181ed9031bcc9b25fa4">falsePositiveCounterPerPicture</link>&#32;=&#32;0;
+31 &#32;&#32;&#32;&#32;std::vector&lt;label&gt;&#32;<link linkend="_class_metric_1a098eb1b1e1b73ae5abb0e1727bdb7602">labels</link>;
+32 &#32;&#32;&#32;&#32;std::vector&lt;std::vector&lt;int&gt;&gt;&#32;<link linkend="_class_metric_1a8e4e9a210c76a767511c9ca4187b50d6">recognizedCharactersPerLicenseplate</link>;
+33 &#32;&#32;&#32;&#32;fort::char_table&#32;<link linkend="_class_metric_1a1e740c42f098999d7faea7327f7d52c0">table</link>;
+34 
+36 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_metric_1a25105e3d0d9c5393304a54703649a382">readLabels</link>();
+37 
+39 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_metric_1afcf4638a1f2ed683c2c90334113fcf1b">printLabels</link>();
+40 
+43 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_metric_1a71a0ed523e5e710de323552919a7e31e">printMetricOnePicture</link>(<emphasis role="keywordtype">int</emphasis>&#32;index);
+44 
+46 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_metric_1a8fbc8a9692bbf0d1959b2b48001b3cdb">printRecognizedOutOfAll</link>();
+47 
+49 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_metric_1a5e2dd04675ede3e8012b24c13be19dad">setTotalAmountLicensePlatesOnPictures</link>();
+50 
+52 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_metric_1a3c9d6fc8405ab7e2308be6c83f0d5ab1">setTotalAmountOfCharactersOnPictures</link>();
+53 };
+</programlisting></section>

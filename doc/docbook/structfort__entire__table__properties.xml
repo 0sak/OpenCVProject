@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structfort__entire__table__properties" xml:lang="en-US">
+<title>fort_entire_table_properties Struct Reference</title>
+<indexterm><primary>fort_entire_table_properties</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>unsigned int <link linkend="_structfort__entire__table__properties_1ae2cbdfb7e6e041e90302bd813f1562cd">left_margin</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_structfort__entire__table__properties_1af4fac651e4cc0a81ac51aa20fe9497f4">top_margin</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_structfort__entire__table__properties_1ab83a11434f5518cea2a3c5f235f3b6af">right_margin</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_structfort__entire__table__properties_1a727c2bc4c9f5b034004a95f0f041db0c">bottom_margin</link></para>
+</listitem>
+            <listitem><para>enum <link linkend="_fort_8h_1aeed2958a1823084ca6e71883b075baa5">ft_adding_strategy</link> <link linkend="_structfort__entire__table__properties_1afd7ba75af5d0b286d3e7d7f158a4cf8c">add_strategy</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structfort__entire__table__properties_1afd7ba75af5d0b286d3e7d7f158a4cf8c"/><section>
+    <title>add_strategy</title>
+<indexterm><primary>add_strategy</primary><secondary>fort_entire_table_properties</secondary></indexterm>
+<indexterm><primary>fort_entire_table_properties</primary><secondary>add_strategy</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8h_1aeed2958a1823084ca6e71883b075baa5">ft_adding_strategy</link> fort_entire_table_properties::add_strategy</computeroutput></para></section>
+<anchor xml:id="_structfort__entire__table__properties_1a727c2bc4c9f5b034004a95f0f041db0c"/><section>
+    <title>bottom_margin</title>
+<indexterm><primary>bottom_margin</primary><secondary>fort_entire_table_properties</secondary></indexterm>
+<indexterm><primary>fort_entire_table_properties</primary><secondary>bottom_margin</secondary></indexterm>
+<para><computeroutput>unsigned int fort_entire_table_properties::bottom_margin</computeroutput></para></section>
+<anchor xml:id="_structfort__entire__table__properties_1ae2cbdfb7e6e041e90302bd813f1562cd"/><section>
+    <title>left_margin</title>
+<indexterm><primary>left_margin</primary><secondary>fort_entire_table_properties</secondary></indexterm>
+<indexterm><primary>fort_entire_table_properties</primary><secondary>left_margin</secondary></indexterm>
+<para><computeroutput>unsigned int fort_entire_table_properties::left_margin</computeroutput></para></section>
+<anchor xml:id="_structfort__entire__table__properties_1ab83a11434f5518cea2a3c5f235f3b6af"/><section>
+    <title>right_margin</title>
+<indexterm><primary>right_margin</primary><secondary>fort_entire_table_properties</secondary></indexterm>
+<indexterm><primary>fort_entire_table_properties</primary><secondary>right_margin</secondary></indexterm>
+<para><computeroutput>unsigned int fort_entire_table_properties::right_margin</computeroutput></para></section>
+<anchor xml:id="_structfort__entire__table__properties_1af4fac651e4cc0a81ac51aa20fe9497f4"/><section>
+    <title>top_margin</title>
+<indexterm><primary>top_margin</primary><secondary>fort_entire_table_properties</secondary></indexterm>
+<indexterm><primary>fort_entire_table_properties</primary><secondary>top_margin</secondary></indexterm>
+<para><computeroutput>unsigned int fort_entire_table_properties::top_margin</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8c">fort.c</link></section>
+</section>

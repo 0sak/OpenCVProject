@@ -1,0 +1,453 @@
+\hypertarget{class_process_images}{}\doxysection{Process\+Images Class Reference}
+\label{class_process_images}\index{ProcessImages@{ProcessImages}}
+
+
+{\ttfamily \#include $<$Process\+Images.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_process_images_a89c6af346f21df2d0d48ead7c56c16b2}{init\+Labels}} ()
+\item 
+void \mbox{\hyperlink{class_process_images_aff8a4649ca46f947a49161aa52373782}{preprocess\+Image}} (cv\+::\+Mat \mbox{\hyperlink{class_process_images_a071600f3a5a99c2f0b9ce3cf92c93fa0}{image}})
+\begin{DoxyCompactList}\small\item\em Function to apply multiple filters to the original picture, so that it is ready for extracting all of its contours. The results are saved in the matrixes of this class. (Note that there are some that are not being used, we tried out several methods to preprocess our pictures) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_images_ae63306723484c1f4792e8e36178bfa3a}{process\+All}} ()
+\begin{DoxyCompactList}\small\item\em Function to start the license plate recognition, it loops over all existing pictures from the dataset and calls necessary functions of this class. Also adds height and width to labels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_images_abe35e22c3933e6821148fcc20c881bdb}{filter\+Contours}} (bool brighter)
+\begin{DoxyCompactList}\small\item\em First we start by extracting all of the contours of a picture, secondly the perimeter of a contour is calculated and the contour is approxymated (for instance a rectangle can be drown with 4 vertices). After that we check if the contour in fact contains only 4 points, indicating that it is a rectangle. We filter the extracted rectangle by area and apect ratio. The next step is to see how many white pixels exist in the contour, since a license plate will consist of a lot of white pixels and some black pixels indicating the letters. If the amount of white pixels is high enough we again filter for all countours that exist in our rectangle. In this step we cant to see if we cann figure out the letters on our license plate. If the contour has a specific area we let it pass and count it. Since a license plate will have about 15 letters on it we check if we found 5-\/15 contours that fit our area check. If so we sucessfully found a licenseplate on the picture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_images_af5b29d4c119c6b878d827770ec728f84}{display\+Results}} (cv\+::\+Mat \&image\+\_\+copy)
+\begin{DoxyCompactList}\small\item\em Display the picture with recognized license plates and the corresponding threshold image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_images_a2e3b110dca74c6425756a44cf85d27c5}{count\+Inner\+Contours}} (unsigned int \&contour\+Counter, int i, cv\+::\+Mat \&sub\+Img\+Copy)
+\begin{DoxyCompactList}\small\item\em When outer the outer contour survives all of our check, count all contours inside the rectangle with a specific area. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_images_aa6c3df82e2b18cc077b68a85380c573f}{print\+Candidate\+Data}} (int i, cv\+::\+Rect2f \&result\+Rect, double white\+Pixels\+In\+Rectangle, float proportion\+Area\+Whitepixels)
+\begin{DoxyCompactList}\small\item\em print Area, Number of white pixels and ratio of white and black pixels in rectangle \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_images_ac01f497ee9e3c4a839139b9ac0db3333}{is\+Rectangle}} (cv\+::\+Rect2f \&result\+Rect, int \&retflag)
+\begin{DoxyCompactList}\small\item\em Check aspect ratio and area of cadidate. Ignore if not in these bounderies. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_process_images_aa457ce91f8c5be8defcce852b47b30cb}{is\+Image\+Bright}} (cv\+::\+Mat \mbox{\hyperlink{class_process_images_a071600f3a5a99c2f0b9ce3cf92c93fa0}{image}})
+\begin{DoxyCompactList}\small\item\em Change from BGR to HSV and check value across all pixels. Decide from value if image is bright or not. Also save brightness in labels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_images_a55d2ff847d9bb53e625a442d819e73dc}{make\+Brighter}} (double alpha, int beta)
+\begin{DoxyCompactList}\small\item\em Make image brighter with alpha and beta values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_images_a9e0793b87aa559b6b11bbfa256eb8624}{gamma\+Correction}} (const cv\+::\+Mat \&img, const double gamma\+\_\+)
+\begin{DoxyCompactList}\small\item\em Make image brighter with gamma value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_images_afa1cb9a04d9fe538fd39b88cc8cc3599}{get\+Desktop\+Resolution}} ()
+\begin{DoxyCompactList}\small\item\em store desktop resolution \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_process_images_a53f909863405fc93ae087a39b4f0590b}{image\+To\+Read}}
+\item 
+int \mbox{\hyperlink{class_process_images_a7b13dc138ee8def909f17644e783210b}{ddepth}} = CV\+\_\+8U
+\item 
+int \mbox{\hyperlink{class_process_images_a8f99452a82acb742ee91adf0bece6cff}{down\+Height}} = 800
+\item 
+int \mbox{\hyperlink{class_process_images_ac2dad1b7fe1f247c5f473f978afdead3}{down\+Width}} = 1000
+\item 
+int \mbox{\hyperlink{class_process_images_a67192960af7101dcae55377d9003d4a4}{desktop\+Width}}
+\item 
+int \mbox{\hyperlink{class_process_images_afde554204c2750ee8be6f69a1602f842}{desktop\+Heigth}}
+\item 
+\mbox{\hyperlink{class_metric}{Metric}} \mbox{\hyperlink{class_process_images_a7d1e46fa343dcd6bff1a1b4f5a149286}{metric}}
+\item 
+int \mbox{\hyperlink{class_process_images_a81c4a43b01785d88db8d8b62f39b7db0}{recognized\+License\+Plates}} = 0
+\item 
+int \mbox{\hyperlink{class_process_images_aed9d26d4cb9d26b28f6fee377752cde8}{index}} = 0
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_a071600f3a5a99c2f0b9ce3cf92c93fa0}{image}}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_a680ace36d4e9ce32554559880432db6c}{image\+Grey}}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_a4d24f628ab8f1738660e84c1b5213ebb}{image\+Blurred}}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_add16033a84609c1981797c90f8480d63}{image\+Thresh}}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_a64f1f3a0fcc601fb8c3dae108c11f612}{image\+Thresh\+Resized}}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_a997f657a63ad978725fcc4f59cb4b4a0}{sobelX}}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_a61f8c9a3b0de5a10c2e58ea6558a0c7c}{sobelY}}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_a03532397b05bf6c0fcdcbb372311a612}{sobel\+Result}}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_a96ab7ba2813c40c9010522fb800d8cd7}{erode\+Result}}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_a6e09ae9bf1f3f85da922491126a7714f}{dilate\+Result}}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_ae078cda05bc2522ebf981496798e25ff}{image\+Concat}}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_a552358349fd359163c990a19162fa6cc}{resized\+Down}}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_a66de31bf5e9a9a7af7c99d08ec76908d}{res}}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{class_process_images_ad41da6d9998d6fc25e0645d066ac3dc3}{new\+Image}}
+\item 
+std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$ $>$ \mbox{\hyperlink{class_process_images_a32bcd8a93f690e6cbd1ece0b2c8ffcbb}{contours}}
+\item 
+std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$ $>$ \mbox{\hyperlink{class_process_images_a8a733185159495f387c267b2a41fc465}{contours\+Second}}
+\item 
+std\+::vector$<$ cv\+::\+Vec4i $>$ \mbox{\hyperlink{class_process_images_a0b6db8b68f4834d9e0ba59a5f0149dc1}{hierarchy}}
+\item 
+std\+::vector$<$ cv\+::\+Vec4i $>$ \mbox{\hyperlink{class_process_images_a7469114898aec0381d6b738a25414f71}{hierarchy\+Second}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_process_images_a2e3b110dca74c6425756a44cf85d27c5}\label{class_process_images_a2e3b110dca74c6425756a44cf85d27c5}} 
+\index{ProcessImages@{ProcessImages}!countInnerContours@{countInnerContours}}
+\index{countInnerContours@{countInnerContours}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{countInnerContours()}{countInnerContours()}}
+{\footnotesize\ttfamily void Process\+Images\+::count\+Inner\+Contours (\begin{DoxyParamCaption}\item[{unsigned int \&}]{contour\+Counter,  }\item[{int}]{i,  }\item[{cv\+::\+Mat \&}]{sub\+Img\+Copy }\end{DoxyParamCaption})}
+
+
+
+When outer the outer contour survives all of our check, count all contours inside the rectangle with a specific area. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contour\+Counter} & \\
+\hline
+{\em i} & \\
+\hline
+{\em sub\+Img\+Copy} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_process_images_af5b29d4c119c6b878d827770ec728f84}\label{class_process_images_af5b29d4c119c6b878d827770ec728f84}} 
+\index{ProcessImages@{ProcessImages}!displayResults@{displayResults}}
+\index{displayResults@{displayResults}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{displayResults()}{displayResults()}}
+{\footnotesize\ttfamily void Process\+Images\+::display\+Results (\begin{DoxyParamCaption}\item[{cv\+::\+Mat \&}]{image\+\_\+copy }\end{DoxyParamCaption})}
+
+
+
+Display the picture with recognized license plates and the corresponding threshold image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image\+\_\+copy} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_process_images_abe35e22c3933e6821148fcc20c881bdb}\label{class_process_images_abe35e22c3933e6821148fcc20c881bdb}} 
+\index{ProcessImages@{ProcessImages}!filterContours@{filterContours}}
+\index{filterContours@{filterContours}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{filterContours()}{filterContours()}}
+{\footnotesize\ttfamily void Process\+Images\+::filter\+Contours (\begin{DoxyParamCaption}\item[{bool}]{brighter }\end{DoxyParamCaption})}
+
+
+
+First we start by extracting all of the contours of a picture, secondly the perimeter of a contour is calculated and the contour is approxymated (for instance a rectangle can be drown with 4 vertices). After that we check if the contour in fact contains only 4 points, indicating that it is a rectangle. We filter the extracted rectangle by area and apect ratio. The next step is to see how many white pixels exist in the contour, since a license plate will consist of a lot of white pixels and some black pixels indicating the letters. If the amount of white pixels is high enough we again filter for all countours that exist in our rectangle. In this step we cant to see if we cann figure out the letters on our license plate. If the contour has a specific area we let it pass and count it. Since a license plate will have about 15 letters on it we check if we found 5-\/15 contours that fit our area check. If so we sucessfully found a licenseplate on the picture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em brighter} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_process_images_a9e0793b87aa559b6b11bbfa256eb8624}\label{class_process_images_a9e0793b87aa559b6b11bbfa256eb8624}} 
+\index{ProcessImages@{ProcessImages}!gammaCorrection@{gammaCorrection}}
+\index{gammaCorrection@{gammaCorrection}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{gammaCorrection()}{gammaCorrection()}}
+{\footnotesize\ttfamily void Process\+Images\+::gamma\+Correction (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{img,  }\item[{const double}]{gamma\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Make image brighter with gamma value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & \\
+\hline
+{\em gamma\+\_\+} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_process_images_afa1cb9a04d9fe538fd39b88cc8cc3599}\label{class_process_images_afa1cb9a04d9fe538fd39b88cc8cc3599}} 
+\index{ProcessImages@{ProcessImages}!getDesktopResolution@{getDesktopResolution}}
+\index{getDesktopResolution@{getDesktopResolution}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{getDesktopResolution()}{getDesktopResolution()}}
+{\footnotesize\ttfamily void Process\+Images\+::get\+Desktop\+Resolution (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+store desktop resolution 
+
+\mbox{\Hypertarget{class_process_images_a89c6af346f21df2d0d48ead7c56c16b2}\label{class_process_images_a89c6af346f21df2d0d48ead7c56c16b2}} 
+\index{ProcessImages@{ProcessImages}!initLabels@{initLabels}}
+\index{initLabels@{initLabels}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{initLabels()}{initLabels()}}
+{\footnotesize\ttfamily void Process\+Images\+::init\+Labels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_process_images_aa457ce91f8c5be8defcce852b47b30cb}\label{class_process_images_aa457ce91f8c5be8defcce852b47b30cb}} 
+\index{ProcessImages@{ProcessImages}!isImageBright@{isImageBright}}
+\index{isImageBright@{isImageBright}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{isImageBright()}{isImageBright()}}
+{\footnotesize\ttfamily bool Process\+Images\+::is\+Image\+Bright (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{image }\end{DoxyParamCaption})}
+
+
+
+Change from BGR to HSV and check value across all pixels. Decide from value if image is bright or not. Also save brightness in labels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+~\newline
+ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_process_images_ac01f497ee9e3c4a839139b9ac0db3333}\label{class_process_images_ac01f497ee9e3c4a839139b9ac0db3333}} 
+\index{ProcessImages@{ProcessImages}!isRectangle@{isRectangle}}
+\index{isRectangle@{isRectangle}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{isRectangle()}{isRectangle()}}
+{\footnotesize\ttfamily void Process\+Images\+::is\+Rectangle (\begin{DoxyParamCaption}\item[{cv\+::\+Rect2f \&}]{result\+Rect,  }\item[{int \&}]{retflag }\end{DoxyParamCaption})}
+
+
+
+Check aspect ratio and area of cadidate. Ignore if not in these bounderies. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result\+Rect} & \\
+\hline
+{\em retflag} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_process_images_a55d2ff847d9bb53e625a442d819e73dc}\label{class_process_images_a55d2ff847d9bb53e625a442d819e73dc}} 
+\index{ProcessImages@{ProcessImages}!makeBrighter@{makeBrighter}}
+\index{makeBrighter@{makeBrighter}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{makeBrighter()}{makeBrighter()}}
+{\footnotesize\ttfamily void Process\+Images\+::make\+Brighter (\begin{DoxyParamCaption}\item[{double}]{alpha,  }\item[{int}]{beta }\end{DoxyParamCaption})}
+
+
+
+Make image brighter with alpha and beta values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alpha} & \\
+\hline
+{\em beta} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_process_images_aff8a4649ca46f947a49161aa52373782}\label{class_process_images_aff8a4649ca46f947a49161aa52373782}} 
+\index{ProcessImages@{ProcessImages}!preprocessImage@{preprocessImage}}
+\index{preprocessImage@{preprocessImage}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{preprocessImage()}{preprocessImage()}}
+{\footnotesize\ttfamily void Process\+Images\+::preprocess\+Image (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{image }\end{DoxyParamCaption})}
+
+
+
+Function to apply multiple filters to the original picture, so that it is ready for extracting all of its contours. The results are saved in the matrixes of this class. (Note that there are some that are not being used, we tried out several methods to preprocess our pictures) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_process_images_aa6c3df82e2b18cc077b68a85380c573f}\label{class_process_images_aa6c3df82e2b18cc077b68a85380c573f}} 
+\index{ProcessImages@{ProcessImages}!printCandidateData@{printCandidateData}}
+\index{printCandidateData@{printCandidateData}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{printCandidateData()}{printCandidateData()}}
+{\footnotesize\ttfamily void Process\+Images\+::print\+Candidate\+Data (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{cv\+::\+Rect2f \&}]{result\+Rect,  }\item[{double}]{white\+Pixels\+In\+Rectangle,  }\item[{float}]{proportion\+Area\+Whitepixels }\end{DoxyParamCaption})}
+
+
+
+print Area, Number of white pixels and ratio of white and black pixels in rectangle 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+{\em result\+Rect} & \\
+\hline
+{\em white\+Pixels\+In\+Rectangle} & \\
+\hline
+{\em proportion\+Area\+Whitepixels} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_process_images_ae63306723484c1f4792e8e36178bfa3a}\label{class_process_images_ae63306723484c1f4792e8e36178bfa3a}} 
+\index{ProcessImages@{ProcessImages}!processAll@{processAll}}
+\index{processAll@{processAll}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{processAll()}{processAll()}}
+{\footnotesize\ttfamily void Process\+Images\+::process\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to start the license plate recognition, it loops over all existing pictures from the dataset and calls necessary functions of this class. Also adds height and width to labels. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_process_images_a32bcd8a93f690e6cbd1ece0b2c8ffcbb}\label{class_process_images_a32bcd8a93f690e6cbd1ece0b2c8ffcbb}} 
+\index{ProcessImages@{ProcessImages}!contours@{contours}}
+\index{contours@{contours}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{contours}{contours}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$cv\+::\+Point$>$ $>$ Process\+Images\+::contours}
+
+\mbox{\Hypertarget{class_process_images_a8a733185159495f387c267b2a41fc465}\label{class_process_images_a8a733185159495f387c267b2a41fc465}} 
+\index{ProcessImages@{ProcessImages}!contoursSecond@{contoursSecond}}
+\index{contoursSecond@{contoursSecond}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{contoursSecond}{contoursSecond}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$cv\+::\+Point$>$ $>$ Process\+Images\+::contours\+Second}
+
+\mbox{\Hypertarget{class_process_images_a7b13dc138ee8def909f17644e783210b}\label{class_process_images_a7b13dc138ee8def909f17644e783210b}} 
+\index{ProcessImages@{ProcessImages}!ddepth@{ddepth}}
+\index{ddepth@{ddepth}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{ddepth}{ddepth}}
+{\footnotesize\ttfamily int Process\+Images\+::ddepth = CV\+\_\+8U}
+
+\mbox{\Hypertarget{class_process_images_afde554204c2750ee8be6f69a1602f842}\label{class_process_images_afde554204c2750ee8be6f69a1602f842}} 
+\index{ProcessImages@{ProcessImages}!desktopHeigth@{desktopHeigth}}
+\index{desktopHeigth@{desktopHeigth}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{desktopHeigth}{desktopHeigth}}
+{\footnotesize\ttfamily int Process\+Images\+::desktop\+Heigth}
+
+\mbox{\Hypertarget{class_process_images_a67192960af7101dcae55377d9003d4a4}\label{class_process_images_a67192960af7101dcae55377d9003d4a4}} 
+\index{ProcessImages@{ProcessImages}!desktopWidth@{desktopWidth}}
+\index{desktopWidth@{desktopWidth}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{desktopWidth}{desktopWidth}}
+{\footnotesize\ttfamily int Process\+Images\+::desktop\+Width}
+
+\mbox{\Hypertarget{class_process_images_a6e09ae9bf1f3f85da922491126a7714f}\label{class_process_images_a6e09ae9bf1f3f85da922491126a7714f}} 
+\index{ProcessImages@{ProcessImages}!dilateResult@{dilateResult}}
+\index{dilateResult@{dilateResult}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{dilateResult}{dilateResult}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::dilate\+Result}
+
+\mbox{\Hypertarget{class_process_images_a8f99452a82acb742ee91adf0bece6cff}\label{class_process_images_a8f99452a82acb742ee91adf0bece6cff}} 
+\index{ProcessImages@{ProcessImages}!downHeight@{downHeight}}
+\index{downHeight@{downHeight}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{downHeight}{downHeight}}
+{\footnotesize\ttfamily int Process\+Images\+::down\+Height = 800}
+
+\mbox{\Hypertarget{class_process_images_ac2dad1b7fe1f247c5f473f978afdead3}\label{class_process_images_ac2dad1b7fe1f247c5f473f978afdead3}} 
+\index{ProcessImages@{ProcessImages}!downWidth@{downWidth}}
+\index{downWidth@{downWidth}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{downWidth}{downWidth}}
+{\footnotesize\ttfamily int Process\+Images\+::down\+Width = 1000}
+
+\mbox{\Hypertarget{class_process_images_a96ab7ba2813c40c9010522fb800d8cd7}\label{class_process_images_a96ab7ba2813c40c9010522fb800d8cd7}} 
+\index{ProcessImages@{ProcessImages}!erodeResult@{erodeResult}}
+\index{erodeResult@{erodeResult}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{erodeResult}{erodeResult}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::erode\+Result}
+
+\mbox{\Hypertarget{class_process_images_a0b6db8b68f4834d9e0ba59a5f0149dc1}\label{class_process_images_a0b6db8b68f4834d9e0ba59a5f0149dc1}} 
+\index{ProcessImages@{ProcessImages}!hierarchy@{hierarchy}}
+\index{hierarchy@{hierarchy}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{hierarchy}{hierarchy}}
+{\footnotesize\ttfamily std\+::vector$<$cv\+::\+Vec4i$>$ Process\+Images\+::hierarchy}
+
+\mbox{\Hypertarget{class_process_images_a7469114898aec0381d6b738a25414f71}\label{class_process_images_a7469114898aec0381d6b738a25414f71}} 
+\index{ProcessImages@{ProcessImages}!hierarchySecond@{hierarchySecond}}
+\index{hierarchySecond@{hierarchySecond}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{hierarchySecond}{hierarchySecond}}
+{\footnotesize\ttfamily std\+::vector$<$cv\+::\+Vec4i$>$ Process\+Images\+::hierarchy\+Second}
+
+\mbox{\Hypertarget{class_process_images_a071600f3a5a99c2f0b9ce3cf92c93fa0}\label{class_process_images_a071600f3a5a99c2f0b9ce3cf92c93fa0}} 
+\index{ProcessImages@{ProcessImages}!image@{image}}
+\index{image@{image}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{image}{image}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::image}
+
+\mbox{\Hypertarget{class_process_images_a4d24f628ab8f1738660e84c1b5213ebb}\label{class_process_images_a4d24f628ab8f1738660e84c1b5213ebb}} 
+\index{ProcessImages@{ProcessImages}!imageBlurred@{imageBlurred}}
+\index{imageBlurred@{imageBlurred}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{imageBlurred}{imageBlurred}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::image\+Blurred}
+
+\mbox{\Hypertarget{class_process_images_ae078cda05bc2522ebf981496798e25ff}\label{class_process_images_ae078cda05bc2522ebf981496798e25ff}} 
+\index{ProcessImages@{ProcessImages}!imageConcat@{imageConcat}}
+\index{imageConcat@{imageConcat}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{imageConcat}{imageConcat}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::image\+Concat}
+
+\mbox{\Hypertarget{class_process_images_a680ace36d4e9ce32554559880432db6c}\label{class_process_images_a680ace36d4e9ce32554559880432db6c}} 
+\index{ProcessImages@{ProcessImages}!imageGrey@{imageGrey}}
+\index{imageGrey@{imageGrey}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{imageGrey}{imageGrey}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::image\+Grey}
+
+\mbox{\Hypertarget{class_process_images_add16033a84609c1981797c90f8480d63}\label{class_process_images_add16033a84609c1981797c90f8480d63}} 
+\index{ProcessImages@{ProcessImages}!imageThresh@{imageThresh}}
+\index{imageThresh@{imageThresh}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{imageThresh}{imageThresh}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::image\+Thresh}
+
+\mbox{\Hypertarget{class_process_images_a64f1f3a0fcc601fb8c3dae108c11f612}\label{class_process_images_a64f1f3a0fcc601fb8c3dae108c11f612}} 
+\index{ProcessImages@{ProcessImages}!imageThreshResized@{imageThreshResized}}
+\index{imageThreshResized@{imageThreshResized}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{imageThreshResized}{imageThreshResized}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::image\+Thresh\+Resized}
+
+\mbox{\Hypertarget{class_process_images_a53f909863405fc93ae087a39b4f0590b}\label{class_process_images_a53f909863405fc93ae087a39b4f0590b}} 
+\index{ProcessImages@{ProcessImages}!imageToRead@{imageToRead}}
+\index{imageToRead@{imageToRead}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{imageToRead}{imageToRead}}
+{\footnotesize\ttfamily std\+::string Process\+Images\+::image\+To\+Read}
+
+\mbox{\Hypertarget{class_process_images_aed9d26d4cb9d26b28f6fee377752cde8}\label{class_process_images_aed9d26d4cb9d26b28f6fee377752cde8}} 
+\index{ProcessImages@{ProcessImages}!index@{index}}
+\index{index@{index}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{index}{index}}
+{\footnotesize\ttfamily int Process\+Images\+::index = 0}
+
+\mbox{\Hypertarget{class_process_images_a7d1e46fa343dcd6bff1a1b4f5a149286}\label{class_process_images_a7d1e46fa343dcd6bff1a1b4f5a149286}} 
+\index{ProcessImages@{ProcessImages}!metric@{metric}}
+\index{metric@{metric}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{metric}{metric}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_metric}{Metric}} Process\+Images\+::metric}
+
+\mbox{\Hypertarget{class_process_images_ad41da6d9998d6fc25e0645d066ac3dc3}\label{class_process_images_ad41da6d9998d6fc25e0645d066ac3dc3}} 
+\index{ProcessImages@{ProcessImages}!newImage@{newImage}}
+\index{newImage@{newImage}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{newImage}{newImage}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::new\+Image}
+
+\mbox{\Hypertarget{class_process_images_a81c4a43b01785d88db8d8b62f39b7db0}\label{class_process_images_a81c4a43b01785d88db8d8b62f39b7db0}} 
+\index{ProcessImages@{ProcessImages}!recognizedLicensePlates@{recognizedLicensePlates}}
+\index{recognizedLicensePlates@{recognizedLicensePlates}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{recognizedLicensePlates}{recognizedLicensePlates}}
+{\footnotesize\ttfamily int Process\+Images\+::recognized\+License\+Plates = 0}
+
+\mbox{\Hypertarget{class_process_images_a66de31bf5e9a9a7af7c99d08ec76908d}\label{class_process_images_a66de31bf5e9a9a7af7c99d08ec76908d}} 
+\index{ProcessImages@{ProcessImages}!res@{res}}
+\index{res@{res}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{res}{res}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::res}
+
+\mbox{\Hypertarget{class_process_images_a552358349fd359163c990a19162fa6cc}\label{class_process_images_a552358349fd359163c990a19162fa6cc}} 
+\index{ProcessImages@{ProcessImages}!resizedDown@{resizedDown}}
+\index{resizedDown@{resizedDown}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{resizedDown}{resizedDown}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::resized\+Down}
+
+\mbox{\Hypertarget{class_process_images_a03532397b05bf6c0fcdcbb372311a612}\label{class_process_images_a03532397b05bf6c0fcdcbb372311a612}} 
+\index{ProcessImages@{ProcessImages}!sobelResult@{sobelResult}}
+\index{sobelResult@{sobelResult}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{sobelResult}{sobelResult}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::sobel\+Result}
+
+\mbox{\Hypertarget{class_process_images_a997f657a63ad978725fcc4f59cb4b4a0}\label{class_process_images_a997f657a63ad978725fcc4f59cb4b4a0}} 
+\index{ProcessImages@{ProcessImages}!sobelX@{sobelX}}
+\index{sobelX@{sobelX}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{sobelX}{sobelX}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::sobelX}
+
+\mbox{\Hypertarget{class_process_images_a61f8c9a3b0de5a10c2e58ea6558a0c7c}\label{class_process_images_a61f8c9a3b0de5a10c2e58ea6558a0c7c}} 
+\index{ProcessImages@{ProcessImages}!sobelY@{sobelY}}
+\index{sobelY@{sobelY}!ProcessImages@{ProcessImages}}
+\doxysubsubsection{\texorpdfstring{sobelY}{sobelY}}
+{\footnotesize\ttfamily cv\+::\+Mat Process\+Images\+::sobelY}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/workspace/\+Computer Vision/\+Open\+CVTest/\mbox{\hyperlink{_process_images_8h}{Process\+Images.\+h}}\item 
+C\+:/workspace/\+Computer Vision/\+Open\+CVTest/\mbox{\hyperlink{_process_images_8cpp}{Process\+Images.\+cpp}}\end{DoxyCompactItemize}

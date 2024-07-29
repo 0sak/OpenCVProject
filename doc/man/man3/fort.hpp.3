@@ -1,0 +1,126 @@
+.TH "C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/fort.hpp" 3 "Wed Jan 19 2022" "Version v1.0" "CV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/fort.hpp \- Main header file describing libfort C++ API \&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <iomanip>\fP
+.br
+\fC#include <sstream>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <stdexcept>\fP
+.br
+\fC#include <type_traits>\fP
+.br
+\fC#include 'fort\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBfort::table_manipulator\fP"
+.br
+.ti -1c
+.RI "class \fBfort::property_owner< table >\fP"
+.br
+.ti -1c
+.RI "class \fBfort::table< TT >\fP"
+.br
+.ti -1c
+.RI "class \fBfort::table< TT >::table_cell\fP"
+.br
+.ti -1c
+.RI "class \fBfort::table< TT >::table_row\fP"
+.br
+.ti -1c
+.RI "class \fBfort::table< TT >::table_column\fP"
+.br
+.ti -1c
+.RI "class \fBfort::table< TT >::cell_range\fP"
+.br
+.ti -1c
+.RI "class \fBfort::table< TT >::default_properties\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBfort\fP"
+.br
+.ti -1c
+.RI "namespace \fBfort::detail\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "using \fBfort::char_table\fP = table< table_type::character >"
+.br
+.ti -1c
+.RI "using \fBfort::utf8_table\fP = table< table_type::utf8 >"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBfort::text_align\fP { \fBfort::left\fP = FT_ALIGNED_LEFT, \fBfort::center\fP = FT_ALIGNED_CENTER, \fBfort::right\fP = FT_ALIGNED_RIGHT }"
+.br
+.ti -1c
+.RI "enum class \fBfort::row_type\fP { \fBfort::common\fP = FT_ROW_COMMON, \fBfort::header\fP = FT_ROW_HEADER }"
+.br
+.ti -1c
+.RI "enum class \fBfort::add_strategy\fP { \fBfort::replace\fP = FT_STRATEGY_REPLACE, \fBfort::insert\fP = FT_STRATEGY_INSERT }"
+.br
+.ti -1c
+.RI "enum class \fBfort::color\fP { \fBfort::default_color\fP = FT_COLOR_DEFAULT, \fBfort::black\fP = FT_COLOR_BLACK, \fBfort::red\fP = FT_COLOR_RED, \fBfort::green\fP = FT_COLOR_GREEN, \fBfort::yellow\fP = FT_COLOR_YELLOW, \fBfort::blue\fP = FT_COLOR_BLUE, \fBfort::magenta\fP = FT_COLOR_MAGENTA, \fBfort::cyan\fP = FT_COLOR_CYAN, \fBfort::light_gray\fP = FT_COLOR_LIGHT_GRAY, \fBfort::dark_gray\fP = FT_COLOR_DARK_GRAY, \fBfort::light_red\fP = FT_COLOR_LIGHT_RED, \fBfort::light_green\fP = FT_COLOR_LIGHT_GREEN, \fBfort::light_yellow\fP = FT_COLOR_LIGHT_YELLOW, \fBfort::light_blue\fP = FT_COLOR_LIGHT_BLUE, \fBfort::light_magenta\fP = FT_COLOR_LIGHT_MAGENTA, \fBfort::light_cyan\fP = FT_COLOR_LIGHT_CYAN, \fBfort::light_whyte\fP = FT_COLOR_LIGHT_WHYTE }"
+.br
+.ti -1c
+.RI "enum class \fBfort::text_style\fP { \fBfort::default_style\fP = FT_TSTYLE_DEFAULT, \fBfort::bold\fP = FT_TSTYLE_BOLD, \fBfort::dim\fP = FT_TSTYLE_DIM, \fBfort::italic\fP = FT_TSTYLE_ITALIC, \fBfort::underlined\fP = FT_TSTYLE_UNDERLINED, \fBfort::blink\fP = FT_TSTYLE_BLINK, \fBfort::inverted\fP = FT_TSTYLE_INVERTED, \fBfort::hidden\fP = FT_TSTYLE_HIDDEN }"
+.br
+.ti -1c
+.RI "enum class \fBfort::table_type\fP { \fBfort::character\fP, \fBfort::utf8\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T > constexpr bool \fBfort::detail::is_stream_manipulator_impl\fP () noexcept"
+.br
+.ti -1c
+.RI "template<typename T > constexpr bool \fBfort::is_stream_manipulator\fP () noexcept"
+.br
+.ti -1c
+.RI "bool \fBfort::set_default_border_style\fP (struct \fBft_border_style\fP *style)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const table_manipulator \fBfort::header\fP (0)"
+.br
+.ti -1c
+.RI "const table_manipulator \fBfort::endr\fP (1)"
+.br
+.ti -1c
+.RI "const table_manipulator \fBfort::separator\fP (2)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Main header file describing libfort C++ API \&. 
+
+This files contains C++ wrappers around libfort API that can be used in C++ code\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CV from the source code\&.

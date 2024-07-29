@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_c93fb72351deff0f0dce1faf5e451d92" xml:lang="en-US">
+<title>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest Directory Reference</title>
+<indexterm><primary>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_main_8cpp">main.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__metric_8cpp">Metric.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__metric_8h">Metric.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__open_c_v_test_8cpp">OpenCVTest.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__process_images_8cpp">ProcessImages.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__process_images_8h">ProcessImages.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

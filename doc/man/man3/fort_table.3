@@ -1,0 +1,666 @@
+.TH "fort::table< TT >" 3 "Wed Jan 19 2022" "Version v1.0" "CV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+fort::table< TT >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fort\&.hpp>\fP
+.PP
+Inherits \fBfort::property_owner< table< table_type::character > >\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBcell_range\fP"
+.br
+.ti -1c
+.RI "class \fBdefault_properties\fP"
+.br
+.ti -1c
+.RI "class \fBtable_cell\fP"
+.br
+.ti -1c
+.RI "class \fBtable_column\fP"
+.br
+.ti -1c
+.RI "class \fBtable_row\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBtable\fP ()"
+.br
+.ti -1c
+.RI "\fB~table\fP ()"
+.br
+.ti -1c
+.RI "\fBtable\fP (const \fBtable\fP &tbl)"
+.br
+.ti -1c
+.RI "\fBtable\fP (\fBtable\fP &&tbl)"
+.br
+.ti -1c
+.RI "\fBtable\fP & \fBoperator=\fP (const \fBtable\fP &tbl)"
+.br
+.ti -1c
+.RI "\fBtable\fP & \fBoperator=\fP (\fBtable\fP &&tbl)"
+.br
+.ti -1c
+.RI "std::string \fBto_string\fP () const"
+.br
+.ti -1c
+.RI "const char * \fBc_str\fP () const"
+.br
+.ti -1c
+.RI "template<typename T > \fBtable\fP & \fBoperator<<\fP (const T &arg)"
+.br
+.ti -1c
+.RI "\fBtable\fP & \fBoperator<<\fP (const \fBtable_manipulator\fP &arg)"
+.br
+.ti -1c
+.RI "bool \fBwrite\fP (const char *str)"
+.br
+.ti -1c
+.RI "bool \fBwrite_ln\fP (const char *str)"
+.br
+.ti -1c
+.RI "bool \fBwrite\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "bool \fBwrite_ln\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 > bool \fBwrite\fP (const T_0 &arg_0, const T_1 &arg_1)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 , typename T_2 > bool \fBwrite\fP (const T_0 &arg_0, const T_1 &arg_1, const T_2 &arg_2)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 , typename T_2 , typename T_3 > bool \fBwrite\fP (const T_0 &arg_0, const T_1 &arg_1, const T_2 &arg_2, const T_3 &arg_3)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 > bool \fBwrite\fP (const T_0 &arg_0, const T_1 &arg_1, const T_2 &arg_2, const T_3 &arg_3, const T_4 &arg_4)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 > bool \fBwrite\fP (const T_0 &arg_0, const T_1 &arg_1, const T_2 &arg_2, const T_3 &arg_3, const T_4 &arg_4, const T_5 &arg_5)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 > bool \fBwrite\fP (const T_0 &arg_0, const T_1 &arg_1, const T_2 &arg_2, const T_3 &arg_3, const T_4 &arg_4, const T_5 &arg_5, const T_6 &arg_6)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 , typename T_7 > bool \fBwrite\fP (const T_0 &arg_0, const T_1 &arg_1, const T_2 &arg_2, const T_3 &arg_3, const T_4 &arg_4, const T_5 &arg_5, const T_6 &arg_6, const T_7 &arg_7)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 > bool \fBwrite_ln\fP (const T_0 &arg_0, const T_1 &arg_1)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 , typename T_2 > bool \fBwrite_ln\fP (const T_0 &arg_0, const T_1 &arg_1, const T_2 &arg_2)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 , typename T_2 , typename T_3 > bool \fBwrite_ln\fP (const T_0 &arg_0, const T_1 &arg_1, const T_2 &arg_2, const T_3 &arg_3)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 > bool \fBwrite_ln\fP (const T_0 &arg_0, const T_1 &arg_1, const T_2 &arg_2, const T_3 &arg_3, const T_4 &arg_4)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 > bool \fBwrite_ln\fP (const T_0 &arg_0, const T_1 &arg_1, const T_2 &arg_2, const T_3 &arg_3, const T_4 &arg_4, const T_5 &arg_5)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 > bool \fBwrite_ln\fP (const T_0 &arg_0, const T_1 &arg_1, const T_2 &arg_2, const T_3 &arg_3, const T_4 &arg_4, const T_5 &arg_5, const T_6 &arg_6)"
+.br
+.ti -1c
+.RI "template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 , typename T_7 > bool \fBwrite_ln\fP (const T_0 &arg_0, const T_1 &arg_1, const T_2 &arg_2, const T_3 &arg_3, const T_4 &arg_4, const T_5 &arg_5, const T_6 &arg_6, const T_7 &arg_7)"
+.br
+.ti -1c
+.RI "template<typename InputIt > bool \fBrange_write\fP (InputIt first, InputIt last)"
+.br
+.ti -1c
+.RI "template<typename InputIt > bool \fBrange_write_ln\fP (InputIt first, InputIt last)"
+.br
+.ti -1c
+.RI "bool \fBset_border_style\fP (const struct \fBft_border_style\fP *style)"
+.br
+.ti -1c
+.RI "void \fBset_cur_cell\fP (size_t row_i, size_t col_i)"
+.br
+.ti -1c
+.RI "bool \fBset_left_margin\fP (unsigned value)"
+.br
+.ti -1c
+.RI "bool \fBset_top_margin\fP (unsigned value)"
+.br
+.ti -1c
+.RI "bool \fBset_right_margin\fP (unsigned value)"
+.br
+.ti -1c
+.RI "bool \fBset_bottom_margin\fP (unsigned value)"
+.br
+.ti -1c
+.RI "bool \fBset_adding_strategy\fP (\fBfort::add_strategy\fP value)"
+.br
+.ti -1c
+.RI "class \fBtable_row\fP \fBoperator[]\fP (std::size_t row_idx)"
+.br
+.ti -1c
+.RI "class \fBtable_cell\fP \fBcell\fP (std::size_t row_idx, std::size_t col_idx)"
+.br
+.ti -1c
+.RI "size_t \fBcur_col\fP () const noexcept"
+.br
+.ti -1c
+.RI "size_t \fBcur_row\fP () const noexcept"
+.br
+.ti -1c
+.RI "bool \fBis_empty\fP () const noexcept"
+.br
+.ti -1c
+.RI "std::size_t \fBrow_count\fP () const noexcept"
+.br
+.ti -1c
+.RI "std::size_t \fBcol_count\fP () const noexcept"
+.br
+.ti -1c
+.RI "class \fBtable_cell\fP \fBcur_cell\fP ()"
+.br
+.ti -1c
+.RI "class \fBtable_row\fP \fBrow\fP (std::size_t row_idx)"
+.br
+.ti -1c
+.RI "class \fBtable_column\fP \fBcolumn\fP (std::size_t col_idx)"
+.br
+.ti -1c
+.RI "class \fBcell_range\fP \fBrange\fP (std::size_t top_left_row, std::size_t top_left_col, std::size_t bottom_right_row, std::size_t bottom_right_col)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static class \fBdefault_properties\fP \fBdefault_props\fP ()"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBproperty_owner< table >\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<\fBtable_type\fP TT = table_type::character>
+.br
+class fort::table< TT >"Formatted table\&.
+.PP
+Table template class is a C++ wrapper around struct \fC\fBft_table\fP\fP\&. Template parameter is \fC\fBtable_type\fP\fP\&. Useful instantiations of table template class are \fC\fBchar_table\fP\fP and \fC\fButf8_table\fP\fP\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<\fBtable_type\fP TT = table_type::character> \fBfort::table\fP< TT >::table ()\fC [inline]\fP"
+Default constructor\&. 
+.SS "template<\fBtable_type\fP TT = table_type::character> \fBfort::table\fP< TT >::~\fBtable\fP ()\fC [inline]\fP"
+Destructor\&. 
+.SS "template<\fBtable_type\fP TT = table_type::character> \fBfort::table\fP< TT >::table (const \fBtable\fP< TT > & tbl)\fC [inline]\fP"
+Copy contstructor\&. 
+.SS "template<\fBtable_type\fP TT = table_type::character> \fBfort::table\fP< TT >::table (\fBtable\fP< TT > && tbl)\fC [inline]\fP"
+Move contstructor\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<\fBtable_type\fP TT = table_type::character> const char * \fBfort::table\fP< TT >::c_str () const\fC [inline]\fP"
+Convert table to string representation\&.
+.PP
+Table object has ownership of the returned pointer\&. So there is no need to free it\&. To take ownership user should explicitly copy the returned string with strdup or similar functions\&.
+.PP
+Returned pointer may be later invalidated by:
+.IP "\(bu" 2
+Calling destroying the table;
+.IP "\(bu" 2
+Other invocations of c_str or to_string\&.
+.PP
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+The pointer to the string representation of formatted table, on success\&.
+.IP "\(bu" 2
+NULL on error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> class \fBtable_cell\fP \fBfort::table\fP< TT >::cell (std::size_t row_idx, std::size_t col_idx)\fC [inline]\fP"
+Get cell\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIrow_idx\fP Row index\&. 
+.br
+\fIcol_idx\fP Column index\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBtable_cell\fP object\&. 
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> std::size_t \fBfort::table\fP< TT >::col_count () const\fC [inline]\fP, \fC [noexcept]\fP"
+Get number of columns in the table\&.
+.PP
+\fBReturns\fP
+.RS 4
+Number of columns in the table\&. 
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> class \fBtable_column\fP \fBfort::table\fP< TT >::column (std::size_t col_idx)\fC [inline]\fP"
+Get column\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIcol_idx\fP Column index\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBtable_column\fP object\&. 
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> class \fBtable_cell\fP \fBfort::table\fP< TT >::cur_cell ()\fC [inline]\fP"
+Get current cell\&.
+.PP
+\fBReturns\fP
+.RS 4
+Current cell\&. 
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> size_t \fBfort::table\fP< TT >::cur_col () const\fC [inline]\fP, \fC [noexcept]\fP"
+Get column number of the current cell\&.
+.PP
+\fBReturns\fP
+.RS 4
+Column number of the current cell\&. 
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> size_t \fBfort::table\fP< TT >::cur_row () const\fC [inline]\fP, \fC [noexcept]\fP"
+Get row number of the current cell\&.
+.PP
+\fBReturns\fP
+.RS 4
+Row number of the current cell\&. 
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> static class \fBdefault_properties\fP \fBfort::table\fP< TT >::default_props ()\fC [inline]\fP, \fC [static]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> bool \fBfort::table\fP< TT >::is_empty () const\fC [inline]\fP, \fC [noexcept]\fP"
+Check if table is empty\&.
+.PP
+\fBReturns\fP
+.RS 4
+true - table is empty false - some data has been inserted 
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T > \fBtable\fP & \fBfort::table\fP< TT >::operator<< (const T & arg)\fC [inline]\fP"
+Write provided object to the table\&.
+.PP
+To convert object to the string representation conversion for std::ostream is used\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIarg\fP Obect that would be inserted in the current cell\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+Reference to the current table\&. 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> \fBtable\fP & \fBfort::table\fP< TT >::operator<< (const \fBtable_manipulator\fP & arg)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> \fBtable\fP & \fBfort::table\fP< TT >::operator= (const \fBtable\fP< TT > & tbl)\fC [inline]\fP"
+Copy assignment operator\&. 
+.SS "template<\fBtable_type\fP TT = table_type::character> \fBtable\fP & \fBfort::table\fP< TT >::operator= (\fBtable\fP< TT > && tbl)\fC [inline]\fP"
+Move assignment operator\&. 
+.SS "template<\fBtable_type\fP TT = table_type::character> class \fBtable_row\fP \fBfort::table\fP< TT >::operator[] (std::size_t row_idx)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> class \fBcell_range\fP \fBfort::table\fP< TT >::range (std::size_t top_left_row, std::size_t top_left_col, std::size_t bottom_right_row, std::size_t bottom_right_col)\fC [inline]\fP"
+Get range of cells\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIcol_idx\fP Column index\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBtable_column\fP object\&. 
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename InputIt > bool \fBfort::table\fP< TT >::range_write (InputIt first, InputIt last)\fC [inline]\fP"
+Write elements from range to the table\&.
+.PP
+Write objects from range to consecutive cells in the current row\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIfirst,last\fP Range of elements\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename InputIt > bool \fBfort::table\fP< TT >::range_write_ln (InputIt first, InputIt last)\fC [inline]\fP"
+Write elements from range to the table and go to the next line\&.
+.PP
+Write objects from range to consecutive cells in the current row and move current position to the first cell of the next line(row)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIfirst,last\fP Range of elements\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> class \fBtable_row\fP \fBfort::table\fP< TT >::row (std::size_t row_idx)\fC [inline]\fP"
+Get row\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIrow_idx\fP Row index\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBtable_row\fP object\&. 
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> std::size_t \fBfort::table\fP< TT >::row_count () const\fC [inline]\fP, \fC [noexcept]\fP"
+Get number of rows in the table\&.
+.PP
+\fBReturns\fP
+.RS 4
+Number of rows in the table\&. 
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> bool \fBfort::table\fP< TT >::set_adding_strategy (\fBfort::add_strategy\fP value)\fC [inline]\fP"
+Set table adding strategy\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Adding strategy\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; table property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> bool \fBfort::table\fP< TT >::set_border_style (const struct \fBft_border_style\fP * style)\fC [inline]\fP"
+Set border style for the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIstyle\fP Pointer to border style\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+True: Success; table border style was changed\&.
+.IP "\(bu" 2
+False: Error 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> bool \fBfort::table\fP< TT >::set_bottom_margin (unsigned value)\fC [inline]\fP"
+Set table bottom margin\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Bottom margin\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; table property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> void \fBfort::table\fP< TT >::set_cur_cell (size_t row_i, size_t col_i)\fC [inline]\fP"
+Set current cell position\&.
+.PP
+Current cell - cell that will be edited with all modifiing functions\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIrow_i\fP New row number for the current cell\&. 
+.br
+\fIcol_i\fP New row number for the current cell\&. 
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> bool \fBfort::table\fP< TT >::set_left_margin (unsigned value)\fC [inline]\fP"
+Set table left margin\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Left margin\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; table property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> bool \fBfort::table\fP< TT >::set_right_margin (unsigned value)\fC [inline]\fP"
+Set table right margin\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Right margin\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; table property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> bool \fBfort::table\fP< TT >::set_top_margin (unsigned value)\fC [inline]\fP"
+Set table top margin\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Top margin\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; table property was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> std::string \fBfort::table\fP< TT >::to_string () const\fC [inline]\fP"
+Convert table to string representation\&.
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+String representation of formatted table, on success\&.
+.IP "\(bu" 2
+In case of error std::runtime_error is thrown\&. 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> bool \fBfort::table\fP< TT >::write (const char * str)\fC [inline]\fP"
+Write string to the the table\&.
+.PP
+Write specified string to the current cell\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIstr\fP String to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> bool \fBfort::table\fP< TT >::write (const std::string & str)\fC [inline]\fP"
+Write string to the the table\&.
+.PP
+Write specified string to the current cell\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIstr\fP String to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 > bool \fBfort::table\fP< TT >::write (const T_0 & arg_0, const T_1 & arg_1)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 , typename T_2 > bool \fBfort::table\fP< TT >::write (const T_0 & arg_0, const T_1 & arg_1, const T_2 & arg_2)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 , typename T_2 , typename T_3 > bool \fBfort::table\fP< TT >::write (const T_0 & arg_0, const T_1 & arg_1, const T_2 & arg_2, const T_3 & arg_3)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 > bool \fBfort::table\fP< TT >::write (const T_0 & arg_0, const T_1 & arg_1, const T_2 & arg_2, const T_3 & arg_3, const T_4 & arg_4)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 > bool \fBfort::table\fP< TT >::write (const T_0 & arg_0, const T_1 & arg_1, const T_2 & arg_2, const T_3 & arg_3, const T_4 & arg_4, const T_5 & arg_5)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 > bool \fBfort::table\fP< TT >::write (const T_0 & arg_0, const T_1 & arg_1, const T_2 & arg_2, const T_3 & arg_3, const T_4 & arg_4, const T_5 & arg_5, const T_6 & arg_6)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 , typename T_7 > bool \fBfort::table\fP< TT >::write (const T_0 & arg_0, const T_1 & arg_1, const T_2 & arg_2, const T_3 & arg_3, const T_4 & arg_4, const T_5 & arg_5, const T_6 & arg_6, const T_7 & arg_7)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> bool \fBfort::table\fP< TT >::write_ln (const char * str)\fC [inline]\fP"
+Write string to the the table and go to the next line\&.
+.PP
+Write specified string to the current cell and move current position to the first cell of the next line(row)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIstr\fP String to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> bool \fBfort::table\fP< TT >::write_ln (const std::string & str)\fC [inline]\fP"
+Write string to the the table and go to the next line\&.
+.PP
+Write specified string to the current cell and move current position to the first cell of the next line(row)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIstr\fP String to write\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0: Success; data were written
+.IP "\(bu" 2
+(<0): In case of error 
+.PP
+.RE
+.PP
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 > bool \fBfort::table\fP< TT >::write_ln (const T_0 & arg_0, const T_1 & arg_1)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 , typename T_2 > bool \fBfort::table\fP< TT >::write_ln (const T_0 & arg_0, const T_1 & arg_1, const T_2 & arg_2)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 , typename T_2 , typename T_3 > bool \fBfort::table\fP< TT >::write_ln (const T_0 & arg_0, const T_1 & arg_1, const T_2 & arg_2, const T_3 & arg_3)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 > bool \fBfort::table\fP< TT >::write_ln (const T_0 & arg_0, const T_1 & arg_1, const T_2 & arg_2, const T_3 & arg_3, const T_4 & arg_4)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 > bool \fBfort::table\fP< TT >::write_ln (const T_0 & arg_0, const T_1 & arg_1, const T_2 & arg_2, const T_3 & arg_3, const T_4 & arg_4, const T_5 & arg_5)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 > bool \fBfort::table\fP< TT >::write_ln (const T_0 & arg_0, const T_1 & arg_1, const T_2 & arg_2, const T_3 & arg_3, const T_4 & arg_4, const T_5 & arg_5, const T_6 & arg_6)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> template<typename T_0 , typename T_1 , typename T_2 , typename T_3 , typename T_4 , typename T_5 , typename T_6 , typename T_7 > bool \fBfort::table\fP< TT >::write_ln (const T_0 & arg_0, const T_1 & arg_1, const T_2 & arg_2, const T_3 & arg_3, const T_4 & arg_4, const T_5 & arg_5, const T_6 & arg_6, const T_7 & arg_7)\fC [inline]\fP"
+
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "template<\fBtable_type\fP TT = table_type::character> friend class \fBproperty_owner\fP< \fBtable\fP >\fC [friend]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CV from the source code\&.

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structf__cell" xml:lang="en-US">
+<title>f_cell Struct Reference</title>
+<indexterm><primary>f_cell</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_fort_8c_1a0a5a8f4508c5e8fb7334b4d5e25b5a88">f_string_buffer_t</link> * <link linkend="_structf__cell_1ae145fa6b2629988b2cba973547620439">str_buffer</link></para>
+</listitem>
+            <listitem><para>enum <link linkend="_fort_8c_1a0d2f8345ecc481093a059fe2f0264eb4">f_cell_type</link> <link linkend="_structf__cell_1a2838b9fe31ef711a3fc509193a6ad065">cell_type</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structf__cell_1a2838b9fe31ef711a3fc509193a6ad065"/><section>
+    <title>cell_type</title>
+<indexterm><primary>cell_type</primary><secondary>f_cell</secondary></indexterm>
+<indexterm><primary>f_cell</primary><secondary>cell_type</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8c_1a0d2f8345ecc481093a059fe2f0264eb4">f_cell_type</link> f_cell::cell_type</computeroutput></para></section>
+<anchor xml:id="_structf__cell_1ae145fa6b2629988b2cba973547620439"/><section>
+    <title>str_buffer</title>
+<indexterm><primary>str_buffer</primary><secondary>f_cell</secondary></indexterm>
+<indexterm><primary>f_cell</primary><secondary>str_buffer</secondary></indexterm>
+<para><computeroutput><link linkend="_fort_8c_1a0a5a8f4508c5e8fb7334b4d5e25b5a88">f_string_buffer_t</link>* f_cell::str_buffer</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8c">fort.c</link></section>
+</section>

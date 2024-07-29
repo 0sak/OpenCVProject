@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structfort__border__style" xml:lang="en-US">
+<title>fort_border_style Struct Reference</title>
+<indexterm><primary>fort_border_style</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>const char * <link linkend="_structfort__border__style_1afc66d51cc739d0ba2200978df17b2253">border_chars</link> [<link linkend="_fort_8c_1aeb26e59c445583e1b4924086f650bc29a56d2b99637c35906282c659f4edb5652">BORDER_ITEM_POS_SIZE</link>]</para>
+</listitem>
+            <listitem><para>const char * <link linkend="_structfort__border__style_1afd3dc716168d4ffdbb7d7219a6c524d5">header_border_chars</link> [<link linkend="_fort_8c_1aeb26e59c445583e1b4924086f650bc29a56d2b99637c35906282c659f4edb5652">BORDER_ITEM_POS_SIZE</link>]</para>
+</listitem>
+            <listitem><para>const char * <link linkend="_structfort__border__style_1a612fb6ab52c6a207d17a32f30b27a4cc">separator_chars</link> [<link linkend="_fort_8c_1a50e65894fa1562b8b5c3a78899509c35a1011b2e48e304397b1f174798923779c">SEPARATOR_ITEM_POS_SIZE</link>]</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structfort__border__style_1afc66d51cc739d0ba2200978df17b2253"/><section>
+    <title>border_chars</title>
+<indexterm><primary>border_chars</primary><secondary>fort_border_style</secondary></indexterm>
+<indexterm><primary>fort_border_style</primary><secondary>border_chars</secondary></indexterm>
+<para><computeroutput>const char* fort_border_style::border_chars[<link linkend="_fort_8c_1aeb26e59c445583e1b4924086f650bc29a56d2b99637c35906282c659f4edb5652">BORDER_ITEM_POS_SIZE</link>]</computeroutput></para></section>
+<anchor xml:id="_structfort__border__style_1afd3dc716168d4ffdbb7d7219a6c524d5"/><section>
+    <title>header_border_chars</title>
+<indexterm><primary>header_border_chars</primary><secondary>fort_border_style</secondary></indexterm>
+<indexterm><primary>fort_border_style</primary><secondary>header_border_chars</secondary></indexterm>
+<para><computeroutput>const char* fort_border_style::header_border_chars[<link linkend="_fort_8c_1aeb26e59c445583e1b4924086f650bc29a56d2b99637c35906282c659f4edb5652">BORDER_ITEM_POS_SIZE</link>]</computeroutput></para></section>
+<anchor xml:id="_structfort__border__style_1a612fb6ab52c6a207d17a32f30b27a4cc"/><section>
+    <title>separator_chars</title>
+<indexterm><primary>separator_chars</primary><secondary>fort_border_style</secondary></indexterm>
+<indexterm><primary>fort_border_style</primary><secondary>separator_chars</secondary></indexterm>
+<para><computeroutput>const char* fort_border_style::separator_chars[<link linkend="_fort_8c_1a50e65894fa1562b8b5c3a78899509c35a1011b2e48e304397b1f174798923779c">SEPARATOR_ITEM_POS_SIZE</link>]</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8c">fort.c</link></section>
+</section>

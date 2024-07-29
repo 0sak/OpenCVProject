@@ -1,0 +1,67 @@
+.TH "fort::table< TT >::table_cell" 3 "Wed Jan 19 2022" "Version v1.0" "CV" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+fort::table< TT >::table_cell
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fort\&.hpp>\fP
+.PP
+Inherits \fBfort::property_owner< table >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBtable_cell\fP (std::size_t row_idx, std::size_t coll_idx, \fBtable\fP &tbl)"
+.br
+.ti -1c
+.RI "\fBtable_cell\fP & \fBoperator=\fP (const char *str)"
+.br
+.ti -1c
+.RI "\fBtable_cell\fP & \fBoperator=\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "bool \fBset_cell_span\fP (size_t hor_span)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<\fBtable_type\fP TT = table_type::character>
+.br
+class fort::table< TT >::table_cell"Table cell\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<\fBtable_type\fP TT = table_type::character> \fBfort::table\fP< TT >::table_cell::table_cell (std::size_t row_idx, std::size_t coll_idx, \fBtable\fP & tbl)\fC [inline]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<\fBtable_type\fP TT = table_type::character> \fBtable_cell\fP & \fBfort::table\fP< TT >::table_cell::operator= (const char * str)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> \fBtable_cell\fP & \fBfort::table\fP< TT >::table_cell::operator= (const std::string & str)\fC [inline]\fP"
+
+.SS "template<\fBtable_type\fP TT = table_type::character> bool \fBfort::table\fP< TT >::table_cell::set_cell_span (size_t hor_span)\fC [inline]\fP"
+Set column span for the specified cell of the table\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIhor_span\fP Column span\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+true: Success; cell span was changed\&.
+.IP "\(bu" 2
+false: In case of error\&. 
+.PP
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CV from the source code\&.

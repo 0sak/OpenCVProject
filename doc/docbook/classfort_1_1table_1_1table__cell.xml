@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classfort_1_1table_1_1table__cell" xml:lang="en-US">
+<title>fort::table&lt; TT &gt;::table_cell Class Reference</title>
+<indexterm><primary>fort::table&lt; TT &gt;::table_cell</primary></indexterm>
+<para>
+<computeroutput>#include &lt;fort.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for fort::table&lt; TT &gt;::table_cell:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classfort_1_1table_1_1table__cell.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classfort_1_1table_1_1table__cell_1a73afbfe77b4f3a6feef0c87e7e21b30a">table_cell</link> (std::size_t row_idx, std::size_t coll_idx, <link linkend="_classfort_1_1table">table</link> &amp;tbl)</para>
+</listitem>
+            <listitem><para><link linkend="_classfort_1_1table_1_1table__cell">table_cell</link> &amp; <link linkend="_classfort_1_1table_1_1table__cell_1a7392c46b1ecbe73a7eee5effd345f7b0">operator=</link> (const char *str)</para>
+</listitem>
+            <listitem><para><link linkend="_classfort_1_1table_1_1table__cell">table_cell</link> &amp; <link linkend="_classfort_1_1table_1_1table__cell_1a629bf4abe5922060585b21391e835711">operator=</link> (const std::string &amp;str)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classfort_1_1table_1_1table__cell_1a07c02d2621cc30fb27ee55ffd3fc8dd9">set_cell_span</link> (size_t hor_span)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt;
+class fort::table&lt; TT &gt;::table_cell</title></simplesect>
+
+<para>Table cell. </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classfort_1_1table_1_1table__cell_1a73afbfe77b4f3a6feef0c87e7e21b30a"/><section>
+    <title>table_cell()</title>
+<indexterm><primary>table_cell</primary><secondary>fort::table&lt; TT &gt;::table_cell</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;::table_cell</primary><secondary>table_cell</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::table_cell::table_cell (std::size_t row_idx, std::size_t coll_idx, <link linkend="_classfort_1_1table">table</link> &amp; tbl)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classfort_1_1table_1_1table__cell_1a7392c46b1ecbe73a7eee5effd345f7b0"/><section>
+    <title>operator=()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>fort::table&lt; TT &gt;::table_cell</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;::table_cell</primary><secondary>operator=</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table_1_1table__cell">table_cell</link> &amp; <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::table_cell::operator= (const char * str)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1_1table__cell_1a629bf4abe5922060585b21391e835711"/><section>
+    <title>operator=()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>fort::table&lt; TT &gt;::table_cell</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;::table_cell</primary><secondary>operator=</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table_1_1table__cell">table_cell</link> &amp; <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::table_cell::operator= (const std::string &amp; str)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_classfort_1_1table_1_1table__cell_1a07c02d2621cc30fb27ee55ffd3fc8dd9"/><section>
+    <title>set_cell_span()</title>
+<indexterm><primary>set_cell_span</primary><secondary>fort::table&lt; TT &gt;::table_cell</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;::table_cell</primary><secondary>set_cell_span</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput>bool <link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::table_cell::set_cell_span (size_t hor_span)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Set column span for the specified cell of the table.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>hor_span</entry><entry>
+<para>Column span. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><itemizedlist>
+<listitem>
+<para>true: Success; cell span was changed.</para>
+</listitem><listitem>
+<para>false: In case of error. </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8hpp">fort.hpp</link></section>
+</section>

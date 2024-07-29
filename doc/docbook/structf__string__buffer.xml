@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structf__string__buffer" xml:lang="en-US">
+<title>f_string_buffer Struct Reference</title>
+<indexterm><primary>f_string_buffer</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>union {</para>
+        <itemizedlist>
+            <listitem><para>   char * <link linkend="_structf__string__buffer_1acd0c754ba8c0a6cf30b3a2c8506ad069">cstr</link></para>
+</listitem>
+            <listitem><para>   wchar_t * <link linkend="_structf__string__buffer_1a4105e909ad8b49b5647c8906d802e1fa">wstr</link></para>
+</listitem>
+            <listitem><para>   void * <link linkend="_structf__string__buffer_1ae3b9d3a604eba9d990205743eba8314a">u8str</link></para>
+</listitem>
+            <listitem><para>   void * <link linkend="_structf__string__buffer_1abcb4f0f42d833a128a0b56f52fe39d51">data</link></para>
+</listitem>
+        </itemizedlist>
+</listitem>
+            <listitem><para>} <link linkend="_structf__string__buffer_1a0e6adb66c5a59077c17b6feeb01df36b">str</link></para>
+</listitem>
+            <listitem><para>size_t <link linkend="_structf__string__buffer_1a025fcffcfd551b03a91bc5af2beb60fc">data_sz</link></para>
+</listitem>
+            <listitem><para>enum <link linkend="_fort_8c_1aac6eaac439cc49e9382b6c239aa310aa">f_string_type</link> <link linkend="_structf__string__buffer_1a85a3a1d04e957c6da35fd2860f247e39">type</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structf__string__buffer_1acd0c754ba8c0a6cf30b3a2c8506ad069"/><section>
+    <title>cstr</title>
+<indexterm><primary>cstr</primary><secondary>f_string_buffer</secondary></indexterm>
+<indexterm><primary>f_string_buffer</primary><secondary>cstr</secondary></indexterm>
+<para><computeroutput>char* f_string_buffer::cstr</computeroutput></para></section>
+<anchor xml:id="_structf__string__buffer_1abcb4f0f42d833a128a0b56f52fe39d51"/><section>
+    <title>data</title>
+<indexterm><primary>data</primary><secondary>f_string_buffer</secondary></indexterm>
+<indexterm><primary>f_string_buffer</primary><secondary>data</secondary></indexterm>
+<para><computeroutput>void* f_string_buffer::data</computeroutput></para></section>
+<anchor xml:id="_structf__string__buffer_1a025fcffcfd551b03a91bc5af2beb60fc"/><section>
+    <title>data_sz</title>
+<indexterm><primary>data_sz</primary><secondary>f_string_buffer</secondary></indexterm>
+<indexterm><primary>f_string_buffer</primary><secondary>data_sz</secondary></indexterm>
+<para><computeroutput>size_t f_string_buffer::data_sz</computeroutput></para></section>
+<anchor xml:id="_structf__string__buffer_1a0e6adb66c5a59077c17b6feeb01df36b"/><section>
+    <title></title>
+<indexterm><primary>str</primary><secondary>f_string_buffer</secondary></indexterm>
+<indexterm><primary>f_string_buffer</primary><secondary>str</secondary></indexterm>
+<para><computeroutput>union  { ... }  f_string_buffer::str</computeroutput></para></section>
+<anchor xml:id="_structf__string__buffer_1a85a3a1d04e957c6da35fd2860f247e39"/><section>
+    <title>type</title>
+<indexterm><primary>type</primary><secondary>f_string_buffer</secondary></indexterm>
+<indexterm><primary>f_string_buffer</primary><secondary>type</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8c_1aac6eaac439cc49e9382b6c239aa310aa">f_string_type</link> f_string_buffer::type</computeroutput></para></section>
+<anchor xml:id="_structf__string__buffer_1ae3b9d3a604eba9d990205743eba8314a"/><section>
+    <title>u8str</title>
+<indexterm><primary>u8str</primary><secondary>f_string_buffer</secondary></indexterm>
+<indexterm><primary>f_string_buffer</primary><secondary>u8str</secondary></indexterm>
+<para><computeroutput>void* f_string_buffer::u8str</computeroutput></para></section>
+<anchor xml:id="_structf__string__buffer_1a4105e909ad8b49b5647c8906d802e1fa"/><section>
+    <title>wstr</title>
+<indexterm><primary>wstr</primary><secondary>f_string_buffer</secondary></indexterm>
+<indexterm><primary>f_string_buffer</primary><secondary>wstr</secondary></indexterm>
+<para><computeroutput>wchar_t* f_string_buffer::wstr</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8c">fort.c</link></section>
+</section>

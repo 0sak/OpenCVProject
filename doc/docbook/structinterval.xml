@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structinterval" xml:lang="en-US">
+<title>interval Struct Reference</title>
+<indexterm><primary>interval</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>int32_t <link linkend="_structinterval_1a562660c6d45796f1e3865538b0f12a50">first</link></para>
+</listitem>
+            <listitem><para>int32_t <link linkend="_structinterval_1af363671f5300ea026980aecebecfc702">last</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structinterval_1a562660c6d45796f1e3865538b0f12a50"/><section>
+    <title>first</title>
+<indexterm><primary>first</primary><secondary>interval</secondary></indexterm>
+<indexterm><primary>interval</primary><secondary>first</secondary></indexterm>
+<para><computeroutput>int32_t interval::first</computeroutput></para></section>
+<anchor xml:id="_structinterval_1af363671f5300ea026980aecebecfc702"/><section>
+    <title>last</title>
+<indexterm><primary>last</primary><secondary>interval</secondary></indexterm>
+<indexterm><primary>interval</primary><secondary>last</secondary></indexterm>
+<para><computeroutput>int32_t interval::last</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8c">fort.c</link></section>
+</section>

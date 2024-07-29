@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_md__c__workspace__computer__vision__r_e_a_d_m_e" xml:lang="en-US">
+
+<para>Project to count german license plates on pictures. The data set should contain pictures that vary in quality, weather, light conditions, etc..</para>
+
+<para><orderedlist>
+<listitem>
+<para>Image Preprocessing<itemizedlist>
+<listitem>
+<para>Opening</para>
+</listitem><listitem>
+<para>Greyscaling</para>
+</listitem><listitem>
+<para>Bluring</para>
+</listitem><listitem>
+<para>Thresholding</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem>
+<para>Extract Contrours</para>
+</listitem><listitem>
+<para>Iterate over each contour based on aspect ratio, min height and width + remove any unnessecary contours</para>
+</listitem></orderedlist>
+</para>
+
+<para>Current Problems:</para>
+
+<para><itemizedlist>
+<listitem>
+<para>Nighttime images</para>
+</listitem><listitem>
+<para>Pictures with an angle that is too large. The license plate is no longer recognised as a rectangle but a paralelogram.</para>
+</listitem><listitem>
+<para>License Plates that are to far away</para>
+</listitem></itemizedlist>
+</para>
+
+<para>Zeitplan:</para>
+
+<para>17.12 - 24.12</para>
+
+<para><orderedlist>
+<listitem>
+<para>75 oder 100 Bilder Sammeln</para>
+</listitem><listitem>
+<para>Labeln -&gt; Datensatz a. ID b. Konditionen (Beschreibung) c. Helligkeit d. Kontrast e. Sättigung f. Wie viele Nummernschilder g. Wie viele Buchstaben</para>
+</listitem><listitem>
+<para>Metriken ausgeben</para>
+</listitem><listitem>
+<para>Magic Numbers entfernen</para>
+</listitem></orderedlist>
+</para>
+
+<para>24.12 - 31.12</para>
+
+<para>URLAUB</para>
+
+<para>31.12 - 07.01</para>
+
+<para>Code Dokumentation</para>
+
+<para>07.01 - 14.01</para>
+
+<para>Vortrag &amp; Video</para>
+
+<para>14.01 - 21.01</para>
+
+<para> </para>
+</section>

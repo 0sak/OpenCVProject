@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_fort_8hpp" xml:lang="en-US">
+<title>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/fort.hpp File Reference</title>
+<indexterm><primary>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/fort.hpp</primary></indexterm>
+<para>
+
+<para>Main header file describing libfort C++ API . </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &lt;iomanip&gt;
+#include &lt;sstream&gt;
+#include &lt;string&gt;
+#include &lt;stdexcept&gt;
+#include &lt;type_traits&gt;
+#include &quot;fort.h&quot;
+</programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classfort_1_1table__manipulator">fort::table_manipulator</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1property__owner">fort::property_owner&lt; table &gt;</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table">fort::table&lt; TT &gt;</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1table__cell">fort::table&lt; TT &gt;::table_cell</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1table__row">fort::table&lt; TT &gt;::table_row</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1table__column">fort::table&lt; TT &gt;::table_column</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1cell__range">fort::table&lt; TT &gt;::cell_range</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classfort_1_1table_1_1default__properties">fort::table&lt; TT &gt;::default_properties</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespacefort">fort</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespacefort_1_1detail">fort::detail</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>using <link linkend="_namespacefort_1a41a05e3a6bb3e0e7d89dd06005e0bb5d">fort::char_table</link> = table&lt; table_type::character &gt;</para>
+</listitem>
+            <listitem><para>using <link linkend="_namespacefort_1a508f5a472ab557708969fc946380cfc4">fort::utf8_table</link> = table&lt; table_type::utf8 &gt;</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum class <link linkend="_namespacefort_1a895f73752fc847c22853fd363a575b04">fort::text_align</link> { <link linkend="_namespacefort_1a895f73752fc847c22853fd363a575b04a811882fecd5c7618d7099ebbd39ea254">fort::left</link> = FT_ALIGNED_LEFT
+, <link linkend="_namespacefort_1a895f73752fc847c22853fd363a575b04aadb115059e28d960fa8badfac5516667">fort::center</link> = FT_ALIGNED_CENTER
+, <link linkend="_namespacefort_1a895f73752fc847c22853fd363a575b04a7c4f29407893c334a6cb7a87bf045c0d">fort::right</link> = FT_ALIGNED_RIGHT
+ }</para>
+</listitem>
+            <listitem><para>enum class <link linkend="_namespacefort_1a28370d69d653e7ae3cb80c61cf2469aa">fort::row_type</link> { <link linkend="_namespacefort_1a28370d69d653e7ae3cb80c61cf2469aaa9efab2399c7c560b34de477b9aa0a465">fort::common</link> = FT_ROW_COMMON
+, <link linkend="_namespacefort_1a28370d69d653e7ae3cb80c61cf2469aaa099fb995346f31c749f6e40db0f395e3">fort::header</link> = FT_ROW_HEADER
+ }</para>
+</listitem>
+            <listitem><para>enum class <link linkend="_namespacefort_1a90d7e4b53ec42f4eddd9e63eb02abca4">fort::add_strategy</link> { <link linkend="_namespacefort_1a90d7e4b53ec42f4eddd9e63eb02abca4a9dde360102c103867bd2f45872f1129c">fort::replace</link> = FT_STRATEGY_REPLACE
+, <link linkend="_namespacefort_1a90d7e4b53ec42f4eddd9e63eb02abca4ae0df5f3dfd2650ae5be9993434e2b2c0">fort::insert</link> = FT_STRATEGY_INSERT
+ }</para>
+</listitem>
+            <listitem><para>enum class <link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbba">fort::color</link> { 
+<link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaaf00b888e90cd7fe1d5c2f7b44ed4ad9b">fort::default_color</link> = FT_COLOR_DEFAULT
+, <link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaa1ffd9e753c8054cc61456ac7fac1ac89">fort::black</link> = FT_COLOR_BLACK
+, <link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaabda9643ac6601722a28f238714274da4">fort::red</link> = FT_COLOR_RED
+, <link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaa9f27410725ab8cc8854a2769c7a516b8">fort::green</link> = FT_COLOR_GREEN
+, 
+<link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaad487dd0b55dfcacdd920ccbdaeafa351">fort::yellow</link> = FT_COLOR_YELLOW
+, <link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaa48d6215903dff56238e52e8891380c8f">fort::blue</link> = FT_COLOR_BLUE
+, <link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaa4c2a4a7078da0ac6733464eacfd00f86">fort::magenta</link> = FT_COLOR_MAGENTA
+, <link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaa6411532ba4971f378391776a9db629d3">fort::cyan</link> = FT_COLOR_CYAN
+, 
+<link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaa770e427f6a16eb64e2ece9585ba9d193">fort::light_gray</link> = FT_COLOR_LIGHT_GRAY
+, <link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaa49dba686026a18435dd23b5e83eb5cfd">fort::dark_gray</link> = FT_COLOR_DARK_GRAY
+, <link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaa9fec81ba3d6228b82a5bb8fe57c3da22">fort::light_red</link> = FT_COLOR_LIGHT_RED
+, <link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaac10bddadd1786a8a12f96ae7db5bafb8">fort::light_green</link> = FT_COLOR_LIGHT_GREEN
+, 
+<link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaa743b7827c281254e45c305696344535b">fort::light_yellow</link> = FT_COLOR_LIGHT_YELLOW
+, <link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaa61a2783898a9df78bb27edc33f768e6e">fort::light_blue</link> = FT_COLOR_LIGHT_BLUE
+, <link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaaa8cf5b4ddb5e196f692ec56c939b4ea7">fort::light_magenta</link> = FT_COLOR_LIGHT_MAGENTA
+, <link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaa4eece7cf37c9db41ed9e016e471fcf2f">fort::light_cyan</link> = FT_COLOR_LIGHT_CYAN
+, 
+<link linkend="_namespacefort_1a3cac6d8954776afa43e4d389ff70fbbaa49c0d1fd8de9f2b60fad8f940d3b0d45">fort::light_whyte</link> = FT_COLOR_LIGHT_WHYTE
+ }</para>
+</listitem>
+            <listitem><para>enum class <link linkend="_namespacefort_1aca558b21bbb52c9c28de9811bec32061">fort::text_style</link> { 
+<link linkend="_namespacefort_1aca558b21bbb52c9c28de9811bec32061aebb7f4a926eea585ded212ce82818e54">fort::default_style</link> = FT_TSTYLE_DEFAULT
+, <link linkend="_namespacefort_1aca558b21bbb52c9c28de9811bec32061a69dcab4a73aeec2113f69b61e6263da8">fort::bold</link> = FT_TSTYLE_BOLD
+, <link linkend="_namespacefort_1aca558b21bbb52c9c28de9811bec32061a563728df0fdd90631ac1e51258e2857d">fort::dim</link> = FT_TSTYLE_DIM
+, <link linkend="_namespacefort_1aca558b21bbb52c9c28de9811bec32061a030c5b6d1e5715105943ac111d9671bf">fort::italic</link> = FT_TSTYLE_ITALIC
+, 
+<link linkend="_namespacefort_1aca558b21bbb52c9c28de9811bec32061a53d8b12f5a04c848b57a2d303a1ded53">fort::underlined</link> = FT_TSTYLE_UNDERLINED
+, <link linkend="_namespacefort_1aca558b21bbb52c9c28de9811bec32061a40652ee9ae143f1c1c830f01a5449ecb">fort::blink</link> = FT_TSTYLE_BLINK
+, <link linkend="_namespacefort_1aca558b21bbb52c9c28de9811bec32061a184401f335d6b8661e04dfea47b9dcd5">fort::inverted</link> = FT_TSTYLE_INVERTED
+, <link linkend="_namespacefort_1aca558b21bbb52c9c28de9811bec32061a662f707d5491e9bce8238a6c0be92190">fort::hidden</link> = FT_TSTYLE_HIDDEN
+ }</para>
+</listitem>
+            <listitem><para>enum class <link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">fort::table_type</link> { <link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25baa956161a69928cd130a889b88082fb6e">fort::character</link>
+, <link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25ba30df7f629fcf6b940bcaef5faf2490bb">fort::utf8</link>
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>template&lt;typename T &gt; </para><para>constexpr bool <link linkend="_namespacefort_1_1detail_1a8f7ed1ee7dc3bc57992582aeb4a97d32">fort::detail::is_stream_manipulator_impl</link> () noexcept</para>
+</listitem>
+            <listitem><para>template&lt;typename T &gt; </para><para>constexpr bool <link linkend="_namespacefort_1a27a2b1ed051093b5132048bcb9454465">fort::is_stream_manipulator</link> () noexcept</para>
+</listitem>
+            <listitem><para>bool <link linkend="_namespacefort_1ad609b3a839d0c845e58d315085f8fade">fort::set_default_border_style</link> (struct <link linkend="_structft__border__style">ft_border_style</link> *style)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>const table_manipulator <link linkend="_namespacefort_1a6b60404c249df2f612d990c603d49517">fort::header</link> (0)</para>
+</listitem>
+            <listitem><para>const table_manipulator <link linkend="_namespacefort_1aee4e27c8d266e9b1be499e052fbc6c53">fort::endr</link> (1)</para>
+</listitem>
+            <listitem><para>const table_manipulator <link linkend="_namespacefort_1af61eccb3d2f66403d238b94e59dd7e4a">fort::separator</link> (2)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Main header file describing libfort C++ API . </para>
+
+<para>This files contains C++ wrappers around libfort API that can be used in C++ code. </para>
+</section>
+</section>

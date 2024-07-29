@@ -1,0 +1,746 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_process_images" xml:lang="en-US">
+<title>ProcessImages Class Reference</title>
+<indexterm><primary>ProcessImages</primary></indexterm>
+<para>
+<computeroutput>#include &lt;ProcessImages.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_process_images_1a89c6af346f21df2d0d48ead7c56c16b2">initLabels</link> ()</para>
+
+<para>reads in dataset_labeling.txt and sets total amount of license plates and characters that can be recognized. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1aff8a4649ca46f947a49161aa52373782">preprocessImage</link> (cv::Mat <link linkend="_class_process_images_1a071600f3a5a99c2f0b9ce3cf92c93fa0">image</link>)</para>
+
+<para>Function to apply multiple filters to the original picture, so that it is ready for extracting all of its contours. The results are saved in the matrixes of this class. (Note that there are some that are not being used, we tried out several methods to preprocess our pictures) </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1a4f9b3f1a321677c1879429946147c79e">execute</link> ()</para>
+
+<para>Function to start the license plate recognition, it loops over all existing pictures from the dataset and calls necessary functions of this class. Also adds height and width to labels. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1a588c17067cf1a42b0d7bd1bffc474f12">printFilterConditions</link> (int i)</para>
+
+<para>prints filter conditions for the current picture that is analyzed e.g Min Area Outer Contour (Rectangle). </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1a24c2ff9e6bd7b941dea608a9cd0e896c">filterImageData</link> ()</para>
+
+<para>Set width, height of a picture and calculate relative min and max Area for outer contours in relation with image width and height. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1abe35e22c3933e6821148fcc20c881bdb">filterContours</link> (bool brighter)</para>
+
+<para>First we start by extracting all of the contours of a picture, secondly the perimeter of a contour is calculated and the contour is approxymated (for instance a rectangle can be drown with 4 vertices). After that we check if the contour in fact contains only 4 points, indicating that it is a rectangle. We filter the extracted rectangle by area and apect ratio. The next step is to see how many white pixels exist in the contour, since a license plate will consist of a lot of white pixels and some black pixels indicating the letters. If the amount of white pixels is high enough we again filter for all countours that exist in our rectangle. In this step we cant to see if we cann figure out the letters on our license plate. If the contour has a specific area we let it pass and count it. Since a license plate will have about 15 letters on it we check if we found 4-12 contours that fit our area check. If so we sucessfully found a licenseplate on the picture. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1a642d7475da5a05f7e381a92750c7dc91">setFilterConditionsInnerContours</link> (cv::Mat &amp;subImgCopy)</para>
+
+<para>Calculate relative min and max area for inner Contour. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1af5b29d4c119c6b878d827770ec728f84">displayResults</link> (cv::Mat &amp;image_copy)</para>
+
+<para>Display the picture with recognized license plates and the corresponding threshold image. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1a2e3b110dca74c6425756a44cf85d27c5">countInnerContours</link> (unsigned int &amp;contourCounter, int i, cv::Mat &amp;subImgCopy)</para>
+
+<para>When outer the outer contour survives all of our check, count all contours inside the rectangle with a specific area. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1aa6c3df82e2b18cc077b68a85380c573f">printCandidateData</link> (int i, cv::Rect2f &amp;resultRect, double whitePixelsInRectangle, float proportionAreaWhitepixels)</para>
+
+<para>print Area, Number of white pixels and ratio of white and black pixels in rectangle </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1ac01f497ee9e3c4a839139b9ac0db3333">isRectangle</link> (cv::Rect2f &amp;resultRect, int &amp;retflag)</para>
+
+<para>Check aspect ratio and area of cadidate. Ignore if not in these bounderies. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_process_images_1aa457ce91f8c5be8defcce852b47b30cb">isImageBright</link> (cv::Mat <link linkend="_class_process_images_1a071600f3a5a99c2f0b9ce3cf92c93fa0">image</link>)</para>
+
+<para>Change from BGR to HSV and check value across all pixels. Decide from value if image is bright or not. Also save brightness in labels. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1a55d2ff847d9bb53e625a442d819e73dc">makeBrighter</link> (double alpha, int beta)</para>
+
+<para>Make image brighter with alpha and beta values. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1a9e0793b87aa559b6b11bbfa256eb8624">gammaCorrection</link> (const cv::Mat &amp;img, const double gamma_)</para>
+
+<para>Make image brighter with gamma value. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1afa1cb9a04d9fe538fd39b88cc8cc3599">getDesktopResolution</link> ()</para>
+
+<para>store desktop resolution </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_process_images_1a49750467e0a30769c7830e0f28fbf7a1">process</link> ()</para>
+</listitem>
+            <listitem><para>float <link linkend="_class_process_images_1a0211375c0ccabbe17276dd2beb84cead">distanceBetweenTwoPoints</link> (float x1, float y1, float x2, float y2)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>std::string <link linkend="_class_process_images_1a53f909863405fc93ae087a39b4f0590b">imageToRead</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_class_process_images_1a7b13dc138ee8def909f17644e783210b">ddepth</link> = CV_8U</para>
+</listitem>
+            <listitem><para>int <link linkend="_class_process_images_1a67192960af7101dcae55377d9003d4a4">desktopWidth</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_class_process_images_1afde554204c2750ee8be6f69a1602f842">desktopHeigth</link></para>
+</listitem>
+            <listitem><para><link linkend="_class_metric">Metric</link> <link linkend="_class_process_images_1a7d1e46fa343dcd6bff1a1b4f5a149286">metric</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_class_process_images_1aed9d26d4cb9d26b28f6fee377752cde8">index</link> = 0</para>
+</listitem>
+            <listitem><para>float <link linkend="_class_process_images_1ac2aa25a58cbd561906d5cda2e7db60c1">minAreaOuter</link></para>
+</listitem>
+            <listitem><para>float <link linkend="_class_process_images_1a7b71fd3876f345535a14a3e270fe6eab">maxAreaOuter</link></para>
+</listitem>
+            <listitem><para>float <link linkend="_class_process_images_1a91eafa3f5c629b3febfe2d78ef3a2ea7">minAreaInner</link></para>
+</listitem>
+            <listitem><para>float <link linkend="_class_process_images_1a98b2dbad293a125e7b8649567015b1b4">maxAreaInner</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_process_images_1a4878f55cb659654839179ce8fdf17a77">DEBUG_FLAG_SHOW_RESULT</link> = false</para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1a071600f3a5a99c2f0b9ce3cf92c93fa0">image</link></para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1a680ace36d4e9ce32554559880432db6c">imageGrey</link></para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1a4d24f628ab8f1738660e84c1b5213ebb">imageBlurred</link></para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1add16033a84609c1981797c90f8480d63">imageThresh</link></para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1a64f1f3a0fcc601fb8c3dae108c11f612">imageThreshResized</link></para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1a997f657a63ad978725fcc4f59cb4b4a0">sobelX</link></para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1a61f8c9a3b0de5a10c2e58ea6558a0c7c">sobelY</link></para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1a03532397b05bf6c0fcdcbb372311a612">sobelResult</link></para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1a96ab7ba2813c40c9010522fb800d8cd7">erodeResult</link></para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1a6e09ae9bf1f3f85da922491126a7714f">dilateResult</link></para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1ae078cda05bc2522ebf981496798e25ff">imageConcat</link></para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1a552358349fd359163c990a19162fa6cc">resizedDown</link></para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1a66de31bf5e9a9a7af7c99d08ec76908d">res</link></para>
+</listitem>
+            <listitem><para>cv::Mat <link linkend="_class_process_images_1ad41da6d9998d6fc25e0645d066ac3dc3">newImage</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; std::vector&lt; cv::Point &gt; &gt; <link linkend="_class_process_images_1a32bcd8a93f690e6cbd1ece0b2c8ffcbb">contours</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; std::vector&lt; cv::Point &gt; &gt; <link linkend="_class_process_images_1a8a733185159495f387c267b2a41fc465">contoursSecond</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; cv::Vec4i &gt; <link linkend="_class_process_images_1a0b6db8b68f4834d9e0ba59a5f0149dc1">hierarchy</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; cv::Vec4i &gt; <link linkend="_class_process_images_1a7469114898aec0381d6b738a25414f71">hierarchySecond</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_process_images_1a2e3b110dca74c6425756a44cf85d27c5"/><section>
+    <title>countInnerContours()</title>
+<indexterm><primary>countInnerContours</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>countInnerContours</secondary></indexterm>
+<para><computeroutput>void ProcessImages::countInnerContours (unsigned int &amp; contourCounter, int i, cv::Mat &amp; subImgCopy)</computeroutput></para><para>
+
+<para>When outer the outer contour survives all of our check, count all contours inside the rectangle with a specific area. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>contourCounter</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>i</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>subImgCopy</entry><entry>
+<para>
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_process_images_1af5b29d4c119c6b878d827770ec728f84"/><section>
+    <title>displayResults()</title>
+<indexterm><primary>displayResults</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>displayResults</secondary></indexterm>
+<para><computeroutput>void ProcessImages::displayResults (cv::Mat &amp; image_copy)</computeroutput></para><para>
+
+<para>Display the picture with recognized license plates and the corresponding threshold image. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>image_copy</entry><entry>
+<para>
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_process_images_1a0211375c0ccabbe17276dd2beb84cead"/><section>
+    <title>distanceBetweenTwoPoints()</title>
+<indexterm><primary>distanceBetweenTwoPoints</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>distanceBetweenTwoPoints</secondary></indexterm>
+<para><computeroutput>float ProcessImages::distanceBetweenTwoPoints (float x1, float y1, float x2, float y2)</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a4f9b3f1a321677c1879429946147c79e"/><section>
+    <title>execute()</title>
+<indexterm><primary>execute</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>execute</secondary></indexterm>
+<para><computeroutput>void ProcessImages::execute ( )</computeroutput></para><para>
+
+<para>Function to start the license plate recognition, it loops over all existing pictures from the dataset and calls necessary functions of this class. Also adds height and width to labels. </para>
+</para>
+</section>
+<anchor xml:id="_class_process_images_1abe35e22c3933e6821148fcc20c881bdb"/><section>
+    <title>filterContours()</title>
+<indexterm><primary>filterContours</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>filterContours</secondary></indexterm>
+<para><computeroutput>void ProcessImages::filterContours (bool brighter)</computeroutput></para><para>
+
+<para>First we start by extracting all of the contours of a picture, secondly the perimeter of a contour is calculated and the contour is approxymated (for instance a rectangle can be drown with 4 vertices). After that we check if the contour in fact contains only 4 points, indicating that it is a rectangle. We filter the extracted rectangle by area and apect ratio. The next step is to see how many white pixels exist in the contour, since a license plate will consist of a lot of white pixels and some black pixels indicating the letters. If the amount of white pixels is high enough we again filter for all countours that exist in our rectangle. In this step we cant to see if we cann figure out the letters on our license plate. If the contour has a specific area we let it pass and count it. Since a license plate will have about 15 letters on it we check if we found 4-12 contours that fit our area check. If so we sucessfully found a licenseplate on the picture. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>brighter</entry><entry>
+<para>
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_process_images_1a24c2ff9e6bd7b941dea608a9cd0e896c"/><section>
+    <title>filterImageData()</title>
+<indexterm><primary>filterImageData</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>filterImageData</secondary></indexterm>
+<para><computeroutput>void ProcessImages::filterImageData ( )</computeroutput></para><para>
+
+<para>Set width, height of a picture and calculate relative min and max Area for outer contours in relation with image width and height. </para>
+</para>
+</section>
+<anchor xml:id="_class_process_images_1a9e0793b87aa559b6b11bbfa256eb8624"/><section>
+    <title>gammaCorrection()</title>
+<indexterm><primary>gammaCorrection</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>gammaCorrection</secondary></indexterm>
+<para><computeroutput>void ProcessImages::gammaCorrection (const cv::Mat &amp; img, const double gamma_)</computeroutput></para><para>
+
+<para>Make image brighter with gamma value. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>img</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>gamma_</entry><entry>
+<para>
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_process_images_1afa1cb9a04d9fe538fd39b88cc8cc3599"/><section>
+    <title>getDesktopResolution()</title>
+<indexterm><primary>getDesktopResolution</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>getDesktopResolution</secondary></indexterm>
+<para><computeroutput>void ProcessImages::getDesktopResolution ( )</computeroutput></para><para>
+
+<para>store desktop resolution </para>
+</para>
+</section>
+<anchor xml:id="_class_process_images_1a89c6af346f21df2d0d48ead7c56c16b2"/><section>
+    <title>initLabels()</title>
+<indexterm><primary>initLabels</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>initLabels</secondary></indexterm>
+<para><computeroutput>void ProcessImages::initLabels ( )</computeroutput></para><para>
+
+<para>reads in dataset_labeling.txt and sets total amount of license plates and characters that can be recognized. </para>
+</para>
+</section>
+<anchor xml:id="_class_process_images_1aa457ce91f8c5be8defcce852b47b30cb"/><section>
+    <title>isImageBright()</title>
+<indexterm><primary>isImageBright</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>isImageBright</secondary></indexterm>
+<para><computeroutput>bool ProcessImages::isImageBright (cv::Mat image)</computeroutput></para><para>
+
+<para>Change from BGR to HSV and check value across all pixels. Decide from value if image is bright or not. Also save brightness in labels. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>image</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_process_images_1ac01f497ee9e3c4a839139b9ac0db3333"/><section>
+    <title>isRectangle()</title>
+<indexterm><primary>isRectangle</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>isRectangle</secondary></indexterm>
+<para><computeroutput>void ProcessImages::isRectangle (cv::Rect2f &amp; resultRect, int &amp; retflag)</computeroutput></para><para>
+
+<para>Check aspect ratio and area of cadidate. Ignore if not in these bounderies. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>resultRect</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>retflag</entry><entry>
+<para>
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_process_images_1a55d2ff847d9bb53e625a442d819e73dc"/><section>
+    <title>makeBrighter()</title>
+<indexterm><primary>makeBrighter</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>makeBrighter</secondary></indexterm>
+<para><computeroutput>void ProcessImages::makeBrighter (double alpha, int beta)</computeroutput></para><para>
+
+<para>Make image brighter with alpha and beta values. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>alpha</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>beta</entry><entry>
+<para>
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_process_images_1aff8a4649ca46f947a49161aa52373782"/><section>
+    <title>preprocessImage()</title>
+<indexterm><primary>preprocessImage</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>preprocessImage</secondary></indexterm>
+<para><computeroutput>void ProcessImages::preprocessImage (cv::Mat image)</computeroutput></para><para>
+
+<para>Function to apply multiple filters to the original picture, so that it is ready for extracting all of its contours. The results are saved in the matrixes of this class. (Note that there are some that are not being used, we tried out several methods to preprocess our pictures) </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>image</entry><entry>
+<para>
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_process_images_1aa6c3df82e2b18cc077b68a85380c573f"/><section>
+    <title>printCandidateData()</title>
+<indexterm><primary>printCandidateData</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>printCandidateData</secondary></indexterm>
+<para><computeroutput>void ProcessImages::printCandidateData (int i, cv::Rect2f &amp; resultRect, double whitePixelsInRectangle, float proportionAreaWhitepixels)</computeroutput></para><para>
+
+<para>print Area, Number of white pixels and ratio of white and black pixels in rectangle </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>i</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>resultRect</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>whitePixelsInRectangle</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>proportionAreaWhitepixels</entry><entry>
+<para>
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_process_images_1a588c17067cf1a42b0d7bd1bffc474f12"/><section>
+    <title>printFilterConditions()</title>
+<indexterm><primary>printFilterConditions</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>printFilterConditions</secondary></indexterm>
+<para><computeroutput>void ProcessImages::printFilterConditions (int i)</computeroutput></para><para>
+
+<para>prints filter conditions for the current picture that is analyzed e.g Min Area Outer Contour (Rectangle). </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>i</entry><entry>
+<para>
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_process_images_1a49750467e0a30769c7830e0f28fbf7a1"/><section>
+    <title>process()</title>
+<indexterm><primary>process</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>process</secondary></indexterm>
+<para><computeroutput>void ProcessImages::process ( )</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a642d7475da5a05f7e381a92750c7dc91"/><section>
+    <title>setFilterConditionsInnerContours()</title>
+<indexterm><primary>setFilterConditionsInnerContours</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>setFilterConditionsInnerContours</secondary></indexterm>
+<para><computeroutput>void ProcessImages::setFilterConditionsInnerContours (cv::Mat &amp; subImgCopy)</computeroutput></para><para>
+
+<para>Calculate relative min and max area for inner Contour. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>subImgCopy</entry><entry>
+<para>
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_process_images_1a32bcd8a93f690e6cbd1ece0b2c8ffcbb"/><section>
+    <title>contours</title>
+<indexterm><primary>contours</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>contours</secondary></indexterm>
+<para><computeroutput>std::vector&lt;std::vector&lt;cv::Point&gt; &gt; ProcessImages::contours</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a8a733185159495f387c267b2a41fc465"/><section>
+    <title>contoursSecond</title>
+<indexterm><primary>contoursSecond</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>contoursSecond</secondary></indexterm>
+<para><computeroutput>std::vector&lt;std::vector&lt;cv::Point&gt; &gt; ProcessImages::contoursSecond</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a7b13dc138ee8def909f17644e783210b"/><section>
+    <title>ddepth</title>
+<indexterm><primary>ddepth</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>ddepth</secondary></indexterm>
+<para><computeroutput>int ProcessImages::ddepth = CV_8U</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a4878f55cb659654839179ce8fdf17a77"/><section>
+    <title>DEBUG_FLAG_SHOW_RESULT</title>
+<indexterm><primary>DEBUG_FLAG_SHOW_RESULT</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>DEBUG_FLAG_SHOW_RESULT</secondary></indexterm>
+<para><computeroutput>bool ProcessImages::DEBUG_FLAG_SHOW_RESULT = false</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1afde554204c2750ee8be6f69a1602f842"/><section>
+    <title>desktopHeigth</title>
+<indexterm><primary>desktopHeigth</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>desktopHeigth</secondary></indexterm>
+<para><computeroutput>int ProcessImages::desktopHeigth</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a67192960af7101dcae55377d9003d4a4"/><section>
+    <title>desktopWidth</title>
+<indexterm><primary>desktopWidth</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>desktopWidth</secondary></indexterm>
+<para><computeroutput>int ProcessImages::desktopWidth</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a6e09ae9bf1f3f85da922491126a7714f"/><section>
+    <title>dilateResult</title>
+<indexterm><primary>dilateResult</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>dilateResult</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::dilateResult</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a96ab7ba2813c40c9010522fb800d8cd7"/><section>
+    <title>erodeResult</title>
+<indexterm><primary>erodeResult</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>erodeResult</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::erodeResult</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a0b6db8b68f4834d9e0ba59a5f0149dc1"/><section>
+    <title>hierarchy</title>
+<indexterm><primary>hierarchy</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>hierarchy</secondary></indexterm>
+<para><computeroutput>std::vector&lt;cv::Vec4i&gt; ProcessImages::hierarchy</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a7469114898aec0381d6b738a25414f71"/><section>
+    <title>hierarchySecond</title>
+<indexterm><primary>hierarchySecond</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>hierarchySecond</secondary></indexterm>
+<para><computeroutput>std::vector&lt;cv::Vec4i&gt; ProcessImages::hierarchySecond</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a071600f3a5a99c2f0b9ce3cf92c93fa0"/><section>
+    <title>image</title>
+<indexterm><primary>image</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>image</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::image</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a4d24f628ab8f1738660e84c1b5213ebb"/><section>
+    <title>imageBlurred</title>
+<indexterm><primary>imageBlurred</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>imageBlurred</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::imageBlurred</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1ae078cda05bc2522ebf981496798e25ff"/><section>
+    <title>imageConcat</title>
+<indexterm><primary>imageConcat</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>imageConcat</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::imageConcat</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a680ace36d4e9ce32554559880432db6c"/><section>
+    <title>imageGrey</title>
+<indexterm><primary>imageGrey</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>imageGrey</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::imageGrey</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1add16033a84609c1981797c90f8480d63"/><section>
+    <title>imageThresh</title>
+<indexterm><primary>imageThresh</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>imageThresh</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::imageThresh</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a64f1f3a0fcc601fb8c3dae108c11f612"/><section>
+    <title>imageThreshResized</title>
+<indexterm><primary>imageThreshResized</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>imageThreshResized</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::imageThreshResized</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a53f909863405fc93ae087a39b4f0590b"/><section>
+    <title>imageToRead</title>
+<indexterm><primary>imageToRead</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>imageToRead</secondary></indexterm>
+<para><computeroutput>std::string ProcessImages::imageToRead</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1aed9d26d4cb9d26b28f6fee377752cde8"/><section>
+    <title>index</title>
+<indexterm><primary>index</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>index</secondary></indexterm>
+<para><computeroutput>int ProcessImages::index = 0</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a98b2dbad293a125e7b8649567015b1b4"/><section>
+    <title>maxAreaInner</title>
+<indexterm><primary>maxAreaInner</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>maxAreaInner</secondary></indexterm>
+<para><computeroutput>float ProcessImages::maxAreaInner</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a7b71fd3876f345535a14a3e270fe6eab"/><section>
+    <title>maxAreaOuter</title>
+<indexterm><primary>maxAreaOuter</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>maxAreaOuter</secondary></indexterm>
+<para><computeroutput>float ProcessImages::maxAreaOuter</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a7d1e46fa343dcd6bff1a1b4f5a149286"/><section>
+    <title>metric</title>
+<indexterm><primary>metric</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>metric</secondary></indexterm>
+<para><computeroutput><link linkend="_class_metric">Metric</link> ProcessImages::metric</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a91eafa3f5c629b3febfe2d78ef3a2ea7"/><section>
+    <title>minAreaInner</title>
+<indexterm><primary>minAreaInner</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>minAreaInner</secondary></indexterm>
+<para><computeroutput>float ProcessImages::minAreaInner</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1ac2aa25a58cbd561906d5cda2e7db60c1"/><section>
+    <title>minAreaOuter</title>
+<indexterm><primary>minAreaOuter</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>minAreaOuter</secondary></indexterm>
+<para><computeroutput>float ProcessImages::minAreaOuter</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1ad41da6d9998d6fc25e0645d066ac3dc3"/><section>
+    <title>newImage</title>
+<indexterm><primary>newImage</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>newImage</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::newImage</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a66de31bf5e9a9a7af7c99d08ec76908d"/><section>
+    <title>res</title>
+<indexterm><primary>res</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>res</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::res</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a552358349fd359163c990a19162fa6cc"/><section>
+    <title>resizedDown</title>
+<indexterm><primary>resizedDown</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>resizedDown</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::resizedDown</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a03532397b05bf6c0fcdcbb372311a612"/><section>
+    <title>sobelResult</title>
+<indexterm><primary>sobelResult</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>sobelResult</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::sobelResult</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a997f657a63ad978725fcc4f59cb4b4a0"/><section>
+    <title>sobelX</title>
+<indexterm><primary>sobelX</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>sobelX</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::sobelX</computeroutput></para></section>
+<anchor xml:id="_class_process_images_1a61f8c9a3b0de5a10c2e58ea6558a0c7c"/><section>
+    <title>sobelY</title>
+<indexterm><primary>sobelY</primary><secondary>ProcessImages</secondary></indexterm>
+<indexterm><primary>ProcessImages</primary><secondary>sobelY</secondary></indexterm>
+<para><computeroutput>cv::Mat ProcessImages::sobelY</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="__process_images_8h">ProcessImages.h</link>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="__process_images_8cpp">ProcessImages.cpp</link></section>
+</section>

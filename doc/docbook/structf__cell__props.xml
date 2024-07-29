@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structf__cell__props" xml:lang="en-US">
+<title>f_cell_props Struct Reference</title>
+<indexterm><primary>f_cell_props</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>size_t <link linkend="_structf__cell__props_1a3382b3fd5eff8a10bd27bbdc5f4c0912">cell_row</link></para>
+</listitem>
+            <listitem><para>size_t <link linkend="_structf__cell__props_1ad59ac8365f3a5b86acbe260ec240d699">cell_col</link></para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_structf__cell__props_1a1b7767af34d8a74bd8ca8192b695d76a">properties_flags</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_structf__cell__props_1a5011aae485d96bc006847f194a7257c0">col_min_width</link></para>
+</listitem>
+            <listitem><para>enum <link linkend="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32c">ft_text_alignment</link> <link linkend="_structf__cell__props_1af62bf24b68171fffc82aada70aaaf46c">align</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_structf__cell__props_1a8db1e5c84c3b67302838a5b9936e7d3c">cell_padding_top</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_structf__cell__props_1ac387b3a23586bd02a705f7d3ba05e930">cell_padding_bottom</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_structf__cell__props_1af5c00be707d3475badaf3152fdd623df">cell_padding_left</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_structf__cell__props_1a530e8f44f0a87f25dc6869d4068ab3ff">cell_padding_right</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_structf__cell__props_1ae8bddf334bb17fe394af93d5ecf41b53">cell_empty_string_height</link></para>
+</listitem>
+            <listitem><para>enum <link linkend="_fort_8h_1a06d9536a2e476d68f5055820535d3b34">ft_row_type</link> <link linkend="_structf__cell__props_1a0105f7e33a8aa38173f8cb9c20e63d10">row_type</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_structf__cell__props_1a2d73e06897ba2a2a40d353d44e10af56">content_fg_color_number</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_structf__cell__props_1ab80a7277dca0f5c4128011ebcf35af8d">content_bg_color_number</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_structf__cell__props_1a5424a89205cb5474d487eeac33b2685d">cell_bg_color_number</link></para>
+</listitem>
+            <listitem><para>enum <link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0b">ft_text_style</link> <link linkend="_structf__cell__props_1af36bd37f16d282d8fc45789f9367ace0">cell_text_style</link></para>
+</listitem>
+            <listitem><para>enum <link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0b">ft_text_style</link> <link linkend="_structf__cell__props_1a73eb62317d2c762a15a58d4e44fce9f0">content_text_style</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structf__cell__props_1af62bf24b68171fffc82aada70aaaf46c"/><section>
+    <title>align</title>
+<indexterm><primary>align</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>align</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32c">ft_text_alignment</link> f_cell_props::align</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1a5424a89205cb5474d487eeac33b2685d"/><section>
+    <title>cell_bg_color_number</title>
+<indexterm><primary>cell_bg_color_number</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>cell_bg_color_number</secondary></indexterm>
+<para><computeroutput>unsigned int f_cell_props::cell_bg_color_number</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1ad59ac8365f3a5b86acbe260ec240d699"/><section>
+    <title>cell_col</title>
+<indexterm><primary>cell_col</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>cell_col</secondary></indexterm>
+<para><computeroutput>size_t f_cell_props::cell_col</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1ae8bddf334bb17fe394af93d5ecf41b53"/><section>
+    <title>cell_empty_string_height</title>
+<indexterm><primary>cell_empty_string_height</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>cell_empty_string_height</secondary></indexterm>
+<para><computeroutput>unsigned int f_cell_props::cell_empty_string_height</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1ac387b3a23586bd02a705f7d3ba05e930"/><section>
+    <title>cell_padding_bottom</title>
+<indexterm><primary>cell_padding_bottom</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>cell_padding_bottom</secondary></indexterm>
+<para><computeroutput>unsigned int f_cell_props::cell_padding_bottom</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1af5c00be707d3475badaf3152fdd623df"/><section>
+    <title>cell_padding_left</title>
+<indexterm><primary>cell_padding_left</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>cell_padding_left</secondary></indexterm>
+<para><computeroutput>unsigned int f_cell_props::cell_padding_left</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1a530e8f44f0a87f25dc6869d4068ab3ff"/><section>
+    <title>cell_padding_right</title>
+<indexterm><primary>cell_padding_right</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>cell_padding_right</secondary></indexterm>
+<para><computeroutput>unsigned int f_cell_props::cell_padding_right</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1a8db1e5c84c3b67302838a5b9936e7d3c"/><section>
+    <title>cell_padding_top</title>
+<indexterm><primary>cell_padding_top</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>cell_padding_top</secondary></indexterm>
+<para><computeroutput>unsigned int f_cell_props::cell_padding_top</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1a3382b3fd5eff8a10bd27bbdc5f4c0912"/><section>
+    <title>cell_row</title>
+<indexterm><primary>cell_row</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>cell_row</secondary></indexterm>
+<para><computeroutput>size_t f_cell_props::cell_row</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1af36bd37f16d282d8fc45789f9367ace0"/><section>
+    <title>cell_text_style</title>
+<indexterm><primary>cell_text_style</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>cell_text_style</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0b">ft_text_style</link> f_cell_props::cell_text_style</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1a5011aae485d96bc006847f194a7257c0"/><section>
+    <title>col_min_width</title>
+<indexterm><primary>col_min_width</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>col_min_width</secondary></indexterm>
+<para><computeroutput>unsigned int f_cell_props::col_min_width</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1ab80a7277dca0f5c4128011ebcf35af8d"/><section>
+    <title>content_bg_color_number</title>
+<indexterm><primary>content_bg_color_number</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>content_bg_color_number</secondary></indexterm>
+<para><computeroutput>unsigned int f_cell_props::content_bg_color_number</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1a2d73e06897ba2a2a40d353d44e10af56"/><section>
+    <title>content_fg_color_number</title>
+<indexterm><primary>content_fg_color_number</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>content_fg_color_number</secondary></indexterm>
+<para><computeroutput>unsigned int f_cell_props::content_fg_color_number</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1a73eb62317d2c762a15a58d4e44fce9f0"/><section>
+    <title>content_text_style</title>
+<indexterm><primary>content_text_style</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>content_text_style</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0b">ft_text_style</link> f_cell_props::content_text_style</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1a1b7767af34d8a74bd8ca8192b695d76a"/><section>
+    <title>properties_flags</title>
+<indexterm><primary>properties_flags</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>properties_flags</secondary></indexterm>
+<para><computeroutput>uint32_t f_cell_props::properties_flags</computeroutput></para></section>
+<anchor xml:id="_structf__cell__props_1a0105f7e33a8aa38173f8cb9c20e63d10"/><section>
+    <title>row_type</title>
+<indexterm><primary>row_type</primary><secondary>f_cell_props</secondary></indexterm>
+<indexterm><primary>f_cell_props</primary><secondary>row_type</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_fort_8h_1a06d9536a2e476d68f5055820535d3b34">ft_row_type</link> f_cell_props::row_type</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8c">fort.c</link></section>
+</section>

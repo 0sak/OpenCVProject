@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structf__context" xml:lang="en-US">
+<title>f_context Struct Reference</title>
+<indexterm><primary>f_context</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_fort_8c_1a735cace167a88d782d8e3200cb4aedf9">f_table_properties_t</link> * <link linkend="_structf__context_1adcc2dc5d00f3d86705cd68a7ae4e3551">table_properties</link></para>
+</listitem>
+            <listitem><para>size_t <link linkend="_structf__context_1a55344dc5e6687f943ad372b04e2165e2">row</link></para>
+</listitem>
+            <listitem><para>size_t <link linkend="_structf__context_1aa8b0f1cc6b05cc9906f47661cdfdba40">column</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structf__context_1aa8b0f1cc6b05cc9906f47661cdfdba40"/><section>
+    <title>column</title>
+<indexterm><primary>column</primary><secondary>f_context</secondary></indexterm>
+<indexterm><primary>f_context</primary><secondary>column</secondary></indexterm>
+<para><computeroutput>size_t f_context::column</computeroutput></para></section>
+<anchor xml:id="_structf__context_1a55344dc5e6687f943ad372b04e2165e2"/><section>
+    <title>row</title>
+<indexterm><primary>row</primary><secondary>f_context</secondary></indexterm>
+<indexterm><primary>f_context</primary><secondary>row</secondary></indexterm>
+<para><computeroutput>size_t f_context::row</computeroutput></para></section>
+<anchor xml:id="_structf__context_1adcc2dc5d00f3d86705cd68a7ae4e3551"/><section>
+    <title>table_properties</title>
+<indexterm><primary>table_properties</primary><secondary>f_context</secondary></indexterm>
+<indexterm><primary>f_context</primary><secondary>table_properties</secondary></indexterm>
+<para><computeroutput><link linkend="_fort_8c_1a735cace167a88d782d8e3200cb4aedf9">f_table_properties_t</link>* f_context::table_properties</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8c">fort.c</link></section>
+</section>

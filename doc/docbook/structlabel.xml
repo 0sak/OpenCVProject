@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structlabel" xml:lang="en-US">
+<title>label Struct Reference</title>
+<indexterm><primary>label</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Metric.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_structlabel_1a6584b52dd0cc9c08691e3bcd76534e1f">id</link></para>
+</listitem>
+            <listitem><para>float <link linkend="_structlabel_1a4da6c955abe72184a2aebdfaf0a8cfed">width</link></para>
+</listitem>
+            <listitem><para>float <link linkend="_structlabel_1a741e2eb0164eba2f6a36cb784c5265d4">heigth</link></para>
+</listitem>
+            <listitem><para>float <link linkend="_structlabel_1af3dc896f2beefbb962dfa9825d8d70c2">brightness</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_structlabel_1aef0da4ba7b86ca8fce72753607602883">numberplateCount</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; int &gt; <link linkend="_structlabel_1aaf91d17cdd407e2484803cf4851f3dca">characterCount</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; <link linkend="__metric_8h_1a4df78a1ba07a72bdc2b8449901e450e6">Coords</link> &gt; <link linkend="_structlabel_1a49f2fe82dcf04deadae23edf3147670e">coordinates</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structlabel_1af3dc896f2beefbb962dfa9825d8d70c2"/><section>
+    <title>brightness</title>
+<indexterm><primary>brightness</primary><secondary>label</secondary></indexterm>
+<indexterm><primary>label</primary><secondary>brightness</secondary></indexterm>
+<para><computeroutput>float label::brightness</computeroutput></para></section>
+<anchor xml:id="_structlabel_1aaf91d17cdd407e2484803cf4851f3dca"/><section>
+    <title>characterCount</title>
+<indexterm><primary>characterCount</primary><secondary>label</secondary></indexterm>
+<indexterm><primary>label</primary><secondary>characterCount</secondary></indexterm>
+<para><computeroutput>std::vector&lt;int&gt; label::characterCount</computeroutput></para></section>
+<anchor xml:id="_structlabel_1a49f2fe82dcf04deadae23edf3147670e"/><section>
+    <title>coordinates</title>
+<indexterm><primary>coordinates</primary><secondary>label</secondary></indexterm>
+<indexterm><primary>label</primary><secondary>coordinates</secondary></indexterm>
+<para><computeroutput>std::vector&lt;<link linkend="__metric_8h_1a4df78a1ba07a72bdc2b8449901e450e6">Coords</link>&gt; label::coordinates</computeroutput></para></section>
+<anchor xml:id="_structlabel_1a741e2eb0164eba2f6a36cb784c5265d4"/><section>
+    <title>heigth</title>
+<indexterm><primary>heigth</primary><secondary>label</secondary></indexterm>
+<indexterm><primary>label</primary><secondary>heigth</secondary></indexterm>
+<para><computeroutput>float label::heigth</computeroutput></para></section>
+<anchor xml:id="_structlabel_1a6584b52dd0cc9c08691e3bcd76534e1f"/><section>
+    <title>id</title>
+<indexterm><primary>id</primary><secondary>label</secondary></indexterm>
+<indexterm><primary>label</primary><secondary>id</secondary></indexterm>
+<para><computeroutput>int label::id</computeroutput></para></section>
+<anchor xml:id="_structlabel_1aef0da4ba7b86ca8fce72753607602883"/><section>
+    <title>numberplateCount</title>
+<indexterm><primary>numberplateCount</primary><secondary>label</secondary></indexterm>
+<indexterm><primary>label</primary><secondary>numberplateCount</secondary></indexterm>
+<para><computeroutput>int label::numberplateCount</computeroutput></para></section>
+<anchor xml:id="_structlabel_1a4da6c955abe72184a2aebdfaf0a8cfed"/><section>
+    <title>width</title>
+<indexterm><primary>width</primary><secondary>label</secondary></indexterm>
+<indexterm><primary>label</primary><secondary>width</secondary></indexterm>
+<para><computeroutput>float label::width</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="__metric_8h">Metric.h</link></section>
+</section>

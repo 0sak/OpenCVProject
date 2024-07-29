@@ -1,0 +1,470 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_fort_8h_source" xml:lang="en-US">
+<title>fort.h</title>
+<indexterm><primary>C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/fort.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="comment">/*</emphasis>
+2 <emphasis role="comment">libfort</emphasis>
+3 <emphasis role="comment"></emphasis>
+4 <emphasis role="comment">MIT&#32;License</emphasis>
+5 <emphasis role="comment"></emphasis>
+6 <emphasis role="comment">Copyright&#32;(c)&#32;2017&#32;-&#32;2020&#32;Seleznev&#32;Anton</emphasis>
+7 <emphasis role="comment"></emphasis>
+8 <emphasis role="comment">Permission&#32;is&#32;hereby&#32;granted,&#32;free&#32;of&#32;charge,&#32;to&#32;any&#32;person&#32;obtaining&#32;a&#32;copy</emphasis>
+9 <emphasis role="comment">of&#32;this&#32;software&#32;and&#32;associated&#32;documentation&#32;files&#32;(the&#32;&quot;Software&quot;),&#32;to&#32;deal</emphasis>
+10 <emphasis role="comment">in&#32;the&#32;Software&#32;without&#32;restriction,&#32;including&#32;without&#32;limitation&#32;the&#32;rights</emphasis>
+11 <emphasis role="comment">to&#32;use,&#32;copy,&#32;modify,&#32;merge,&#32;publish,&#32;distribute,&#32;sublicense,&#32;and/or&#32;sell</emphasis>
+12 <emphasis role="comment">copies&#32;of&#32;the&#32;Software,&#32;and&#32;to&#32;permit&#32;persons&#32;to&#32;whom&#32;the&#32;Software&#32;is</emphasis>
+13 <emphasis role="comment">furnished&#32;to&#32;do&#32;so,&#32;subject&#32;to&#32;the&#32;following&#32;conditions:</emphasis>
+14 <emphasis role="comment"></emphasis>
+15 <emphasis role="comment">The&#32;above&#32;copyright&#32;notice&#32;and&#32;this&#32;permission&#32;notice&#32;shall&#32;be&#32;included&#32;in&#32;all</emphasis>
+16 <emphasis role="comment">copies&#32;or&#32;substantial&#32;portions&#32;of&#32;the&#32;Software.</emphasis>
+17 <emphasis role="comment"></emphasis>
+18 <emphasis role="comment">THE&#32;SOFTWARE&#32;IS&#32;PROVIDED&#32;&quot;AS&#32;IS&quot;,&#32;WITHOUT&#32;WARRANTY&#32;OF&#32;ANY&#32;KIND,&#32;EXPRESS&#32;OR</emphasis>
+19 <emphasis role="comment">IMPLIED,&#32;INCLUDING&#32;BUT&#32;NOT&#32;LIMITED&#32;TO&#32;THE&#32;WARRANTIES&#32;OF&#32;MERCHANTABILITY,</emphasis>
+20 <emphasis role="comment">FITNESS&#32;FOR&#32;A&#32;PARTICULAR&#32;PURPOSE&#32;AND&#32;NONINFRINGEMENT.&#32;IN&#32;NO&#32;EVENT&#32;SHALL&#32;THE</emphasis>
+21 <emphasis role="comment">AUTHORS&#32;OR&#32;COPYRIGHT&#32;HOLDERS&#32;BE&#32;LIABLE&#32;FOR&#32;ANY&#32;CLAIM,&#32;DAMAGES&#32;OR&#32;OTHER</emphasis>
+22 <emphasis role="comment">LIABILITY,&#32;WHETHER&#32;IN&#32;AN&#32;ACTION&#32;OF&#32;CONTRACT,&#32;TORT&#32;OR&#32;OTHERWISE,&#32;ARISING&#32;FROM,</emphasis>
+23 <emphasis role="comment">OUT&#32;OF&#32;OR&#32;IN&#32;CONNECTION&#32;WITH&#32;THE&#32;SOFTWARE&#32;OR&#32;THE&#32;USE&#32;OR&#32;OTHER&#32;DEALINGS&#32;IN&#32;THE</emphasis>
+24 <emphasis role="comment">SOFTWARE.</emphasis>
+25 <emphasis role="comment">*/</emphasis>
+26 
+35 <emphasis role="preprocessor">#ifndef&#32;LIBFORT_H</emphasis>
+36 <emphasis role="preprocessor">#define&#32;LIBFORT_H</emphasis>
+37 
+38 <emphasis role="preprocessor">#include&#32;&lt;stddef.h&gt;</emphasis>
+39 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+40 <emphasis role="preprocessor">#include&#32;&lt;stdint.h&gt;</emphasis>
+41 <emphasis role="preprocessor">#include&#32;&lt;limits.h&gt;</emphasis>
+42 
+43 <emphasis role="comment">/*****************************************************************************</emphasis>
+44 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;VERSION</emphasis>
+45 <emphasis role="comment">&#32;*****************************************************************************/</emphasis>
+46 
+47 <emphasis role="preprocessor">#define&#32;LIBFORT_MAJOR_VERSION&#32;0</emphasis>
+48 <emphasis role="preprocessor">#define&#32;LIBFORT_MINOR_VERSION&#32;5</emphasis>
+49 <emphasis role="preprocessor">#define&#32;LIBFORT_REVISION&#32;0</emphasis>
+50 <emphasis role="preprocessor">#define&#32;LIBFORT_VERSION_STR&#32;&quot;0.5.0&quot;</emphasis>
+51 
+52 
+53 <emphasis role="comment">/*****************************************************************************</emphasis>
+54 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Configuration</emphasis>
+55 <emphasis role="comment">&#32;*****************************************************************************/</emphasis>
+56 
+64 <emphasis role="preprocessor">#if&#32;!defined(FT_CONGIG_DISABLE_WCHAR)</emphasis>
+65 <emphasis role="preprocessor">#define&#32;FT_HAVE_WCHAR</emphasis>
+66 <emphasis role="preprocessor">#endif</emphasis>
+67 
+68 <emphasis role="preprocessor">#if&#32;!defined(FT_CONGIG_DISABLE_UTF8)</emphasis>
+69 <emphasis role="preprocessor">#define&#32;FT_HAVE_UTF8</emphasis>
+70 <emphasis role="preprocessor">#endif</emphasis>
+71 
+72 
+73 <emphasis role="comment">/*****************************************************************************</emphasis>
+74 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;RETURN&#32;CODES</emphasis>
+75 <emphasis role="comment">&#32;*****************************************************************************/</emphasis>
+76 
+80 <emphasis role="preprocessor">#define&#32;FT_SUCCESS&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0</emphasis>
+81 
+85 <emphasis role="preprocessor">#define&#32;FT_MEMORY_ERROR&#32;&#32;-1</emphasis>
+86 
+90 <emphasis role="preprocessor">#define&#32;FT_EINVAL&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;-2</emphasis>
+91 
+99 <emphasis role="preprocessor">#define&#32;FT_INTERN_ERROR&#32;&#32;-3</emphasis>
+100 
+107 <emphasis role="preprocessor">#define&#32;FT_GEN_ERROR&#32;&#32;&#32;&#32;&#32;-4</emphasis>
+108 
+109 
+110 <emphasis role="preprocessor">#define&#32;FT_IS_SUCCESS(arg)&#32;((arg)&#32;&gt;=&#32;0)</emphasis>
+111 <emphasis role="preprocessor">#define&#32;FT_IS_ERROR(arg)&#32;((arg)&#32;&lt;&#32;0)</emphasis>
+112 
+113 
+114 
+115 
+120 <emphasis role="comment">/*****************************************************************************</emphasis>
+121 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Determine&#32;compiler</emphasis>
+122 <emphasis role="comment">&#32;*****************************************************************************/</emphasis>
+123 
+124 <emphasis role="preprocessor">#if&#32;defined(__clang__)</emphasis>
+125 <emphasis role="preprocessor">#define&#32;FT_CLANG_COMPILER</emphasis>
+126 <emphasis role="preprocessor">#elif&#32;defined(__GNUC__)</emphasis>
+127 <emphasis role="preprocessor">#define&#32;FT_GCC_COMPILER</emphasis>
+128 <emphasis role="preprocessor">#elif&#32;defined(_MSC_VER)</emphasis>
+129 <emphasis role="preprocessor">#define&#32;FT_MICROSOFT_COMPILER</emphasis>
+130 <emphasis role="preprocessor">#else</emphasis>
+131 <emphasis role="preprocessor">#define&#32;FT_UNDEFINED_COMPILER</emphasis>
+132 <emphasis role="preprocessor">#endif</emphasis>
+133 
+134 
+135 <emphasis role="comment">/*****************************************************************************</emphasis>
+136 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Declare&#32;inline</emphasis>
+137 <emphasis role="comment">&#32;*****************************************************************************/</emphasis>
+138 
+139 <emphasis role="preprocessor">#if&#32;defined(__cplusplus)</emphasis>
+140 <emphasis role="preprocessor">#define&#32;FT_INLINE&#32;inline</emphasis>
+141 <emphasis role="preprocessor">#else</emphasis>
+142 <emphasis role="preprocessor">#define&#32;FT_INLINE&#32;__inline</emphasis>
+143 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;if&#32;defined(__cplusplus)&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+144 
+145 
+146 <emphasis role="comment">/*****************************************************************************</emphasis>
+147 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;C++&#32;needs&#32;to&#32;know&#32;that&#32;types&#32;and&#32;declarations&#32;are&#32;C,&#32;not&#32;C++.</emphasis>
+148 <emphasis role="comment">&#32;*****************************************************************************/</emphasis>
+149 
+150 <emphasis role="preprocessor">#ifdef&#32;__cplusplus</emphasis>
+151 <emphasis role="preprocessor">#&#32;define&#32;FT_BEGIN_DECLS&#32;extern&#32;&quot;C&quot;</emphasis>&#32;{
+152 <emphasis role="preprocessor">#&#32;define&#32;FT_END_DECLS&#32;}</emphasis>
+153 <emphasis role="preprocessor">#else</emphasis>
+154 <emphasis role="preprocessor">#&#32;define&#32;FT_BEGIN_DECLS</emphasis>
+155 <emphasis role="preprocessor">#&#32;define&#32;FT_END_DECLS</emphasis>
+156 <emphasis role="preprocessor">#endif</emphasis>
+157 
+158 
+159 <emphasis role="comment">/*****************************************************************************</emphasis>
+160 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Helper&#32;macros</emphasis>
+161 <emphasis role="comment">&#32;*****************************************************************************/</emphasis>
+162 
+163 <emphasis role="preprocessor">#define&#32;FT_STR_2_CAT_(arg1,&#32;arg2)&#32;\</emphasis>
+164 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;arg1##arg2</emphasis>
+165 <emphasis role="preprocessor">#define&#32;FT_STR_2_CAT(arg1,&#32;arg2)&#32;\</emphasis>
+166 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;FT_STR_2_CAT_(arg1,&#32;arg2)</emphasis>
+167 
+171 <emphasis role="keyword">static</emphasis>&#32;FT_INLINE&#32;<emphasis role="keywordtype">int</emphasis>&#32;ft_check_if_string_helper(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*str)
+172 {
+173 &#32;&#32;&#32;&#32;(void)str;
+174 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+175 }
+176 
+180 <emphasis role="keyword">static</emphasis>&#32;FT_INLINE&#32;<emphasis role="keywordtype">int</emphasis>&#32;ft_check_if_wstring_helper(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">wchar_t</emphasis>&#32;*str)
+181 {
+182 &#32;&#32;&#32;&#32;(void)str;
+183 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+184 }
+185 
+186 <emphasis role="preprocessor">#define&#32;FT_NARGS_IMPL_(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13,x14,x15,N,...)&#32;N</emphasis>
+187 <emphasis role="preprocessor">#define&#32;FT_EXPAND_(x)&#32;x</emphasis>
+188 <emphasis role="preprocessor">#define&#32;FT_PP_NARG_(...)&#32;\</emphasis>
+189 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;FT_EXPAND_(FT_NARGS_IMPL_(__VA_ARGS__,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0))</emphasis>
+190 
+191 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_32(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_31(checker,__VA_ARGS__)))</emphasis>
+192 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_31(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_30(checker,__VA_ARGS__)))</emphasis>
+193 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_30(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_29(checker,__VA_ARGS__)))</emphasis>
+194 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_29(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_28(checker,__VA_ARGS__)))</emphasis>
+195 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_28(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_27(checker,__VA_ARGS__)))</emphasis>
+196 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_27(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_26(checker,__VA_ARGS__)))</emphasis>
+197 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_26(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_25(checker,__VA_ARGS__)))</emphasis>
+198 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_25(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_24(checker,__VA_ARGS__)))</emphasis>
+199 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_24(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_23(checker,__VA_ARGS__)))</emphasis>
+200 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_23(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_22(checker,__VA_ARGS__)))</emphasis>
+201 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_22(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_21(checker,__VA_ARGS__)))</emphasis>
+202 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_21(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_20(checker,__VA_ARGS__)))</emphasis>
+203 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_20(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_19(checker,__VA_ARGS__)))</emphasis>
+204 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_19(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_18(checker,__VA_ARGS__)))</emphasis>
+205 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_18(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_17(checker,__VA_ARGS__)))</emphasis>
+206 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_17(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_16(checker,__VA_ARGS__)))</emphasis>
+207 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_16(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_15(checker,__VA_ARGS__)))</emphasis>
+208 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_15(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_14(checker,__VA_ARGS__)))</emphasis>
+209 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_14(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_13(checker,__VA_ARGS__)))</emphasis>
+210 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_13(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_12(checker,__VA_ARGS__)))</emphasis>
+211 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_12(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_11(checker,__VA_ARGS__)))</emphasis>
+212 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_11(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_10(checker,__VA_ARGS__)))</emphasis>
+213 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_10(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_9(checker,__VA_ARGS__)))</emphasis>
+214 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_9(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_8(checker,__VA_ARGS__)))</emphasis>
+215 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_8(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_7(checker,__VA_ARGS__)))</emphasis>
+216 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_7(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_6(checker,__VA_ARGS__)))</emphasis>
+217 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_6(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_5(checker,__VA_ARGS__)))</emphasis>
+218 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_5(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_4(checker,__VA_ARGS__)))</emphasis>
+219 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_4(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_3(checker,__VA_ARGS__)))</emphasis>
+220 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_3(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_2(checker,__VA_ARGS__)))</emphasis>
+221 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_2(checker,arg,...)&#32;(checker(arg),FT_EXPAND_(FT_CHECK_IF_STR_1(checker,__VA_ARGS__)))</emphasis>
+222 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_STR_1(checker,arg)&#32;(checker(arg))</emphasis>
+223 
+224 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_ARGS_ARE_STRINGS__(checker,func,&#32;...)&#32;\</emphasis>
+225 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;FT_EXPAND_(func(checker,__VA_ARGS__))</emphasis>
+226 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_ARGS_ARE_STRINGS_(checker,basis,&#32;n,&#32;...)&#32;\</emphasis>
+227 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;FT_CHECK_IF_ARGS_ARE_STRINGS__(checker,FT_STR_2_CAT_(basis,&#32;n),&#32;__VA_ARGS__)</emphasis>
+228 <emphasis role="preprocessor">#define&#32;FT_CHECK_IF_ARGS_ARE_STRINGS(...)&#32;\</emphasis>
+229 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;FT_CHECK_IF_ARGS_ARE_STRINGS_(ft_check_if_string_helper,FT_CHECK_IF_STR_,FT_PP_NARG_(__VA_ARGS__),&#32;__VA_ARGS__)</emphasis>
+230 
+231 <emphasis role="preprocessor">#ifdef&#32;FT_HAVE_WCHAR</emphasis>
+232 <emphasis role="preprocessor">#define&#32;CHECK_IF_ARGS_ARE_WSTRINGS(...)&#32;\</emphasis>
+233 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;FT_CHECK_IF_ARGS_ARE_STRINGS_(ft_check_if_wstring_helper,FT_CHECK_IF_STR_,FT_PP_NARG_(__VA_ARGS__),&#32;__VA_ARGS__)</emphasis>
+234 <emphasis role="preprocessor">#endif</emphasis>
+235 
+241 <emphasis role="comment">/*****************************************************************************</emphasis>
+242 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Attribute&#32;format&#32;for&#32;argument&#32;checking</emphasis>
+243 <emphasis role="comment">&#32;*****************************************************************************/</emphasis>
+244 
+245 <emphasis role="preprocessor">#if&#32;defined(FT_CLANG_COMPILER)&#32;||&#32;defined(FT_GCC_COMPILER)</emphasis>
+246 <emphasis role="preprocessor">#define&#32;FT_PRINTF_ATTRIBUTE_FORMAT(string_index,&#32;first_to_check)&#32;\</emphasis>
+247 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;__attribute__&#32;((format&#32;(printf,&#32;string_index,&#32;first_to_check)))</emphasis>
+248 <emphasis role="preprocessor">#else</emphasis>
+249 <emphasis role="preprocessor">#define&#32;FT_PRINTF_ATTRIBUTE_FORMAT(string_index,&#32;first_to_check)</emphasis>
+250 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;defined(FT_CLANG_COMPILER)&#32;||&#32;defined(FT_GCC_COMPILER)&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+251 
+252 
+253 <emphasis role="comment">/*****************************************************************************</emphasis>
+254 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;libfort&#32;API</emphasis>
+255 <emphasis role="comment">&#32;*****************************************************************************/</emphasis>
+256 
+257 FT_BEGIN_DECLS
+258 
+262 <emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__table">ft_table</link>;
+263 
+270 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__table">ft_table</link>&#32;<link linkend="_structft__table">ft_table_t</link>;
+271 
+278 <link linkend="_structft__table">ft_table_t</link>&#32;*<link linkend="_fort_8h_1a39066bbe359e408ad6d1bb360aa0cf55">ft_create_table</link>(<emphasis role="keywordtype">void</emphasis>);
+279 
+290 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_fort_8h_1ad8cb9ed46da7455f8b6baed42a4a1d31">ft_destroy_table</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table);
+291 
+301 <link linkend="_structft__table">ft_table_t</link>&#32;*<link linkend="_fort_8h_1a3dc4461b763ca66b2e2699a61ee99df8">ft_copy_table</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table);
+302 
+315 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a35af71857b08488797170d7b2a15054a">ft_ln</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table);
+316 
+325 <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_fort_8h_1a71a30e02111b90af7babd37d13f3e4ee">ft_cur_row</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structft__table">ft_table_t</link>&#32;*table);
+326 
+335 <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_fort_8h_1a4f3f1b331ee3637e3c8345ecb1b4ebd6">ft_cur_col</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structft__table">ft_table_t</link>&#32;*table);
+336 
+350 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_fort_8h_1a6dffc742cbce46e492cd3298de467b16">ft_set_cur_cell</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;row,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;col);
+351 
+361 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a6791222986d387c26d905691c30e095b">ft_is_empty</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structft__table">ft_table_t</link>&#32;*table);
+362 
+371 <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_fort_8h_1aa7e5d0d485d6c519198a5fe9eb706eba">ft_row_count</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structft__table">ft_table_t</link>&#32;*table);
+372 
+381 <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_fort_8h_1acb57251e9e5499b7b983509be936c1d8">ft_col_count</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structft__table">ft_table_t</link>&#32;*table);
+382 
+403 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a53eb304387cf4e99f0198f780bc75dc8">ft_erase_range</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,
+404 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;top_left_row,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;top_left_col,
+405 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;bottom_right_row,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;bottom_right_col);
+406 
+407 <emphasis role="preprocessor">#if&#32;defined(FT_CLANG_COMPILER)&#32;||&#32;defined(FT_GCC_COMPILER)</emphasis>
+408 
+434 <emphasis role="keywordtype">int</emphasis>&#32;ft_printf(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*fmt,&#32;...)&#32;<link linkend="_fort_8h_1a2c09d90642d39a222d6e4f723e2a93bd">FT_PRINTF_ATTRIBUTE_FORMAT</link>(2,&#32;3);
+435 
+461 <emphasis role="keywordtype">int</emphasis>&#32;ft_printf_ln(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;const&#32;<emphasis role="keywordtype">char</emphasis>&#32;*fmt,&#32;...)&#32;<link linkend="_fort_8h_1a2c09d90642d39a222d6e4f723e2a93bd">FT_PRINTF_ATTRIBUTE_FORMAT</link>(2,&#32;3);
+462 
+463 <emphasis role="preprocessor">#else</emphasis>
+464 
+469 <emphasis role="keywordtype">int</emphasis>&#32;ft_printf_impl(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*fmt,&#32;...)&#32;<link linkend="_fort_8h_1a2c09d90642d39a222d6e4f723e2a93bd">FT_PRINTF_ATTRIBUTE_FORMAT</link>(2,&#32;3);
+470 <emphasis role="keywordtype">int</emphasis>&#32;ft_printf_ln_impl(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;const&#32;<emphasis role="keywordtype">char</emphasis>&#32;*fmt,&#32;...)&#32;<link linkend="_fort_8h_1a2c09d90642d39a222d6e4f723e2a93bd">FT_PRINTF_ATTRIBUTE_FORMAT</link>(2,&#32;3);
+471 
+472 <emphasis role="preprocessor">#define&#32;ft_printf(table,&#32;...)&#32;\</emphasis>
+473 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;((&#32;0&#32;?&#32;fprintf(stderr,&#32;__VA_ARGS__)&#32;:&#32;1),&#32;ft_printf_impl(table,&#32;__VA_ARGS__))</emphasis>
+474 <emphasis role="preprocessor">#define&#32;ft_printf_ln(table,&#32;...)&#32;\</emphasis>
+475 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;((&#32;0&#32;?&#32;fprintf(stderr,&#32;__VA_ARGS__)&#32;:&#32;1),&#32;ft_printf_ln_impl(table,&#32;__VA_ARGS__))</emphasis>
+476 
+480 <emphasis role="preprocessor">#endif</emphasis>
+481 
+489 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_fort_8h_1a08dbade99a0cfc34c549f7ee29a60fe4">ft_set_default_printf_field_separator</link>(<emphasis role="keywordtype">char</emphasis>&#32;<link linkend="_namespacefort_1af61eccb3d2f66403d238b94e59dd7e4a">separator</link>);
+490 
+491 
+506 <emphasis role="preprocessor">#define&#32;ft_write(table,&#32;...)\</emphasis>
+507 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;(0&#32;?&#32;FT_CHECK_IF_ARGS_ARE_STRINGS(__VA_ARGS__)&#32;:&#32;ft_nwrite(table,&#32;FT_PP_NARG_(__VA_ARGS__),&#32;__VA_ARGS__))</emphasis>
+508 
+524 <emphasis role="preprocessor">#define&#32;ft_write_ln(table,&#32;...)\</emphasis>
+525 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;(0&#32;?&#32;FT_CHECK_IF_ARGS_ARE_STRINGS(__VA_ARGS__)&#32;:&#32;ft_nwrite_ln(table,&#32;FT_PP_NARG_(__VA_ARGS__),&#32;__VA_ARGS__))</emphasis>
+526 
+550 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a69052e887e05d6dc3a0891550127619b">ft_nwrite</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;count,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*cell_content,&#32;...);
+551 
+576 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a09342b73950f97c0e73bbed2df40b48a">ft_nwrite_ln</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;count,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*cell_content,&#32;...);
+577 
+578 
+579 
+596 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a52e0e57e1ead19ce324f76a2eba877fc">ft_row_write</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;cols,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*row_cells[]);
+597 
+615 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a6df5c45d231c9dc0cb1af875164bafb9">ft_row_write_ln</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;cols,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*row_cells[]);
+616 
+617 
+635 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1ac026a41e784483319aa4c7c89a9dfe06">ft_table_write</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_structft__table_1a8219dd3504d84760616003a3a4fef88e">rows</link>,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;cols,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*table_cells[]);
+636 
+655 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1ad9219b581d29cb079847b0bfd6911271">ft_table_write_ln</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_structft__table_1a8219dd3504d84760616003a3a4fef88e">rows</link>,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;cols,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*table_cells[]);
+656 
+657 
+667 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a22fc0b6196d1a9a398785e23673eeeb0">ft_add_separator</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table);
+668 
+669 
+687 <emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*<link linkend="_fort_8h_1aa80a0ba53be3e32a69b9b98478821354">ft_to_string</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structft__table">ft_table_t</link>&#32;*table);
+688 
+689 
+690 
+691 
+692 
+693 
+694 
+698 <emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__chars">ft_border_chars</link>&#32;{
+699 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*<link linkend="_structft__border__chars_1a9f7387898911a068b05ba35c8fcdbc4c">top_border_ch</link>;
+700 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*<link linkend="_structft__border__chars_1a12d0176ee01e79da53a900bd532cab77">separator_ch</link>;
+701 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*<link linkend="_structft__border__chars_1a34679517e199cd4a8a23f95a473f3c68">bottom_border_ch</link>;
+702 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*<link linkend="_structft__border__chars_1ad9359ff95b64fe8941eba9c0b33bedcb">side_border_ch</link>;
+703 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*<link linkend="_structft__border__chars_1a75ca506f5abb4be80c9071e0597d710c">out_intersect_ch</link>;
+704 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*<link linkend="_structft__border__chars_1ab6c7ec8feb16b52d7e39e185a060caf6">in_intersect_ch</link>;
+705 };
+706 
+710 <emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;{
+711 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__chars">ft_border_chars</link>&#32;<link linkend="_structft__border__style_1a26e04085ff0f546572318321ae38a751">border_chs</link>;
+712 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__chars">ft_border_chars</link>&#32;<link linkend="_structft__border__style_1a2a05c8f0239e1de6bf517ad366509fd7">header_border_chs</link>;
+713 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*<link linkend="_structft__border__style_1a32a15b8c310c22fc8fb93e2739630411">hor_separator_char</link>;
+714 };
+715 
+726 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1a4566853be8c0cdf91ba9c3f50eb426d4">FT_BASIC_STYLE</link>;
+727 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1ab3ed5c4f1c4f7ca26b52b668fd4717f9">FT_BASIC2_STYLE</link>;
+728 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1a7581c1fec7b7c2b88f93e3445c62424d">FT_SIMPLE_STYLE</link>;
+729 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1add469a34d262e6368adaa636d1cf76b7">FT_PLAIN_STYLE</link>;
+730 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1a148f3f2c872531fdeca8e4ace60eb258">FT_DOT_STYLE</link>;
+731 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1aa8916e07fa9a8d1f24c1e1d1e6b68838">FT_EMPTY_STYLE</link>;
+732 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1a357302cc732e53c1c7049842fc0fc3c7">FT_EMPTY2_STYLE</link>;
+733 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1ae4723d497ac2e6980b43ac7732e21f2d">FT_SOLID_STYLE</link>;
+734 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1aedcc877521b55c87758949920ef0ee96">FT_SOLID_ROUND_STYLE</link>;
+735 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1a91de4cab0e239a201fa2a7dc961b2fdc">FT_NICE_STYLE</link>;
+736 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1ad0e15260ea4a4c66f0bfa2c82b889107">FT_DOUBLE_STYLE</link>;
+737 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1a23314491db1204b8654f8cd610692260">FT_DOUBLE2_STYLE</link>;
+738 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1af392ad3ae759382d95921e1efb652744">FT_BOLD_STYLE</link>;
+739 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1a7b82fd38c92a289fc641d3666684bcd4">FT_BOLD2_STYLE</link>;
+740 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structft__border__style">ft_border_style</link>&#32;*<emphasis role="keyword">const</emphasis>&#32;<link linkend="_fort_8h_1aef91486de193b4dfe511a992f9b02bb9">FT_FRAME_STYLE</link>;
+754 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1addb2484d7bc2a271be60cf743ae8eaeb">ft_set_default_border_style</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct</emphasis>&#32;<link linkend="_structft__border__style">ft_border_style</link>&#32;*style);
+755 
+767 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1aaa966b7da0ee2e2d2a93dc6a5e1ef81b">ft_set_border_style</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">struct</emphasis>&#32;<link linkend="_structft__border__style">ft_border_style</link>&#32;*style);
+768 
+769 
+770 
+775 <emphasis role="preprocessor">#define&#32;FT_ANY_COLUMN&#32;(UINT_MAX)&#32;&#32;&#32;&#32;&#32;</emphasis>
+776 <emphasis role="preprocessor">#define&#32;FT_CUR_COLUMN&#32;(UINT_MAX&#32;-&#32;1)&#32;</emphasis>
+777 <emphasis role="preprocessor">#define&#32;FT_ANY_ROW&#32;&#32;&#32;&#32;(UINT_MAX)&#32;&#32;&#32;&#32;&#32;</emphasis>
+778 <emphasis role="preprocessor">#define&#32;FT_CUR_ROW&#32;&#32;&#32;&#32;(UINT_MAX&#32;-&#32;1)&#32;</emphasis>
+781 <emphasis role="preprocessor">#define&#32;FT_MAX_ROW_INDEX&#32;(UINT_MAX&#32;-&#32;2)</emphasis>
+782 <emphasis role="preprocessor">#define&#32;FT_MAX_COL_INDEX&#32;(UINT_MAX&#32;-&#32;2)</emphasis>
+783 
+784 
+789 <emphasis role="preprocessor">#define&#32;FT_CPROP_MIN_WIDTH&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;0)&#32;</emphasis>
+790 <emphasis role="preprocessor">#define&#32;FT_CPROP_TEXT_ALIGN&#32;&#32;&#32;&#32;&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;1)&#32;</emphasis>
+791 <emphasis role="preprocessor">#define&#32;FT_CPROP_TOP_PADDING&#32;&#32;&#32;&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;2)&#32;</emphasis>
+792 <emphasis role="preprocessor">#define&#32;FT_CPROP_BOTTOM_PADDING&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;3)&#32;</emphasis>
+793 <emphasis role="preprocessor">#define&#32;FT_CPROP_LEFT_PADDING&#32;&#32;&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;4)&#32;</emphasis>
+794 <emphasis role="preprocessor">#define&#32;FT_CPROP_RIGHT_PADDING&#32;&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;5)&#32;</emphasis>
+795 <emphasis role="preprocessor">#define&#32;FT_CPROP_EMPTY_STR_HEIGHT&#32;(0x01U&#32;&lt;&lt;&#32;6)&#32;</emphasis>
+796 <emphasis role="preprocessor">#define&#32;FT_CPROP_ROW_TYPE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;7)&#32;</emphasis>
+797 <emphasis role="preprocessor">#define&#32;FT_CPROP_CONT_FG_COLOR&#32;&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;8)&#32;</emphasis>
+798 <emphasis role="preprocessor">#define&#32;FT_CPROP_CELL_BG_COLOR&#32;&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;9)&#32;</emphasis>
+799 <emphasis role="preprocessor">#define&#32;FT_CPROP_CONT_BG_COLOR&#32;&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;10)&#32;</emphasis>
+800 <emphasis role="preprocessor">#define&#32;FT_CPROP_CELL_TEXT_STYLE&#32;&#32;(0x01U&#32;&lt;&lt;&#32;11)&#32;</emphasis>
+801 <emphasis role="preprocessor">#define&#32;FT_CPROP_CONT_TEXT_STYLE&#32;&#32;(0x01U&#32;&lt;&lt;&#32;12)&#32;</emphasis>
+808 <emphasis role="keyword">enum</emphasis>&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63f">ft_color</link>&#32;{
+809 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63face2e85ce681b17d9334eb832a1558445">FT_COLOR_DEFAULT</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0,&#32;&#32;
+810 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa6e1eb39443ae233746378aa84548f553">FT_COLOR_BLACK</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;1,&#32;&#32;
+811 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63faf31632500abf110557632f09e267472d">FT_COLOR_RED</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;2,&#32;&#32;
+812 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fac27875bf7bc9bb9fec8e7beb79a308a0">FT_COLOR_GREEN</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;3,&#32;&#32;
+813 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fae1942de73f0c49658b208f9c42a136a8">FT_COLOR_YELLOW</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;4,&#32;&#32;
+814 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa646c06e02caa66410e13dc212242ef16">FT_COLOR_BLUE</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;5,&#32;&#32;
+815 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa0f97227c2b13f6c2d88ca06761563a68">FT_COLOR_MAGENTA</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;6,&#32;&#32;
+816 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa2e3e4b314fc75407fa5b38cee9fd5a5c">FT_COLOR_CYAN</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;7,&#32;&#32;
+817 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa10c39c7d62795e90c3188f0b6a476f10">FT_COLOR_LIGHT_GRAY</link>&#32;&#32;&#32;&#32;&#32;=&#32;8,&#32;&#32;
+818 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa4f7814c857a35ace99e77c721bdea819">FT_COLOR_DARK_GRAY</link>&#32;&#32;&#32;&#32;&#32;&#32;=&#32;9,&#32;&#32;
+819 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63faee5e46a4b6fbeb64b6eddca826bdc7ae">FT_COLOR_LIGHT_RED</link>&#32;&#32;&#32;&#32;&#32;&#32;=&#32;10,&#32;
+820 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa37dd75f161f83ea176f74a70a19e763f">FT_COLOR_LIGHT_GREEN</link>&#32;&#32;&#32;&#32;=&#32;11,&#32;
+821 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa84816257c9a5f38a20d0e2ea848a5489">FT_COLOR_LIGHT_YELLOW</link>&#32;&#32;&#32;=&#32;12,&#32;
+822 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63facebf9e4fe6e259bc0892bd1183c73800">FT_COLOR_LIGHT_BLUE</link>&#32;&#32;&#32;&#32;&#32;=&#32;13,&#32;
+823 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fac181922016e12de1a32116b2f1eb5a1f">FT_COLOR_LIGHT_MAGENTA</link>&#32;&#32;=&#32;14,&#32;
+824 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63fa3b5bdee67bbfca060a31ae3d700cb5c4">FT_COLOR_LIGHT_CYAN</link>&#32;&#32;&#32;&#32;&#32;=&#32;15,&#32;
+825 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a8a64c62f618f7c34310da2e2ef31f63faebf36fa4c0f9ae7e8aaa651988686e42">FT_COLOR_LIGHT_WHYTE</link>&#32;&#32;&#32;&#32;=&#32;16&#32;&#32;
+826 };
+827 
+831 <emphasis role="keyword">enum</emphasis>&#32;<link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0b">ft_text_style</link>&#32;{
+832 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0bad81d0dad8f26df01c149638ccbb6b3e2">FT_TSTYLE_DEFAULT</link>&#32;&#32;&#32;&#32;=&#32;(1U&#32;&lt;&lt;&#32;0),&#32;
+833 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba04256f30849c7cd2b4822e5030fa07fb">FT_TSTYLE_BOLD</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;(1U&#32;&lt;&lt;&#32;1),&#32;
+834 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0baf9c6c97ae4ea6c404ae2e57b8dfab101">FT_TSTYLE_DIM</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;(1U&#32;&lt;&lt;&#32;2),&#32;
+835 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba29c6547c7ae5a297a4547de1b15a3133">FT_TSTYLE_ITALIC</link>&#32;&#32;&#32;&#32;&#32;=&#32;(1U&#32;&lt;&lt;&#32;3),&#32;
+836 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba41f3dc969345e99fda4ef48130184745">FT_TSTYLE_UNDERLINED</link>&#32;=&#32;(1U&#32;&lt;&lt;&#32;4),&#32;
+837 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba36c9e2fd7b64982a8f7229fe965440d4">FT_TSTYLE_BLINK</link>&#32;&#32;&#32;&#32;&#32;&#32;=&#32;(1U&#32;&lt;&lt;&#32;5),&#32;
+838 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba3a4c44c718da5e229c01ab7d6eb05366">FT_TSTYLE_INVERTED</link>&#32;&#32;&#32;=&#32;(1U&#32;&lt;&lt;&#32;6),&#32;
+839 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1abc496f06f2a4c7fb58b1730ce813be0ba016fa7d5df89fd09ba7ed6daa7021b16">FT_TSTYLE_HIDDEN</link>&#32;&#32;&#32;&#32;&#32;=&#32;(1U&#32;&lt;&lt;&#32;7)&#32;&#32;
+840 };
+841 
+842 
+846 <emphasis role="keyword">enum</emphasis>&#32;<link linkend="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32c">ft_text_alignment</link>&#32;{
+847 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32ca62837cbc7c859d5d38d608f51806e66d">FT_ALIGNED_LEFT</link>&#32;=&#32;0,&#32;&#32;&#32;&#32;&#32;
+848 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32cac43d09334b02f1300989a8789455183e">FT_ALIGNED_CENTER</link>,&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+849 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a3ce6dedcf688e310a3cfbb5cdae9d32ca31bdf997c2db055fe5669e9e174277cc">FT_ALIGNED_RIGHT</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+850 };
+851 
+855 <emphasis role="keyword">enum</emphasis>&#32;<link linkend="_fort_8h_1a06d9536a2e476d68f5055820535d3b34">ft_row_type</link>&#32;{
+856 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a06d9536a2e476d68f5055820535d3b34ae50a530e078dd8425784ca02e66d2433">FT_ROW_COMMON</link>&#32;=&#32;0,&#32;&#32;&#32;&#32;&#32;&#32;
+857 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1a06d9536a2e476d68f5055820535d3b34a2a0a31078eac88202029c3e9bdaa614a">FT_ROW_HEADER</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+858 };
+859 
+871 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a894497fac87518023122266da59f8da1">ft_set_default_cell_prop</link>(uint32_t&#32;property,&#32;<emphasis role="keywordtype">int</emphasis>&#32;value);
+872 
+890 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a10dc95b3d810a0ab2bf6c90b7b8c66a4">ft_set_cell_prop</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;row,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;col,&#32;uint32_t&#32;property,&#32;<emphasis role="keywordtype">int</emphasis>&#32;value);
+891 
+892 
+897 <emphasis role="preprocessor">#define&#32;FT_TPROP_LEFT_MARGIN&#32;&#32;&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;0)</emphasis>
+898 <emphasis role="preprocessor">#define&#32;FT_TPROP_TOP_MARGIN&#32;&#32;&#32;&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;1)</emphasis>
+899 <emphasis role="preprocessor">#define&#32;FT_TPROP_RIGHT_MARGIN&#32;&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;2)</emphasis>
+900 <emphasis role="preprocessor">#define&#32;FT_TPROP_BOTTOM_MARGIN&#32;&#32;&#32;(0x01U&#32;&lt;&lt;&#32;3)</emphasis>
+901 <emphasis role="preprocessor">#define&#32;FT_TPROP_ADDING_STRATEGY&#32;(0x01U&#32;&lt;&lt;&#32;4)</emphasis>
+910 <emphasis role="keyword">enum</emphasis>&#32;<link linkend="_fort_8h_1aeed2958a1823084ca6e71883b075baa5">ft_adding_strategy</link>&#32;{
+911 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1aeed2958a1823084ca6e71883b075baa5aa620d123a0ac00710153d28a6ab65842">FT_STRATEGY_REPLACE</link>&#32;=&#32;0,&#32;&#32;
+912 &#32;&#32;&#32;&#32;<link linkend="_fort_8h_1aeed2958a1823084ca6e71883b075baa5acc1102bce0611e414231a7e41357300f">FT_STRATEGY_INSERT</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+913 };
+914 
+915 
+927 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a0ebdf7b17d363037f4b0d48ce1438a6c">ft_set_default_tbl_prop</link>(uint32_t&#32;property,&#32;<emphasis role="keywordtype">int</emphasis>&#32;value);
+928 
+942 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1ac7ff4899d39f21d4cf8948c73bbb1595">ft_set_tbl_prop</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;uint32_t&#32;property,&#32;<emphasis role="keywordtype">int</emphasis>&#32;value);
+943 
+944 
+960 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1ae958a4787cc8fee9abb452bbced096f8">ft_set_cell_span</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;row,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;col,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;hor_span);
+961 
+962 
+977 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_fort_8h_1a3477def0e7247bbccacb0c93530aaee7">ft_set_memory_funcs</link>(<emphasis role="keywordtype">void</emphasis>&#32;*(*f_malloc)(<emphasis role="keywordtype">size_t</emphasis>&#32;size),&#32;<emphasis role="keywordtype">void</emphasis>&#32;(*f_free)(<emphasis role="keywordtype">void</emphasis>&#32;*ptr));
+978 
+979 
+988 <emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*<link linkend="_fort_8h_1ab2d62733c846a3d64dfa5a7c45d1c91b">ft_strerror</link>(<emphasis role="keywordtype">int</emphasis>&#32;error_code);
+989 
+990 
+991 
+992 <emphasis role="preprocessor">#ifdef&#32;FT_HAVE_WCHAR</emphasis>
+993 
+994 
+995 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a93dacf69774a8a84fecee3035ad7650e">ft_wprintf</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">wchar_t</emphasis>&#32;*fmt,&#32;...);
+996 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a756d50513a7dbf57d2e7144802dd23f4">ft_wprintf_ln</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">wchar_t</emphasis>&#32;*fmt,&#32;...);
+997 
+998 
+999 <emphasis role="preprocessor">#define&#32;ft_wwrite(table,&#32;...)\</emphasis>
+1000 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;(0&#32;?&#32;CHECK_IF_ARGS_ARE_WSTRINGS(__VA_ARGS__)&#32;:&#32;ft_nwwrite(table,&#32;FT_PP_NARG_(__VA_ARGS__),&#32;__VA_ARGS__))</emphasis>
+1001 <emphasis role="preprocessor">#define&#32;ft_wwrite_ln(table,&#32;...)\</emphasis>
+1002 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;(0&#32;?&#32;CHECK_IF_ARGS_ARE_WSTRINGS(__VA_ARGS__)&#32;:&#32;ft_nwwrite_ln(table,&#32;FT_PP_NARG_(__VA_ARGS__),&#32;__VA_ARGS__))</emphasis>
+1003 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1aac28f7840d0a323ca3c4df1e6f43bdf6">ft_nwwrite</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">wchar_t</emphasis>&#32;*cell_content,&#32;...);
+1004 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a313b73c39aa6127200cd7b7fee92d8f0">ft_nwwrite_ln</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">wchar_t</emphasis>&#32;*cell_content,&#32;...);
+1005 
+1006 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a2bfe751bbf2c100eda336c30f73fe199">ft_row_wwrite</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;cols,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">wchar_t</emphasis>&#32;*row_cells[]);
+1007 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a50c12bee8800d14fc70e6cccb10aee1c">ft_row_wwrite_ln</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;cols,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">wchar_t</emphasis>&#32;*row_cells[]);
+1008 
+1009 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1adb37fd79298ef7f28d9304f3aa135f08">ft_table_wwrite</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;rows,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;cols,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">wchar_t</emphasis>&#32;*table_cells[]);
+1010 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1ac2c4cd5246efb7d713cc0ccd5dad49cf">ft_table_wwrite_ln</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;rows,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;cols,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">wchar_t</emphasis>&#32;*table_cells[]);
+1011 
+1012 <emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">wchar_t</emphasis>&#32;*<link linkend="_fort_8h_1a03479aafea9aefc5275a02df827cb780">ft_to_wstring</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structft__table">ft_table_t</link>&#32;*table);
+1013 <emphasis role="preprocessor">#endif</emphasis>
+1014 
+1015 
+1016 
+1017 <emphasis role="preprocessor">#ifdef&#32;FT_HAVE_UTF8</emphasis>
+1018 <emphasis role="preprocessor">#define&#32;ft_u8write(table,&#32;...)\</emphasis>
+1019 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;(ft_u8nwrite(table,&#32;FT_PP_NARG_(__VA_ARGS__),&#32;__VA_ARGS__))</emphasis>
+1020 <emphasis role="preprocessor">#define&#32;ft_u8write_ln(table,&#32;...)\</emphasis>
+1021 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;(ft_u8nwrite_ln(table,&#32;FT_PP_NARG_(__VA_ARGS__),&#32;__VA_ARGS__))</emphasis>
+1022 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a61aec826074239282309ce1369563f64">ft_u8nwrite</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;*cell_content,&#32;...);
+1023 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a4c378ecb73c881a0793930c76a64ff41">ft_u8nwrite_ln</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;*cell_content,&#32;...);
+1024 
+1025 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1ac3f58cfaced19b8571c84aea0827d09b">ft_u8printf</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*fmt,&#32;...)&#32;<link linkend="_fort_8h_1a2c09d90642d39a222d6e4f723e2a93bd">FT_PRINTF_ATTRIBUTE_FORMAT</link>(2,&#32;3);
+1026 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_fort_8h_1a63da69eff3300456b04ec99118f76abc">ft_u8printf_ln</link>(<link linkend="_structft__table">ft_table_t</link>&#32;*table,&#32;const&#32;<emphasis role="keywordtype">char</emphasis>&#32;*fmt,&#32;...)&#32;<link linkend="_fort_8h_1a2c09d90642d39a222d6e4f723e2a93bd">FT_PRINTF_ATTRIBUTE_FORMAT</link>(2,&#32;3);
+1027 
+1028 const&#32;<emphasis role="keywordtype">void</emphasis>&#32;*<link linkend="_fort_8h_1a1612cd9b9990ad7f45732831ce4e4577">ft_to_u8string</link>(const&#32;<link linkend="_structft__table">ft_table_t</link>&#32;*table);
+1029 
+1049 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_fort_8h_1ac19c7bf75bde46f17a954159b27724f4">ft_set_u8strwid_func</link>(<emphasis role="keywordtype">int</emphasis>&#32;(*u8strwid)(const&#32;<emphasis role="keywordtype">void</emphasis>&#32;*beg,&#32;const&#32;<emphasis role="keywordtype">void</emphasis>&#32;*end,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;*width));
+1050 
+1051 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;FT_HAVE_UTF8&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+1052 
+1053 
+1054 FT_END_DECLS
+1055 
+1056 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;LIBFORT_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

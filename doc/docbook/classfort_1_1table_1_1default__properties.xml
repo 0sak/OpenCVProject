@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classfort_1_1table_1_1default__properties" xml:lang="en-US">
+<title>fort::table&lt; TT &gt;::default_properties Class Reference</title>
+<indexterm><primary>fort::table&lt; TT &gt;::default_properties</primary></indexterm>
+<para>
+<computeroutput>#include &lt;fort.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for fort::table&lt; TT &gt;::default_properties:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classfort_1_1table_1_1default__properties.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classfort_1_1table_1_1default__properties_1a22fe51060e7376588a768f0bc786a89a">default_properties</link> (<link linkend="_classfort_1_1table">table</link> *tbl)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classfort_1_1table_1_1default__properties_1a22fe51060e7376588a768f0bc786a89a"/><section>
+    <title>default_properties()</title>
+<indexterm><primary>default_properties</primary><secondary>fort::table&lt; TT &gt;::default_properties</secondary></indexterm>
+<indexterm><primary>fort::table&lt; TT &gt;::default_properties</primary><secondary>default_properties</secondary></indexterm>
+<computeroutput>template&lt;<link linkend="_namespacefort_1aa331578461d0ee79e683d9e209cfc25b">table_type</link> TT = table_type::character&gt; </computeroutput><para><computeroutput><link linkend="_classfort_1_1table">fort::table</link>&lt; TT &gt;::default_properties::default_properties (<link linkend="_classfort_1_1table">table</link> * tbl)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+C:/workspace/Computer Vision/OpenCVProjekt/OpenCVTest/<link linkend="_fort_8hpp">fort.hpp</link></section>
+</section>
